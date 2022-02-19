@@ -1,6 +1,7 @@
 package com.example.ar_realestate;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ar_realestate.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
+    private Database database;
     private ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        try{
+            database=new Database(this);
+            SQLiteDatabase db=database.getWritableDatabase();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
