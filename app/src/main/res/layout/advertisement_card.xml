@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="132dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="3dp"
+    app:cardBackgroundColor="@android:color/white">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="121dp"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/advImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_home_black_24dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_toEndOf="@+id/advImage"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/advTitle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Title" />
+
+            <TextView
+                android:id="@+id/advAddress"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:hint="Address" />
+
+            <TextView
+                android:id="@+id/advPrice"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:hint="Price" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
