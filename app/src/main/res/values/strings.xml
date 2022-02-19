@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">AR-RealEstate</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="map_key" translatable="false">AIzaSyAmYcvP4x_uQvzs75tvU7446mgvF1-As-E</string>
+
+    <string-array name="Adv_Status">
+        <item>Select Adv Status</item>
+        <item>For Rent</item>
+        <item>For Sale</item>
+    </string-array>
+
+    <string-array name="ElgForCredit">
+        <item>Select Elg Credit</item>
+        <item>Suitable</item>
+        <item>Not Suitable</item>
+        <item>Unknown</item>
+    </string-array>
+
+    <string-array name="UsingStatus">
+        <item>Select Using Status</item>
+        <item>Blank</item>
+        <item>Tenant Sitting</item>
+        <item>Host Sitting</item>
+        <item>Unspecified</item>
+    </string-array>
+
+    <string-array name="BuildingType">
+        <item>Select Build Type</item>
+        <item>Betonarme</item>
+        <item>Stone Building</item>
+        <item>Kagir</item>
+        <item>Conglomeration</item>
+        <item>Wooden</item>
+        <item>Steel</item>
+    </string-array>
+
+    <string-array name="ItemStatus">
+        <item>Select Item Status</item>
+        <item>Furnished</item>
+        <item>Not furnished</item>
+    </string-array>
+
+    <string-array name="StateBuilding">
+        <item>Select State Building</item>
+        <item>Zero</item>
+        <item>Secondhand</item>
+        <item>Under Construction</item>
+    </string-array>
+
+    <string-array name="Swap">
+        <item>Select Swap</item>
+        <item>No</item>
+        <item>Yes</item>
+    </string-array>
+
+    <string-array name="Front">
+        <item>Select Front</item>
+        <item>North</item>
+        <item>South</item>
+        <item>West</item>
+        <item>East</item>
+    </string-array>
+
+    <string-array name="FuelType">
+        <item>Select Fuel Type</item>
+        <item>Natural Gas</item>
+        <item>Electric</item>
+        <item>Coal-Wood</item>
+        <item>Fuel-oil</item>
+    </string-array>
+
+</resources>
