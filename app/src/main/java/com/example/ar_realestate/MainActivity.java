@@ -1,24 +1,18 @@
 package com.example.ar_realestate;
 
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.ar_realestate.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private Database database;
+
     private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,21 +30,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        try{
-            database=new Database(this);
-            SQLiteDatabase db=database.getWritableDatabase();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
-    public void deneme(View view) {
-
-        Intent intent = new Intent(getApplicationContext(),Add_AdvActivity.class);
-        startActivity(intent);
-
+       //  getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
     }
 
 }

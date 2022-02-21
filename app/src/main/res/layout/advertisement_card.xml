@@ -2,51 +2,56 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="132dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="2dp"
+    app:cardCornerRadius="5dp"
+    android:elevation="4dp"
     app:cardUseCompatPadding="true"
-    app:contentPadding="3dp"
-    app:cardBackgroundColor="@android:color/white">
+    >
 
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="121dp"
-        android:padding="12dp">
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        >
 
         <ImageView
-            android:id="@+id/advImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_home_black_24dp" />
+            android:id="@+id/image"
+            android:src="@drawable/ic_home_black_24dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_toEndOf="@+id/advImage"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/advTitle"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="Title" />
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Title"
+                android:textSize="25dp"
+                ></TextView>
 
             <TextView
-                android:id="@+id/advAddress"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:hint="Address" />
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Address"
+                android:textSize="25dp"
+                ></TextView>
 
             <TextView
-                android:id="@+id/advPrice"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:hint="Price" />
-
-
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Price"
+                android:textSize="25dp"
+                ></TextView>
         </LinearLayout>
-    </RelativeLayout>
+
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

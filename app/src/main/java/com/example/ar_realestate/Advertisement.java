@@ -10,16 +10,31 @@ import android.graphics.BitmapFactory;
 import java.util.ArrayList;
 
 public class Advertisement {
-    private String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address;
+    private String pric, advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address;
     private  int price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
 
     private long latitude,longitude;
-    private Bitmap adv_image;
+    private int adv_image;
 
     public Advertisement() {
     }
 
-    public Advertisement(String advTitle,int price,String advStatus,String roomNum,int squareMeters,int buildingFloors,int floorLoc,int buildAge,String buildType,String itemStatus,String warmType,int numOfBathr,String elgForCredit,String usingStatus,String stateOfBuilding,int rentalIncome,int dues,String swap,String front,String fuelType,String date,String address) {
+    public Advertisement( int adv_image,String advTitle, String address,String pric) {
+        this.advTitle = advTitle;
+        this.address = address;
+        this.pric = pric;
+        this.adv_image = adv_image;
+    }
+
+    public String getPric() {
+        return pric;
+    }
+
+    public void setPric(String pric) {
+        this.pric = pric;
+    }
+
+    public Advertisement(String advTitle, int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address) {
         this.advTitle = advTitle;
         this.price=price;
         this.advStatus=advStatus;
@@ -44,11 +59,11 @@ public class Advertisement {
         this.address=address;
     }
 
-    public Bitmap getAdv_image() {
+    public int getAdv_image() {
         return adv_image;
     }
 
-    public void setAdv_image(Bitmap adv_image) {
+    public void setAdv_image(int adv_image) {
         this.adv_image = adv_image;
     }
 
@@ -346,7 +361,7 @@ public class Advertisement {
             for (int i=0;i<advTitleList.size();i++){
                 Advertisement adv=new Advertisement();
                 adv.setAdvTitle(advTitleList.get(i));
-                adv.setAdv_image(ImageList.get(i));
+              //  adv.setAdv_image(ImageList.get(i));
                 adv.setPrice(priceList.get(i));
                 adv.setAdvStatus(advStatusList.get(i));
                 adv.setRoomNum(roomNumList.get(i));

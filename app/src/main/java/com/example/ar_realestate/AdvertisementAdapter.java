@@ -1,17 +1,5 @@
 package com.example.ar_realestate;
 
-
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,76 +11,48 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdapter.AdvHolder> {
-    private ArrayList<Advertisement> advList;
-    private Context context;
-    private OnItemClickListener listener;
+public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdapter.myviewholder>{
 
-    public AdvertisementAdapter(ArrayList<Advertisement> advList,Context context) {
-        this.advList = advList;
-        this.context = context;
+    ArrayList<Advertisement> adv;
+
+    public AdvertisementAdapter(ArrayList<Advertisement> adv) {
+        this.adv = adv;
     }
-
 
     @NonNull
     @Override
-    public AdvHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.adv_item,parent,false);
+    public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new AdvHolder(v);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.advertisement_card,parent,false);
+
+        return new myviewholder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdvHolder holder, int position) {
-        Advertisement advertisement=advList.get(position);
-        holder.setData(advertisement);
+    public void onBindViewHolder(@NonNull myviewholder holder, int position) {
 
+        holder.img.setImageResource(adv.get(position).getAdv_image());
+        holder.titlee.setText(adv.get(position).getAdvTitle());
+        holder.addresss.setText(adv.get(position).getAddress());
+        holder.pricee.setText(adv.get(position).getPric());
     }
 
     @Override
     public int getItemCount() {
-        return advList.size();
+        return adv.size();
     }
 
-    class AdvHolder extends RecyclerView.ViewHolder {
-        TextView txtAdvTitle,txtAdvPrice;
-        ImageView imgAdv;
+    class myviewholder extends RecyclerView.ViewHolder{
+        ImageView img;
+        TextView titlee, addresss, pricee;
 
-
-        public AdvHolder(@NonNull View itemView) {
+        public myviewholder (@NonNull View itemView){
             super(itemView);
 
-            txtAdvTitle=(TextView)itemView.findViewById(R.id.adv_item_textViewAdvTitle);
-            txtAdvPrice=(TextView)itemView.findViewById(R.id.adv_item_textViewAdvPrice);
-            imgAdv=(ImageView)itemView.findViewById(R.id.advItem_imageViewAdv);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int position=getAdapterPosition();
-
-                    if(listener!=null && position!=RecyclerView.NO_POSITION ){
-                        listener.onItemClick(advList.get(position));
-                    }
-                }
-            });
-
-
-        }
-        public void setData(Advertisement advertisement){
-            this.txtAdvTitle.setText(advertisement.getAdvTitle());
-            this.txtAdvPrice.setText(advertisement.getPrice());
-            this.imgAdv.setImageBitmap(advertisement.getAdv_image());
-
-
+            img=itemView.findViewById(R.id.image);
+            titlee=itemView.findViewById(R.id.title);
+            addresss=itemView.findViewById(R.id.address);
+            pricee=itemView.findViewById(R.id.price);
         }
     }
-
-    public interface OnItemClickListener{
-        void onItemClick(Advertisement adv);
-    }
-    public void setOnItemClickListener(OnItemClickListener listener){
-        this.listener=listener;
-    }
-
-
 }
