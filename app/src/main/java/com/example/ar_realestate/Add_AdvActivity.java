@@ -49,7 +49,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
     private EditText editTxtTitle,editTxtPrice,editTxtRoomNum,
             editTxtSquareMt,editTxtBuildingFloors, editTxtFloorLoc,editTxtBuildAge,editTxtWarmType,editTxtNumofBath,
             editTxtRentalIncome,editTxtDues,editTxtAddress;
-    private ImageView imageAdv;
+    private ImageView imageAdv,imageAdv2,imageAdv3;
     private Bitmap selectedİmg,smallestedImg,firstImage;
     private Button btnSubmitAdv;
 
@@ -86,6 +86,8 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
         txtViewDate.setText(getTodayDate());
         editTxtAddress=(EditText)findViewById(R.id.addAdv_editTextAddress);
         imageAdv=(ImageView) findViewById(R.id.add_book_activity_imageViewBookImage);
+        imageAdv2=(ImageView) findViewById(R.id.add_book_activity_imageViewBookImage2);
+        imageAdv2=(ImageView) findViewById(R.id.add_book_activity_imageViewBookImage3);
         btnSubmitAdv=(Button) findViewById(R.id.addAdv_btnSubmit);
 
         ArrayAdapter<CharSequence>adapterAdvStatus=ArrayAdapter.createFromResource(this,R.array.Adv_Status, android.R.layout.simple_spinner_item);
@@ -276,12 +278,13 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
         if(advInputControl()==true){
             try {
-                // Temp database değişecek şimdilik öylesine koydum
-                SQLiteDatabase database=this.openOrCreateDatabase("Temp",MODE_PRIVATE,null);
-                database.execSQL("CREATE TABLE IF NOT EXISTS advertisements (AdvId INTEGER PRIMARY KEY AUTOINCREMENT,AdvTitle TEXT,AdvImage BLOB,Price INTEGER,AdvStatus TEXT,RoomNum TEXT,SquareMeter INTEGER,BuildingFloors INTEGER,FloorLoc INTEGER,BuildAge INTEGER,BuildType TEXT,ItemStatus TEXT,WarmType TEXT,NumOfBathrooms INTEGER,ElgCredit TEXT,UsingStatus TEXT,StateBuilding TEXT,RentalIncome INTEGER,Dues INTEGER,Swap TEXT,Front TEXT,FuelType TEXT,Date DATE,Address TEXT,xCoordinate REAL,yCoordinate REAL )");
 
+                // Temp database değişecek şimdilik öylesine koydum
+              // SQLiteDatabase database=this.openOrCreateDatabase("Temp",MODE_PRIVATE,null);
+              //  database.execSQL("CREATE TABLE IF NOT EXISTS advertisements (AdvId INTEGER PRIMARY KEY AUTOINCREMENT,AdvTitle TEXT,AdvImage BLOB,Price INTEGER,AdvStatus TEXT,RoomNum TEXT,SquareMeter INTEGER,BuildingFloors INTEGER,FloorLoc INTEGER,BuildAge INTEGER,BuildType TEXT,ItemStatus TEXT,WarmType TEXT,NumOfBathrooms INTEGER,ElgCredit TEXT,UsingStatus TEXT,StateBuilding TEXT,RentalIncome INTEGER,Dues INTEGER,Swap TEXT,Front TEXT,FuelType TEXT,Date DATE,Address TEXT,xCoordinate REAL,yCoordinate REAL )");
+                MainActivity.database.onCreate(MainActivity.db);
                 String sqlQuery="INSERT INTO advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc,BuildAge,BuildType,ItemStatus,WarmType,NumOfBathrooms,ElgCredit,UsingStatus,StateBuilding,RentalIncome,Dues,Swap,Front,FuelType,Date,Address,xCoordinate,yCoordinate)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                SQLiteStatement statement = database.compileStatement(sqlQuery);
+                SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
                 statement.bindString(1,advTitle);
                 statement.bindBlob(2,kayıtedilecekImage);
                 statement.bindString(3, String.valueOf(price));

@@ -386,10 +386,7 @@ public class Advertisement {
                 adv.setLatitude(xCoordinateList.get(i));
                 adv.setLongitude(yCoordinateList.get(i));
 
-              /*  book.setBook_Name(bookNameList.get(i));
-                book.setBook_Author(bookAuthorList.get(i));
-                book.setBook_Sum(bookSumList.get(i));
-                book.setBook_image(bookImageList.get(i));*/
+
 
                 advertisementList.add(adv);
 

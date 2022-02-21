@@ -1,5 +1,8 @@
 package com.example.ar_realestate;
 
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +14,8 @@ import com.example.ar_realestate.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    static  public Database database;
+    static public SQLiteDatabase db;
     private ActivityMainBinding binding;
 
     @Override
@@ -29,6 +34,25 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+        navView.setOnItemReselectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.navigation_dashboard:
+                    Intent intent = new Intent(getApplicationContext(), Add_AdvActivity.class);
+                    //finish();
+                    startActivity(intent);
+
+            }
+        });
+        try{
+           database=new Database(this);
+           db=database.getWritableDatabase();
+           db=this.openOrCreateDatabase("RealEstate",MODE_PRIVATE,null);
+
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
        //  getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
     }
