@@ -10,8 +10,8 @@ import android.graphics.BitmapFactory;
 import java.util.ArrayList;
 
 public class Advertisement {
-    private String pric, advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address;
-    private  int price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
+    private String  advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address;
+    private  int advId, price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
 
     private long latitude,longitude;
     private int adv_image;
@@ -19,19 +19,12 @@ public class Advertisement {
     public Advertisement() {
     }
 
-    public Advertisement( int adv_image,String advTitle, String address,String pric) {
+    public Advertisement(int advId, int adv_image,String advTitle, String address,int pric) {
         this.advTitle = advTitle;
         this.address = address;
-        this.pric = pric;
+        this.price = pric;
         this.adv_image = adv_image;
-    }
-
-    public String getPric() {
-        return pric;
-    }
-
-    public void setPric(String pric) {
-        this.pric = pric;
+        this.advId=advId;
     }
 
     public Advertisement(String advTitle, int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address) {
@@ -58,6 +51,17 @@ public class Advertisement {
         this.date=date;
         this.address=address;
     }
+
+    public int getAdvId() {
+        return advId;
+    }
+
+    public void setAdvId(int advId) {
+        this.advId = advId;
+    }
+
+
+
 
     public int getAdv_image() {
         return adv_image;
