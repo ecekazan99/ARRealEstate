@@ -1,5 +1,6 @@
 package com.example.ar_realestate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ public class DashboardFragment extends Fragment {
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        Intent advAddIntent=new Intent(getActivity(),Add_AdvActivity.class);
+        startActivity(advAddIntent);
 
         return root;
     }
