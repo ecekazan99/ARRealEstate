@@ -2,7 +2,6 @@ package com.example.ar_realestate;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         try{
            database=new Database(this);
            db=database.getWritableDatabase();
-           db=this.openOrCreateDatabase("RealEstate",MODE_PRIVATE,null);
 
 
         }
