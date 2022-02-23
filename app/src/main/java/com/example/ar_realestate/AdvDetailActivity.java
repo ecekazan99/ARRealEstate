@@ -25,16 +25,17 @@ public class AdvDetailActivity extends AppCompatActivity {
     private Bitmap advImagePng;
 
     private void init() {
+        System.out.println("Hereeeeeeeee1 ");
         advImageView = (ImageView) findViewById(R.id.detail_AdvImage);
         txtAdvTitle = (TextView) findViewById(R.id.detail_AdvTitle);
         txtAdvPrice = (TextView) findViewById(R.id.detail_AdvPrice);
         txtAdvStatus = (TextView) findViewById(R.id.detail_AdvStatus);
         txtAdvRoomNum = (TextView) findViewById(R.id.detail_AdvRoomNum);
         txtSquareMeter = (TextView) findViewById(R.id.detail_AdvSquareMeter);
-        txtBuildingFloors = (TextView) findViewById(R.id.add_adv_TextBuildingFloors);
+        txtBuildingFloors = (TextView) findViewById(R.id.detail_AdvBuildingFloors);
         txtFloorLocation = (TextView) findViewById(R.id.detail_AdvFloorLoc);
         txtBuildingAge = (TextView) findViewById(R.id.detail_AdvBuildingAge);
-        txtBuildingType = (TextView) findViewById(R.id.add_adv_TextBuildType);
+        txtBuildingType = (TextView) findViewById(R.id.detail_AdvBuildingType);
         txtItemStatus = (TextView) findViewById(R.id.detail_AdvItemStatus);
         txtWarmType = (TextView) findViewById(R.id.detail_AdvWarmType);
         txtNumOfBathr = (TextView) findViewById(R.id.detail_AdvNumOfBathr);
@@ -49,7 +50,7 @@ public class AdvDetailActivity extends AppCompatActivity {
         txtDate = (TextView) findViewById(R.id.detail_AdvDate);
         txtAddress = (TextView) findViewById(R.id.detail_AdvAddress);
 
-        advTitle= HomeFragment.advDetail.getAdvTitle();
+
         advTitle=HomeFragment.advDetail.getAdvTitle();
         advImagePng=HomeFragment.advDetail.getAdv_image();
         price=HomeFragment.advDetail.getPrice();
@@ -85,22 +86,24 @@ public class AdvDetailActivity extends AppCompatActivity {
 
         txtAdvTitle.setText(advTitle);
         advImageView.setImageBitmap(advImagePng);
-        txtAdvPrice.setText(price);
+        txtAdvPrice.setText(String.valueOf(price));
         txtAdvStatus.setText(advStatus);
+        System.out.println("HEREEEEEEEEEEEEE22");
         txtAdvRoomNum.setText(roomNum);
-        txtSquareMeter.setText(squareMeters);
-        txtBuildingFloors.setText(buildingFloors);
-        txtFloorLocation.setText(floorLoc);
-        txtBuildingAge.setText(buildAge);
+        System.out.println("HEREEEEEEEEEEEEE33");
+        txtSquareMeter.setText(String.valueOf(squareMeters));
+        txtBuildingFloors.setText(String.valueOf(buildingFloors));
+        txtFloorLocation.setText(String.valueOf(floorLoc));
+        txtBuildingAge.setText(String.valueOf(buildAge));
         txtBuildingType.setText(buildType);
         txtItemStatus.setText(itemStatus);
         txtWarmType.setText(warmType);
-        txtNumOfBathr.setText(numOfBathr);
+        txtNumOfBathr.setText(String.valueOf(numOfBathr));
         txtElgForCredit.setText(elgForCredit);
         txtUsingStatus.setText(usingStatus);
         txtStateBuilding.setText(stateBuilding);
-        txtRentalIncome.setText(rentalIncome);
-        txtDues.setText(dues);
+        txtRentalIncome.setText(String.valueOf(rentalIncome));
+        txtDues.setText(String.valueOf(dues));
         txtSwap.setText(swap);
         txtFront.setText(front);
         txtFuelType.setText(fuelType);

@@ -16,14 +16,16 @@ public class Advertisement {
     private long latitude,longitude;
     private int adv_image;
 
+    private  Bitmap advImage;
     public Advertisement() {
     }
 
-    public Advertisement(int advId, int adv_image,String advTitle, String address,int pric) {
+    // imageyi bitmap olarak değiştirdim
+    public Advertisement(int advId, Bitmap adv_image,String advTitle, String address,int pric) {
         this.advTitle = advTitle;
         this.address = address;
         this.price = pric;
-        this.adv_image = adv_image;
+        this.advImage = adv_image;
         this.advId=advId;
     }
 
@@ -60,8 +62,13 @@ public class Advertisement {
         this.advId = advId;
     }
 
+    public Bitmap getAdvImage() {
+        return advImage;
+    }
 
-
+    public void setAdvImage(Bitmap advImage) {
+        this.advImage = advImage;
+    }
 
     public int getAdv_image() {
         return adv_image;
@@ -343,7 +350,7 @@ public class Advertisement {
                 fuelTypeList.add(cursor.getString(fuelTypeIndex));
                 dateList.add(cursor.getString(dateIndex));
                 addressList.add(cursor.getString(addressIndex));
-
+              //  System.out.println("PRICEEEEEEE:"+cursor.getInt(priceIncex));
                 priceList.add(cursor.getInt(priceIncex));
                 squareMetersList.add(cursor.getInt(squareMeterIndex));
                 buildingFloorsList.add(cursor.getInt(buildingFloorsIndex));
@@ -365,7 +372,7 @@ public class Advertisement {
             for (int i=0;i<advTitleList.size();i++){
                 Advertisement adv=new Advertisement();
                 adv.setAdvTitle(advTitleList.get(i));
-              //  adv.setAdv_image(ImageList.get(i));
+                adv.setAdvImage(ImageList.get(i));
                 adv.setPrice(priceList.get(i));
                 adv.setAdvStatus(advStatusList.get(i));
                 adv.setRoomNum(roomNumList.get(i));

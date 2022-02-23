@@ -1,9 +1,11 @@
 package com.example.ar_realestate;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,9 +19,11 @@ import java.util.ArrayList;
 public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdapter.myviewholder>{
 
     ArrayList<Advertisement> adv;
+    private Context context;
+    private OnItemClickListener listener;
 
-    public AdvertisementAdapter(ArrayList<Advertisement> adv) {
-        this.adv = adv;
+    public AdvertisementAdapter(ArrayList<Advertisement> adv, Context context) {
+        this.adv = adv; this.context = context;
     }
 
     @NonNull
@@ -37,10 +41,10 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
         holder.img.setImageResource(adv.get(position).getAdv_image());
         holder.titlee.setText(adv.get(position).getAdvTitle());
         holder.addresss.setText(adv.get(position).getAddress());
-        holder.pricee.setText(String.valueOf(adv.get(position).getAdvId()));
+        holder.pricee.setText(String.valueOf(adv.get(position).getPrice()));
 
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+       /* holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "sill",Toast.LENGTH_SHORT).show();
@@ -48,7 +52,7 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
                 Intent advDetail=new Intent(view.getContext(), AdvDetailActivity.class);
                view.getContext().startActivity(advDetail);
             }
-        });
+        });*/
     }
 
     @Override
@@ -61,6 +65,7 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
         TextView titlee, addresss, pricee;
         LinearLayout clickDetail;
 
+
         public myviewholder (@NonNull View itemView){
             super(itemView);
 
@@ -69,8 +74,31 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
             addresss=itemView.findViewById(R.id.address);
             pricee=itemView.findViewById(R.id.price);
 
-            clickDetail=itemView.findViewById(R.id.clickDetail);
+           // clickDetail=itemView.findViewById(R.id.clickDetail);
+
+            //burayı ekledim
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position=getAdapterPosition();
+
+                    if(listener!=null && position!=RecyclerView.NO_POSITION ){
+                        listener.onItemClick(adv.get(position));
+                    }
+                }
+            }); //buraya kadar
+
+
         }
+
+    }
+
+    // buraları da ekledim
+    public interface OnItemClickListener{
+        void onItemClick(Advertisement adv);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener=listener;
     }
 
 

@@ -10,11 +10,19 @@ import java.util.ArrayList;
 
 public class AdvDetail {
     private String advTitle, advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, date, address;
-    private int price, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncome, dues;
+    private int advId,price, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncome, dues;
 
     private long latitude, longitude;
-    private Bitmap adv_image;
 
+    // imageyı düzelltim int türünden bitmap türüne
+    private Bitmap adv_image;
+    public AdvDetail(int advId, Bitmap adv_image,String advTitle, String address,int pric) {
+        this.advTitle = advTitle;
+        this.address = address;
+        this.price = pric;
+        this.adv_image=adv_image;
+        this.advId=advId;
+    }
 
     public AdvDetail(String advTitle,Bitmap adv_image, int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address) {
         this.advTitle = advTitle;
