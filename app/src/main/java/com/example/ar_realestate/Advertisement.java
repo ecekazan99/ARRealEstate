@@ -299,8 +299,8 @@ public class Advertisement {
         ArrayList<Long>yCoordinateList=new ArrayList<>();
 
         try {
-            SQLiteDatabase database=context.openOrCreateDatabase("Temp",Context.MODE_PRIVATE,null);
-            Cursor cursor=database.rawQuery("SELECT * FROM advertisements",null);
+          //  SQLiteDatabase database=context.openOrCreateDatabase("Temp",Context.MODE_PRIVATE,null);
+            Cursor cursor=MainActivity.db.rawQuery("SELECT * FROM Advertisements",null);
 
             int advTitleIndex=cursor.getColumnIndex("AdvTitle");
             int ImageIndex=cursor.getColumnIndex("AdvImage");

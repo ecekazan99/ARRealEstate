@@ -14,7 +14,8 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-
+    private AdvertisementAdapter advAdapter;
+    static public AdvDetail advDetail;
     RecyclerView recyclerView;
     ArrayList<Advertisement> adv;
 
@@ -41,8 +42,12 @@ public class HomeFragment extends Fragment {
 
         View view=inflater.inflate(R.layout.fragment_home,container,false);
         recyclerView=view.findViewById(R.id.recview);
+        //advAdapter=new AdvertisementAdapter(Advertisement.getData(container.getContext()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adv=new ArrayList<>();
+        //recyclerView.setAdapter(advAdapter);
+
+
+       adv=new ArrayList<>();
 
         adv.add(new Advertisement(1,R.drawable.ic_home_black_24dp, "Title-1","Address-1",12));
         adv.add(new Advertisement(2,R.drawable.ic_home_black_24dp, "Title-2","Address-2",13));

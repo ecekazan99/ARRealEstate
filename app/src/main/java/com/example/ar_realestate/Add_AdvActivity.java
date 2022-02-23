@@ -4,6 +4,7 @@ package com.example.ar_realestate;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
@@ -43,6 +44,19 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCallback {
+
+    /* Button  next;
+    ImageSwitcher imageView;
+    int PICK_IMAGE_MULTIPLE = 1;
+    String imageEncoded;
+    ArrayList<Uri> mArrayUri;
+    int position = 0;
+    List <String> imagesEncodedList;*/
+
+     /* private ArrayList<Bitmap>SelectedImg=new ArrayList<>();
+    private ArrayList<Bitmap>SmallestedImg=new ArrayList<>();
+    private ArrayList<ImageView>Imgs=new ArrayList<>();*/
+
 
     GoogleMap gMap;
     private TextView txtViewDate;
@@ -86,8 +100,6 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
         txtViewDate.setText(getTodayDate());
         editTxtAddress=(EditText)findViewById(R.id.addAdv_editTextAddress);
         imageAdv=(ImageView) findViewById(R.id.add_book_activity_imageViewBookImage);
-        imageAdv2=(ImageView) findViewById(R.id.add_book_activity_imageViewBookImage2);
-        imageAdv2=(ImageView) findViewById(R.id.add_book_activity_imageViewBookImage3);
         btnSubmitAdv=(Button) findViewById(R.id.addAdv_btnSubmit);
 
         ArrayAdapter<CharSequence>adapterAdvStatus=ArrayAdapter.createFromResource(this,R.array.Adv_Status, android.R.layout.simple_spinner_item);
@@ -283,7 +295,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
               // SQLiteDatabase database=this.openOrCreateDatabase("Temp",MODE_PRIVATE,null);
               //  database.execSQL("CREATE TABLE IF NOT EXISTS advertisements (AdvId INTEGER PRIMARY KEY AUTOINCREMENT,AdvTitle TEXT,AdvImage BLOB,Price INTEGER,AdvStatus TEXT,RoomNum TEXT,SquareMeter INTEGER,BuildingFloors INTEGER,FloorLoc INTEGER,BuildAge INTEGER,BuildType TEXT,ItemStatus TEXT,WarmType TEXT,NumOfBathrooms INTEGER,ElgCredit TEXT,UsingStatus TEXT,StateBuilding TEXT,RentalIncome INTEGER,Dues INTEGER,Swap TEXT,Front TEXT,FuelType TEXT,Date DATE,Address TEXT,xCoordinate REAL,yCoordinate REAL )");
                 MainActivity.database.onCreate(MainActivity.db);
-                String sqlQuery="INSERT INTO advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc,BuildAge,BuildType,ItemStatus,WarmType,NumOfBathrooms,ElgCredit,UsingStatus,StateBuilding,RentalIncome,Dues,Swap,Front,FuelType,Date,Address,xCoordinate,yCoordinate)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                String sqlQuery="INSERT INTO Advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc,BuildAge,BuildType,ItemStatus,WarmType,NumOfBathrooms,ElgCredit,UsingStatus,StateBuilding,RentalIncome,Dues,Swap,Front,FuelType,Date,Address,xCoordinate,yCoordinate)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
                 statement.bindString(1,advTitle);
                 statement.bindBlob(2,kayıtedilecekImage);
@@ -315,6 +327,22 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                 Nesneleri_temizle();
                 Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi",Toast.LENGTH_SHORT).show();
 
+                int lastInsertedAdvId = 0;
+                Cursor c=MainActivity.db.rawQuery("select last_insert_rowid()",null);
+                if (c!= null && c.moveToFirst()) {
+                    lastInsertedAdvId = c.getInt(0); //The 0 is the column index, we only have 1 column, so the index is 0
+                }
+                c.close();
+                // int advTitleIndex=cursor.getColumnIndex("AdvTitle");
+                System.out.println("ADV ID Last Insert :"+lastInsertedAdvId);
+
+                String sqlQueryImage="INSERT INTO AdvertisementImage (AdvImage,AdvId)VALUES(?,?)";
+                SQLiteStatement statementImg = MainActivity.db.compileStatement(sqlQueryImage);
+                statementImg.bindBlob(1,kayıtedilecekImage);
+                statementImg.bindString(2,String.valueOf(lastInsertedAdvId));
+                statementImg.execute();
+
+
 
             }catch (Exception e){
                 e.printStackTrace();
@@ -337,6 +365,14 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
             Intent imageGet=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(imageGet,imgPermissionCod);
+
+            // Select one more images from galery
+         /*   Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, "Select images"), imgPermissionCod);*/
+
 
         }
     }
@@ -362,6 +398,17 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
                 try {
                     if(Build.VERSION.SDK_INT>=28){
+
+                        // One more than images uri (not work well)
+                      /*  for (int i = 0; i < count; i++) {
+                            Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                            mArrayUri.add(imageUri);
+                        }
+                        for (int j = 0; j < mArrayUri.size(); j++) {
+                            ImageDecoder.Source imgSource = ImageDecoder.createSource(this.getContentResolver(), mArrayUri.get(j));
+                            selectedİmg = ImageDecoder.decodeBitmap(imgSource);
+                            imageAdv.setImageBitmap(selectedİmg);
+                        }*/
                         ImageDecoder.Source imgSource=ImageDecoder.createSource(this.getContentResolver(),imgUrl);
                         selectedİmg=ImageDecoder.decodeBitmap(imgSource);
                         imageAdv.setImageBitmap(selectedİmg);
@@ -392,6 +439,16 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
         editTxtWarmType.setText("");
         editTxtRoomNum.setText("");
         editTxtSquareMt.setText("");
+
+        spinnerAdvStatus.setSelection(0);
+        spinnerBuildType.setSelection(0);
+        spinnerFront.setSelection(0);
+        spinnerElgbCredit.setSelection(0);
+        spinnerFuelType.setSelection(0);
+        spinnerItemStatus.setSelection(0);
+        spinnerStateOfBuilding.setSelection(0);
+        spinnerSwap.setSelection(0);
+        spinnerUsingStatus.setSelection(0);
 
         // firstImage= BitmapFactory.decodeResource(this.getResources(),R.drawable.);
         imageAdv.setImageBitmap(firstImage);

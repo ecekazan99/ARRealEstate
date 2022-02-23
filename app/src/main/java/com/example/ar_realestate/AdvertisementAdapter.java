@@ -39,13 +39,14 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
         holder.addresss.setText(adv.get(position).getAddress());
         holder.pricee.setText(String.valueOf(adv.get(position).getAdvId()));
 
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  Toast.makeText(view.getContext(), "sill",Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), "sill",Toast.LENGTH_SHORT).show();
 
-             //   Intent advDetail=new Intent(view.getContext(), Add_AdvActivity.class);
-              //  view.getContext().startActivity(advDetail);
+                Intent advDetail=new Intent(view.getContext(), AdvDetailActivity.class);
+               view.getContext().startActivity(advDetail);
             }
         });
     }

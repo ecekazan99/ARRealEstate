@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_dashboard:
                     Intent intent = new Intent(getApplicationContext(), Add_AdvActivity.class);
-                    //finish();
+                    finish();
                     startActivity(intent);
 
             }

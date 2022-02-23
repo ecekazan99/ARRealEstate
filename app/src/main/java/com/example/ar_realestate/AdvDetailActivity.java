@@ -49,8 +49,8 @@ public class AdvDetailActivity extends AppCompatActivity {
         txtDate = (TextView) findViewById(R.id.detail_AdvDate);
         txtAddress = (TextView) findViewById(R.id.detail_AdvAddress);
 
-        // advTitle= HomeFragment.advDetail.getAdvTitle();
-      /*  advTitle=HomeFragment.advDetail.getAdvTitle();
+        advTitle= HomeFragment.advDetail.getAdvTitle();
+        advTitle=HomeFragment.advDetail.getAdvTitle();
         advImagePng=HomeFragment.advDetail.getAdv_image();
         price=HomeFragment.advDetail.getPrice();
         advStatus=HomeFragment.advDetail.getAdvStatus();
@@ -72,7 +72,7 @@ public class AdvDetailActivity extends AppCompatActivity {
         front=HomeFragment.advDetail.getFront();
         fuelType=HomeFragment.advDetail.getFuelType();
         date=HomeFragment.advDetail.getDate();
-        address=HomeFragment.advDetail.getAddress();*/
+        address=HomeFragment.advDetail.getAddress();
 
 
     }
