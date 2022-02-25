@@ -38,7 +38,7 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
     @Override
     public void onBindViewHolder(@NonNull myviewholder holder, int position) {
 
-        holder.img.setImageResource(adv.get(position).getAdv_image());
+        holder.img.setImageBitmap(adv.get(position).getAdvImage());
         holder.titlee.setText(adv.get(position).getAdvTitle());
         holder.addresss.setText(adv.get(position).getAddress());
         holder.pricee.setText(String.valueOf(adv.get(position).getPrice()));

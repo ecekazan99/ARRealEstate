@@ -14,7 +14,7 @@ public class Advertisement {
     private  int advId, price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
 
     private long latitude,longitude;
-    private int adv_image;
+    //private int adv_image;
 
     private  Bitmap advImage;
     public Advertisement() {
@@ -29,8 +29,9 @@ public class Advertisement {
         this.advId=advId;
     }
 
-    public Advertisement(String advTitle, int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address) {
+    public Advertisement(String advTitle, Bitmap advImage,int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address) {
         this.advTitle = advTitle;
+        this.advImage=advImage;
         this.price=price;
         this.advStatus=advStatus;
         this.roomNum=roomNum;
@@ -70,14 +71,14 @@ public class Advertisement {
         this.advImage = advImage;
     }
 
-    public int getAdv_image() {
+  /*  public int getAdv_image() {
         return adv_image;
     }
 
     public void setAdv_image(int adv_image) {
         this.adv_image = adv_image;
     }
-
+*/
     public String getAdvTitle() {
         return advTitle;
     }

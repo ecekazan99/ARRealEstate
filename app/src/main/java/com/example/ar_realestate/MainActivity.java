@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnItemReselectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.navigation_dashboard:
-                    Intent intent = new Intent(getApplicationContext(), Add_AdvActivity.class);
+                    Intent intentAdd = new Intent(getApplicationContext(), Add_AdvActivity.class);
                     finish();
-                    startActivity(intent);
+                    startActivity(intentAdd);
 
             }
         });
