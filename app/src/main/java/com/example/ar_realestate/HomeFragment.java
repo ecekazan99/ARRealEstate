@@ -64,17 +64,6 @@ public class HomeFragment extends Fragment {
 
         }); // buraya kadar kısım
 
-
-
-      /* adv=new ArrayList<>();
-
-        adv.add(new Advertisement(1,R.drawable.ic_home_black_24dp, "Title-1","Address-1",12));
-        adv.add(new Advertisement(2,R.drawable.ic_home_black_24dp, "Title-2","Address-2",13));
-        adv.add(new Advertisement(3,R.drawable.ic_home_black_24dp, "Title-3","Address-3",14));
-        adv.add(new Advertisement(4,R.drawable.ic_home_black_24dp, "Title-4","Address-4",14));
-        adv.add(new Advertisement(5,R.drawable.ic_home_black_24dp, "Title-5","Address-5",15));
-
-        recyclerView.setAdapter(new AdvertisementAdapter(adv));*/
         return view;
     }
 }

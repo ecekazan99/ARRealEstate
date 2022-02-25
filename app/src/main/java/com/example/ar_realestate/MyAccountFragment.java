@@ -6,16 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import com.example.ar_realestate.databinding.FragmentNotificationsBinding;
+import com.example.ar_realestate.databinding.FragmentMyaccountBinding;
 
-public class NotificationsFragment extends Fragment {
+public class MyAccountFragment extends Fragment {
 
-    private FragmentNotificationsBinding binding;
+    private FragmentMyaccountBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = FragmentMyaccountBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         return root;

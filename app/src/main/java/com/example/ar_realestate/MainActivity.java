@@ -1,6 +1,5 @@
 package com.example.ar_realestate;
 
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -8,10 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+
 import com.example.ar_realestate.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,13 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
         binding.navView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
-                case R.id.navigation_dashboard:
+                case R.id.navigation_addadvertisement:
                     replaceFragment(new DashboardFragment());
                     /*Intent intentAdd = new Intent(getApplicationContext(), Add_AdvActivity.class);
                     finish();
                     startActivity(intentAdd);
-
-
                      */
 
                     break;
@@ -63,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new HomeFragment());
                     break;
                 case R.id.navigation_notifications:
-                    replaceFragment(new NotificationsFragment());
+                    replaceFragment(new LoginFragment());
                     break;
             }
             return true;
