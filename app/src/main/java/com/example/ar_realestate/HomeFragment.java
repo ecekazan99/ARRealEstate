@@ -20,16 +20,16 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<Advertisement> adv;
 
-   /* public HomeFragment() {
+    public HomeFragment() {
         // Required empty public constructor
-    }*/
+    }
 
-    /*public static HomeFragment newInstance(String param1, String param2) {
+    public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
-    }*/
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,22 +42,29 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view=inflater.inflate(R.layout.fragment_home,container,false);
-        recyclerView=view.findViewById(R.id.recview);
+        recyclerView=(RecyclerView) view.findViewById(R.id.recview);
         // burayı ekledim
-        advAdapter=new AdvertisementAdapter(Advertisement.getData(this.getContext()),this.getContext());
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        advAdapter=new AdvertisementAdapter(Advertisement.getData(getContext()),getContext());
 
+       recyclerView.setAdapter(advAdapter);
         //burayı ekledim
-        recyclerView.setAdapter(advAdapter);
+
         advAdapter.setOnItemClickListener(adv ->  {
 
-            advDetail=new AdvDetail(adv.getAdvTitle(),adv.getAdvImage(),adv.getPrice(),adv.getAdvStatus(),adv.getRoomNum(),adv.getSquareMeters(),adv.getBuildingFloors(),adv.getFloorLoc(),adv.getBuildAge(),adv.getBuildType(),adv.getItemStatus(),adv.getWarmType(),adv.getNumOfBathr(),adv.getElgForCredit(),adv.getUsingStatus(),adv.getStateBuilding(),adv.getRentalIncome(),adv.getDues(),adv.getSwap(),adv.getFront(),adv.getFuelType(),adv.getDate(),adv.getAddress());
+            advDetail=new AdvDetail(adv.getAdvTitle(),adv.getAdvImage(),adv.getPrice(),adv.getAdvStatus(),
+                    adv.getRoomNum(),adv.getSquareMeters(),adv.getBuildingFloors(),adv.getFloorLoc(),
+                    adv.getBuildAge(),adv.getBuildType(),adv.getItemStatus(),adv.getWarmType(),adv.getNumOfBathr(),
+                    adv.getElgForCredit(),adv.getUsingStatus(),adv.getStateBuilding(),adv.getRentalIncome(),
+                    adv.getDues(),adv.getSwap(),adv.getFront(),adv.getFuelType(),adv.getDate(),adv.getAddress());
             Intent detailIntent=new Intent(getActivity(),AdvDetailActivity.class);
 
             startActivity(detailIntent);
 
         }); // buraya kadar kısım
+
+
 
       /* adv=new ArrayList<>();
 
