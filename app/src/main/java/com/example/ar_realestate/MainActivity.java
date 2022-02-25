@@ -51,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_dashboard:
                     replaceFragment(new DashboardFragment());
-                   /* Intent intentAdd = new Intent(getApplicationContext(), Add_AdvActivity.class);
+                    Intent intentAdd = new Intent(getApplicationContext(), Add_AdvActivity.class);
                     finish();
                     startActivity(intentAdd);
+
                     
-                    */
                     break;
                 case R.id.navigation_home:
                     replaceFragment(new HomeFragment());
