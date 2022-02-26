@@ -1,49 +1,105 @@
 package com.example.ar_realestate;
 
+
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Handler;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.ar_realestate.databinding.FragmentSignUpBinding;
 
 public class SignUpFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FragmentSignUpBinding binding;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    EditText userName, userSurname, userMail, userPassword;
+    Button register;
+    TextView deneme;
     public SignUpFragment() {
         // Required empty public constructor
-    }
-    public static SignUpFragment newInstance(String param1, String param2) {
-        SignUpFragment fragment = new SignUpFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_up, container, false);
+
+        binding= FragmentSignUpBinding.inflate(inflater,container,false);
+
+        binding.buttonHaveAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginFragment loginFragment=new LoginFragment();
+
+                FragmentManager fragmentManager=getFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,loginFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+        userName=(EditText) binding.inputUserName;
+        userSurname=(EditText) binding.inputUserSurname;
+        userMail=(EditText) binding.inputUserMail;
+        userPassword=(EditText) binding.inputPassword;
+
+        binding.buttonSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                controlUserInfo(userName.getText().toString(),userSurname.getText().toString(),userMail.getText().toString(),userPassword.getText().toString());
+
+                MainActivity.database.onCreate(MainActivity.db);
+                String sqlQuery="INSERT INTO UserInformation (UserName, UserSurname, MailAddress, Password) VALUES(?,?,?,?);";
+                SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
+
+                statement.bindString(1,userName.getText().toString());
+                statement.bindString(2,userSurname.getText().toString());
+                statement.bindString(3,userMail.getText().toString());
+                statement.bindString(4,userPassword.getText().toString());
+                statement.execute();
+
+                Toast.makeText(getActivity(), "Registration Successful !!",
+                                Toast.LENGTH_LONG).show();
+
+                LoginFragment loginFragment=new LoginFragment();
+                FragmentManager fragmentManager=getFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,loginFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+        return binding.getRoot();
+    }
+
+    public boolean controlUserInfo(String userName, String userSurname, String userMail, String userPassword){
+
+        if(TextUtils.isEmpty(userName)||TextUtils.isEmpty(userSurname)||TextUtils.isEmpty(userMail)||TextUtils.isEmpty(userPassword)){
+            Toast.makeText(getActivity(), "Please fill in all the blanks !!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
 }
