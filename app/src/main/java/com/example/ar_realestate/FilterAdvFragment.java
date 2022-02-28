@@ -40,9 +40,10 @@ public class FilterAdvFragment extends Fragment {
 
     Spinner spinnerAdvStatus, spinnerBuildType, spinnerItemStatus, spinnerElgbCredit, spinnerUsingStatus, spinnerStateOfBuilding, spinnerSwap, spinnerFront, spinnerFuelType;
 
-    static String advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, address;
-    int priceMin, priceMax, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncomeMin, rentalIncomeMax, duesMin, duesMax;
-
+    static public String advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, address;
+    static public int priceMin, priceMax, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncome,  dues;
+    String tempPrice;
+    static public Boolean applButton=false;
     Button applyFilter;
 
     public FilterAdvFragment() {
@@ -54,23 +55,37 @@ public class FilterAdvFragment extends Fragment {
         spinnerAdvStatus = (Spinner) binding.FilterSpinnerAdvStatus;
         editTxtPriceRange = (EditText) binding.FilterEditTextPrice;
         editTxtRoomNum = (EditText) binding.FilterEditTextRoomNum;
+
         editTxtSquareMt = (EditText) binding.FilterEditTextSquareMeter;
+
         editTxtBuildingFloors = (EditText) binding.FilterEditTextBuildingFloors;
+
         editTxtFloorLoc = (EditText) binding.FilterEditTextFloorLoc;
+
         editTxtBuildAge = (EditText) binding.FilterEditTextBuildAge;
+
         spinnerBuildType = (Spinner) binding.FilterSpinnerBuildType;
         spinnerItemStatus = (Spinner) binding.FilterSpinnerItemStatus;
         editTxtWarmType = (EditText) binding.FilterEditTextWarmType;
+
         editTxtNumofBath = (EditText) binding.FilterEditTextNumOfBath;
+
         spinnerElgbCredit = (Spinner) binding.FilterSpinnerElgCredit;
         spinnerUsingStatus = (Spinner) binding.FilterSpinnerUsingStatus;
         spinnerStateOfBuilding = (Spinner) binding.FilterSpinnerStateBuilding;
         editTxtRentalIncomeRange = (EditText) binding.FilterEditTextRentalIncome;
+
         editTxtDuesRange = (EditText) binding.FilterEditTextDues;
+
         spinnerSwap = (Spinner) binding.FilterSpinnerSwap;
         spinnerFront = (Spinner) binding.FilterSpinnerFront;
         spinnerFuelType = (Spinner) binding.FilterSpinnerFuelType;
         editTxtAddress = (EditText) binding.FilterEditTextAddress;
+
+
+
+
+
 
 
         ArrayAdapter<CharSequence> adapterAdvStatus = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.Adv_Status, android.R.layout.simple_spinner_item);
@@ -224,10 +239,29 @@ public class FilterAdvFragment extends Fragment {
 
         binding = FragmentFilterAdvBinding.inflate(inflater, container, false);
         init();
+
+
+
         binding.FilterBtnApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                applButton=true;
+                roomNum=editTxtRoomNum.getText().toString();
+                squareMeters=Integer.parseInt(editTxtSquareMt.getText().toString());
+                buildingFloors=Integer.parseInt(editTxtBuildingFloors.getText().toString());
+                floorLoc=Integer.parseInt(editTxtFloorLoc.getText().toString());
+                buildAge=Integer.parseInt(editTxtBuildAge.getText().toString());
+                warmType=editTxtWarmType.getText().toString();
+                numOfBathr=Integer.parseInt(editTxtNumofBath.getText().toString());
+                rentalIncome=Integer.parseInt(editTxtRentalIncomeRange.getText().toString());
+                dues=Integer.parseInt(editTxtDuesRange.getText().toString());
+                address=editTxtAddress.getText().toString();
+
+                tempPrice=editTxtPriceRange.getText().toString();
+                String[] arrOfTempPrice=tempPrice.split("-");
+                priceMin=Integer.parseInt(arrOfTempPrice[0].trim());
+                priceMax=Integer.parseInt(arrOfTempPrice[1].trim());
 
 
                 HomeFragment homeFragment = new HomeFragment();
@@ -242,27 +276,6 @@ public class FilterAdvFragment extends Fragment {
         return binding.getRoot();
     }
 
-    static public ArrayList<Advertisement> getSelect(){
-
-        ArrayList<Advertisement> advertisementList=new ArrayList<>();
-
-        //arraylists will be created
-        // Where clauses will be arranged
-
-        try {
-            String sqlQuery = "SELECT * FROM  Advertisements where Category = '" + advStatus + "'";
-            Cursor cursor = MainActivity.db.rawQuery(sqlQuery, null);
-            while (cursor.moveToNext()){
-
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return advertisementList;
-    }
 }
 
 

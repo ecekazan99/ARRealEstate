@@ -71,14 +71,14 @@ public class Advertisement {
         this.advImage = advImage;
     }
 
-  /*  public int getAdv_image() {
-        return adv_image;
-    }
+    /*  public int getAdv_image() {
+          return adv_image;
+      }
 
-    public void setAdv_image(int adv_image) {
-        this.adv_image = adv_image;
-    }
-*/
+      public void setAdv_image(int adv_image) {
+          this.adv_image = adv_image;
+      }
+  */
     public String getAdvTitle() {
         return advTitle;
     }
@@ -275,6 +275,9 @@ public class Advertisement {
     }
 
     static public ArrayList<Advertisement> getData(Context context){
+
+        String sqlQuery="";
+        Cursor cursor = null;
         ArrayList<Advertisement> advertisementList=new ArrayList<>();
 
         ArrayList<String> advTitleList=new ArrayList<>();
@@ -307,8 +310,27 @@ public class Advertisement {
         ArrayList<Long>yCoordinateList=new ArrayList<>();
 
         try {
-          //  SQLiteDatabase database=context.openOrCreateDatabase("Temp",Context.MODE_PRIVATE,null);
-            Cursor cursor=MainActivity.db.rawQuery("SELECT * FROM Advertisements",null);
+
+            if(FilterAdvFragment.applButton==true){
+                sqlQuery= "SELECT * FROM  Advertisements  WHERE AdvStatus  = ? AND  (Price BETWEEN "+FilterAdvFragment.priceMin+" AND "+FilterAdvFragment.priceMax+ " )"
+                        +" AND RoomNum = ? AND SquareMeter = ? AND BuildingFloors = ? AND FloorLoc = ? AND BuildAge = ? AND BuildType = ? AND ItemStatus = ? AND WarmType = ?" +
+                        "AND NumOfBathrooms = ? AND ElgCredit = ? AND UsingStatus = ? AND StateBuilding = ? AND  RentalIncome = ? AND Dues = ? AND Swap = ? AND Front = ? AND" +
+                        " FuelType = ? AND Address = ? ";
+
+                cursor=MainActivity.db.rawQuery(sqlQuery, new String[] { FilterAdvFragment.advStatus,FilterAdvFragment.roomNum,String.valueOf(FilterAdvFragment.squareMeters),
+                        String.valueOf(FilterAdvFragment.buildingFloors),String.valueOf(FilterAdvFragment.floorLoc),String.valueOf(FilterAdvFragment.buildAge),
+                        FilterAdvFragment.buildType,FilterAdvFragment.itemStatus,FilterAdvFragment.warmType,String.valueOf(FilterAdvFragment.numOfBathr),FilterAdvFragment.elgForCredit,
+                        FilterAdvFragment.usingStatus,FilterAdvFragment.stateBuilding,String.valueOf(FilterAdvFragment.rentalIncome),String.valueOf(FilterAdvFragment.dues),
+                        FilterAdvFragment.swap,FilterAdvFragment.front,FilterAdvFragment.fuelType,FilterAdvFragment.address});
+
+
+            }
+            else if(FilterAdvFragment.applButton!=true)
+            {
+                sqlQuery="SELECT * FROM Advertisements";
+                cursor=MainActivity.db.rawQuery(sqlQuery,null);
+            }
+
 
             int advTitleIndex=cursor.getColumnIndex("AdvTitle");
             int ImageIndex=cursor.getColumnIndex("AdvImage");
@@ -351,7 +373,7 @@ public class Advertisement {
                 fuelTypeList.add(cursor.getString(fuelTypeIndex));
                 dateList.add(cursor.getString(dateIndex));
                 addressList.add(cursor.getString(addressIndex));
-              //  System.out.println("PRICEEEEEEE:"+cursor.getInt(priceIncex));
+                //  System.out.println("PRICEEEEEEE:"+cursor.getInt(priceIncex));
                 priceList.add(cursor.getInt(priceIncex));
                 squareMetersList.add(cursor.getInt(squareMeterIndex));
                 buildingFloorsList.add(cursor.getInt(buildingFloorsIndex));
