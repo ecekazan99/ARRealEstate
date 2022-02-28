@@ -1,0 +1,165 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.ar_realestate"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="25"
+8-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+11-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:5:5-80
+11-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:5:22-77
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:6:5-67
+12-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:6:22-64
+13    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+13-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:7:5-79
+13-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:7:22-76
+14    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+14-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:8:5-81
+14-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:8:22-78
+15
+16    <!-- Include required permissions for Google Maps API to run. -->
+17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+17-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\4d70dcd7356e0648b9e493ec167ba5ff\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:23:5-79
+17-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\4d70dcd7356e0648b9e493ec167ba5ff\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:23:22-76
+18
+19    <uses-feature
+19-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\4d70dcd7356e0648b9e493ec167ba5ff\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:26:5-28:35
+20        android:glEsVersion="0x00020000"
+20-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\4d70dcd7356e0648b9e493ec167ba5ff\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:27:9-41
+21        android:required="true" />
+21-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\4d70dcd7356e0648b9e493ec167ba5ff\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:28:9-32
+22
+23    <queries>
+23-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\4d70dcd7356e0648b9e493ec167ba5ff\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:30:5-34:15
+24
+25        <!-- Needs to be explicitly declared on Android R+ -->
+26        <package android:name="com.google.android.apps.maps" />
+26-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\4d70dcd7356e0648b9e493ec167ba5ff\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:33:9-64
+26-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\4d70dcd7356e0648b9e493ec167ba5ff\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:33:18-61
+27    </queries>
+28
+29    <application
+29-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:10:5-38:19
+30        android:allowBackup="true"
+30-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:11:9-35
+31        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+31-->[androidx.core:core:1.7.0] C:\Users\ece_k\.gradle\caches\transforms-3\d79cd730aff89e16bbe6bbee05f6ceb1\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+32        android:debuggable="true"
+33        android:extractNativeLibs="false"
+34        android:icon="@mipmap/ic_launcher"
+34-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:12:9-43
+35        android:label="@string/app_name"
+35-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:13:9-41
+36        android:roundIcon="@mipmap/ic_launcher_round"
+36-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:14:9-54
+37        android:supportsRtl="true"
+37-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:15:9-35
+38        android:testOnly="true"
+39        android:theme="@style/Theme.ARRealEstate" >
+39-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:16:9-50
+40        <activity
+40-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:17:9-19:40
+41            android:name="com.example.ar_realestate.AdvDetailActivity"
+41-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:18:13-46
+42            android:exported="false" />
+42-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:19:13-37
+43
+44        <meta-data
+44-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:21:9-23:47
+45            android:name="com.google.android.geo.API_KEY"
+45-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:22:13-58
+46            android:value="@string/map_key" />
+46-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:23:13-44
+47
+48        <activity
+48-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:25:9-27:40
+49            android:name="com.example.ar_realestate.Add_AdvActivity"
+49-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:26:13-44
+50            android:exported="false" />
+50-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:27:13-37
+51        <activity
+51-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:28:9-37:20
+52            android:name="com.example.ar_realestate.MainActivity"
+52-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:29:13-41
+53            android:exported="true"
+53-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:30:13-36
+54            android:label="@string/app_name" >
+54-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:31:13-45
+55            <intent-filter>
+55-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:32:13-36:29
+56                <action android:name="android.intent.action.MAIN" />
+56-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:33:17-69
+56-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:33:25-66
+57
+58                <category android:name="android.intent.category.LAUNCHER" />
+58-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:35:17-77
+58-->D:\bitirme\project\ARRealEstate\app\src\main\AndroidManifest.xml:35:27-74
+59            </intent-filter>
+60        </activity>
+61        <!-- Needs to be explicitly declared on P+ -->
+62        <uses-library
+62-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\4d70dcd7356e0648b9e493ec167ba5ff\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:39:9-41:40
+63            android:name="org.apache.http.legacy"
+63-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\4d70dcd7356e0648b9e493ec167ba5ff\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:40:13-50
+64            android:required="false" />
+64-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\4d70dcd7356e0648b9e493ec167ba5ff\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:41:13-37
+65
+66        <activity
+66-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\b374845ae03f52f50d1769b711958282\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+67            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+67-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\b374845ae03f52f50d1769b711958282\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+68            android:exported="false"
+68-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\b374845ae03f52f50d1769b711958282\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+69            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+69-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\b374845ae03f52f50d1769b711958282\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+70
+71        <meta-data
+71-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\fe4939864b0446c11a80657cabc938d9\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+72            android:name="com.google.android.gms.version"
+72-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\fe4939864b0446c11a80657cabc938d9\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+73            android:value="@integer/google_play_services_version" />
+73-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\fe4939864b0446c11a80657cabc938d9\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+74
+75        <provider
+75-->[androidx.emoji2:emoji2:1.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\a041a9a952b29f6964d85f5771c8e429\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+76            android:name="androidx.startup.InitializationProvider"
+76-->[androidx.emoji2:emoji2:1.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\a041a9a952b29f6964d85f5771c8e429\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
+77            android:authorities="com.example.ar_realestate.androidx-startup"
+77-->[androidx.emoji2:emoji2:1.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\a041a9a952b29f6964d85f5771c8e429\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
+78            android:exported="false" >
+78-->[androidx.emoji2:emoji2:1.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\a041a9a952b29f6964d85f5771c8e429\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+79            <meta-data
+79-->[androidx.emoji2:emoji2:1.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\a041a9a952b29f6964d85f5771c8e429\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+80                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+80-->[androidx.emoji2:emoji2:1.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\a041a9a952b29f6964d85f5771c8e429\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+81                android:value="androidx.startup" />
+81-->[androidx.emoji2:emoji2:1.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\a041a9a952b29f6964d85f5771c8e429\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+82            <meta-data
+82-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\ece_k\.gradle\caches\transforms-3\2d2b81fd1f5d13f7e9fe71a47a19c028\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+83                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+83-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\ece_k\.gradle\caches\transforms-3\2d2b81fd1f5d13f7e9fe71a47a19c028\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+84                android:value="androidx.startup" />
+84-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\ece_k\.gradle\caches\transforms-3\2d2b81fd1f5d13f7e9fe71a47a19c028\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+85        </provider>
+86
+87        <uses-library
+87-->[androidx.window:window:1.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\f2c1d0bfc6da84d53bbcfedc5525574c\transformed\jetified-window-1.0.0\AndroidManifest.xml:25:9-27:40
+88            android:name="androidx.window.extensions"
+88-->[androidx.window:window:1.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\f2c1d0bfc6da84d53bbcfedc5525574c\transformed\jetified-window-1.0.0\AndroidManifest.xml:26:13-54
+89            android:required="false" />
+89-->[androidx.window:window:1.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\f2c1d0bfc6da84d53bbcfedc5525574c\transformed\jetified-window-1.0.0\AndroidManifest.xml:27:13-37
+90        <uses-library
+90-->[androidx.window:window:1.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\f2c1d0bfc6da84d53bbcfedc5525574c\transformed\jetified-window-1.0.0\AndroidManifest.xml:28:9-30:40
+91            android:name="androidx.window.sidecar"
+91-->[androidx.window:window:1.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\f2c1d0bfc6da84d53bbcfedc5525574c\transformed\jetified-window-1.0.0\AndroidManifest.xml:29:13-51
+92            android:required="false" />
+92-->[androidx.window:window:1.0.0] C:\Users\ece_k\.gradle\caches\transforms-3\f2c1d0bfc6da84d53bbcfedc5525574c\transformed\jetified-window-1.0.0\AndroidManifest.xml:30:13-37
+93    </application>
+94
+95</manifest>
