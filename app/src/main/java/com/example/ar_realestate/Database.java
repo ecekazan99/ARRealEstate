@@ -1,8 +1,11 @@
 package com.example.ar_realestate;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class Database extends SQLiteOpenHelper {
 
@@ -36,5 +39,27 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS AdvertisementImage;");
         db.execSQL("DROP TABLE IF EXISTS UserInformation;");
         onCreate(db);
+    }
+
+    public User loginUser(String email, String password){
+        User user=null;
+        try{
+            SQLiteDatabase sqLiteDatabase=getReadableDatabase();
+          Cursor cursor=sqLiteDatabase.rawQuery("SELECT * FROM UserInformation " +
+                  "WHERE MailAddress = ? AND Password = ?",new String[]{email,password});
+
+          if(cursor.moveToFirst()){
+              user=new User();
+              user.setUserId(cursor.getInt(0));
+              user.setUserName(cursor.getString(1));
+              user.setUserSurname(cursor.getString(2));
+              user.setMailAddress(cursor.getString(3));
+              user.setPassword(cursor.getString(4));
+          }
+
+        }catch (Exception e){
+            user=null;
+        }
+        return user;
     }
 }

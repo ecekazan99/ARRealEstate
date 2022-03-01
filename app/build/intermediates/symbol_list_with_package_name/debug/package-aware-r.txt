@@ -2995,6 +2995,7 @@ id image
 id immediateStop
 id included
 id info
+id inputNewPassword
 id inputPassword
 id inputUserMail
 id inputUserName
@@ -3272,6 +3273,7 @@ id up
 id useLogo
 id userMail
 id userName
+id userNewPassword
 id userPassword
 id userSurname
 id vertical_only

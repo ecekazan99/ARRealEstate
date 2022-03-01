@@ -2994,6 +2994,7 @@ int id image 0x7f09015d
 int id immediateStop 0x7f09015e
 int id included 0x7f09015f
 int id info 0x7f090160
+int id inputNewPassword 0x7f09028a
 int id inputPassword 0x7f090161
 int id inputUserMail 0x7f090162
 int id inputUserName 0x7f090163
@@ -3271,6 +3272,7 @@ int id up 0x7f090272
 int id useLogo 0x7f090273
 int id userMail 0x7f090274
 int id userName 0x7f090275
+int id userNewPassword 0x7f09028b
 int id userPassword 0x7f090276
 int id userSurname 0x7f090277
 int id vertical_only 0x7f090278
