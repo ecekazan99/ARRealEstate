@@ -26,9 +26,21 @@ import com.example.ar_realestate.databinding.FragmentSignUpBinding;
 public class SignUpFragment extends Fragment {
 
     private FragmentSignUpBinding binding;
+    String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
 
     EditText userName, userSurname, userMail, userPassword;
     Button register;
+
+    /*
+    String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+
+    Pattern pattern = Pattern.compile(regex);
+
+    for(String email : emails){
+      Matcher matcher = pattern.matcher(email);
+      System.out.println(email +" : "+ matcher.matches());
+    }
+     */
     TextView deneme;
     public SignUpFragment() {
         // Required empty public constructor
@@ -67,26 +79,27 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                controlUserInfo(userName.getText().toString(),userSurname.getText().toString(),userMail.getText().toString(),userPassword.getText().toString());
+                if(controlUserInfo(userName.getText().toString(),userSurname.getText().toString(),userMail.getText().toString(),userPassword.getText().toString())){
 
-                MainActivity.database.onCreate(MainActivity.db);
-                String sqlQuery="INSERT INTO UserInformation (UserName, UserSurname, MailAddress, Password) VALUES(?,?,?,?);";
-                SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
+                    MainActivity.database.onCreate(MainActivity.db);
+                    String sqlQuery="INSERT INTO UserInformation (UserName, UserSurname, MailAddress, Password) VALUES(?,?,?,?);";
+                    SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
 
-                statement.bindString(1,userName.getText().toString());
-                statement.bindString(2,userSurname.getText().toString());
-                statement.bindString(3,userMail.getText().toString());
-                statement.bindString(4,userPassword.getText().toString());
-                statement.execute();
+                    statement.bindString(1,userName.getText().toString());
+                    statement.bindString(2,userSurname.getText().toString());
+                    statement.bindString(3,userMail.getText().toString());
+                    statement.bindString(4,userPassword.getText().toString());
+                    statement.execute();
 
-                Toast.makeText(getActivity(), "Registration Successful !!",
-                                Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Registration Successful !!",
+                            Toast.LENGTH_LONG).show();
 
-                LoginFragment loginFragment=new LoginFragment();
-                FragmentManager fragmentManager=getFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,loginFragment);
-                fragmentTransaction.commit();
+                    LoginFragment loginFragment=new LoginFragment();
+                    FragmentManager fragmentManager=getFragmentManager();
+                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,loginFragment);
+                    fragmentTransaction.commit();
+                }
             }
         });
 

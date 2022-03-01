@@ -167,6 +167,7 @@ id inputUserSurname
 id mobile_navigation
 id nav_host_fragment_activity_main
 id nav_view
+id nav_view2
 id navigation_addadvertisement
 id navigation_dashboard
 id navigation_home
@@ -196,6 +197,7 @@ layout fragment_home
 layout fragment_login
 layout fragment_myaccount
 layout fragment_sign_up
+layout fragment_user_profile
 menu bottom_nav_menu
 menu top_bar
 mipmap ic_launcher

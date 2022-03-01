@@ -3084,6 +3084,7 @@ id nav_controller_view_tag
 id nav_host_fragment_activity_main
 id nav_host_fragment_container
 id nav_view
+id nav_view2
 id navigation_addadvertisement
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
@@ -3405,6 +3406,7 @@ layout fragment_home
 layout fragment_login
 layout fragment_myaccount
 layout fragment_sign_up
+layout fragment_user_profile
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
