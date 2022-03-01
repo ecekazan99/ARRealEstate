@@ -20,6 +20,7 @@ dimen activity_horizontal_margin
 dimen activity_vertical_margin
 dimen fragment_horizontal_margin
 dimen fragment_vertical_margin
+drawable ic_action_name
 drawable ic_baseline_add_circle_outline_24
 drawable ic_baseline_person_24
 drawable ic_baseline_photo_camera_24
@@ -123,7 +124,6 @@ id advItem_imageViewAdv
 id adv_item_textViewAdvAcıklama
 id adv_item_textViewAdvPrice
 id adv_item_textViewAdvTitle
-id buttonFilter
 id buttonHaveAccount
 id buttonLogin
 id buttonSignUp
@@ -179,6 +179,8 @@ id textPrice
 id textView
 id text_notifications
 id title
+id topBar_filter
+id topBar_order
 id userMail
 id userName
 id userPassword
@@ -195,6 +197,7 @@ layout fragment_login
 layout fragment_myaccount
 layout fragment_sign_up
 menu bottom_nav_menu
+menu top_bar
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation mobile_navigation

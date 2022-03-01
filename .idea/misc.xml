@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ARRealEstate/app/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.194" />
         <entry key="..\:/ARRealEstate/app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" value="0.1" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.194" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.194" />
         <entry key="..\:/ARRealEstate/app/src/main/res/drawable/input_cerceve.xml" value="0.1" />
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/activity_add_adv.xml" value="0.16" />
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/activity_adv_detail.xml" value="0.1" />
@@ -14,6 +17,7 @@
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_filter_adv.xml" value="0.2" />
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_login.xml" value="0.19635416666666666" />
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/menu/top_bar.xml" value="0.264" />
         <entry key="..\:/bitirme/ARRealEstate/app/src/main/res/layout/activity_adv_detail.xml" value="0.21302083333333333" />
         <entry key="..\:/bitirme/ARRealEstate/app/src/main/res/layout/activity_main.xml" value="0.21302083333333333" />
         <entry key="..\:/bitirme/ARRealEstate/app/src/main/res/layout/adv_item.xml" value="0.21302083333333333" />

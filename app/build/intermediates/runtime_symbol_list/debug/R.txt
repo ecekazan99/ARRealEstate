@@ -2576,6 +2576,7 @@ int drawable design_password_eye 0x7f080076
 int drawable design_snackbar_background 0x7f080077
 int drawable googleg_disabled_color_18 0x7f080078
 int drawable googleg_standard_color_18 0x7f080079
+int drawable ic_action_name 0x7f0800ba
 int drawable ic_baseline_add_circle_outline_24 0x7f08007a
 int drawable ic_baseline_person_24 0x7f08007b
 int drawable ic_baseline_photo_camera_24 0x7f08007c
@@ -2835,7 +2836,6 @@ int id bounce 0x7f0900bf
 int id bounceBoth 0x7f0900c0
 int id bounceEnd 0x7f0900c1
 int id bounceStart 0x7f0900c2
-int id buttonFilter 0x7f090287
 int id buttonHaveAccount 0x7f0900c3
 int id buttonLogin 0x7f0900c4
 int id buttonPanel 0x7f0900c5
@@ -3251,6 +3251,8 @@ int id titleDividerNoCustom 0x7f09025e
 int id title_template 0x7f09025f
 int id toggle 0x7f090260
 int id top 0x7f090261
+int id topBar_filter 0x7f090288
+int id topBar_order 0x7f090289
 int id topPanel 0x7f090262
 int id touch_outside 0x7f090263
 int id transitionToEnd 0x7f090264
@@ -3485,6 +3487,7 @@ int layout text_view_without_line_height 0x7f0c0086
 int menu bottom_nav_menu 0x7f0d0000
 int menu example_menu 0x7f0d0001
 int menu example_menu2 0x7f0d0002
+int menu top_bar 0x7f0d0003
 int mipmap ic_launcher 0x7f0e0000
 int mipmap ic_launcher_round 0x7f0e0001
 int navigation mobile_navigation 0x7f0f0000

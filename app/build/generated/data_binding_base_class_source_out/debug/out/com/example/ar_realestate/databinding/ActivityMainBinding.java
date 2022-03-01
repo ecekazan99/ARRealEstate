@@ -4,7 +4,6 @@ package com.example.ar_realestate.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,9 +21,6 @@ public final class ActivityMainBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button buttonFilter;
-
-  @NonNull
   public final ConstraintLayout container;
 
   @NonNull
@@ -33,11 +29,10 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final BottomNavigationView navView;
 
-  private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull Button buttonFilter,
+  private ActivityMainBinding(@NonNull ConstraintLayout rootView,
       @NonNull ConstraintLayout container, @NonNull FrameLayout navHostFragmentActivityMain,
       @NonNull BottomNavigationView navView) {
     this.rootView = rootView;
-    this.buttonFilter = buttonFilter;
     this.container = container;
     this.navHostFragmentActivityMain = navHostFragmentActivityMain;
     this.navView = navView;
@@ -70,12 +65,6 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.buttonFilter;
-      Button buttonFilter = ViewBindings.findChildViewById(rootView, id);
-      if (buttonFilter == null) {
-        break missingId;
-      }
-
       ConstraintLayout container = (ConstraintLayout) rootView;
 
       id = R.id.nav_host_fragment_activity_main;
@@ -90,7 +79,7 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, buttonFilter, container,
+      return new ActivityMainBinding((ConstraintLayout) rootView, container,
           navHostFragmentActivityMain, navView);
     }
     String missingId = rootView.getResources().getResourceName(id);

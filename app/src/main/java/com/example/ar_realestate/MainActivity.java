@@ -2,9 +2,14 @@ package com.example.ar_realestate;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -18,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     static public SQLiteDatabase db;
     private ActivityMainBinding binding;
 
+    private ActionBar actionBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +32,14 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         /// filter çalışıyor mu diye denemek için öylesine oluşturuldu
-        binding.buttonFilter.setOnClickListener(new View.OnClickListener() {
+      /*  binding.buttonFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 replaceFragment(new FilterAdvFragment());
             }
-        });
+        });*/
 
         try{
             database=new Database(this);
@@ -73,6 +81,28 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //  getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_bar,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.topBar_filter:
+                replaceFragment(new FilterAdvFragment());
+                break;
+            case R.id.topBar_order:
+                /*replaceFragment(new LoginFragment());
+                break;*/
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void replaceFragment(Fragment fragment){
