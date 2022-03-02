@@ -62,4 +62,28 @@ public class Database extends SQLiteOpenHelper {
         }
         return user;
     }
+
+    public int updateUser(int id,String name, String surname, String email, String password, String newPassword){
+
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+
+            // on below line we are passing all values
+            // along with its key and value pair.
+            values.put("UserName",name);
+            values.put("UserSurname",surname);
+            values.put("MailAddress",email);
+            values.put("Password",password);
+
+            // on below line we are calling a update method to update our database and passing our values.
+            // and we are comparing it with name of our course which is stored in original name variable.
+            db.update("UserInformation", values, "UserId=?", new String[]{String.valueOf(id)});
+            db.close();
+
+        }catch (Exception e){
+            return 0;
+        }
+        return 1;
+    }
 }

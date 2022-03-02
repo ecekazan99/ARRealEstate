@@ -69,9 +69,6 @@ public class LoginFragment extends Fragment {
                             Toast.LENGTH_LONG).show();
                    intent.putExtra("UserInformation",user);
                     getActivity().startActivity(intent);
-
-                    //https://www.youtube.com/watch?v=TjAsoWs0f5o
-                    //35.dakika
                }
             }
         });

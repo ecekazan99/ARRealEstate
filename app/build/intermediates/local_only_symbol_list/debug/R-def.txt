@@ -145,6 +145,7 @@ id buttonHaveAccount
 id buttonLogin
 id buttonOrderHide
 id buttonSignUp
+id buttonUpdate
 id clickDetail
 id container
 id dcrs_price
