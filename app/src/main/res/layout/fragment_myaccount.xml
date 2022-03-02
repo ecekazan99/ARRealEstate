@@ -35,17 +35,17 @@
             android:layout_marginBottom="30dp"/>
 
         <Button
-            android:id="@+id/hgfddfg"
+            android:id="@+id/myInfo"
             android:layout_width="350dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/cardview_dark_background"
-            android:text="USER INFORMATIONS"
+            android:text="MY INFORMATIONS"
             android:textSize="18dp"
             android:layout_marginBottom="25dp"/>
 
         <Button
-            android:id="@+id/hgfd"
+            android:id="@+id/myAdv"
             android:layout_width="350dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
@@ -55,7 +55,7 @@
             android:layout_marginBottom="25dp"/>
 
         <Button
-            android:id="@+id/gfdhgfd"
+            android:id="@+id/myFav"
             android:layout_width="350dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
@@ -65,7 +65,7 @@
             android:layout_marginBottom="25dp"/>
 
         <Button
-            android:id="@+id/dgf"
+            android:id="@+id/mySpecialAdv"
             android:layout_width="350dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
@@ -75,12 +75,12 @@
             android:layout_marginBottom="25dp"/>
 
         <Button
-            android:id="@+id/efg"
+            android:id="@+id/exitAccount"
             android:layout_width="350dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/cardview_dark_background"
-            android:text="EXIT ACOUNT"
+            android:text="EXIT ACCOUNT"
             android:textSize="18dp"/>
 
     </LinearLayout>

@@ -21,32 +21,32 @@ public final class FragmentMyaccountBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button dgf;
+  public final Button exitAccount;
 
   @NonNull
-  public final Button efg;
+  public final Button myAdv;
 
   @NonNull
-  public final Button gfdhgfd;
+  public final Button myFav;
 
   @NonNull
-  public final Button hgfd;
+  public final Button myInfo;
 
   @NonNull
-  public final Button hgfddfg;
+  public final Button mySpecialAdv;
 
   @NonNull
   public final TextView textNotifications;
 
-  private FragmentMyaccountBinding(@NonNull ConstraintLayout rootView, @NonNull Button dgf,
-      @NonNull Button efg, @NonNull Button gfdhgfd, @NonNull Button hgfd, @NonNull Button hgfddfg,
-      @NonNull TextView textNotifications) {
+  private FragmentMyaccountBinding(@NonNull ConstraintLayout rootView, @NonNull Button exitAccount,
+      @NonNull Button myAdv, @NonNull Button myFav, @NonNull Button myInfo,
+      @NonNull Button mySpecialAdv, @NonNull TextView textNotifications) {
     this.rootView = rootView;
-    this.dgf = dgf;
-    this.efg = efg;
-    this.gfdhgfd = gfdhgfd;
-    this.hgfd = hgfd;
-    this.hgfddfg = hgfddfg;
+    this.exitAccount = exitAccount;
+    this.myAdv = myAdv;
+    this.myFav = myFav;
+    this.myInfo = myInfo;
+    this.mySpecialAdv = mySpecialAdv;
     this.textNotifications = textNotifications;
   }
 
@@ -77,33 +77,33 @@ public final class FragmentMyaccountBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.dgf;
-      Button dgf = ViewBindings.findChildViewById(rootView, id);
-      if (dgf == null) {
+      id = R.id.exitAccount;
+      Button exitAccount = ViewBindings.findChildViewById(rootView, id);
+      if (exitAccount == null) {
         break missingId;
       }
 
-      id = R.id.efg;
-      Button efg = ViewBindings.findChildViewById(rootView, id);
-      if (efg == null) {
+      id = R.id.myAdv;
+      Button myAdv = ViewBindings.findChildViewById(rootView, id);
+      if (myAdv == null) {
         break missingId;
       }
 
-      id = R.id.gfdhgfd;
-      Button gfdhgfd = ViewBindings.findChildViewById(rootView, id);
-      if (gfdhgfd == null) {
+      id = R.id.myFav;
+      Button myFav = ViewBindings.findChildViewById(rootView, id);
+      if (myFav == null) {
         break missingId;
       }
 
-      id = R.id.hgfd;
-      Button hgfd = ViewBindings.findChildViewById(rootView, id);
-      if (hgfd == null) {
+      id = R.id.myInfo;
+      Button myInfo = ViewBindings.findChildViewById(rootView, id);
+      if (myInfo == null) {
         break missingId;
       }
 
-      id = R.id.hgfddfg;
-      Button hgfddfg = ViewBindings.findChildViewById(rootView, id);
-      if (hgfddfg == null) {
+      id = R.id.mySpecialAdv;
+      Button mySpecialAdv = ViewBindings.findChildViewById(rootView, id);
+      if (mySpecialAdv == null) {
         break missingId;
       }
 
@@ -113,8 +113,8 @@ public final class FragmentMyaccountBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentMyaccountBinding((ConstraintLayout) rootView, dgf, efg, gfdhgfd, hgfd,
-          hgfddfg, textNotifications);
+      return new FragmentMyaccountBinding((ConstraintLayout) rootView, exitAccount, myAdv, myFav,
+          myInfo, mySpecialAdv, textNotifications);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -84,7 +84,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.navigation_home:
                     navViewToolbar.setVisibility(View.VISIBLE);
+
                     replaceFragment(new HomeFragment());
+
                     break;
                 case R.id.navigation_notifications:
                     Intent intent=getIntent();
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     if(user==null)
                         replaceFragment(new LoginFragment());
                     else
-                        replaceFragment(new UserProfileFragment());
+                        replaceFragment(new MyAccountFragment());
 
                     navViewToolbar.setVisibility(View.INVISIBLE);
                     break;

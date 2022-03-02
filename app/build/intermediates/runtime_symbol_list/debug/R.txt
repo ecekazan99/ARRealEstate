@@ -2938,7 +2938,6 @@ int id detail_AdvSwap 0x7f090120
 int id detail_AdvTitle 0x7f090121
 int id detail_AdvUsingStatus 0x7f090122
 int id detail_AdvWarmType 0x7f090123
-int id dgf 0x7f090124
 int id dialog_button 0x7f090125
 int id dimensions 0x7f090126
 int id direct 0x7f090127
@@ -2961,13 +2960,13 @@ int id easeInOut 0x7f090137
 int id easeOut 0x7f090138
 int id east 0x7f090139
 int id edit_query 0x7f09013a
-int id efg 0x7f09013b
 int id elastic 0x7f09013c
 int id end 0x7f09013d
 int id endToStart 0x7f09013e
 int id end_padder 0x7f09013f
 int id enterAlways 0x7f090140
 int id enterAlwaysCollapsed 0x7f090141
+int id exitAccount 0x7f09029d
 int id exitUntilCollapsed 0x7f090142
 int id expand_activities_button 0x7f090143
 int id expanded_menu 0x7f090144
@@ -2983,7 +2982,6 @@ int id floating 0x7f09014d
 int id forever 0x7f09014e
 int id fragment_container_view_tag 0x7f09014f
 int id frost 0x7f090150
-int id gfdhgfd 0x7f090151
 int id ghost_view 0x7f090152
 int id ghost_view_holder 0x7f090153
 int id gone 0x7f090154
@@ -2996,8 +2994,6 @@ int id groups 0x7f09015a
 int id guideline 0x7f09015b
 int id haveAccount 0x7f09015c
 int id header_title 0x7f09015d
-int id hgfd 0x7f09015e
-int id hgfddfg 0x7f09015f
 int id hideable 0x7f090160
 int id home 0x7f090161
 int id homeAsUp 0x7f090162
@@ -3101,6 +3097,10 @@ int id mtrl_picker_text_input_range_start 0x7f0901c3
 int id mtrl_picker_title_text 0x7f0901c4
 int id mtrl_view_tag_bottom_padding 0x7f0901c5
 int id multiply 0x7f0901c6
+int id myAdv 0x7f09029e
+int id myFav 0x7f09029f
+int id myInfo 0x7f0902a0
+int id mySpecialAdv 0x7f0902a1
 int id nav_controller_view_tag 0x7f0901c7
 int id nav_host_fragment_activity_main 0x7f0901c8
 int id nav_host_fragment_container 0x7f0901c9

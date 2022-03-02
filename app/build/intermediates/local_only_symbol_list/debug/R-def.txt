@@ -172,13 +172,9 @@ id detail_AdvSwap
 id detail_AdvTitle
 id detail_AdvUsingStatus
 id detail_AdvWarmType
-id dgf
-id efg
-id gfdhgfd
+id exitAccount
 id google_map
 id haveAccount
-id hgfd
-id hgfddfg
 id image
 id inc_price
 id inputNewPassword
@@ -188,6 +184,10 @@ id inputUserName
 id inputUserSurname
 id message
 id mobile_navigation
+id myAdv
+id myFav
+id myInfo
+id mySpecialAdv
 id nav_host_fragment_activity_main
 id nav_view
 id nav_view2

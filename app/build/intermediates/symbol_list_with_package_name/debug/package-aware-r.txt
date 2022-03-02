@@ -2939,7 +2939,6 @@ id detail_AdvSwap
 id detail_AdvTitle
 id detail_AdvUsingStatus
 id detail_AdvWarmType
-id dgf
 id dialog_button
 id dimensions
 id direct
@@ -2962,13 +2961,13 @@ id easeInOut
 id easeOut
 id east
 id edit_query
-id efg
 id elastic
 id end
 id endToStart
 id end_padder
 id enterAlways
 id enterAlwaysCollapsed
+id exitAccount
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -2984,7 +2983,6 @@ id floating
 id forever
 id fragment_container_view_tag
 id frost
-id gfdhgfd
 id ghost_view
 id ghost_view_holder
 id gone
@@ -2997,8 +2995,6 @@ id groups
 id guideline
 id haveAccount
 id header_title
-id hgfd
-id hgfddfg
 id hideable
 id home
 id homeAsUp
@@ -3102,6 +3098,10 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id myAdv
+id myFav
+id myInfo
+id mySpecialAdv
 id nav_controller_view_tag
 id nav_host_fragment_activity_main
 id nav_host_fragment_container
