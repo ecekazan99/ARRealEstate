@@ -1,5 +1,6 @@
 package com.example.ar_realestate;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
@@ -74,7 +75,13 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new HomeFragment());
                     break;
                 case R.id.navigation_notifications:
-                    replaceFragment(new LoginFragment());
+
+                    Intent intent=getIntent();
+                    User user=(User)intent.getSerializableExtra("UserInformation");
+                    if(user==null)
+                        replaceFragment(new LoginFragment());
+                    else
+                        replaceFragment(new UserProfileFragment());
                     break;
             }
             return true;
