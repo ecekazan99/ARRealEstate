@@ -92,18 +92,15 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new HomeFragment());
                     break;
                 case R.id.navigation_notifications:
-<<<<<<< HEAD
-
                     Intent intent=getIntent();
                     User user=(User)intent.getSerializableExtra("UserInformation");
+
                     if(user==null)
                         replaceFragment(new LoginFragment());
                     else
                         replaceFragment(new UserProfileFragment());
-=======
+
                     navViewToolbar.setVisibility(View.INVISIBLE);
-                    replaceFragment(new LoginFragment());
->>>>>>> 19bb03f144c19ee2c29fbce89671ed16c4469f0c
                     break;
             }
             return true;
