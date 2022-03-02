@@ -36,14 +36,7 @@
         app:navGraph="@navigation/mobile_navigation"
         tools:ignore="UnknownId">
 
-        <!--/// filter çalışıyor mu diye denemek için öylesine oluşturuldu
-        <Button
-            android:id="@+id/buttonFilter"
-            android:onClick="filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button" />-->
-
+        
 
     </FrameLayout>
 

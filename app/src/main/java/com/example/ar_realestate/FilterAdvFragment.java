@@ -34,7 +34,7 @@ public class FilterAdvFragment extends Fragment {
 
     private FragmentFilterAdvBinding binding;
 
-    EditText editTxtPriceMin,editTxtPriceMax, editTxtSquareMin,editTxtSquareMax, editTxtFloorLocMin,editTxtFloorLocMax, editTxtNumofBath,
+    EditText editTxtPriceMin,editTxtPriceMax, editTxtSquareMin,editTxtSquareMax, editTxtFloorLocMin,editTxtFloorLocMax, editTxtNumofBathMin,editTxtNumofBathMax,
             editTxtRentalIncomeMin,editTxtRentalIncomeMax, editTxtDuesMin,editTxtDuesMax, editTxtAddress,editTextBuildFloorMin,
             editTextBuildFloorMax,editTextBuildAgeMin,editTextBuildAgeMax;
 
@@ -42,7 +42,7 @@ public class FilterAdvFragment extends Fragment {
 
     static public String advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, address,city;
 
-    static public int priceMin, priceMax, squareMeterMin,squareMeterMax, buildingFloorsMin,buildingFloorsMax, floorLocMin,floorLocMax, buildAgeMin,buildAgeMax, numOfBathr, rentalIncomeMin,rentalIncomeMax, duesMin,duesMax;
+    static public int priceMin, priceMax, squareMeterMin,squareMeterMax, buildingFloorsMin,buildingFloorsMax, floorLocMin,floorLocMax, buildAgeMin,buildAgeMax, numOfBathrMin,numOfBathrMax, rentalIncomeMin,rentalIncomeMax, duesMin,duesMax;
 
     static public Boolean applButton=false;
 
@@ -68,7 +68,8 @@ public class FilterAdvFragment extends Fragment {
         spinnerBuildType = (Spinner) binding.FilterSpinnerBuildType;
         spinnerItemStatus = (Spinner) binding.FilterSpinnerItemStatus;
         spinnerWarmtype = (Spinner) binding.FilterWarmType;
-        editTxtNumofBath = (EditText) binding.FilterEditTextNumOfBath;
+        editTxtNumofBathMin = (EditText) binding.FilterNumofBathMin;
+        editTxtNumofBathMax=(EditText)binding.FilterNumofBathMax;
         spinnerElgbCredit = (Spinner) binding.FilterSpinnerElgCredit;
         spinnerUsingStatus = (Spinner) binding.FilterSpinnerUsingStatus;
         spinnerStateOfBuilding = (Spinner) binding.FilterSpinnerStateBuilding;
@@ -81,11 +82,6 @@ public class FilterAdvFragment extends Fragment {
         spinnerFuelType = (Spinner) binding.FilterSpinnerFuelType;
         editTxtAddress = (EditText) binding.FilterEditTextAddress;
         spinnerCity=(Spinner)binding.FilterSpinnerCity;
-
-
-
-
-
 
 
         ArrayAdapter<CharSequence> adapterAdvStatus = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.Adv_Status, android.R.layout.simple_spinner_item);
@@ -286,9 +282,7 @@ public class FilterAdvFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         binding = FragmentFilterAdvBinding.inflate(inflater, container, false);
-        // init();
-
-
+        init();
 
         binding.FilterBtnApply.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -310,7 +304,9 @@ public class FilterAdvFragment extends Fragment {
                 buildAgeMin=Integer.parseInt(editTextBuildAgeMin.getText().toString());
                 buildAgeMax=Integer.parseInt(editTextBuildAgeMax.getText().toString());
 
-                numOfBathr=Integer.parseInt(editTxtNumofBath.getText().toString());
+                numOfBathrMin=Integer.parseInt(editTxtNumofBathMin.getText().toString());
+                numOfBathrMax=Integer.parseInt(editTxtNumofBathMax.getText().toString());
+
                 rentalIncomeMin=Integer.parseInt(editTxtRentalIncomeMin.getText().toString());
                 rentalIncomeMax=Integer.parseInt(editTxtRentalIncomeMax.getText().toString());
 

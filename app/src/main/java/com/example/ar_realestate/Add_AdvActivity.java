@@ -66,6 +66,9 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
     private Bitmap selectedİmg,smallestedImg,firstImage;
     private Button btnSubmitAdv;
 
+    static public boolean add_Adv=false;
+    static public AdvDetail advDetailLast;
+
     private Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType,spinnerItemStatus,spinnerWarmType,spinnerElgbCredit,spinnerUsingStatus, spinnerStateOfBuilding,spinnerSwap,spinnerFront,spinnerFuelType,spinnerCity;
 
     private int imgNoPermissionCod=0,imgPermissionCod=1;
@@ -381,7 +384,18 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
                 Nesneleri_temizle();
                 Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi",Toast.LENGTH_SHORT).show();
+                add_Adv=true;
 
+                if(add_Adv==true)
+                {
+                    System.out.println("jgdfgm");
+                    advDetailLast=new AdvDetail(advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
+                            buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,
+                            stateBuilding,rentalIncome,dues,swap,front,fuelType,date,address,city);
+                    Intent detailIntent=new Intent(this,AdvDetailActivity.class);
+
+                    startActivity(detailIntent);
+                }
                 int lastInsertedAdvId = 0;
                 Cursor c=MainActivity.db.rawQuery("select last_insert_rowid()",null);
                 if (c!= null && c.moveToFirst()) {
