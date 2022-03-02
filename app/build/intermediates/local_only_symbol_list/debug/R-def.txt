@@ -186,6 +186,7 @@ id inputPassword
 id inputUserMail
 id inputUserName
 id inputUserSurname
+id message
 id mobile_navigation
 id nav_host_fragment_activity_main
 id nav_view

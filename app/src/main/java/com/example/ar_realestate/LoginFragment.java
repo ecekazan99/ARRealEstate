@@ -64,7 +64,7 @@ public class LoginFragment extends Fragment {
                User user= database.loginUser(userMail,userPassword);
 
                 if(user!=null){
-                        Intent intent=new Intent(getActivity().getBaseContext(),MainActivity.class);
+                    Intent intent=new Intent(getActivity().getBaseContext(),MainActivity.class);
                     Toast.makeText(getActivity(), user.getUserId()+" "+ user.getUserName().toString(),
                             Toast.LENGTH_LONG).show();
                    intent.putExtra("UserInformation",user);
