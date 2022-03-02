@@ -33,6 +33,9 @@ public final class ActivityAdvDetailBinding implements ViewBinding {
   public final TextView detailAdvBuildingType;
 
   @NonNull
+  public final TextView detailAdvCity;
+
+  @NonNull
   public final TextView detailAdvDate;
 
   @NonNull
@@ -91,21 +94,23 @@ public final class ActivityAdvDetailBinding implements ViewBinding {
 
   private ActivityAdvDetailBinding(@NonNull ScrollView rootView, @NonNull TextView detailAdvAddress,
       @NonNull TextView detailAdvBuildingAge, @NonNull TextView detailAdvBuildingFloors,
-      @NonNull TextView detailAdvBuildingType, @NonNull TextView detailAdvDate,
-      @NonNull TextView detailAdvDues, @NonNull TextView detailAdvElgCredit,
-      @NonNull TextView detailAdvFloorLoc, @NonNull TextView detailAdvFront,
-      @NonNull TextView detailAdvFuelType, @NonNull ImageView detailAdvImage,
-      @NonNull TextView detailAdvItemStatus, @NonNull TextView detailAdvNumOfBathr,
-      @NonNull TextView detailAdvPrice, @NonNull TextView detailAdvRentalIncome,
-      @NonNull TextView detailAdvRoomNum, @NonNull TextView detailAdvSquareMeter,
-      @NonNull TextView detailAdvStateOfBuilding, @NonNull TextView detailAdvStatus,
-      @NonNull TextView detailAdvSwap, @NonNull TextView detailAdvTitle,
-      @NonNull TextView detailAdvUsingStatus, @NonNull TextView detailAdvWarmType) {
+      @NonNull TextView detailAdvBuildingType, @NonNull TextView detailAdvCity,
+      @NonNull TextView detailAdvDate, @NonNull TextView detailAdvDues,
+      @NonNull TextView detailAdvElgCredit, @NonNull TextView detailAdvFloorLoc,
+      @NonNull TextView detailAdvFront, @NonNull TextView detailAdvFuelType,
+      @NonNull ImageView detailAdvImage, @NonNull TextView detailAdvItemStatus,
+      @NonNull TextView detailAdvNumOfBathr, @NonNull TextView detailAdvPrice,
+      @NonNull TextView detailAdvRentalIncome, @NonNull TextView detailAdvRoomNum,
+      @NonNull TextView detailAdvSquareMeter, @NonNull TextView detailAdvStateOfBuilding,
+      @NonNull TextView detailAdvStatus, @NonNull TextView detailAdvSwap,
+      @NonNull TextView detailAdvTitle, @NonNull TextView detailAdvUsingStatus,
+      @NonNull TextView detailAdvWarmType) {
     this.rootView = rootView;
     this.detailAdvAddress = detailAdvAddress;
     this.detailAdvBuildingAge = detailAdvBuildingAge;
     this.detailAdvBuildingFloors = detailAdvBuildingFloors;
     this.detailAdvBuildingType = detailAdvBuildingType;
+    this.detailAdvCity = detailAdvCity;
     this.detailAdvDate = detailAdvDate;
     this.detailAdvDues = detailAdvDues;
     this.detailAdvElgCredit = detailAdvElgCredit;
@@ -175,6 +180,12 @@ public final class ActivityAdvDetailBinding implements ViewBinding {
       id = R.id.detail_AdvBuildingType;
       TextView detailAdvBuildingType = ViewBindings.findChildViewById(rootView, id);
       if (detailAdvBuildingType == null) {
+        break missingId;
+      }
+
+      id = R.id.detail_AdvCity;
+      TextView detailAdvCity = ViewBindings.findChildViewById(rootView, id);
+      if (detailAdvCity == null) {
         break missingId;
       }
 
@@ -293,11 +304,12 @@ public final class ActivityAdvDetailBinding implements ViewBinding {
       }
 
       return new ActivityAdvDetailBinding((ScrollView) rootView, detailAdvAddress,
-          detailAdvBuildingAge, detailAdvBuildingFloors, detailAdvBuildingType, detailAdvDate,
-          detailAdvDues, detailAdvElgCredit, detailAdvFloorLoc, detailAdvFront, detailAdvFuelType,
-          detailAdvImage, detailAdvItemStatus, detailAdvNumOfBathr, detailAdvPrice,
-          detailAdvRentalIncome, detailAdvRoomNum, detailAdvSquareMeter, detailAdvStateOfBuilding,
-          detailAdvStatus, detailAdvSwap, detailAdvTitle, detailAdvUsingStatus, detailAdvWarmType);
+          detailAdvBuildingAge, detailAdvBuildingFloors, detailAdvBuildingType, detailAdvCity,
+          detailAdvDate, detailAdvDues, detailAdvElgCredit, detailAdvFloorLoc, detailAdvFront,
+          detailAdvFuelType, detailAdvImage, detailAdvItemStatus, detailAdvNumOfBathr,
+          detailAdvPrice, detailAdvRentalIncome, detailAdvRoomNum, detailAdvSquareMeter,
+          detailAdvStateOfBuilding, detailAdvStatus, detailAdvSwap, detailAdvTitle,
+          detailAdvUsingStatus, detailAdvWarmType);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

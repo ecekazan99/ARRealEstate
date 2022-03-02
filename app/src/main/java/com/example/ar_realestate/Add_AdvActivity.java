@@ -60,18 +60,17 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
     GoogleMap gMap;
     private TextView txtViewDate;
-    private EditText editTxtTitle,editTxtPrice,editTxtRoomNum,
-            editTxtSquareMt,editTxtBuildingFloors, editTxtFloorLoc,editTxtBuildAge,editTxtWarmType,editTxtNumofBath,
+    private EditText editTxtTitle,editTxtPrice, editTxtSquareMt,editTxtBuildingFloors, editTxtFloorLoc,editTxtBuildAge,editTxtNumofBath,
             editTxtRentalIncome,editTxtDues,editTxtAddress;
     private ImageView imageAdv,imageAdv2,imageAdv3;
     private Bitmap selectedİmg,smallestedImg,firstImage;
     private Button btnSubmitAdv;
 
-    private Spinner spinnerAdvStatus, spinnerBuildType,spinnerItemStatus,spinnerElgbCredit,spinnerUsingStatus, spinnerStateOfBuilding,spinnerSwap,spinnerFront,spinnerFuelType;
+    private Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType,spinnerItemStatus,spinnerWarmType,spinnerElgbCredit,spinnerUsingStatus, spinnerStateOfBuilding,spinnerSwap,spinnerFront,spinnerFuelType,spinnerCity;
 
     private int imgNoPermissionCod=0,imgPermissionCod=1;
 
-    String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address;
+    String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city;
     int price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
     long latitude,longitude;
 
@@ -79,14 +78,14 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
         editTxtTitle=(EditText) findViewById(R.id.addAdv_editTextAdvTitle);
         editTxtPrice=(EditText) findViewById(R.id.addAdv_editTextPrice);
         spinnerAdvStatus=(Spinner)findViewById(R.id.addAdv_spinnerAdvStatus);
-        editTxtRoomNum=(EditText) findViewById(R.id.addAdv_editTextRoomNum);
+        spinnerRoomNum=(Spinner) findViewById(R.id.addAdv_spinnerRoomNum);
         editTxtSquareMt=(EditText) findViewById(R.id.addAdv_editTextSquareMeter);
         editTxtBuildingFloors=(EditText)findViewById(R.id.addAdv_editTextBuildingFloors);
         editTxtFloorLoc=(EditText) findViewById(R.id.addAdv_editTextFloorLoc);
         editTxtBuildAge=(EditText) findViewById(R.id.addAdv_editTextBuildAge);
         spinnerBuildType=(Spinner)findViewById(R.id.addAdv_spinnerBuildType);
         spinnerItemStatus=(Spinner)findViewById(R.id.addAdv_spinnerItemStatus);
-        editTxtWarmType=(EditText) findViewById(R.id.addAdv_editTextWarmType);
+        spinnerWarmType=(Spinner) findViewById(R.id.addAdv_spinnerWarmType);
         editTxtNumofBath=(EditText) findViewById(R.id.addAdv_editTextNumOfBath);
         spinnerElgbCredit=(Spinner) findViewById(R.id.addAdv_spinnerElgCredit);
         spinnerUsingStatus=(Spinner) findViewById(R.id.addAdv_spinnerUsingStatus);
@@ -99,6 +98,8 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
         txtViewDate=(TextView) findViewById(R.id.addAdv_editTextDate);
         txtViewDate.setText(getTodayDate());
         editTxtAddress=(EditText)findViewById(R.id.addAdv_editTextAddress);
+        spinnerCity=(Spinner)findViewById(R.id.addAdv_spinnerCity);
+
         imageAdv=(ImageView) findViewById(R.id.add_book_activity_imageViewBookImage);
         btnSubmitAdv=(Button) findViewById(R.id.addAdv_btnSubmit);
 
@@ -238,6 +239,51 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
             }
         });
+
+        ArrayAdapter<CharSequence>adapterRoomNum=ArrayAdapter.createFromResource(this,R.array.RoomNumber, android.R.layout.simple_spinner_item);
+        adapterRoomNum.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerRoomNum.setAdapter(adapterRoomNum);
+        spinnerRoomNum.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                roomNum=adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        ArrayAdapter<CharSequence>adapterWarmType=ArrayAdapter.createFromResource(this,R.array.WarmType, android.R.layout.simple_spinner_item);
+        adapterWarmType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerWarmType.setAdapter(adapterWarmType);
+        spinnerWarmType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                warmType=adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        ArrayAdapter<CharSequence>adapterCities=ArrayAdapter.createFromResource(this,R.array.Cities, android.R.layout.simple_spinner_item);
+        adapterCities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCity.setAdapter(adapterCities);
+        spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                city=adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     @Override
@@ -255,22 +301,27 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
     }
     public boolean advInputControl(){
         Boolean checkEmpty =true;
-        if(advStatus.equals("Select Adv Status") || buildType.equals("Select Build Type") || itemStatus.equals("Select Item Status") || elgForCredit.equals("Select Elg Credit") || usingStatus.equals("Select Using Status") || stateBuilding.equals("Select State Building")||swap.equals("Select Swap")|| front.equals("Select Front") || fuelType.equals("Select Fuel Type") ){
+        if(advStatus.equals("Select Adv Status") || buildType.equals("Select Build Type") || itemStatus.equals("Select Item Status") ||
+                elgForCredit.equals("Select Elg Credit") || usingStatus.equals("Select Using Status") || stateBuilding.equals("Select State Building")||
+                swap.equals("Select Swap")|| front.equals("Select Front") || fuelType.equals("Select Fuel Type") ||
+                roomNum.equals("Select Room Number") || warmType.equals("Select Warm Type") || city.equals("Select City") ){
             checkEmpty =false;
             Toast.makeText(getApplicationContext(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
-        }else if(TextUtils.isEmpty(advTitle) || TextUtils.isEmpty(roomNum)|| TextUtils.isEmpty(warmType) || TextUtils.isEmpty(address)||
-                TextUtils.isEmpty(editTxtPrice.getText().toString())||TextUtils.isEmpty(editTxtSquareMt.getText().toString())||TextUtils.isEmpty(editTxtBuildingFloors.getText().toString())||
-                TextUtils.isEmpty(editTxtFloorLoc.getText().toString())||TextUtils.isEmpty(editTxtBuildAge.getText().toString())||TextUtils.isEmpty(editTxtNumofBath.getText().toString())||TextUtils.isEmpty(editTxtRentalIncome.getText().toString())||TextUtils.isEmpty(editTxtDues.getText().toString())){
+        }else if(TextUtils.isEmpty(advTitle)  || TextUtils.isEmpty(address)|| TextUtils.isEmpty(editTxtPrice.getText().toString())||
+                TextUtils.isEmpty(editTxtSquareMt.getText().toString())||TextUtils.isEmpty(editTxtBuildingFloors.getText().toString())||
+                TextUtils.isEmpty(editTxtFloorLoc.getText().toString())||TextUtils.isEmpty(editTxtBuildAge.getText().toString())||
+                TextUtils.isEmpty(editTxtNumofBath.getText().toString())||TextUtils.isEmpty(editTxtRentalIncome.getText().toString())||TextUtils.isEmpty(editTxtDues.getText().toString())){
             checkEmpty=false;
+            Toast.makeText(getApplicationContext(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
+
         }
+        System.out.println("Girildi 1: "+ city);
         return checkEmpty;
     }
 
     public void saveAdv(View view) {
 
         advTitle=editTxtTitle.getText().toString();
-        roomNum=editTxtRoomNum.getText().toString();
-        warmType=editTxtWarmType.getText().toString();
         date=txtViewDate.toString();
         address=editTxtAddress.getText().toString();
 
@@ -292,16 +343,18 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
             try {
 
                 // Temp database değişecek şimdilik öylesine koydum
-              // SQLiteDatabase database=this.openOrCreateDatabase("Temp",MODE_PRIVATE,null);
-              //  database.execSQL("CREATE TABLE IF NOT EXISTS advertisements (AdvId INTEGER PRIMARY KEY AUTOINCREMENT,AdvTitle TEXT,AdvImage BLOB,Price INTEGER,AdvStatus TEXT,RoomNum TEXT,SquareMeter INTEGER,BuildingFloors INTEGER,FloorLoc INTEGER,BuildAge INTEGER,BuildType TEXT,ItemStatus TEXT,WarmType TEXT,NumOfBathrooms INTEGER,ElgCredit TEXT,UsingStatus TEXT,StateBuilding TEXT,RentalIncome INTEGER,Dues INTEGER,Swap TEXT,Front TEXT,FuelType TEXT,Date DATE,Address TEXT,xCoordinate REAL,yCoordinate REAL )");
+                // SQLiteDatabase database=this.openOrCreateDatabase("Temp",MODE_PRIVATE,null);
+                //  database.execSQL("CREATE TABLE IF NOT EXISTS advertisements (AdvId INTEGER PRIMARY KEY AUTOINCREMENT,AdvTitle TEXT,AdvImage BLOB,Price INTEGER,AdvStatus TEXT,RoomNum TEXT,SquareMeter INTEGER,BuildingFloors INTEGER,FloorLoc INTEGER,BuildAge INTEGER,BuildType TEXT,ItemStatus TEXT,WarmType TEXT,NumOfBathrooms INTEGER,ElgCredit TEXT,UsingStatus TEXT,StateBuilding TEXT,RentalIncome INTEGER,Dues INTEGER,Swap TEXT,Front TEXT,FuelType TEXT,Date DATE,Address TEXT,xCoordinate REAL,yCoordinate REAL )");
                 MainActivity.database.onCreate(MainActivity.db);
-                String sqlQuery="INSERT INTO Advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc,BuildAge,BuildType,ItemStatus,WarmType,NumOfBathrooms,ElgCredit,UsingStatus,StateBuilding,RentalIncome,Dues,Swap,Front,FuelType,Date,Address,xCoordinate,yCoordinate)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                String sqlQuery="INSERT INTO Advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc,BuildAge,BuildType,ItemStatus,WarmType,NumOfBathrooms,ElgCredit,UsingStatus,StateBuilding,RentalIncome,Dues,Swap,Front,FuelType,Date,Address,Cities,xCoordinate,yCoordinate)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
                 statement.bindString(1,advTitle);
                 statement.bindBlob(2,kayıtedilecekImage);
                 statement.bindString(3, String.valueOf(price));
                 statement.bindString(4,advStatus);
+                System.out.println("Girildi 2");
                 statement.bindString(5,roomNum);
+                System.out.println("Girildi 3");
                 statement.bindString(6, String.valueOf(squareMeters));
                 statement.bindString(7, String.valueOf(buildingFloors));
                 statement.bindString(8, String.valueOf(floorLoc));
@@ -309,6 +362,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                 statement.bindString(10,buildType);
                 statement.bindString(11,itemStatus);
                 statement.bindString(12,warmType);
+                System.out.println("Girildi 4");
                 statement.bindString(13, String.valueOf(numOfBathr));
                 statement.bindString(14,elgForCredit);
                 statement.bindString(15,usingStatus);
@@ -320,8 +374,9 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                 statement.bindString(21,fuelType);
                 statement.bindString(22,date);
                 statement.bindString(23,address);
-                statement.bindLong(24,latitude);
-                statement.bindLong(25,longitude);
+                statement.bindString(24,city);
+                statement.bindLong(25,  latitude);
+                statement.bindLong(26, longitude);
                 statement.execute();
 
                 Nesneleri_temizle();
@@ -436,8 +491,6 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
         editTxtBuildAge.setText("");
         editTxtFloorLoc.setText("");
         editTxtRentalIncome.setText("");
-        editTxtWarmType.setText("");
-        editTxtRoomNum.setText("");
         editTxtSquareMt.setText("");
 
         spinnerAdvStatus.setSelection(0);
@@ -449,6 +502,9 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
         spinnerStateOfBuilding.setSelection(0);
         spinnerSwap.setSelection(0);
         spinnerUsingStatus.setSelection(0);
+        spinnerCity.setSelection(0);
+        spinnerWarmType.setSelection(0);
+        spinnerRoomNum.setSelection(0);
 
         // firstImage= BitmapFactory.decodeResource(this.getResources(),R.drawable.);
         imageAdv.setImageBitmap(firstImage);
@@ -465,6 +521,8 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                 markerOptions.position(latLng);
                 markerOptions.title(latLng.latitude+" : "+latLng.longitude);
                 System.out.println(latLng.latitude+" : "+latLng.longitude);
+                //latitude=latLng.latitude;
+                //   longitude=latLng.longitude;
 
                 gMap.clear();
 

@@ -34,17 +34,18 @@ public class FilterAdvFragment extends Fragment {
 
     private FragmentFilterAdvBinding binding;
 
-    EditText editTxtPriceRange, editTxtRoomNum,
-            editTxtSquareMt, editTxtBuildingFloors, editTxtFloorLoc, editTxtBuildAge, editTxtWarmType, editTxtNumofBath,
-            editTxtRentalIncomeRange, editTxtDuesRange, editTxtAddress;
+    EditText editTxtPriceMin,editTxtPriceMax, editTxtSquareMin,editTxtSquareMax, editTxtFloorLocMin,editTxtFloorLocMax, editTxtNumofBath,
+            editTxtRentalIncomeMin,editTxtRentalIncomeMax, editTxtDuesMin,editTxtDuesMax, editTxtAddress,editTextBuildFloorMin,
+            editTextBuildFloorMax,editTextBuildAgeMin,editTextBuildAgeMax;
 
-    Spinner spinnerAdvStatus, spinnerBuildType, spinnerItemStatus, spinnerElgbCredit, spinnerUsingStatus, spinnerStateOfBuilding, spinnerSwap, spinnerFront, spinnerFuelType;
+    Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType, spinnerItemStatus,spinnerWarmtype, spinnerElgbCredit, spinnerUsingStatus, spinnerStateOfBuilding, spinnerSwap, spinnerFront, spinnerFuelType,spinnerCity;
 
-    static public String advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, address;
-    static public int priceMin, priceMax, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncome,  dues;
-    String tempPrice;
+    static public String advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, address,city;
+
+    static public int priceMin, priceMax, squareMeterMin,squareMeterMax, buildingFloorsMin,buildingFloorsMax, floorLocMin,floorLocMax, buildAgeMin,buildAgeMax, numOfBathr, rentalIncomeMin,rentalIncomeMax, duesMin,duesMax;
+
     static public Boolean applButton=false;
-    Button applyFilter;
+
 
     public FilterAdvFragment() {
         // Required empty public constructor
@@ -53,34 +54,33 @@ public class FilterAdvFragment extends Fragment {
     private void init() { // initialize part
 
         spinnerAdvStatus = (Spinner) binding.FilterSpinnerAdvStatus;
-        editTxtPriceRange = (EditText) binding.FilterEditTextPrice;
-        editTxtRoomNum = (EditText) binding.FilterEditTextRoomNum;
-
-        editTxtSquareMt = (EditText) binding.FilterEditTextSquareMeter;
-
-        editTxtBuildingFloors = (EditText) binding.FilterEditTextBuildingFloors;
-
-        editTxtFloorLoc = (EditText) binding.FilterEditTextFloorLoc;
-
-        editTxtBuildAge = (EditText) binding.FilterEditTextBuildAge;
-
+        editTxtPriceMin = (EditText) binding.FilterPriceMin;
+        editTxtPriceMax = (EditText) binding.FilterPriceMax;
+        spinnerRoomNum = (Spinner) binding.FilterSpinnerRoomNum;
+        editTxtSquareMin = (EditText) binding.FilterSquareMin;
+        editTxtSquareMax = (EditText) binding.FilterSquareMax;
+        editTextBuildFloorMin=(EditText)binding.FilterBuildingFloorMin;
+        editTextBuildFloorMax=(EditText)binding.FilterBuildingFloorMax;
+        editTxtFloorLocMin = (EditText) binding.FilterFloorLocMin;
+        editTxtFloorLocMax = (EditText) binding.FilterFloorLocMax;
+        editTextBuildAgeMin=(EditText)binding.FilterBuildAgeMin;
+        editTextBuildAgeMax=(EditText)binding.FilterBuildAgeMax;
         spinnerBuildType = (Spinner) binding.FilterSpinnerBuildType;
         spinnerItemStatus = (Spinner) binding.FilterSpinnerItemStatus;
-        editTxtWarmType = (EditText) binding.FilterEditTextWarmType;
-
+        spinnerWarmtype = (Spinner) binding.FilterWarmType;
         editTxtNumofBath = (EditText) binding.FilterEditTextNumOfBath;
-
         spinnerElgbCredit = (Spinner) binding.FilterSpinnerElgCredit;
         spinnerUsingStatus = (Spinner) binding.FilterSpinnerUsingStatus;
         spinnerStateOfBuilding = (Spinner) binding.FilterSpinnerStateBuilding;
-        editTxtRentalIncomeRange = (EditText) binding.FilterEditTextRentalIncome;
-
-        editTxtDuesRange = (EditText) binding.FilterEditTextDues;
-
+        editTxtRentalIncomeMin = (EditText) binding.FilterRentalMin;
+        editTxtRentalIncomeMax = (EditText) binding.FilterRentalMax;
+        editTxtDuesMin = (EditText) binding.FilterDuesMin;
+        editTxtDuesMax = (EditText) binding.FilterDuesMax;
         spinnerSwap = (Spinner) binding.FilterSpinnerSwap;
         spinnerFront = (Spinner) binding.FilterSpinnerFront;
         spinnerFuelType = (Spinner) binding.FilterSpinnerFuelType;
         editTxtAddress = (EditText) binding.FilterEditTextAddress;
+        spinnerCity=(Spinner)binding.FilterSpinnerCity;
 
 
 
@@ -128,6 +128,22 @@ public class FilterAdvFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 itemStatus = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        ArrayAdapter<CharSequence> adapterWarmType = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.WarmType, android.R.layout.simple_spinner_item);
+        adapterWarmType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerWarmtype.setAdapter(adapterWarmType);
+        spinnerWarmtype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                warmType = adapterView.getItemAtPosition(i).toString();
             }
 
             @Override
@@ -225,6 +241,38 @@ public class FilterAdvFragment extends Fragment {
 
             }
         });
+
+        ArrayAdapter<CharSequence> adapterRoomNum = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.RoomNumber, android.R.layout.simple_spinner_item);
+        adapterRoomNum.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerRoomNum.setAdapter(adapterRoomNum);
+        spinnerRoomNum.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                roomNum = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        ArrayAdapter<CharSequence> adapterCity = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.Cities, android.R.layout.simple_spinner_item);
+        adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCity.setAdapter(adapterCity);
+        spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                city = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
     }
 
     @Override
@@ -238,7 +286,7 @@ public class FilterAdvFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         binding = FragmentFilterAdvBinding.inflate(inflater, container, false);
-        init();
+        // init();
 
 
 
@@ -247,21 +295,29 @@ public class FilterAdvFragment extends Fragment {
             public void onClick(View view) {
 
                 applButton=true;
-                roomNum=editTxtRoomNum.getText().toString();
-                squareMeters=Integer.parseInt(editTxtSquareMt.getText().toString());
-                buildingFloors=Integer.parseInt(editTxtBuildingFloors.getText().toString());
-                floorLoc=Integer.parseInt(editTxtFloorLoc.getText().toString());
-                buildAge=Integer.parseInt(editTxtBuildAge.getText().toString());
-                warmType=editTxtWarmType.getText().toString();
-                numOfBathr=Integer.parseInt(editTxtNumofBath.getText().toString());
-                rentalIncome=Integer.parseInt(editTxtRentalIncomeRange.getText().toString());
-                dues=Integer.parseInt(editTxtDuesRange.getText().toString());
-                address=editTxtAddress.getText().toString();
+                priceMin=Integer.parseInt(editTxtPriceMin.getText().toString());
+                priceMax=Integer.parseInt(editTxtPriceMax.getText().toString());
 
-                tempPrice=editTxtPriceRange.getText().toString();
-                String[] arrOfTempPrice=tempPrice.split("-");
-                priceMin=Integer.parseInt(arrOfTempPrice[0].trim());
-                priceMax=Integer.parseInt(arrOfTempPrice[1].trim());
+                squareMeterMin=Integer.parseInt(editTxtSquareMin.getText().toString());
+                squareMeterMax=Integer.parseInt(editTxtSquareMax.getText().toString());
+
+                buildingFloorsMin=Integer.parseInt(editTextBuildFloorMin.getText().toString());
+                buildingFloorsMax=Integer.parseInt(editTextBuildFloorMax.getText().toString());
+
+                floorLocMin=Integer.parseInt(editTxtFloorLocMin.getText().toString());
+                floorLocMax=Integer.parseInt(editTxtFloorLocMax.getText().toString());
+
+                buildAgeMin=Integer.parseInt(editTextBuildAgeMin.getText().toString());
+                buildAgeMax=Integer.parseInt(editTextBuildAgeMax.getText().toString());
+
+                numOfBathr=Integer.parseInt(editTxtNumofBath.getText().toString());
+                rentalIncomeMin=Integer.parseInt(editTxtRentalIncomeMin.getText().toString());
+                rentalIncomeMax=Integer.parseInt(editTxtRentalIncomeMax.getText().toString());
+
+                duesMin=Integer.parseInt(editTxtDuesMin.getText().toString());
+                duesMax=Integer.parseInt(editTxtDuesMax.getText().toString());
+
+                address=editTxtAddress.getText().toString();
 
 
                 HomeFragment homeFragment = new HomeFragment();
@@ -277,6 +333,4 @@ public class FilterAdvFragment extends Fragment {
     }
 
 }
-
-
 

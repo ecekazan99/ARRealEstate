@@ -83,28 +83,6 @@ public class MainActivity extends AppCompatActivity {
         //  getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.top_bar,menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.topBar_filter:
-                replaceFragment(new FilterAdvFragment());
-                break;
-            case R.id.topBar_order:
-                /*replaceFragment(new LoginFragment());
-                break;*/
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     private void replaceFragment(Fragment fragment){
 
         FragmentManager fragmentManager=getSupportFragmentManager();
