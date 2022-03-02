@@ -324,9 +324,19 @@ public class Advertisement {
 
 
             }
-            else if(FilterAdvFragment.applButton!=true)
+            else if(FilterAdvFragment.applButton!=true && MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==false)
             {
                 sqlQuery="SELECT * FROM Advertisements";
+                cursor=MainActivity.db.rawQuery(sqlQuery,null);
+            }
+            else if(MainActivity.incrPriceClick==true && MainActivity.decrsPriceClick==false)
+            {
+                sqlQuery="SELECT * FROM Advertisements ORDER BY Price ASC";
+                cursor=MainActivity.db.rawQuery(sqlQuery,null);
+            }
+            else if(MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==true)
+            {
+                sqlQuery="SELECT * FROM Advertisements ORDER BY Price DESC";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }
 
@@ -430,6 +440,8 @@ public class Advertisement {
         }catch (Exception e){
             e.printStackTrace();
         }
+        MainActivity.decrsPriceClick=false;
+        MainActivity.incrPriceClick=false;
         FilterAdvFragment.applButton=false;
         return advertisementList;
     }

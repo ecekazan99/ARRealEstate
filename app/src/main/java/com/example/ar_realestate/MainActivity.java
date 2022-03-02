@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private ActionBar actionBar;
     private Button btn;
+    static public Boolean incrPriceClick=false;
+    static public Boolean decrsPriceClick=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +64,17 @@ public class MainActivity extends AppCompatActivity {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                        // Toast message on menu item clicked
-                        Toast.makeText(MainActivity.this, "You Clicked " + menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                        if(menuItem.getItemId()==R.id.inc_price)
+                        {
+                            incrPriceClick=true;
+                            replaceFragment(new HomeFragment());
+                        }
+                        else if(menuItem.getItemId()==R.id.dcrs_price)
+                        {
+                            decrsPriceClick=true;
+                            replaceFragment(new HomeFragment());
+                        }
+                       // Toast.makeText(MainActivity.this, "You Clicked " + menuItem.getTitle(), Toast.LENGTH_SHORT).show();
                         return true;
                     }
                 });
