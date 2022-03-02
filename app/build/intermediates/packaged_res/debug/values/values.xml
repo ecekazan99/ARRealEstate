@@ -14,6 +14,90 @@
         <item>Wooden</item>
         <item>Steel</item>
     </string-array>
+    <string-array name="Cities">
+        <item>Select City</item>
+        <item>Adana</item>
+        <item>Adıyaman</item>
+        <item>Afyonkarahisar</item>
+        <item>Ağrı</item>
+        <item>Amasya</item>
+        <item>Ankara</item>
+        <item>Antalya</item>
+        <item>Artvin</item>
+        <item>Aydın</item>
+        <item>Balıkesir</item>
+        <item>Bilecik</item>
+        <item>Bingöl</item>
+        <item>Bitlis</item>
+        <item>Bolu</item>
+        <item>Burdur</item>
+        <item>Bursa</item>
+        <item>Çanakkale</item>
+        <item>Çankırı</item>
+        <item>Çorum</item>
+        <item>Denizli</item>
+        <item>Diyarbakır</item>
+        <item>Edirne</item>
+        <item>Elazığ</item>
+        <item>Erzincan</item>
+        <item>Erzurum</item>
+        <item>Eskişehir</item>
+        <item>Gaziantep</item>
+        <item>Giresun</item>
+        <item>Gümüşhane</item>
+        <item>Hakkâri</item>
+        <item>Hatay</item>
+        <item>Isparta</item>
+        <item>Mersin</item>
+        <item>İstanbul</item>
+        <item>İzmir</item>
+        <item>Kars</item>
+        <item>Kastamonu</item>
+        <item>Kayseri</item>
+        <item>Kırklareli</item>
+        <item>Kırşehir</item>
+        <item>Kocaeli</item>
+        <item>Konya</item>
+        <item>Kütahya</item>
+        <item>Malatya</item>
+        <item>Manisa</item>
+        <item>Kahramanmaraş</item>
+        <item>Mardin</item>
+        <item>Muğla</item>
+        <item>Muş</item>
+        <item>Nevşehir</item>
+        <item>Niğde</item>
+        <item>Ordu</item>
+        <item>Rize</item>
+        <item>Sakarya</item>
+        <item>Samsun</item>
+        <item>Siirt</item>
+        <item>Sinop</item>
+        <item>Sivas</item>
+        <item>Tekirdağ</item>
+        <item>Tokat</item>
+        <item>Trabzon</item>
+        <item>Tunceli</item>
+        <item>Şanlıurfa</item>
+        <item>Uşak</item>
+        <item>Van</item>
+        <item>Yozgat</item>
+        <item>Zonguldak</item>
+        <item>Aksaray</item>
+        <item>Bayburt</item>
+        <item>Karaman</item>
+        <item>Kırıkkale</item>
+        <item>Batman</item>
+        <item>Şırnak</item>
+        <item>Bartın</item>
+        <item>Ardahan</item>
+        <item>Iğdır</item>
+        <item>Yalova</item>
+        <item>Karabük</item>
+        <item>Kilis</item>
+        <item>Osmaniye</item>
+        <item>Düzce</item>
+    </string-array>
     <string-array name="ElgForCredit">
         <item>Select Elg Credit</item>
         <item>Suitable</item>
@@ -39,6 +123,47 @@
         <item>Furnished</item>
         <item>Not furnished</item>
     </string-array>
+    <string-array name="RoomNumber">
+        <item>Select Room Number</item>
+        <item>Studio</item>
+        <item>1+1</item>
+        <item>2+1</item>
+        <item>3+1</item>
+        <item>4+1</item>
+        <item>5+1</item>
+        <item>2</item>
+        <item>2+2</item>
+        <item>3</item>
+        <item>3+2</item>
+        <item>3+3</item>
+        <item>4</item>
+        <item>4+2</item>
+        <item>4+3</item>
+        <item>4+4</item>
+        <item>over 4+4</item>
+        <item>5+1</item>
+        <item>5+2</item>
+        <item>5+3</item>
+        <item>over 5+4</item>
+        <item>6</item>
+        <item>6+1</item>
+        <item>6+2</item>
+        <item>6+3</item>
+        <item>6+4</item>
+        <item>over 6+4</item>
+        <item>7</item>
+        <item>7+1</item>
+        <item>7+2</item>
+        <item>7+3</item>
+        <item>7+4</item>
+        <item>8</item>
+        <item>8+1</item>
+        <item>8+2</item>
+        <item>8+3</item>
+        <item>8+4</item>
+        <item>over 8+4</item>
+        <item>9 and above</item>
+    </string-array>
     <string-array name="StateBuilding">
         <item>Select State Building</item>
         <item>Zero</item>
@@ -55,6 +180,22 @@
         <item>Blank</item>
         <item>Tenant Sitting</item>
         <item>Host Sitting</item>
+        <item>Unspecified</item>
+    </string-array>
+    <string-array name="WarmType">
+        <item>Select Warm Type</item>
+        <item>Combi</item>
+        <item>Air Conditioner</item>
+        <item>Central</item>
+        <item>Stove</item>
+        <item>Floor Heater</item>
+        <item>Solar energy</item>
+        <item>Geothermal Heating</item>
+        <item>Underfloor Heating</item>
+        <item>Natural Gas Stove</item>
+        <item>Fan Coil Unit</item>
+        <item>Heat Pump</item>
+        <item>No heating</item>
         <item>Unspecified</item>
     </string-array>
     <color name="black">#FF000000</color>

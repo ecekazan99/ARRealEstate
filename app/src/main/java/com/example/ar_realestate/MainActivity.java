@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -23,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
     static  public Database database;
     static public SQLiteDatabase db;
     private ActivityMainBinding binding;
-
     private ActionBar actionBar;
+    private Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +38,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
-        /// filter çalışıyor mu diye denemek için öylesine oluşturuldu
-      /*  binding.buttonFilter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceFragment(new FilterAdvFragment());
-            }
-        });*/
 
         try{
             database=new Database(this);
@@ -57,6 +54,30 @@ public class MainActivity extends AppCompatActivity {
        // getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_activity_main, new HomeFragment()).commit();
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
+        BottomNavigationView navViewToolbar = findViewById(R.id.nav_view2);
+        System.out.println("Error 1");
+        btn=(Button)findViewById(R.id.buttonOrderHide);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(MainActivity.this, btn);
+
+                // Inflating popup menu from popup_menu.xml file
+                popupMenu.getMenuInflater().inflate(R.menu.popup, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        // Toast message on menu item clicked
+                        Toast.makeText(MainActivity.this, "You Clicked " + menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                });
+                // Showing the popup menu
+                popupMenu.show();
+            }
+        });
+
+        System.out.println("Error 2");
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 
@@ -65,16 +86,13 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_addadvertisement:
                     replaceFragment(new DashboardFragment());
-                    /*Intent intentAdd = new Intent(getApplicationContext(), Add_AdvActivity.class);
-                    finish();
-                    startActivity(intentAdd);
-                     */
-
                     break;
                 case R.id.navigation_home:
+                    navViewToolbar.setVisibility(View.VISIBLE);
                     replaceFragment(new HomeFragment());
                     break;
                 case R.id.navigation_notifications:
+<<<<<<< HEAD
 
                     Intent intent=getIntent();
                     User user=(User)intent.getSerializableExtra("UserInformation");
@@ -82,34 +100,33 @@ public class MainActivity extends AppCompatActivity {
                         replaceFragment(new LoginFragment());
                     else
                         replaceFragment(new UserProfileFragment());
+=======
+                    navViewToolbar.setVisibility(View.INVISIBLE);
+                    replaceFragment(new LoginFragment());
+>>>>>>> 19bb03f144c19ee2c29fbce89671ed16c4469f0c
                     break;
             }
             return true;
         });
 
+        binding.navView2.setOnItemSelectedListener(item_toolbar ->{
+            switch (item_toolbar.getItemId()) {
+                case R.id.toolbar_filter:
+                    navViewToolbar.setVisibility(View.INVISIBLE);
+                    replaceFragment(new FilterAdvFragment());
+                    break;
+                case R.id.toolbar_Order:
+
+
+
+
+
+
+            }
+           return true;
+        });
+
         //  getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.top_bar,menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.topBar_filter:
-                replaceFragment(new FilterAdvFragment());
-                break;
-            case R.id.topBar_order:
-                /*replaceFragment(new LoginFragment());
-                break;*/
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     private void replaceFragment(Fragment fragment){

@@ -16,9 +16,9 @@ public class AdvDetailActivity extends AppCompatActivity {
     private TextView txtAdvTitle, txtAdvPrice, txtAdvStatus, txtAdvRoomNum, txtSquareMeter,
             txtBuildingFloors, txtFloorLocation, txtBuildingAge, txtBuildingType, txtItemStatus, txtWarmType, txtNumOfBathr,
             txtElgForCredit, txtUsingStatus, txtStateBuilding, txtRentalIncome, txtDues, txtSwap, txtFront,
-            txtFuelType, txtDate, txtAddress;
+            txtFuelType, txtDate, txtAddress,txtCity;
 
-    String advTitle, advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, date, address;
+    String advTitle, advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, date, address,city;
     int price, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncome, dues;
     long latitude, longitude;
 
@@ -49,7 +49,7 @@ public class AdvDetailActivity extends AppCompatActivity {
         txtFuelType = (TextView) findViewById(R.id.detail_AdvFuelType);
         txtDate = (TextView) findViewById(R.id.detail_AdvDate);
         txtAddress = (TextView) findViewById(R.id.detail_AdvAddress);
-
+        txtCity=(TextView)findViewById(R.id.detail_AdvCity);
 
         advTitle=HomeFragment.advDetail.getAdvTitle();
         advImagePng=HomeFragment.advDetail.getAdv_image();
@@ -74,7 +74,7 @@ public class AdvDetailActivity extends AppCompatActivity {
         fuelType=HomeFragment.advDetail.getFuelType();
         date=HomeFragment.advDetail.getDate();
         address=HomeFragment.advDetail.getAddress();
-
+        city=HomeFragment.advDetail.getCity();
 
     }
 
@@ -109,6 +109,7 @@ public class AdvDetailActivity extends AppCompatActivity {
         txtFuelType.setText(fuelType);
         txtDate.setText(date);
         txtAddress.setText(address);
+        txtCity.setText(city);
 
 
     }

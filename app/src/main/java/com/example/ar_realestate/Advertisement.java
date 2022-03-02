@@ -10,7 +10,7 @@ import android.graphics.BitmapFactory;
 import java.util.ArrayList;
 
 public class Advertisement {
-    private String  advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address;
+    private String  advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city;
     private  int advId, price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
 
     private long latitude,longitude;
@@ -29,7 +29,7 @@ public class Advertisement {
         this.advId=advId;
     }
 
-    public Advertisement(String advTitle, Bitmap advImage,int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address) {
+    public Advertisement(String advTitle, Bitmap advImage,int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address,String city) {
         this.advTitle = advTitle;
         this.advImage=advImage;
         this.price=price;
@@ -53,32 +53,27 @@ public class Advertisement {
         this.fuelType=fuelType;
         this.date=date;
         this.address=address;
+        this.city=city;
     }
 
+    public String getCity() {
+        return city;
+    }
+    public void setCity(String city) {
+        this.city = city;
+    }
     public int getAdvId() {
         return advId;
     }
-
     public void setAdvId(int advId) {
         this.advId = advId;
     }
-
     public Bitmap getAdvImage() {
         return advImage;
     }
-
     public void setAdvImage(Bitmap advImage) {
         this.advImage = advImage;
     }
-
-    /*  public int getAdv_image() {
-          return adv_image;
-      }
-
-      public void setAdv_image(int adv_image) {
-          this.adv_image = adv_image;
-      }
-  */
     public String getAdvTitle() {
         return advTitle;
     }
@@ -294,6 +289,7 @@ public class Advertisement {
         ArrayList<String> fuelTypeList=new ArrayList<>();
         ArrayList<String> dateList=new ArrayList<>();
         ArrayList<String> addressList=new ArrayList<>();
+        ArrayList<String> cityList=new ArrayList<>();
 
         ArrayList<Integer> priceList=new ArrayList<>();
         ArrayList<Integer> squareMetersList=new ArrayList<>();
@@ -313,15 +309,17 @@ public class Advertisement {
 
             if(FilterAdvFragment.applButton==true){
                 sqlQuery= "SELECT * FROM  Advertisements  WHERE AdvStatus  = ? AND  (Price BETWEEN "+FilterAdvFragment.priceMin+" AND "+FilterAdvFragment.priceMax+ " )"
-                        +" AND RoomNum = ? AND SquareMeter = ? AND BuildingFloors = ? AND FloorLoc = ? AND BuildAge = ? AND BuildType = ? AND ItemStatus = ? AND WarmType = ?" +
-                        "AND NumOfBathrooms = ? AND ElgCredit = ? AND UsingStatus = ? AND StateBuilding = ? AND  RentalIncome = ? AND Dues = ? AND Swap = ? AND Front = ? AND" +
-                        " FuelType = ? AND Address = ? ";
+                        +" AND RoomNum = ? AND (SquareMeter BETWEEN "+FilterAdvFragment.squareMeterMin+" AND "+FilterAdvFragment.squareMeterMax+")"
+                        +" AND (BuildingFloors BETWEEN "+FilterAdvFragment.buildingFloorsMin+" AND "+FilterAdvFragment.buildingFloorsMax+")"
+                        +" AND (FloorLoc BETWEEN "+FilterAdvFragment.floorLocMin+" AND "+FilterAdvFragment.floorLocMax+")"
+                        +" AND (BuildAge BETWEEN "+FilterAdvFragment.buildAgeMin+" AND "+FilterAdvFragment.buildAgeMax+")"
+                        +" AND BuildType = ? AND ItemStatus = ? AND WarmType = ?" + "AND NumOfBathrooms = ? AND ElgCredit = ? AND UsingStatus = ? AND StateBuilding = ? "
+                        +" AND (RentalIncome BETWEEN "+FilterAdvFragment.rentalIncomeMin+" AND "+FilterAdvFragment.rentalIncomeMax+") AND (Dues BETWEEN "+FilterAdvFragment.duesMin+" AND "+FilterAdvFragment.duesMax+") "
+                        +" AND Swap = ? AND Front = ? AND FuelType = ? AND Address = ? AND Cities = ?";
 
-                cursor=MainActivity.db.rawQuery(sqlQuery, new String[] { FilterAdvFragment.advStatus,FilterAdvFragment.roomNum,String.valueOf(FilterAdvFragment.squareMeters),
-                        String.valueOf(FilterAdvFragment.buildingFloors),String.valueOf(FilterAdvFragment.floorLoc),String.valueOf(FilterAdvFragment.buildAge),
+                cursor=MainActivity.db.rawQuery(sqlQuery, new String[] { FilterAdvFragment.advStatus,FilterAdvFragment.roomNum,
                         FilterAdvFragment.buildType,FilterAdvFragment.itemStatus,FilterAdvFragment.warmType,String.valueOf(FilterAdvFragment.numOfBathr),FilterAdvFragment.elgForCredit,
-                        FilterAdvFragment.usingStatus,FilterAdvFragment.stateBuilding,String.valueOf(FilterAdvFragment.rentalIncome),String.valueOf(FilterAdvFragment.dues),
-                        FilterAdvFragment.swap,FilterAdvFragment.front,FilterAdvFragment.fuelType,FilterAdvFragment.address});
+                        FilterAdvFragment.usingStatus,FilterAdvFragment.stateBuilding, FilterAdvFragment.swap,FilterAdvFragment.front,FilterAdvFragment.fuelType,FilterAdvFragment.address,FilterAdvFragment.city});
 
 
             }
@@ -355,6 +353,7 @@ public class Advertisement {
             int fuelTypeIndex=cursor.getColumnIndex("FuelType");
             int dateIndex=cursor.getColumnIndex("Date");
             int addressIndex=cursor.getColumnIndex("Address");
+            int cityIndex=cursor.getColumnIndex("Cities");
             int xCoordinateIndex=cursor.getColumnIndex("xCoordinate");
             int yCoordinateIndex=cursor.getColumnIndex("yCoordinate");
 
@@ -373,6 +372,7 @@ public class Advertisement {
                 fuelTypeList.add(cursor.getString(fuelTypeIndex));
                 dateList.add(cursor.getString(dateIndex));
                 addressList.add(cursor.getString(addressIndex));
+                cityList.add(cursor.getString(cityIndex));
                 //  System.out.println("PRICEEEEEEE:"+cursor.getInt(priceIncex));
                 priceList.add(cursor.getInt(priceIncex));
                 squareMetersList.add(cursor.getInt(squareMeterIndex));
@@ -417,6 +417,7 @@ public class Advertisement {
                 adv.setFuelType(fuelTypeList.get(i));
                 adv.setDate(dateList.get(i));
                 adv.setAddress(addressList.get(i));
+                adv.setCity(cityList.get(i));
                 adv.setLatitude(xCoordinateList.get(i));
                 adv.setLongitude(yCoordinateList.get(i));
 
