@@ -313,13 +313,14 @@ public class Advertisement {
                         +" AND (BuildingFloors BETWEEN "+FilterAdvFragment.buildingFloorsMin+" AND "+FilterAdvFragment.buildingFloorsMax+")"
                         +" AND (FloorLoc BETWEEN "+FilterAdvFragment.floorLocMin+" AND "+FilterAdvFragment.floorLocMax+")"
                         +" AND (BuildAge BETWEEN "+FilterAdvFragment.buildAgeMin+" AND "+FilterAdvFragment.buildAgeMax+")"
-                        +" AND BuildType = ? AND ItemStatus = ? AND WarmType = ?" + "AND NumOfBathrooms = ? AND ElgCredit = ? AND UsingStatus = ? AND StateBuilding = ? "
+                        +" AND BuildType = ? AND ItemStatus = ? AND WarmType = ?" + "AND (NumOfBathrooms BETWEEN "+FilterAdvFragment.numOfBathrMin+" AND "+FilterAdvFragment.numOfBathrMax+") "
+                        +" AND ElgCredit = ? AND UsingStatus = ? AND StateBuilding = ? "
                         +" AND (RentalIncome BETWEEN "+FilterAdvFragment.rentalIncomeMin+" AND "+FilterAdvFragment.rentalIncomeMax+") AND (Dues BETWEEN "+FilterAdvFragment.duesMin+" AND "+FilterAdvFragment.duesMax+") "
                         +" AND Swap = ? AND Front = ? AND FuelType = ? AND Address = ? AND Cities = ?";
 
-                cursor=MainActivity.db.rawQuery(sqlQuery, new String[] { FilterAdvFragment.advStatus,FilterAdvFragment.roomNum,
-                        FilterAdvFragment.buildType,FilterAdvFragment.itemStatus,FilterAdvFragment.warmType,String.valueOf(FilterAdvFragment.numOfBathr),FilterAdvFragment.elgForCredit,
-                        FilterAdvFragment.usingStatus,FilterAdvFragment.stateBuilding, FilterAdvFragment.swap,FilterAdvFragment.front,FilterAdvFragment.fuelType,FilterAdvFragment.address,FilterAdvFragment.city});
+                cursor=MainActivity.db.rawQuery(sqlQuery, new String[] { FilterAdvFragment.advStatus,FilterAdvFragment.roomNum, FilterAdvFragment.buildType,
+                        FilterAdvFragment.itemStatus,FilterAdvFragment.warmType,FilterAdvFragment.elgForCredit, FilterAdvFragment.usingStatus,
+                        FilterAdvFragment.stateBuilding, FilterAdvFragment.swap,FilterAdvFragment.front,FilterAdvFragment.fuelType,FilterAdvFragment.address,FilterAdvFragment.city});
 
 
             }
@@ -429,8 +430,7 @@ public class Advertisement {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
+        FilterAdvFragment.applButton=false;
         return advertisementList;
     }
 }

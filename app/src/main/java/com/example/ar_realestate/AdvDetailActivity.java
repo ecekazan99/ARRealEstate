@@ -50,31 +50,61 @@ public class AdvDetailActivity extends AppCompatActivity {
         txtDate = (TextView) findViewById(R.id.detail_AdvDate);
         txtAddress = (TextView) findViewById(R.id.detail_AdvAddress);
         txtCity=(TextView)findViewById(R.id.detail_AdvCity);
+        if(Add_AdvActivity.add_Adv==false){
 
-        advTitle=HomeFragment.advDetail.getAdvTitle();
-        advImagePng=HomeFragment.advDetail.getAdv_image();
-        price=HomeFragment.advDetail.getPrice();
-        advStatus=HomeFragment.advDetail.getAdvStatus();
-        roomNum=HomeFragment.advDetail.getRoomNum();
-        squareMeters=HomeFragment.advDetail.getSquareMeters();
-        buildingFloors=HomeFragment.advDetail.getBuildingFloors();
-        floorLoc=HomeFragment.advDetail.getFloorLoc();
-        buildAge=HomeFragment.advDetail.getBuildAge();
-        buildType=HomeFragment.advDetail.getBuildType();
-        itemStatus=HomeFragment.advDetail.getItemStatus();
-        warmType=HomeFragment.advDetail.getWarmType();
-        numOfBathr=HomeFragment.advDetail.getNumOfBathr();
-        elgForCredit=HomeFragment.advDetail.getElgForCredit();
-        usingStatus=HomeFragment.advDetail.getUsingStatus();
-        stateBuilding=HomeFragment.advDetail.getStateBuilding();
-        rentalIncome=HomeFragment.advDetail.getRentalIncome();
-        dues=HomeFragment.advDetail.getDues();
-        swap=HomeFragment.advDetail.getSwap();
-        front=HomeFragment.advDetail.getFront();
-        fuelType=HomeFragment.advDetail.getFuelType();
-        date=HomeFragment.advDetail.getDate();
-        address=HomeFragment.advDetail.getAddress();
-        city=HomeFragment.advDetail.getCity();
+            advTitle=HomeFragment.advDetail.getAdvTitle();
+            advImagePng=HomeFragment.advDetail.getAdv_image();
+            price=HomeFragment.advDetail.getPrice();
+            advStatus=HomeFragment.advDetail.getAdvStatus();
+            roomNum=HomeFragment.advDetail.getRoomNum();
+            squareMeters=HomeFragment.advDetail.getSquareMeters();
+            buildingFloors=HomeFragment.advDetail.getBuildingFloors();
+            floorLoc=HomeFragment.advDetail.getFloorLoc();
+            buildAge=HomeFragment.advDetail.getBuildAge();
+            buildType=HomeFragment.advDetail.getBuildType();
+            itemStatus=HomeFragment.advDetail.getItemStatus();
+            warmType=HomeFragment.advDetail.getWarmType();
+            numOfBathr=HomeFragment.advDetail.getNumOfBathr();
+            elgForCredit=HomeFragment.advDetail.getElgForCredit();
+            usingStatus=HomeFragment.advDetail.getUsingStatus();
+            stateBuilding=HomeFragment.advDetail.getStateBuilding();
+            rentalIncome=HomeFragment.advDetail.getRentalIncome();
+            dues=HomeFragment.advDetail.getDues();
+            swap=HomeFragment.advDetail.getSwap();
+            front=HomeFragment.advDetail.getFront();
+            fuelType=HomeFragment.advDetail.getFuelType();
+            date=HomeFragment.advDetail.getDate();
+            address=HomeFragment.advDetail.getAddress();
+            city=HomeFragment.advDetail.getCity();
+
+        }
+        else if(Add_AdvActivity.add_Adv==true){
+            advTitle=Add_AdvActivity.advDetailLast.getAdvTitle();
+            advImagePng=Add_AdvActivity.advDetailLast.getAdv_image();
+            price=Add_AdvActivity.advDetailLast.getPrice();
+            advStatus=Add_AdvActivity.advDetailLast.getAdvStatus();
+            roomNum=Add_AdvActivity.advDetailLast.getRoomNum();
+            squareMeters=Add_AdvActivity.advDetailLast.getSquareMeters();
+            buildingFloors=Add_AdvActivity.advDetailLast.getBuildingFloors();
+            floorLoc=Add_AdvActivity.advDetailLast.getFloorLoc();
+            buildAge=Add_AdvActivity.advDetailLast.getBuildAge();
+            buildType=Add_AdvActivity.advDetailLast.getBuildType();
+            itemStatus=Add_AdvActivity.advDetailLast.getItemStatus();
+            warmType=Add_AdvActivity.advDetailLast.getWarmType();
+            numOfBathr=Add_AdvActivity.advDetailLast.getNumOfBathr();
+            elgForCredit=Add_AdvActivity.advDetailLast.getElgForCredit();
+            usingStatus=Add_AdvActivity.advDetailLast.getUsingStatus();
+            stateBuilding=Add_AdvActivity.advDetailLast.getStateBuilding();
+            rentalIncome=Add_AdvActivity.advDetailLast.getRentalIncome();
+            dues=Add_AdvActivity.advDetailLast.getDues();
+            swap=Add_AdvActivity.advDetailLast.getSwap();
+            front=Add_AdvActivity.advDetailLast.getFront();
+            fuelType=Add_AdvActivity.advDetailLast.getFuelType();
+            date=Add_AdvActivity.advDetailLast.getDate();
+            address=Add_AdvActivity.advDetailLast.getAddress();
+            city=Add_AdvActivity.advDetailLast.getCity();
+        }
+        Add_AdvActivity.add_Adv=false;
 
     }
 

@@ -2660,6 +2660,8 @@ id Filter_DuesMax
 id Filter_DuesMin
 id Filter_FloorLocMax
 id Filter_FloorLocMin
+id Filter_NumofBathMax
+id Filter_NumofBathMin
 id Filter_PriceMax
 id Filter_PriceMin
 id Filter_RentalMax
@@ -2669,8 +2671,6 @@ id Filter_SquareMin
 id Filter_WarmType
 id Filter_btnApply
 id Filter_editTextAddress
-id Filter_editTextNumOfBath
-id Filter_editTextWarmType
 id Filter_spinnerAdvStatus
 id Filter_spinnerBuildType
 id Filter_spinnerCity

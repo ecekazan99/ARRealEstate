@@ -47,13 +47,16 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
   public final EditText FilterEditTextAddress;
 
   @NonNull
-  public final EditText FilterEditTextNumOfBath;
-
-  @NonNull
   public final EditText FilterFloorLocMax;
 
   @NonNull
   public final EditText FilterFloorLocMin;
+
+  @NonNull
+  public final EditText FilterNumofBathMax;
+
+  @NonNull
+  public final EditText FilterNumofBathMin;
 
   @NonNull
   public final EditText FilterPriceMax;
@@ -179,26 +182,27 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
       @NonNull EditText FilterBuildAgeMax, @NonNull EditText FilterBuildAgeMin,
       @NonNull EditText FilterBuildingFloorMax, @NonNull EditText FilterBuildingFloorMin,
       @NonNull EditText FilterDuesMax, @NonNull EditText FilterDuesMin,
-      @NonNull EditText FilterEditTextAddress, @NonNull EditText FilterEditTextNumOfBath,
-      @NonNull EditText FilterFloorLocMax, @NonNull EditText FilterFloorLocMin,
-      @NonNull EditText FilterPriceMax, @NonNull EditText FilterPriceMin,
-      @NonNull EditText FilterRentalMax, @NonNull EditText FilterRentalMin,
-      @NonNull Spinner FilterSpinnerAdvStatus, @NonNull Spinner FilterSpinnerBuildType,
-      @NonNull Spinner FilterSpinnerCity, @NonNull Spinner FilterSpinnerElgCredit,
-      @NonNull Spinner FilterSpinnerFront, @NonNull Spinner FilterSpinnerFuelType,
-      @NonNull Spinner FilterSpinnerItemStatus, @NonNull Spinner FilterSpinnerRoomNum,
-      @NonNull Spinner FilterSpinnerStateBuilding, @NonNull Spinner FilterSpinnerSwap,
-      @NonNull Spinner FilterSpinnerUsingStatus, @NonNull EditText FilterSquareMax,
-      @NonNull EditText FilterSquareMin, @NonNull Spinner FilterWarmType,
-      @NonNull TextView TextAddress, @NonNull TextView TextAdvFilter,
-      @NonNull TextView TextAdvStatus, @NonNull TextView TextBuildAge,
-      @NonNull TextView TextBuildType, @NonNull TextView TextBuildingFloors,
-      @NonNull TextView TextCity, @NonNull TextView TextDues, @NonNull TextView TextElgForCredit,
-      @NonNull TextView TextFloorLoc, @NonNull TextView TextFront, @NonNull TextView TextFuelType,
-      @NonNull TextView TextItemStatus, @NonNull TextView TextNumOfBath,
-      @NonNull TextView TextRentalIncome, @NonNull TextView TextRoomNum,
-      @NonNull TextView TextSquareMeter, @NonNull TextView TextStateBuilding,
-      @NonNull TextView TextSwap, @NonNull TextView TextUsingStatus, @NonNull TextView TextWarmType,
+      @NonNull EditText FilterEditTextAddress, @NonNull EditText FilterFloorLocMax,
+      @NonNull EditText FilterFloorLocMin, @NonNull EditText FilterNumofBathMax,
+      @NonNull EditText FilterNumofBathMin, @NonNull EditText FilterPriceMax,
+      @NonNull EditText FilterPriceMin, @NonNull EditText FilterRentalMax,
+      @NonNull EditText FilterRentalMin, @NonNull Spinner FilterSpinnerAdvStatus,
+      @NonNull Spinner FilterSpinnerBuildType, @NonNull Spinner FilterSpinnerCity,
+      @NonNull Spinner FilterSpinnerElgCredit, @NonNull Spinner FilterSpinnerFront,
+      @NonNull Spinner FilterSpinnerFuelType, @NonNull Spinner FilterSpinnerItemStatus,
+      @NonNull Spinner FilterSpinnerRoomNum, @NonNull Spinner FilterSpinnerStateBuilding,
+      @NonNull Spinner FilterSpinnerSwap, @NonNull Spinner FilterSpinnerUsingStatus,
+      @NonNull EditText FilterSquareMax, @NonNull EditText FilterSquareMin,
+      @NonNull Spinner FilterWarmType, @NonNull TextView TextAddress,
+      @NonNull TextView TextAdvFilter, @NonNull TextView TextAdvStatus,
+      @NonNull TextView TextBuildAge, @NonNull TextView TextBuildType,
+      @NonNull TextView TextBuildingFloors, @NonNull TextView TextCity, @NonNull TextView TextDues,
+      @NonNull TextView TextElgForCredit, @NonNull TextView TextFloorLoc,
+      @NonNull TextView TextFront, @NonNull TextView TextFuelType, @NonNull TextView TextItemStatus,
+      @NonNull TextView TextNumOfBath, @NonNull TextView TextRentalIncome,
+      @NonNull TextView TextRoomNum, @NonNull TextView TextSquareMeter,
+      @NonNull TextView TextStateBuilding, @NonNull TextView TextSwap,
+      @NonNull TextView TextUsingStatus, @NonNull TextView TextWarmType,
       @NonNull TextView textPrice) {
     this.rootView = rootView;
     this.FilterBtnApply = FilterBtnApply;
@@ -209,9 +213,10 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
     this.FilterDuesMax = FilterDuesMax;
     this.FilterDuesMin = FilterDuesMin;
     this.FilterEditTextAddress = FilterEditTextAddress;
-    this.FilterEditTextNumOfBath = FilterEditTextNumOfBath;
     this.FilterFloorLocMax = FilterFloorLocMax;
     this.FilterFloorLocMin = FilterFloorLocMin;
+    this.FilterNumofBathMax = FilterNumofBathMax;
+    this.FilterNumofBathMin = FilterNumofBathMin;
     this.FilterPriceMax = FilterPriceMax;
     this.FilterPriceMin = FilterPriceMin;
     this.FilterRentalMax = FilterRentalMax;
@@ -329,12 +334,6 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.Filter_editTextNumOfBath;
-      EditText FilterEditTextNumOfBath = ViewBindings.findChildViewById(rootView, id);
-      if (FilterEditTextNumOfBath == null) {
-        break missingId;
-      }
-
       id = R.id.Filter_FloorLocMax;
       EditText FilterFloorLocMax = ViewBindings.findChildViewById(rootView, id);
       if (FilterFloorLocMax == null) {
@@ -344,6 +343,18 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
       id = R.id.Filter_FloorLocMin;
       EditText FilterFloorLocMin = ViewBindings.findChildViewById(rootView, id);
       if (FilterFloorLocMin == null) {
+        break missingId;
+      }
+
+      id = R.id.Filter_NumofBathMax;
+      EditText FilterNumofBathMax = ViewBindings.findChildViewById(rootView, id);
+      if (FilterNumofBathMax == null) {
+        break missingId;
+      }
+
+      id = R.id.Filter_NumofBathMin;
+      EditText FilterNumofBathMin = ViewBindings.findChildViewById(rootView, id);
+      if (FilterNumofBathMin == null) {
         break missingId;
       }
 
@@ -589,14 +600,15 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
 
       return new FragmentFilterAdvBinding((ScrollView) rootView, FilterBtnApply, FilterBuildAgeMax,
           FilterBuildAgeMin, FilterBuildingFloorMax, FilterBuildingFloorMin, FilterDuesMax,
-          FilterDuesMin, FilterEditTextAddress, FilterEditTextNumOfBath, FilterFloorLocMax,
-          FilterFloorLocMin, FilterPriceMax, FilterPriceMin, FilterRentalMax, FilterRentalMin,
-          FilterSpinnerAdvStatus, FilterSpinnerBuildType, FilterSpinnerCity, FilterSpinnerElgCredit,
-          FilterSpinnerFront, FilterSpinnerFuelType, FilterSpinnerItemStatus, FilterSpinnerRoomNum,
-          FilterSpinnerStateBuilding, FilterSpinnerSwap, FilterSpinnerUsingStatus, FilterSquareMax,
-          FilterSquareMin, FilterWarmType, TextAddress, TextAdvFilter, TextAdvStatus, TextBuildAge,
-          TextBuildType, TextBuildingFloors, TextCity, TextDues, TextElgForCredit, TextFloorLoc,
-          TextFront, TextFuelType, TextItemStatus, TextNumOfBath, TextRentalIncome, TextRoomNum,
+          FilterDuesMin, FilterEditTextAddress, FilterFloorLocMax, FilterFloorLocMin,
+          FilterNumofBathMax, FilterNumofBathMin, FilterPriceMax, FilterPriceMin, FilterRentalMax,
+          FilterRentalMin, FilterSpinnerAdvStatus, FilterSpinnerBuildType, FilterSpinnerCity,
+          FilterSpinnerElgCredit, FilterSpinnerFront, FilterSpinnerFuelType,
+          FilterSpinnerItemStatus, FilterSpinnerRoomNum, FilterSpinnerStateBuilding,
+          FilterSpinnerSwap, FilterSpinnerUsingStatus, FilterSquareMax, FilterSquareMin,
+          FilterWarmType, TextAddress, TextAdvFilter, TextAdvStatus, TextBuildAge, TextBuildType,
+          TextBuildingFloors, TextCity, TextDues, TextElgForCredit, TextFloorLoc, TextFront,
+          TextFuelType, TextItemStatus, TextNumOfBath, TextRentalIncome, TextRoomNum,
           TextSquareMeter, TextStateBuilding, TextSwap, TextUsingStatus, TextWarmType, textPrice);
     }
     String missingId = rootView.getResources().getResourceName(id);
