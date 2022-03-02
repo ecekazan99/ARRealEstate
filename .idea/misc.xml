@@ -17,9 +17,11 @@
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/advertisement_card.xml" value="0.17346014492753623" />
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_dashboard.xml" value="0.19635416666666666" />
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_filter_adv.xml" value="0.1" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_home.xml" value="0.22083333333333333" />
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_login.xml" value="0.19635416666666666" />
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
-        <entry key="..\:/ARRealEstate/app/src/main/res/menu/toolbar.xml" value="0.24270833333333333" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/menu/popup.xml" value="0.21979166666666666" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/menu/toolbar.xml" value="0.1" />
         <entry key="..\:/ARRealEstate/app/src/main/res/menu/top_bar.xml" value="0.264" />
         <entry key="..\:/bitirme/ARRealEstate/app/src/main/res/layout/activity_adv_detail.xml" value="0.21302083333333333" />
         <entry key="..\:/bitirme/ARRealEstate/app/src/main/res/layout/activity_main.xml" value="0.16799999999999998" />

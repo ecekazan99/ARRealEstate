@@ -143,9 +143,11 @@ id adv_item_textViewAdvPrice
 id adv_item_textViewAdvTitle
 id buttonHaveAccount
 id buttonLogin
+id buttonOrderHide
 id buttonSignUp
 id clickDetail
 id container
+id dcrs_price
 id detail_AdvAddress
 id detail_AdvBuildingAge
 id detail_AdvBuildingFloors
@@ -178,6 +180,7 @@ id haveAccount
 id hgfd
 id hgfddfg
 id image
+id inc_price
 id inputNewPassword
 id inputPassword
 id inputUserMail
@@ -202,8 +205,6 @@ id title
 id toolbar_Order
 id toolbar_back
 id toolbar_filter
-id topBar_filter
-id topBar_order
 id userMail
 id userName
 id userNewPassword
@@ -222,8 +223,8 @@ layout fragment_myaccount
 layout fragment_sign_up
 layout fragment_user_profile
 menu bottom_nav_menu
+menu popup
 menu toolbar
-menu top_bar
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation mobile_navigation

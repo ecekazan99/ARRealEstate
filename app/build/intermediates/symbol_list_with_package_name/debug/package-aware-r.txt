@@ -2856,6 +2856,7 @@ id bounceEnd
 id bounceStart
 id buttonHaveAccount
 id buttonLogin
+id buttonOrderHide
 id buttonPanel
 id buttonSignUp
 id cache_measures
@@ -2902,6 +2903,7 @@ id customPanel
 id cut
 id dark
 id date_picker_actions
+id dcrs_price
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
@@ -3011,6 +3013,7 @@ id ignore
 id ignoreRequest
 id image
 id immediateStop
+id inc_price
 id included
 id info
 id inputNewPassword
@@ -3275,8 +3278,6 @@ id toolbar_Order
 id toolbar_back
 id toolbar_filter
 id top
-id topBar_filter
-id topBar_order
 id topPanel
 id touch_outside
 id transitionToEnd
@@ -3513,8 +3514,8 @@ layout text_view_without_line_height
 menu bottom_nav_menu
 menu example_menu
 menu example_menu2
+menu popup
 menu toolbar
-menu top_bar
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation mobile_navigation

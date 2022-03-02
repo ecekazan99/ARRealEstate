@@ -8,6 +8,10 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-mdpi\\ic_action_filter.png"
     },
     {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\menu_popup.xml.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\menu\\popup.xml"
+    },
+    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.webp"
     },
@@ -24,12 +28,12 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_home.xml"
     },
     {
-        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
-        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_main.xml"
-    },
-    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_adv_detail.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_adv_detail.xml"
+    },
+    {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_user_profile.xml.flat",
@@ -186,10 +190,6 @@
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_person_24.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable\\ic_baseline_person_24.xml"
-    },
-    {
-        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\menu_top_bar.xml.flat",
-        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\menu\\top_bar.xml"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.webp.flat",
