@@ -1,6 +1,8 @@
 package com.example.ar_realestate;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
@@ -69,26 +71,51 @@ public class UserProfileFragment extends Fragment {
                 inputUserSurname=(EditText)binding.inputUserSurname;
                 inputUserMail=(EditText) binding.inputUserMail;
                 inputPassword=(EditText) binding.inputPassword;
-                //inputNewPassword=(EditText) binding.inputNewPassword;
+                inputNewPassword=(EditText) binding.inputNewPassword;
 
-                Database database=new Database(getContext());
-                int a= database.updateUser(userId,inputUserName.getText().toString(),inputUserSurname.getText().toString(),
-                 inputUserMail.getText().toString(),inputPassword.getText().toString(),inputPassword.getText().toString());
+                    if(inputPassword.getText().toString().equals(userPassword)){
+                        Database database=new Database(getContext());
+                        int updateUserInfo=0;
+                        String tempPassword="";
+                        if(!inputNewPassword.getText().toString().equals(null)){
+                            tempPassword=inputNewPassword.getText().toString();
+                        }
+                        else{
+                            tempPassword=inputPassword.getText().toString();
+                        }
 
-                if(a==1){
-                    Intent intent=new Intent(getActivity().getBaseContext(),MainActivity.class);
-                    Toast.makeText(getActivity(), user.getUserId()+" "+ user.getUserName().toString(),
-                            Toast.LENGTH_LONG).show();
-                    intent.putExtra("UserInformation",user);
-                    getActivity().startActivity(intent);
-                }
-                else {
-                    Toast.makeText(getActivity(), "asd",
-                            Toast.LENGTH_LONG).show();
-                }
+                        updateUserInfo= database.updateUser(userId,inputUserName.getText().toString(),inputUserSurname.getText().toString(),
+                                inputUserMail.getText().toString(),inputPassword.getText().toString(),tempPassword);
+
+                        if(updateUserInfo==1){
+                            AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+                            String finalTempPassword = tempPassword;
+                            builder.setMessage("Are you sure?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    user.setPassword(finalTempPassword);
+                                    user.setUserName(inputUserName.getText().toString());
+                                    user.setUserSurname(inputUserSurname.getText().toString());
+                                    user.setMailAddress(inputUserMail.getText().toString());
+
+                                    UserProfileFragment userProfileFragment=new UserProfileFragment();
+                                    FragmentManager fragmentManager=getFragmentManager();
+                                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                                    fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,userProfileFragment);
+                                    fragmentTransaction.commit();
+                                }
+                            }).setNegativeButton("No",null );
+
+                            AlertDialog alert=builder.create();
+                            alert.show();
+                        }
+                    }
+                    else{
+                        Toast.makeText(getActivity(), "Current Password is null or wrong !!",
+                                Toast.LENGTH_SHORT).show();
+                    }
             }
         });
-
-                return  binding.getRoot();
+        return  binding.getRoot();
     }
 }
