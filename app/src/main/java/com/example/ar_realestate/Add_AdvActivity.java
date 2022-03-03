@@ -286,7 +286,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
             }
         });
-        adapterTowns=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,cities);
+        adapterTowns=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,districties);
         adapterTowns.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTown.setAdapter(adapterTowns);
 
@@ -428,7 +428,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                     System.out.println("jgdfgm");
                     advDetailLast=new AdvDetail(advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
                             buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,
-                            stateBuilding,rentalIncome,dues,swap,front,fuelType,date,address,city);
+                            stateBuilding,rentalIncome,dues,swap,front,fuelType,date,address,city,town);
                     Intent detailIntent=new Intent(this,AdvDetailActivity.class);
 
                     startActivity(detailIntent);

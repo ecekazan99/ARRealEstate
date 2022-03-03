@@ -87,6 +87,9 @@ public final class ActivityAdvDetailBinding implements ViewBinding {
   public final TextView detailAdvTitle;
 
   @NonNull
+  public final TextView detailAdvTown;
+
+  @NonNull
   public final TextView detailAdvUsingStatus;
 
   @NonNull
@@ -103,8 +106,8 @@ public final class ActivityAdvDetailBinding implements ViewBinding {
       @NonNull TextView detailAdvRentalIncome, @NonNull TextView detailAdvRoomNum,
       @NonNull TextView detailAdvSquareMeter, @NonNull TextView detailAdvStateOfBuilding,
       @NonNull TextView detailAdvStatus, @NonNull TextView detailAdvSwap,
-      @NonNull TextView detailAdvTitle, @NonNull TextView detailAdvUsingStatus,
-      @NonNull TextView detailAdvWarmType) {
+      @NonNull TextView detailAdvTitle, @NonNull TextView detailAdvTown,
+      @NonNull TextView detailAdvUsingStatus, @NonNull TextView detailAdvWarmType) {
     this.rootView = rootView;
     this.detailAdvAddress = detailAdvAddress;
     this.detailAdvBuildingAge = detailAdvBuildingAge;
@@ -128,6 +131,7 @@ public final class ActivityAdvDetailBinding implements ViewBinding {
     this.detailAdvStatus = detailAdvStatus;
     this.detailAdvSwap = detailAdvSwap;
     this.detailAdvTitle = detailAdvTitle;
+    this.detailAdvTown = detailAdvTown;
     this.detailAdvUsingStatus = detailAdvUsingStatus;
     this.detailAdvWarmType = detailAdvWarmType;
   }
@@ -291,6 +295,12 @@ public final class ActivityAdvDetailBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.detail_AdvTown;
+      TextView detailAdvTown = ViewBindings.findChildViewById(rootView, id);
+      if (detailAdvTown == null) {
+        break missingId;
+      }
+
       id = R.id.detail_AdvUsingStatus;
       TextView detailAdvUsingStatus = ViewBindings.findChildViewById(rootView, id);
       if (detailAdvUsingStatus == null) {
@@ -308,7 +318,7 @@ public final class ActivityAdvDetailBinding implements ViewBinding {
           detailAdvDate, detailAdvDues, detailAdvElgCredit, detailAdvFloorLoc, detailAdvFront,
           detailAdvFuelType, detailAdvImage, detailAdvItemStatus, detailAdvNumOfBathr,
           detailAdvPrice, detailAdvRentalIncome, detailAdvRoomNum, detailAdvSquareMeter,
-          detailAdvStateOfBuilding, detailAdvStatus, detailAdvSwap, detailAdvTitle,
+          detailAdvStateOfBuilding, detailAdvStatus, detailAdvSwap, detailAdvTitle, detailAdvTown,
           detailAdvUsingStatus, detailAdvWarmType);
     }
     String missingId = rootView.getResources().getResourceName(id);

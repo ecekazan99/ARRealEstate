@@ -65,6 +65,7 @@ id Filter_spinnerItemStatus
 id Filter_spinnerRoomNum
 id Filter_spinnerStateBuilding
 id Filter_spinnerSwap
+id Filter_spinnerTown
 id Filter_spinnerUsingStatus
 id TextAddress
 id TextAdvFilter
@@ -85,6 +86,7 @@ id TextRoomNum
 id TextSquareMeter
 id TextStateBuilding
 id TextSwap
+id TextTown
 id TextUsingStatus
 id TextWarmType
 id addAdv_TextRoomNum
@@ -173,6 +175,7 @@ id detail_AdvStateOfBuilding
 id detail_AdvStatus
 id detail_AdvSwap
 id detail_AdvTitle
+id detail_AdvTown
 id detail_AdvUsingStatus
 id detail_AdvWarmType
 id exitAccount
