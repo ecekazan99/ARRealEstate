@@ -36,7 +36,7 @@
         app:navGraph="@navigation/mobile_navigation"
         tools:ignore="UnknownId">
 
-        
+
 
     </FrameLayout>
 
