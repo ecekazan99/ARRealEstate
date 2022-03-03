@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#Thu Mar 03 22:46:30 TRT 2022
-=======
-#Thu Mar 03 22:00:20 TRT 2022
->>>>>>> 7661055180c041cbd7ef0f074531dcccbe6ac717
+#Fri Mar 04 00:45:46 TRT 2022
 path.3=9/classes.dex
 path.2=15/classes.dex
 path.1=0/classes.dex

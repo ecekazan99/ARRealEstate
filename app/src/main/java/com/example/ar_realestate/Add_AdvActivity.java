@@ -339,20 +339,30 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
         return new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
     }
     public boolean advInputControl(){
+
         Boolean checkEmpty =true;
         if(advStatus.equals("Select Adv Status") || buildType.equals("Select Build Type") || itemStatus.equals("Select Item Status") ||
                 elgForCredit.equals("Select Elg Credit") || usingStatus.equals("Select Using Status") || stateBuilding.equals("Select State Building")||
                 swap.equals("Select Swap")|| front.equals("Select Front") || fuelType.equals("Select Fuel Type") ||
                 roomNum.equals("Select Room Number") || warmType.equals("Select Warm Type") || city.equals("Select City") ){
             checkEmpty =false;
+
             Toast.makeText(getApplicationContext(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
+
         }else if(TextUtils.isEmpty(advTitle)  || TextUtils.isEmpty(address)|| TextUtils.isEmpty(editTxtPrice.getText().toString())||
                 TextUtils.isEmpty(editTxtSquareMt.getText().toString())||TextUtils.isEmpty(editTxtBuildingFloors.getText().toString())||
-                TextUtils.isEmpty(editTxtFloorLoc.getText().toString())||TextUtils.isEmpty(editTxtBuildAge.getText().toString())||
+            TextUtils.isEmpty(editTxtFloorLoc.getText().toString()) ||TextUtils.isEmpty(editTxtBuildAge.getText().toString())||
                 TextUtils.isEmpty(editTxtNumofBath.getText().toString())||TextUtils.isEmpty(editTxtRentalIncome.getText().toString())||TextUtils.isEmpty(editTxtDues.getText().toString())){
+
             checkEmpty=false;
             Toast.makeText(getApplicationContext(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
 
+        }else if(!TextUtils.isDigitsOnly(editTxtPrice.getText()) || !TextUtils.isDigitsOnly(editTxtSquareMt.getText()) ||
+                !TextUtils.isDigitsOnly(editTxtBuildingFloors.getText()) || !TextUtils.isDigitsOnly(editTxtFloorLoc.getText()) ||
+                !TextUtils.isDigitsOnly(editTxtBuildAge.getText()) || !TextUtils.isDigitsOnly(editTxtRentalIncome.getText())||
+                !TextUtils.isDigitsOnly(editTxtDues.getText()) || !TextUtils.isDigitsOnly(editTxtNumofBath.getText())) {
+            checkEmpty =false;
+            Toast.makeText(getApplicationContext(),"Please Incorrect Inputs",Toast.LENGTH_SHORT).show();
         }
         System.out.println("Girildi 1: "+ city);
         return checkEmpty;
@@ -360,30 +370,29 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
     public void saveAdv(View view) {
 
-        advTitle=editTxtTitle.getText().toString();
-        date=txtViewDate.toString();
-        address=editTxtAddress.getText().toString();
-
-        price= Integer.parseInt( editTxtPrice.getText().toString());
-        squareMeters=Integer.parseInt(editTxtSquareMt.getText().toString());
-        buildingFloors=Integer.parseInt(editTxtBuildingFloors.getText().toString());
-        floorLoc=Integer.parseInt(editTxtFloorLoc.getText().toString());
-        buildAge=Integer.parseInt(editTxtBuildAge.getText().toString());
-        numOfBathr=Integer.parseInt(editTxtNumofBath.getText().toString());
-        rentalIncome=Integer.parseInt(editTxtRentalIncome.getText().toString());
-        dues=Integer.parseInt(editTxtDues.getText().toString());
-
+         try {
+            advTitle=editTxtTitle.getText().toString();
+            date=txtViewDate.toString();
+            address=editTxtAddress.getText().toString();
+            price= Integer.parseInt( editTxtPrice.getText().toString());
+            squareMeters=Integer.parseInt(editTxtSquareMt.getText().toString());
+            buildingFloors=Integer.parseInt(editTxtBuildingFloors.getText().toString());
+            floorLoc=Integer.parseInt(editTxtFloorLoc.getText().toString());
+            buildAge=Integer.parseInt(editTxtBuildAge.getText().toString());
+            numOfBathr=Integer.parseInt(editTxtNumofBath.getText().toString());
+            rentalIncome=Integer.parseInt(editTxtRentalIncome.getText().toString());
+            dues=Integer.parseInt(editTxtDues.getText().toString());
+         }catch (Exception e ){
+             System.out.println("HATAAAAAAAAAAAAA");
+         }
         ByteArrayOutputStream outputStream =new ByteArrayOutputStream();
         smallestedImg=imageSmall(selectedİmg);
         smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStream);
         byte[] kayıtedilecekImage=outputStream.toByteArray();
 
         if(advInputControl()==true){
-            try {
+             try {
 
-                // Temp database değişecek şimdilik öylesine koydum
-                // SQLiteDatabase database=this.openOrCreateDatabase("Temp",MODE_PRIVATE,null);
-                //  database.execSQL("CREATE TABLE IF NOT EXISTS advertisements (AdvId INTEGER PRIMARY KEY AUTOINCREMENT,AdvTitle TEXT,AdvImage BLOB,Price INTEGER,AdvStatus TEXT,RoomNum TEXT,SquareMeter INTEGER,BuildingFloors INTEGER,FloorLoc INTEGER,BuildAge INTEGER,BuildType TEXT,ItemStatus TEXT,WarmType TEXT,NumOfBathrooms INTEGER,ElgCredit TEXT,UsingStatus TEXT,StateBuilding TEXT,RentalIncome INTEGER,Dues INTEGER,Swap TEXT,Front TEXT,FuelType TEXT,Date DATE,Address TEXT,xCoordinate REAL,yCoordinate REAL )");
                 MainActivity.database.onCreate(MainActivity.db);
                 String sqlQuery="INSERT INTO Advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc,BuildAge,BuildType,ItemStatus,WarmType,NumOfBathrooms,ElgCredit,UsingStatus,StateBuilding,RentalIncome,Dues,Swap,Front,FuelType,Date,Address,Cities,Town,xCoordinate,yCoordinate)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
