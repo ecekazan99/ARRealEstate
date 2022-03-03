@@ -42,10 +42,6 @@ public class MyAccountFragment extends Fragment {
         binding.exitAccount.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
-
-
-
                 AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
                 builder.setMessage("Are you sure?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override

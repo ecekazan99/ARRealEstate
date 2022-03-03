@@ -144,6 +144,7 @@ public class AdvDetailActivity extends AppCompatActivity {
         txtDate.setText(date);
         txtAddress.setText(address);
         txtCity.setText(city);
+        System.out.println("Hereeee 4444");
         txtTown.setText(town);
 
 

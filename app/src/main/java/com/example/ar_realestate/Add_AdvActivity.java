@@ -286,7 +286,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
             }
         });
-        adapterTowns=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,cities);
+        adapterTowns=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,districties);
         adapterTowns.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTown.setAdapter(adapterTowns);
 

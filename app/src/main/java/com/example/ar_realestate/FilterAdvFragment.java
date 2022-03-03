@@ -260,13 +260,15 @@ public class FilterAdvFragment extends Fragment {
             }
         });
 
-        adapterTowns=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,cities);
+       getCities();
+        adapterTowns=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,districties);
         adapterTowns.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTown.setAdapter(adapterTowns);
 
         adapterCities=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,cities);
         adapterCities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCity.setAdapter(adapterCities);
+
         spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -376,8 +378,8 @@ public class FilterAdvFragment extends Fragment {
         Cursor cursor=MainActivity.db.rawQuery(selectSquery,null);
         while (cursor.moveToNext()){
             cityId=Integer.parseInt(cursor.getString(0));
-            System.out.println("City idddd"+cursor.getString(0));
-            System.out.println("City Name"+cityName);
+          //  System.out.println("City idddd"+cursor.getString(0));
+           // System.out.println("City Name"+cityName);
             cursor.close();
         }
 
@@ -387,7 +389,7 @@ public class FilterAdvFragment extends Fragment {
         while (cursor.isAfterLast()==false){
 
             districties.add(cursor.getString(1));
-            System.out.println("District Name :" + cursor.getString(1));
+           //System.out.println("District Name :" + cursor.getString(1));
             cursor.moveToNext();
 
         }
