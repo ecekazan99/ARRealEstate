@@ -2794,6 +2794,7 @@ int id addAdv_spinnerItemStatus 0x7f090090
 int id addAdv_spinnerRoomNum 0x7f090091
 int id addAdv_spinnerStateBuilding 0x7f090092
 int id addAdv_spinnerSwap 0x7f090093
+int id addAdv_spinnerTown 0x7f09029e
 int id addAdv_spinnerUsingStatus 0x7f090094
 int id addAdv_spinnerWarmType 0x7f090095
 int id add_adv_TextAddress 0x7f090096
@@ -2815,6 +2816,7 @@ int id add_adv_TextRentalIncome 0x7f0900a5
 int id add_adv_TextSquareMeter 0x7f0900a6
 int id add_adv_TextStateBuilding 0x7f0900a7
 int id add_adv_TextSwap 0x7f0900a8
+int id add_adv_TextTown 0x7f09029f
 int id add_adv_TextUsingStatus 0x7f0900a9
 int id add_adv_TextWarmType 0x7f0900aa
 int id add_book_activity_imageViewBookImage 0x7f0900ab
