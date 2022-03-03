@@ -49,6 +49,22 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public boolean checkEmailExist(String email){
+
+        try{
+            SQLiteDatabase sqLiteDatabase=getReadableDatabase();
+            Cursor cursor=sqLiteDatabase.rawQuery("SELECT * FROM UserInformation " +
+                    "WHERE MailAddress = ?",new String[]{email});
+
+            if(cursor.moveToFirst()){
+                return false;
+            }
+        }catch (Exception e){
+            return true;
+        }
+        return true;
+    }
+
     public User loginUser(String email, String password){
         User user=null;
         try{
@@ -77,15 +93,12 @@ public class Database extends SQLiteOpenHelper {
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues values = new ContentValues();
 
-            // on below line we are passing all values
-            // along with its key and value pair.
             values.put("UserName",name);
             values.put("UserSurname",surname);
             values.put("MailAddress",email);
             values.put("Password",password);
 
-            // on below line we are calling a update method to update our database and passing our values.
-            // and we are comparing it with name of our course which is stored in original name variable.
+
             db.update("UserInformation", values, "UserId=?", new String[]{String.valueOf(id)});
             db.close();
 

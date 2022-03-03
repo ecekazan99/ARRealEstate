@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,18 +59,27 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-               Database database=new Database(getContext());
-               String userMail=inputUserMail.getText().toString();
-               String userPassword=inputPassword.getText().toString();
-               User user= database.loginUser(userMail,userPassword);
+                if(TextUtils.isEmpty(inputUserMail.getText().toString()) || TextUtils.isEmpty(inputPassword.getText().toString())){
 
-                if(user!=null){
-                    Intent intent=new Intent(getActivity().getBaseContext(),MainActivity.class);
-                    Toast.makeText(getActivity(), user.getUserId()+" "+ user.getUserName().toString(),
-                            Toast.LENGTH_LONG).show();
-                   intent.putExtra("UserInformation",user);
-                    getActivity().startActivity(intent);
-               }
+                    Toast.makeText(getActivity(), "Please fill in all the blanks !!",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else if(!TextUtils.isEmpty(inputUserMail.getText().toString()) && !TextUtils.isEmpty(inputPassword.getText().toString())){
+                    Database database=new Database(getContext());
+                    String userMail=inputUserMail.getText().toString();
+                    String userPassword=inputPassword.getText().toString();
+                    User user= database.loginUser(userMail,userPassword);
+
+                    if(user!=null){
+                        Intent intent=new Intent(getActivity().getBaseContext(),MainActivity.class);
+                        intent.putExtra("UserInformation",user);
+                        getActivity().startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(getActivity(), "E-mail or password is wrong !!",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 

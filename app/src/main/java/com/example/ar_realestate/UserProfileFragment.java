@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,11 +74,18 @@ public class UserProfileFragment extends Fragment {
                 inputPassword=(EditText) binding.inputPassword;
                 inputNewPassword=(EditText) binding.inputNewPassword;
 
+                if(!TextUtils.isEmpty(inputUserName.getText().toString()) && !TextUtils.isEmpty(inputUserSurname.getText().toString()) &&
+                        !TextUtils.isEmpty(inputUserMail.getText().toString()) && !TextUtils.isEmpty(inputPassword.getText().toString()) ){
+
                     if(inputPassword.getText().toString().equals(userPassword)){
                         Database database=new Database(getContext());
                         int updateUserInfo=0;
                         String tempPassword="";
-                        if(!inputNewPassword.getText().toString().equals(null)){
+                        int temp=0;
+                        if(!TextUtils.isEmpty(inputNewPassword.getText().toString())){
+                            if(inputNewPassword.getText().toString().length()<8){
+                                temp=1;
+                            }
                             tempPassword=inputNewPassword.getText().toString();
                         }
                         else{
@@ -87,7 +95,7 @@ public class UserProfileFragment extends Fragment {
                         updateUserInfo= database.updateUser(userId,inputUserName.getText().toString(),inputUserSurname.getText().toString(),
                                 inputUserMail.getText().toString(),inputPassword.getText().toString(),tempPassword);
 
-                        if(updateUserInfo==1){
+                        if(updateUserInfo==1&&temp==0){
                             AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
                             String finalTempPassword = tempPassword;
                             builder.setMessage("Are you sure?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -109,12 +117,23 @@ public class UserProfileFragment extends Fragment {
                             AlertDialog alert=builder.create();
                             alert.show();
                         }
+                        else{
+                            Toast.makeText(getActivity(), "New Password is too short !!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
                     }
                     else{
                         Toast.makeText(getActivity(), "Current Password is null or wrong !!",
                                 Toast.LENGTH_SHORT).show();
                     }
-                    
+                }
+                else{
+                    Toast.makeText(getActivity(), "Please fill in all the blanks !!",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+
+
             }
         });
         return  binding.getRoot();

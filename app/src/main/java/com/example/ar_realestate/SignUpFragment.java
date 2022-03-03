@@ -31,16 +31,8 @@ public class SignUpFragment extends Fragment {
     EditText userName, userSurname, userMail, userPassword;
     Button register;
 
-    /*
-    String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+    String regex =  "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-    Pattern pattern = Pattern.compile(regex);
-
-    for(String email : emails){
-      Matcher matcher = pattern.matcher(email);
-      System.out.println(email +" : "+ matcher.matches());
-    }
-     */
     TextView deneme;
     public SignUpFragment() {
         // Required empty public constructor
@@ -108,8 +100,22 @@ public class SignUpFragment extends Fragment {
 
     public boolean controlUserInfo(String userName, String userSurname, String userMail, String userPassword){
 
+        Database database=new Database(getContext());
+
         if(TextUtils.isEmpty(userName)||TextUtils.isEmpty(userSurname)||TextUtils.isEmpty(userMail)||TextUtils.isEmpty(userPassword)){
             Toast.makeText(getActivity(), "Please fill in all the blanks !!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(!database.checkEmailExist(userMail)){
+            Toast.makeText(getActivity(), "You cannot use this e-mail address !!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(!userMail.matches(regex)){
+            Toast.makeText(getActivity(), "E-mail address format is not match !!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(userPassword.length()<8){
+            Toast.makeText(getActivity(), "Password is too short !!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
