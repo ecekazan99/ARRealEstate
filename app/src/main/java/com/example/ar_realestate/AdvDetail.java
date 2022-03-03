@@ -9,7 +9,7 @@ import android.graphics.BitmapFactory;
 import java.util.ArrayList;
 
 public class AdvDetail {
-    private String advTitle, advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, date, address,city;
+    private String advTitle, advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, date, address,city,town;
     private int advId,price, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncome, dues;
 
     private long latitude, longitude;
@@ -24,7 +24,7 @@ public class AdvDetail {
         this.advId=advId;
     }
 
-    public AdvDetail(String advTitle,Bitmap adv_image, int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address,String city) {
+    public AdvDetail(String advTitle,Bitmap adv_image, int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address,String city,String town) {
         this.advTitle = advTitle;
         this.adv_image=adv_image;
         this.price = price;
@@ -49,6 +49,15 @@ public class AdvDetail {
         this.date = date;
         this.address = address;
         this.city=city;
+        this.town=town;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
     }
 
     public String getCity() { return city; }

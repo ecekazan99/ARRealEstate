@@ -38,13 +38,19 @@ public class FilterAdvFragment extends Fragment {
             editTxtRentalIncomeMin,editTxtRentalIncomeMax, editTxtDuesMin,editTxtDuesMax, editTxtAddress,editTextBuildFloorMin,
             editTextBuildFloorMax,editTextBuildAgeMin,editTextBuildAgeMax;
 
-    Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType, spinnerItemStatus,spinnerWarmtype, spinnerElgbCredit, spinnerUsingStatus, spinnerStateOfBuilding, spinnerSwap, spinnerFront, spinnerFuelType,spinnerCity;
+    Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType, spinnerItemStatus,spinnerWarmtype, spinnerElgbCredit, spinnerUsingStatus, spinnerStateOfBuilding, spinnerSwap, spinnerFront, spinnerFuelType,spinnerCity,spinnerTown;
 
-    static public String advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, address,city;
+    static public String advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, address,city,town;
 
     static public int priceMin, priceMax, squareMeterMin,squareMeterMax, buildingFloorsMin,buildingFloorsMax, floorLocMin,floorLocMax, buildAgeMin,buildAgeMax, numOfBathrMin,numOfBathrMax, rentalIncomeMin,rentalIncomeMax, duesMin,duesMax;
 
     static public Boolean applButton=false;
+
+    public static int cityId;
+    public static String[] cities=new String[81];
+    public static ArrayList<String> districties=new ArrayList<>();
+    ArrayAdapter<String> adapterCities;
+    ArrayAdapter<String> adapterTowns;
 
 
     public FilterAdvFragment() {
@@ -82,6 +88,7 @@ public class FilterAdvFragment extends Fragment {
         spinnerFuelType = (Spinner) binding.FilterSpinnerFuelType;
         editTxtAddress = (EditText) binding.FilterEditTextAddress;
         spinnerCity=(Spinner)binding.FilterSpinnerCity;
+        spinnerTown=(Spinner)binding.FilterSpinnerTown;
 
 
         ArrayAdapter<CharSequence> adapterAdvStatus = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.Adv_Status, android.R.layout.simple_spinner_item);
@@ -253,13 +260,34 @@ public class FilterAdvFragment extends Fragment {
             }
         });
 
-        ArrayAdapter<CharSequence> adapterCity = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.Cities, android.R.layout.simple_spinner_item);
-        adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCity.setAdapter(adapterCity);
+        adapterTowns=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,cities);
+        adapterTowns.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTown.setAdapter(adapterTowns);
+
+        adapterCities=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,cities);
+        adapterCities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCity.setAdapter(adapterCities);
         spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                city = adapterView.getItemAtPosition(i).toString();
+                city=adapterView.getItemAtPosition(i).toString();
+                districties.clear();
+                getTown(city);
+                adapterTowns=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,districties);
+                adapterTowns.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerTown.setAdapter(adapterTowns);
+                spinnerTown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        town=adapterView.getItemAtPosition(i).toString();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+
             }
 
             @Override
@@ -267,6 +295,7 @@ public class FilterAdvFragment extends Fragment {
 
             }
         });
+
 
 
     }
@@ -326,6 +355,42 @@ public class FilterAdvFragment extends Fragment {
 
 
         return binding.getRoot();
+    }
+    public void getCities()
+    {
+        int counter=0;
+        MainActivity.database.onCreate(MainActivity.db);
+        Cursor cursor=MainActivity.db.rawQuery("SELECT * FROM Cities",null);
+        cursor.moveToFirst();
+        while (cursor.isAfterLast()==false){
+            cities[counter]=cursor.getString(1);
+            counter++;
+            // System.out.println(cursor.getString(0));
+            cursor.moveToNext();
+
+        }
+
+    }
+    public void getTown(String cityName){
+        String selectSquery="SELECT CityId FROM Cities WHERE CityName = '"+cityName+"'";
+        Cursor cursor=MainActivity.db.rawQuery(selectSquery,null);
+        while (cursor.moveToNext()){
+            cityId=Integer.parseInt(cursor.getString(0));
+            System.out.println("City idddd"+cursor.getString(0));
+            System.out.println("City Name"+cityName);
+            cursor.close();
+        }
+
+        selectSquery="SELECT * FROM District WHERE CityId = '"+cityId+"'";
+        cursor=MainActivity.db.rawQuery(selectSquery,null);
+        cursor.moveToFirst();
+        while (cursor.isAfterLast()==false){
+
+            districties.add(cursor.getString(1));
+            System.out.println("District Name :" + cursor.getString(1));
+            cursor.moveToNext();
+
+        }
     }
 
 }

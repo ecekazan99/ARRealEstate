@@ -16,9 +16,9 @@ public class AdvDetailActivity extends AppCompatActivity {
     private TextView txtAdvTitle, txtAdvPrice, txtAdvStatus, txtAdvRoomNum, txtSquareMeter,
             txtBuildingFloors, txtFloorLocation, txtBuildingAge, txtBuildingType, txtItemStatus, txtWarmType, txtNumOfBathr,
             txtElgForCredit, txtUsingStatus, txtStateBuilding, txtRentalIncome, txtDues, txtSwap, txtFront,
-            txtFuelType, txtDate, txtAddress,txtCity;
+            txtFuelType, txtDate, txtAddress,txtCity,txtTown;
 
-    String advTitle, advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, date, address,city;
+    String advTitle, advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, date, address,city,town;
     int price, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncome, dues;
     long latitude, longitude;
 
@@ -50,6 +50,7 @@ public class AdvDetailActivity extends AppCompatActivity {
         txtDate = (TextView) findViewById(R.id.detail_AdvDate);
         txtAddress = (TextView) findViewById(R.id.detail_AdvAddress);
         txtCity=(TextView)findViewById(R.id.detail_AdvCity);
+        txtTown=(TextView) findViewById(R.id.detail_AdvTown);
         if(Add_AdvActivity.add_Adv==false){
 
             advTitle=HomeFragment.advDetail.getAdvTitle();
@@ -76,6 +77,8 @@ public class AdvDetailActivity extends AppCompatActivity {
             date=HomeFragment.advDetail.getDate();
             address=HomeFragment.advDetail.getAddress();
             city=HomeFragment.advDetail.getCity();
+            town=HomeFragment.advDetail.getTown();
+
 
         }
         else if(Add_AdvActivity.add_Adv==true){
@@ -103,6 +106,7 @@ public class AdvDetailActivity extends AppCompatActivity {
             date=Add_AdvActivity.advDetailLast.getDate();
             address=Add_AdvActivity.advDetailLast.getAddress();
             city=Add_AdvActivity.advDetailLast.getCity();
+            town=Add_AdvActivity.advDetailLast.getTown();
         }
         Add_AdvActivity.add_Adv=false;
 
@@ -140,6 +144,7 @@ public class AdvDetailActivity extends AppCompatActivity {
         txtDate.setText(date);
         txtAddress.setText(address);
         txtCity.setText(city);
+        txtTown.setText(town);
 
 
     }

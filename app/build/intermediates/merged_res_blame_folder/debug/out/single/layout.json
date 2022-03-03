@@ -1,50 +1,50 @@
 [
     {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\adv_item.xml",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\adv_item.xml"
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_dashboard.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_dashboard.xml"
     },
     {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_myaccount.xml",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_myaccount.xml"
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_filter_adv.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_filter_adv.xml"
     },
     {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_login.xml",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_login.xml"
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_myaccount.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_myaccount.xml"
     },
     {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_dashboard.xml",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_dashboard.xml"
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_user_profile.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_user_profile.xml"
     },
     {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_home.xml",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_home.xml"
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\adv_item.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\adv_item.xml"
     },
     {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_add_adv.xml",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_add_adv.xml"
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_add_adv.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_add_adv.xml"
     },
     {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_main.xml"
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_adv_detail.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_adv_detail.xml"
     },
     {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_user_profile.xml",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_user_profile.xml"
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_login.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_login.xml"
     },
     {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_adv_detail.xml",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_adv_detail.xml"
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_home.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_home.xml"
     },
     {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\advertisement_card.xml",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\advertisement_card.xml"
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_sign_up.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_sign_up.xml"
     },
     {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_sign_up.xml",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_sign_up.xml"
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_filter_adv.xml",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_filter_adv.xml"
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\advertisement_card.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\advertisement_card.xml"
     }
 ]

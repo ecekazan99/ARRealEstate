@@ -101,6 +101,9 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
   public final Spinner FilterSpinnerSwap;
 
   @NonNull
+  public final Spinner FilterSpinnerTown;
+
+  @NonNull
   public final Spinner FilterSpinnerUsingStatus;
 
   @NonNull
@@ -170,6 +173,9 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
   public final TextView TextSwap;
 
   @NonNull
+  public final TextView TextTown;
+
+  @NonNull
   public final TextView TextUsingStatus;
 
   @NonNull
@@ -191,19 +197,19 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
       @NonNull Spinner FilterSpinnerElgCredit, @NonNull Spinner FilterSpinnerFront,
       @NonNull Spinner FilterSpinnerFuelType, @NonNull Spinner FilterSpinnerItemStatus,
       @NonNull Spinner FilterSpinnerRoomNum, @NonNull Spinner FilterSpinnerStateBuilding,
-      @NonNull Spinner FilterSpinnerSwap, @NonNull Spinner FilterSpinnerUsingStatus,
-      @NonNull EditText FilterSquareMax, @NonNull EditText FilterSquareMin,
-      @NonNull Spinner FilterWarmType, @NonNull TextView TextAddress,
-      @NonNull TextView TextAdvFilter, @NonNull TextView TextAdvStatus,
-      @NonNull TextView TextBuildAge, @NonNull TextView TextBuildType,
-      @NonNull TextView TextBuildingFloors, @NonNull TextView TextCity, @NonNull TextView TextDues,
-      @NonNull TextView TextElgForCredit, @NonNull TextView TextFloorLoc,
-      @NonNull TextView TextFront, @NonNull TextView TextFuelType, @NonNull TextView TextItemStatus,
-      @NonNull TextView TextNumOfBath, @NonNull TextView TextRentalIncome,
-      @NonNull TextView TextRoomNum, @NonNull TextView TextSquareMeter,
-      @NonNull TextView TextStateBuilding, @NonNull TextView TextSwap,
-      @NonNull TextView TextUsingStatus, @NonNull TextView TextWarmType,
-      @NonNull TextView textPrice) {
+      @NonNull Spinner FilterSpinnerSwap, @NonNull Spinner FilterSpinnerTown,
+      @NonNull Spinner FilterSpinnerUsingStatus, @NonNull EditText FilterSquareMax,
+      @NonNull EditText FilterSquareMin, @NonNull Spinner FilterWarmType,
+      @NonNull TextView TextAddress, @NonNull TextView TextAdvFilter,
+      @NonNull TextView TextAdvStatus, @NonNull TextView TextBuildAge,
+      @NonNull TextView TextBuildType, @NonNull TextView TextBuildingFloors,
+      @NonNull TextView TextCity, @NonNull TextView TextDues, @NonNull TextView TextElgForCredit,
+      @NonNull TextView TextFloorLoc, @NonNull TextView TextFront, @NonNull TextView TextFuelType,
+      @NonNull TextView TextItemStatus, @NonNull TextView TextNumOfBath,
+      @NonNull TextView TextRentalIncome, @NonNull TextView TextRoomNum,
+      @NonNull TextView TextSquareMeter, @NonNull TextView TextStateBuilding,
+      @NonNull TextView TextSwap, @NonNull TextView TextTown, @NonNull TextView TextUsingStatus,
+      @NonNull TextView TextWarmType, @NonNull TextView textPrice) {
     this.rootView = rootView;
     this.FilterBtnApply = FilterBtnApply;
     this.FilterBuildAgeMax = FilterBuildAgeMax;
@@ -231,6 +237,7 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
     this.FilterSpinnerRoomNum = FilterSpinnerRoomNum;
     this.FilterSpinnerStateBuilding = FilterSpinnerStateBuilding;
     this.FilterSpinnerSwap = FilterSpinnerSwap;
+    this.FilterSpinnerTown = FilterSpinnerTown;
     this.FilterSpinnerUsingStatus = FilterSpinnerUsingStatus;
     this.FilterSquareMax = FilterSquareMax;
     this.FilterSquareMin = FilterSquareMin;
@@ -254,6 +261,7 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
     this.TextSquareMeter = TextSquareMeter;
     this.TextStateBuilding = TextStateBuilding;
     this.TextSwap = TextSwap;
+    this.TextTown = TextTown;
     this.TextUsingStatus = TextUsingStatus;
     this.TextWarmType = TextWarmType;
     this.textPrice = textPrice;
@@ -442,6 +450,12 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.Filter_spinnerTown;
+      Spinner FilterSpinnerTown = ViewBindings.findChildViewById(rootView, id);
+      if (FilterSpinnerTown == null) {
+        break missingId;
+      }
+
       id = R.id.Filter_spinnerUsingStatus;
       Spinner FilterSpinnerUsingStatus = ViewBindings.findChildViewById(rootView, id);
       if (FilterSpinnerUsingStatus == null) {
@@ -580,6 +594,12 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.TextTown;
+      TextView TextTown = ViewBindings.findChildViewById(rootView, id);
+      if (TextTown == null) {
+        break missingId;
+      }
+
       id = R.id.TextUsingStatus;
       TextView TextUsingStatus = ViewBindings.findChildViewById(rootView, id);
       if (TextUsingStatus == null) {
@@ -605,11 +625,12 @@ public final class FragmentFilterAdvBinding implements ViewBinding {
           FilterRentalMin, FilterSpinnerAdvStatus, FilterSpinnerBuildType, FilterSpinnerCity,
           FilterSpinnerElgCredit, FilterSpinnerFront, FilterSpinnerFuelType,
           FilterSpinnerItemStatus, FilterSpinnerRoomNum, FilterSpinnerStateBuilding,
-          FilterSpinnerSwap, FilterSpinnerUsingStatus, FilterSquareMax, FilterSquareMin,
-          FilterWarmType, TextAddress, TextAdvFilter, TextAdvStatus, TextBuildAge, TextBuildType,
-          TextBuildingFloors, TextCity, TextDues, TextElgForCredit, TextFloorLoc, TextFront,
-          TextFuelType, TextItemStatus, TextNumOfBath, TextRentalIncome, TextRoomNum,
-          TextSquareMeter, TextStateBuilding, TextSwap, TextUsingStatus, TextWarmType, textPrice);
+          FilterSpinnerSwap, FilterSpinnerTown, FilterSpinnerUsingStatus, FilterSquareMax,
+          FilterSquareMin, FilterWarmType, TextAddress, TextAdvFilter, TextAdvStatus, TextBuildAge,
+          TextBuildType, TextBuildingFloors, TextCity, TextDues, TextElgForCredit, TextFloorLoc,
+          TextFront, TextFuelType, TextItemStatus, TextNumOfBath, TextRentalIncome, TextRoomNum,
+          TextSquareMeter, TextStateBuilding, TextSwap, TextTown, TextUsingStatus, TextWarmType,
+          textPrice);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

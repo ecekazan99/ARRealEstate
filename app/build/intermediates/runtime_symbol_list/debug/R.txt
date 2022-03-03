@@ -2680,6 +2680,7 @@ int id Filter_spinnerItemStatus 0x7f09001e
 int id Filter_spinnerRoomNum 0x7f09001f
 int id Filter_spinnerStateBuilding 0x7f090020
 int id Filter_spinnerSwap 0x7f090021
+int id Filter_spinnerTown 0x7f0902a0
 int id Filter_spinnerUsingStatus 0x7f090022
 int id META 0x7f090023
 int id NO_DEBUG 0x7f090024
@@ -2709,6 +2710,7 @@ int id TextRoomNum 0x7f09003b
 int id TextSquareMeter 0x7f09003c
 int id TextStateBuilding 0x7f09003d
 int id TextSwap 0x7f09003e
+int id TextTown 0x7f0902a1
 int id TextUsingStatus 0x7f09003f
 int id TextWarmType 0x7f090040
 int id accelerate 0x7f090041
@@ -2939,6 +2941,7 @@ int id detail_AdvStateOfBuilding 0x7f09011f
 int id detail_AdvStatus 0x7f090120
 int id detail_AdvSwap 0x7f090121
 int id detail_AdvTitle 0x7f090122
+int id detail_AdvTown 0x7f0902a2
 int id detail_AdvUsingStatus 0x7f090123
 int id detail_AdvWarmType 0x7f090124
 int id dialog_button 0x7f090125

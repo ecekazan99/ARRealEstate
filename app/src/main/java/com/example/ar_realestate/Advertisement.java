@@ -10,7 +10,7 @@ import android.graphics.BitmapFactory;
 import java.util.ArrayList;
 
 public class Advertisement {
-    private String  advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city;
+    private String  advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
     private  int advId, price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
 
     private long latitude,longitude;
@@ -29,7 +29,7 @@ public class Advertisement {
         this.advId=advId;
     }
 
-    public Advertisement(String advTitle, Bitmap advImage,int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address,String city) {
+    public Advertisement(String advTitle, Bitmap advImage,int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address,String city,String town) {
         this.advTitle = advTitle;
         this.advImage=advImage;
         this.price=price;
@@ -54,8 +54,11 @@ public class Advertisement {
         this.date=date;
         this.address=address;
         this.city=city;
+        this.town=town;
     }
 
+    public String getTown() { return town; }
+    public void setTown(String town) { this.town = town; }
     public String getCity() {
         return city;
     }
@@ -77,194 +80,144 @@ public class Advertisement {
     public String getAdvTitle() {
         return advTitle;
     }
-
     public void setAdvTitle(String advTitle) {
         this.advTitle = advTitle;
     }
-
     public String getAdvStatus() {
         return advStatus;
     }
-
     public void setAdvStatus(String advStatus) {
         this.advStatus = advStatus;
     }
-
     public String getWarmType() {
         return warmType;
     }
-
     public void setWarmType(String warmType) {
         this.warmType = warmType;
     }
-
     public String getElgForCredit() {
         return elgForCredit;
     }
-
     public void setElgForCredit(String elgForCredit) {
         this.elgForCredit = elgForCredit;
     }
-
     public String getUsingStatus() {
         return usingStatus;
     }
-
     public void setUsingStatus(String usingStatus) {
         this.usingStatus = usingStatus;
     }
-
     public int getPrice() {
         return price;
     }
-
     public void setPrice(int price) {
         this.price = price;
     }
-
     public String getRoomNum() {
         return roomNum;
     }
-
     public void setRoomNum(String roomNum) {
         this.roomNum = roomNum;
     }
-
     public int getSquareMeters() {
         return squareMeters;
     }
-
     public void setSquareMeters(int squareMeters) {
         this.squareMeters = squareMeters;
     }
-
     public int getFloorLoc() {
         return floorLoc;
     }
-
     public void setFloorLoc(int floorLoc) {
         this.floorLoc = floorLoc;
     }
-
     public int getBuildAge() {
         return buildAge;
     }
-
     public void setBuildAge(int buildAge) {
         this.buildAge = buildAge;
     }
-
     public int getNumOfBathr() {
         return numOfBathr;
     }
-
     public void setNumOfBathr(int numOfBathr) {
         this.numOfBathr = numOfBathr;
     }
-
     public int getRentalIncome() {
         return rentalIncome;
     }
-
     public void setRentalIncome(int rentalIncome) {
         this.rentalIncome = rentalIncome;
     }
-
     public long getLatitude() {
         return latitude;
     }
-
     public void setLatitude(long latitude) {
         this.latitude = latitude;
     }
-
     public long getLongitude() {
         return longitude;
     }
-
     public void setLongitude(long longitude) {
         this.longitude = longitude;
     }
-
     public String getBuildType() {
         return buildType;
     }
-
     public void setBuildType(String buildType) {
         this.buildType = buildType;
     }
-
     public String getItemStatus() {
         return itemStatus;
     }
-
     public void setItemStatus(String itemStatus) {
         this.itemStatus = itemStatus;
     }
-
-
     public String getSwap() {
         return swap;
     }
-
     public void setSwap(String swap) {
         this.swap = swap;
     }
-
     public String getFront() {
         return front;
     }
-
     public void setFront(String front) {
         this.front = front;
     }
-
     public String getFuelType() {
         return fuelType;
     }
-
     public void setFuelType(String fuelType) {
         this.fuelType = fuelType;
     }
-
-
     public String getDate() {
         return date;
     }
-
     public void setDate(String date) {
         this.date = date;
     }
-
     public String getAddress() {
         return address;
     }
-
     public void setAddress(String address) {
         this.address = address;
     }
-
-
     public int getBuildingFloors() {
         return buildingFloors;
     }
-
     public void setBuildingFloors(int buildingFloors) {
         this.buildingFloors = buildingFloors;
     }
-
     public int getDues() {
         return dues;
     }
-
     public void setDues(int dues) {
         this.dues = dues;
     }
-
     public String getStateBuilding() {
         return stateBuilding;
     }
-
     public void setStateBuilding(String stateBuilding) {
         this.stateBuilding = stateBuilding;
     }
@@ -290,6 +243,7 @@ public class Advertisement {
         ArrayList<String> dateList=new ArrayList<>();
         ArrayList<String> addressList=new ArrayList<>();
         ArrayList<String> cityList=new ArrayList<>();
+        ArrayList<String> townList=new ArrayList<>();
 
         ArrayList<Integer> priceList=new ArrayList<>();
         ArrayList<Integer> squareMetersList=new ArrayList<>();
@@ -316,11 +270,11 @@ public class Advertisement {
                         +" AND BuildType = ? AND ItemStatus = ? AND WarmType = ?" + "AND (NumOfBathrooms BETWEEN "+FilterAdvFragment.numOfBathrMin+" AND "+FilterAdvFragment.numOfBathrMax+") "
                         +" AND ElgCredit = ? AND UsingStatus = ? AND StateBuilding = ? "
                         +" AND (RentalIncome BETWEEN "+FilterAdvFragment.rentalIncomeMin+" AND "+FilterAdvFragment.rentalIncomeMax+") AND (Dues BETWEEN "+FilterAdvFragment.duesMin+" AND "+FilterAdvFragment.duesMax+") "
-                        +" AND Swap = ? AND Front = ? AND FuelType = ? AND Address = ? AND Cities = ?";
+                        +" AND Swap = ? AND Front = ? AND FuelType = ? AND Address = ? AND Cities = ? AND Town = ?";
 
                 cursor=MainActivity.db.rawQuery(sqlQuery, new String[] { FilterAdvFragment.advStatus,FilterAdvFragment.roomNum, FilterAdvFragment.buildType,
                         FilterAdvFragment.itemStatus,FilterAdvFragment.warmType,FilterAdvFragment.elgForCredit, FilterAdvFragment.usingStatus,
-                        FilterAdvFragment.stateBuilding, FilterAdvFragment.swap,FilterAdvFragment.front,FilterAdvFragment.fuelType,FilterAdvFragment.address,FilterAdvFragment.city});
+                        FilterAdvFragment.stateBuilding, FilterAdvFragment.swap,FilterAdvFragment.front,FilterAdvFragment.fuelType,FilterAdvFragment.address,FilterAdvFragment.city,FilterAdvFragment.town});
 
 
             }
@@ -365,6 +319,7 @@ public class Advertisement {
             int dateIndex=cursor.getColumnIndex("Date");
             int addressIndex=cursor.getColumnIndex("Address");
             int cityIndex=cursor.getColumnIndex("Cities");
+            int townIndex=cursor.getColumnIndex("Town");
             int xCoordinateIndex=cursor.getColumnIndex("xCoordinate");
             int yCoordinateIndex=cursor.getColumnIndex("yCoordinate");
 
@@ -384,6 +339,7 @@ public class Advertisement {
                 dateList.add(cursor.getString(dateIndex));
                 addressList.add(cursor.getString(addressIndex));
                 cityList.add(cursor.getString(cityIndex));
+                townList.add(cursor.getString(townIndex));
                 //  System.out.println("PRICEEEEEEE:"+cursor.getInt(priceIncex));
                 priceList.add(cursor.getInt(priceIncex));
                 squareMetersList.add(cursor.getInt(squareMeterIndex));
@@ -429,6 +385,7 @@ public class Advertisement {
                 adv.setDate(dateList.get(i));
                 adv.setAddress(addressList.get(i));
                 adv.setCity(cityList.get(i));
+                adv.setTown(townList.get(i));
                 adv.setLatitude(xCoordinateList.get(i));
                 adv.setLongitude(yCoordinateList.get(i));
 
