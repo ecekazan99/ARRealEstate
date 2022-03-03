@@ -112,6 +112,7 @@ id addAdv_spinnerItemStatus
 id addAdv_spinnerRoomNum
 id addAdv_spinnerStateBuilding
 id addAdv_spinnerSwap
+id addAdv_spinnerTown
 id addAdv_spinnerUsingStatus
 id addAdv_spinnerWarmType
 id add_adv_TextAddress
@@ -133,6 +134,7 @@ id add_adv_TextRentalIncome
 id add_adv_TextSquareMeter
 id add_adv_TextStateBuilding
 id add_adv_TextSwap
+id add_adv_TextTown
 id add_adv_TextUsingStatus
 id add_adv_TextWarmType
 id add_book_activity_imageViewBookImage

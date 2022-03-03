@@ -40,6 +40,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -69,15 +70,27 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
     static public boolean add_Adv=false;
     static public AdvDetail advDetailLast;
 
-    private Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType,spinnerItemStatus,spinnerWarmType,spinnerElgbCredit,spinnerUsingStatus, spinnerStateOfBuilding,spinnerSwap,spinnerFront,spinnerFuelType,spinnerCity;
+    private Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType,spinnerItemStatus,spinnerWarmType,spinnerElgbCredit,spinnerUsingStatus, spinnerStateOfBuilding,spinnerSwap,spinnerFront,spinnerFuelType,spinnerCity,spinnerTown;
 
     private int imgNoPermissionCod=0,imgPermissionCod=1;
 
-    String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city;
+    String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
     int price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
     long latitude,longitude;
 
+    private CitiesAndTownInsert citiesAndTownInsert;
+
+    public static int cityId;
+    public static String[] cities=new String[81];
+    public static ArrayList<String> districties=new ArrayList<>();
+    ArrayAdapter<String> adapterCities;
+    ArrayAdapter<String> adapterTowns;
+
+
     private void init(){ // initialize part
+        citiesAndTownInsert=new CitiesAndTownInsert();
+        citiesAndTownInsert.insertCity();
+        getCities();
         editTxtTitle=(EditText) findViewById(R.id.addAdv_editTextAdvTitle);
         editTxtPrice=(EditText) findViewById(R.id.addAdv_editTextPrice);
         spinnerAdvStatus=(Spinner)findViewById(R.id.addAdv_spinnerAdvStatus);
@@ -102,6 +115,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
         txtViewDate.setText(getTodayDate());
         editTxtAddress=(EditText)findViewById(R.id.addAdv_editTextAddress);
         spinnerCity=(Spinner)findViewById(R.id.addAdv_spinnerCity);
+        spinnerTown=(Spinner)findViewById(R.id.addAdv_spinnerTown);
 
         imageAdv=(ImageView) findViewById(R.id.add_book_activity_imageViewBookImage);
         btnSubmitAdv=(Button) findViewById(R.id.addAdv_btnSubmit);
@@ -272,14 +286,34 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
             }
         });
+        adapterTowns=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,cities);
+        adapterTowns.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTown.setAdapter(adapterTowns);
 
-        ArrayAdapter<CharSequence>adapterCities=ArrayAdapter.createFromResource(this,R.array.Cities, android.R.layout.simple_spinner_item);
+        adapterCities=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,cities);
         adapterCities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCity.setAdapter(adapterCities);
         spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 city=adapterView.getItemAtPosition(i).toString();
+                districties.clear();
+                getTown(city);
+                adapterTowns=new ArrayAdapter<String>(Add_AdvActivity.this,android.R.layout.simple_spinner_item,districties);
+                adapterTowns.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerTown.setAdapter(adapterTowns);
+                spinnerTown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        town=adapterView.getItemAtPosition(i).toString();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+
             }
 
             @Override
@@ -287,6 +321,8 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
             }
         });
+
+
     }
 
     @Override
@@ -349,7 +385,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                 // SQLiteDatabase database=this.openOrCreateDatabase("Temp",MODE_PRIVATE,null);
                 //  database.execSQL("CREATE TABLE IF NOT EXISTS advertisements (AdvId INTEGER PRIMARY KEY AUTOINCREMENT,AdvTitle TEXT,AdvImage BLOB,Price INTEGER,AdvStatus TEXT,RoomNum TEXT,SquareMeter INTEGER,BuildingFloors INTEGER,FloorLoc INTEGER,BuildAge INTEGER,BuildType TEXT,ItemStatus TEXT,WarmType TEXT,NumOfBathrooms INTEGER,ElgCredit TEXT,UsingStatus TEXT,StateBuilding TEXT,RentalIncome INTEGER,Dues INTEGER,Swap TEXT,Front TEXT,FuelType TEXT,Date DATE,Address TEXT,xCoordinate REAL,yCoordinate REAL )");
                 MainActivity.database.onCreate(MainActivity.db);
-                String sqlQuery="INSERT INTO Advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc,BuildAge,BuildType,ItemStatus,WarmType,NumOfBathrooms,ElgCredit,UsingStatus,StateBuilding,RentalIncome,Dues,Swap,Front,FuelType,Date,Address,Cities,xCoordinate,yCoordinate)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                String sqlQuery="INSERT INTO Advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc,BuildAge,BuildType,ItemStatus,WarmType,NumOfBathrooms,ElgCredit,UsingStatus,StateBuilding,RentalIncome,Dues,Swap,Front,FuelType,Date,Address,Cities,Town,xCoordinate,yCoordinate)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
                 statement.bindString(1,advTitle);
                 statement.bindBlob(2,kayıtedilecekImage);
@@ -378,8 +414,9 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                 statement.bindString(22,date);
                 statement.bindString(23,address);
                 statement.bindString(24,city);
-                statement.bindLong(25,  latitude);
-                statement.bindLong(26, longitude);
+                statement.bindString(25,town);
+                statement.bindLong(26,  latitude);
+                statement.bindLong(27, longitude);
                 statement.execute();
 
                 Nesneleri_temizle();
@@ -523,6 +560,42 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
         // firstImage= BitmapFactory.decodeResource(this.getResources(),R.drawable.);
         imageAdv.setImageBitmap(firstImage);
         btnSubmitAdv.setEnabled(false);
+    }
+    public void getCities()
+    {
+        int counter=0;
+        MainActivity.database.onCreate(MainActivity.db);
+        Cursor cursor=MainActivity.db.rawQuery("SELECT * FROM Cities",null);
+        cursor.moveToFirst();
+        while (cursor.isAfterLast()==false){
+            cities[counter]=cursor.getString(1);
+            counter++;
+            // System.out.println(cursor.getString(0));
+            cursor.moveToNext();
+
+        }
+
+    }
+    public void getTown(String cityName){
+        String selectSquery="SELECT CityId FROM Cities WHERE CityName = '"+cityName+"'";
+        Cursor cursor=MainActivity.db.rawQuery(selectSquery,null);
+        while (cursor.moveToNext()){
+            cityId=Integer.parseInt(cursor.getString(0));
+            System.out.println("City idddd"+cursor.getString(0));
+            System.out.println("City Name"+cityName);
+            cursor.close();
+        }
+
+        selectSquery="SELECT * FROM District WHERE CityId = '"+cityId+"'";
+        cursor=MainActivity.db.rawQuery(selectSquery,null);
+        cursor.moveToFirst();
+        while (cursor.isAfterLast()==false){
+
+            districties.add(cursor.getString(1));
+            System.out.println("District Name :" + cursor.getString(1));
+            cursor.moveToNext();
+
+        }
     }
 
     @Override

@@ -90,6 +90,9 @@ public final class ActivityAddAdvBinding implements ViewBinding {
   public final Spinner addAdvSpinnerSwap;
 
   @NonNull
+  public final Spinner addAdvSpinnerTown;
+
+  @NonNull
   public final Spinner addAdvSpinnerUsingStatus;
 
   @NonNull
@@ -156,6 +159,9 @@ public final class ActivityAddAdvBinding implements ViewBinding {
   public final TextView addAdvTextSwap;
 
   @NonNull
+  public final TextView addAdvTextTown;
+
+  @NonNull
   public final TextView addAdvTextUsingStatus;
 
   @NonNull
@@ -175,18 +181,19 @@ public final class ActivityAddAdvBinding implements ViewBinding {
       @NonNull Spinner addAdvSpinnerElgCredit, @NonNull Spinner addAdvSpinnerFront,
       @NonNull Spinner addAdvSpinnerFuelType, @NonNull Spinner addAdvSpinnerItemStatus,
       @NonNull Spinner addAdvSpinnerRoomNum, @NonNull Spinner addAdvSpinnerStateBuilding,
-      @NonNull Spinner addAdvSpinnerSwap, @NonNull Spinner addAdvSpinnerUsingStatus,
-      @NonNull Spinner addAdvSpinnerWarmType, @NonNull TextView addAdvTextAddress,
-      @NonNull TextView addAdvTextAdvStatus, @NonNull TextView addAdvTextBuildAge,
-      @NonNull TextView addAdvTextBuildType, @NonNull TextView addAdvTextBuildingFloors,
-      @NonNull TextView addAdvTextCity, @NonNull TextView addAdvTextDate,
-      @NonNull TextView addAdvTextDues, @NonNull TextView addAdvTextElgForCredit,
-      @NonNull TextView addAdvTextFloorLoc, @NonNull TextView addAdvTextFront,
-      @NonNull TextView addAdvTextFuelType, @NonNull TextView addAdvTextItemStatus,
-      @NonNull TextView addAdvTextNumOfBath, @NonNull TextView addAdvTextPrice,
-      @NonNull TextView addAdvTextRentalIncome, @NonNull TextView addAdvTextRoomNum,
-      @NonNull TextView addAdvTextSquareMeter, @NonNull TextView addAdvTextStateBuilding,
-      @NonNull TextView addAdvTextSwap, @NonNull TextView addAdvTextUsingStatus,
+      @NonNull Spinner addAdvSpinnerSwap, @NonNull Spinner addAdvSpinnerTown,
+      @NonNull Spinner addAdvSpinnerUsingStatus, @NonNull Spinner addAdvSpinnerWarmType,
+      @NonNull TextView addAdvTextAddress, @NonNull TextView addAdvTextAdvStatus,
+      @NonNull TextView addAdvTextBuildAge, @NonNull TextView addAdvTextBuildType,
+      @NonNull TextView addAdvTextBuildingFloors, @NonNull TextView addAdvTextCity,
+      @NonNull TextView addAdvTextDate, @NonNull TextView addAdvTextDues,
+      @NonNull TextView addAdvTextElgForCredit, @NonNull TextView addAdvTextFloorLoc,
+      @NonNull TextView addAdvTextFront, @NonNull TextView addAdvTextFuelType,
+      @NonNull TextView addAdvTextItemStatus, @NonNull TextView addAdvTextNumOfBath,
+      @NonNull TextView addAdvTextPrice, @NonNull TextView addAdvTextRentalIncome,
+      @NonNull TextView addAdvTextRoomNum, @NonNull TextView addAdvTextSquareMeter,
+      @NonNull TextView addAdvTextStateBuilding, @NonNull TextView addAdvTextSwap,
+      @NonNull TextView addAdvTextTown, @NonNull TextView addAdvTextUsingStatus,
       @NonNull TextView addAdvTextWarmType, @NonNull ImageView addBookActivityImageViewBookImage) {
     this.rootView = rootView;
     this.addAdvBtnSubmit = addAdvBtnSubmit;
@@ -211,6 +218,7 @@ public final class ActivityAddAdvBinding implements ViewBinding {
     this.addAdvSpinnerRoomNum = addAdvSpinnerRoomNum;
     this.addAdvSpinnerStateBuilding = addAdvSpinnerStateBuilding;
     this.addAdvSpinnerSwap = addAdvSpinnerSwap;
+    this.addAdvSpinnerTown = addAdvSpinnerTown;
     this.addAdvSpinnerUsingStatus = addAdvSpinnerUsingStatus;
     this.addAdvSpinnerWarmType = addAdvSpinnerWarmType;
     this.addAdvTextAddress = addAdvTextAddress;
@@ -233,6 +241,7 @@ public final class ActivityAddAdvBinding implements ViewBinding {
     this.addAdvTextSquareMeter = addAdvTextSquareMeter;
     this.addAdvTextStateBuilding = addAdvTextStateBuilding;
     this.addAdvTextSwap = addAdvTextSwap;
+    this.addAdvTextTown = addAdvTextTown;
     this.addAdvTextUsingStatus = addAdvTextUsingStatus;
     this.addAdvTextWarmType = addAdvTextWarmType;
     this.addBookActivityImageViewBookImage = addBookActivityImageViewBookImage;
@@ -397,6 +406,12 @@ public final class ActivityAddAdvBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.addAdv_spinnerTown;
+      Spinner addAdvSpinnerTown = ViewBindings.findChildViewById(rootView, id);
+      if (addAdvSpinnerTown == null) {
+        break missingId;
+      }
+
       id = R.id.addAdv_spinnerUsingStatus;
       Spinner addAdvSpinnerUsingStatus = ViewBindings.findChildViewById(rootView, id);
       if (addAdvSpinnerUsingStatus == null) {
@@ -529,6 +544,12 @@ public final class ActivityAddAdvBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.add_adv_TextTown;
+      TextView addAdvTextTown = ViewBindings.findChildViewById(rootView, id);
+      if (addAdvTextTown == null) {
+        break missingId;
+      }
+
       id = R.id.add_adv_TextUsingStatus;
       TextView addAdvTextUsingStatus = ViewBindings.findChildViewById(rootView, id);
       if (addAdvTextUsingStatus == null) {
@@ -554,14 +575,14 @@ public final class ActivityAddAdvBinding implements ViewBinding {
           addAdvEditTextRentalIncome, addAdvEditTextSquareMeter, addAdvSpinnerAdvStatus,
           addAdvSpinnerBuildType, addAdvSpinnerCity, addAdvSpinnerElgCredit, addAdvSpinnerFront,
           addAdvSpinnerFuelType, addAdvSpinnerItemStatus, addAdvSpinnerRoomNum,
-          addAdvSpinnerStateBuilding, addAdvSpinnerSwap, addAdvSpinnerUsingStatus,
-          addAdvSpinnerWarmType, addAdvTextAddress, addAdvTextAdvStatus, addAdvTextBuildAge,
-          addAdvTextBuildType, addAdvTextBuildingFloors, addAdvTextCity, addAdvTextDate,
-          addAdvTextDues, addAdvTextElgForCredit, addAdvTextFloorLoc, addAdvTextFront,
-          addAdvTextFuelType, addAdvTextItemStatus, addAdvTextNumOfBath, addAdvTextPrice,
-          addAdvTextRentalIncome, addAdvTextRoomNum, addAdvTextSquareMeter, addAdvTextStateBuilding,
-          addAdvTextSwap, addAdvTextUsingStatus, addAdvTextWarmType,
-          addBookActivityImageViewBookImage);
+          addAdvSpinnerStateBuilding, addAdvSpinnerSwap, addAdvSpinnerTown,
+          addAdvSpinnerUsingStatus, addAdvSpinnerWarmType, addAdvTextAddress, addAdvTextAdvStatus,
+          addAdvTextBuildAge, addAdvTextBuildType, addAdvTextBuildingFloors, addAdvTextCity,
+          addAdvTextDate, addAdvTextDues, addAdvTextElgForCredit, addAdvTextFloorLoc,
+          addAdvTextFront, addAdvTextFuelType, addAdvTextItemStatus, addAdvTextNumOfBath,
+          addAdvTextPrice, addAdvTextRentalIncome, addAdvTextRoomNum, addAdvTextSquareMeter,
+          addAdvTextStateBuilding, addAdvTextSwap, addAdvTextTown, addAdvTextUsingStatus,
+          addAdvTextWarmType, addBookActivityImageViewBookImage);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

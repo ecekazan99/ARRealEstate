@@ -28,12 +28,12 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_home.xml"
     },
     {
-        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
-        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_main.xml"
-    },
-    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_adv_detail.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_adv_detail.xml"
+    },
+    {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_user_profile.xml.flat",
