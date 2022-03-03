@@ -114,6 +114,7 @@ public class UserProfileFragment extends Fragment {
                         Toast.makeText(getActivity(), "Current Password is null or wrong !!",
                                 Toast.LENGTH_SHORT).show();
                     }
+                    
             }
         });
         return  binding.getRoot();
