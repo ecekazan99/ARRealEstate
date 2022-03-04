@@ -51,7 +51,8 @@ public class AdvDetailActivity extends AppCompatActivity {
         txtAddress = (TextView) findViewById(R.id.detail_AdvAddress);
         txtCity=(TextView)findViewById(R.id.detail_AdvCity);
         txtTown=(TextView) findViewById(R.id.detail_AdvTown);
-        if(Add_AdvActivity.add_Adv==false){
+
+        if(AddAdvFragment.add_Adv==false){
 
             advTitle=HomeFragment.advDetail.getAdvTitle();
             advImagePng=HomeFragment.advDetail.getAdv_image();
@@ -81,34 +82,34 @@ public class AdvDetailActivity extends AppCompatActivity {
 
 
         }
-        else if(Add_AdvActivity.add_Adv==true){
-            advTitle=Add_AdvActivity.advDetailLast.getAdvTitle();
-            advImagePng=Add_AdvActivity.advDetailLast.getAdv_image();
-            price=Add_AdvActivity.advDetailLast.getPrice();
-            advStatus=Add_AdvActivity.advDetailLast.getAdvStatus();
-            roomNum=Add_AdvActivity.advDetailLast.getRoomNum();
-            squareMeters=Add_AdvActivity.advDetailLast.getSquareMeters();
-            buildingFloors=Add_AdvActivity.advDetailLast.getBuildingFloors();
-            floorLoc=Add_AdvActivity.advDetailLast.getFloorLoc();
-            buildAge=Add_AdvActivity.advDetailLast.getBuildAge();
-            buildType=Add_AdvActivity.advDetailLast.getBuildType();
-            itemStatus=Add_AdvActivity.advDetailLast.getItemStatus();
-            warmType=Add_AdvActivity.advDetailLast.getWarmType();
-            numOfBathr=Add_AdvActivity.advDetailLast.getNumOfBathr();
-            elgForCredit=Add_AdvActivity.advDetailLast.getElgForCredit();
-            usingStatus=Add_AdvActivity.advDetailLast.getUsingStatus();
-            stateBuilding=Add_AdvActivity.advDetailLast.getStateBuilding();
-            rentalIncome=Add_AdvActivity.advDetailLast.getRentalIncome();
-            dues=Add_AdvActivity.advDetailLast.getDues();
-            swap=Add_AdvActivity.advDetailLast.getSwap();
-            front=Add_AdvActivity.advDetailLast.getFront();
-            fuelType=Add_AdvActivity.advDetailLast.getFuelType();
-            date=Add_AdvActivity.advDetailLast.getDate();
-            address=Add_AdvActivity.advDetailLast.getAddress();
-            city=Add_AdvActivity.advDetailLast.getCity();
-            town=Add_AdvActivity.advDetailLast.getTown();
+        else if(AddAdvFragment.add_Adv==true){
+            advTitle=AddAdvFragment.advDetailLast.getAdvTitle();
+            advImagePng=AddAdvFragment.advDetailLast.getAdv_image();
+            price=AddAdvFragment.advDetailLast.getPrice();
+            advStatus=AddAdvFragment.advDetailLast.getAdvStatus();
+            roomNum=AddAdvFragment.advDetailLast.getRoomNum();
+            squareMeters=AddAdvFragment.advDetailLast.getSquareMeters();
+            buildingFloors=AddAdvFragment.advDetailLast.getBuildingFloors();
+            floorLoc=AddAdvFragment.advDetailLast.getFloorLoc();
+            buildAge=AddAdvFragment.advDetailLast.getBuildAge();
+            buildType=AddAdvFragment.advDetailLast.getBuildType();
+            itemStatus=AddAdvFragment.advDetailLast.getItemStatus();
+            warmType=AddAdvFragment.advDetailLast.getWarmType();
+            numOfBathr=AddAdvFragment.advDetailLast.getNumOfBathr();
+            elgForCredit=AddAdvFragment.advDetailLast.getElgForCredit();
+            usingStatus=AddAdvFragment.advDetailLast.getUsingStatus();
+            stateBuilding=AddAdvFragment.advDetailLast.getStateBuilding();
+            rentalIncome=AddAdvFragment.advDetailLast.getRentalIncome();
+            dues=AddAdvFragment.advDetailLast.getDues();
+            swap=AddAdvFragment.advDetailLast.getSwap();
+            front=AddAdvFragment.advDetailLast.getFront();
+            fuelType=AddAdvFragment.advDetailLast.getFuelType();
+            date=AddAdvFragment.advDetailLast.getDate();
+            address=AddAdvFragment.advDetailLast.getAddress();
+            city=AddAdvFragment.advDetailLast.getCity();
+            town=AddAdvFragment.advDetailLast.getTown();
         }
-        Add_AdvActivity.add_Adv=false;
+        AddAdvFragment.add_Adv=false;
 
     }
 

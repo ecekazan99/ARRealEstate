@@ -2771,6 +2771,7 @@ int id action_text 0x7f090079
 int id actions 0x7f09007a
 int id activity_chooser_view_content 0x7f09007b
 int id add 0x7f09007c
+int id addAdvImage 0x7f0902a3
 int id addAdv_TextRoomNum 0x7f09007d
 int id addAdv_btnSubmit 0x7f09007e
 int id addAdv_editTextAddress 0x7f09007f
@@ -3429,6 +3430,7 @@ int layout design_navigation_menu 0x7f0c002d
 int layout design_navigation_menu_item 0x7f0c002e
 int layout design_text_input_end_icon 0x7f0c002f
 int layout design_text_input_start_icon 0x7f0c0030
+int layout fragment_add_adv 0x7f0c0088
 int layout fragment_dashboard 0x7f0c0031
 int layout fragment_filter_adv 0x7f0c0032
 int layout fragment_home 0x7f0c0033

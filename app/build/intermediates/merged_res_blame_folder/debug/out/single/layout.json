@@ -32,6 +32,10 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_login.xml"
     },
     {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_add_adv.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_add_adv.xml"
+    },
+    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_home.xml",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_home.xml"
     },

@@ -89,6 +89,7 @@ id TextSwap
 id TextTown
 id TextUsingStatus
 id TextWarmType
+id addAdvImage
 id addAdv_TextRoomNum
 id addAdv_btnSubmit
 id addAdv_editTextAddress
@@ -222,6 +223,7 @@ layout activity_adv_detail
 layout activity_main
 layout adv_item
 layout advertisement_card
+layout fragment_add_adv
 layout fragment_dashboard
 layout fragment_filter_adv
 layout fragment_home

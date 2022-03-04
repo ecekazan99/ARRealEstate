@@ -28,12 +28,12 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_home.xml"
     },
     {
-        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_adv_detail.xml.flat",
-        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_adv_detail.xml"
-    },
-    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_adv_detail.xml.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_adv_detail.xml"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_user_profile.xml.flat",
@@ -114,6 +114,10 @@
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_add_adv.xml.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_add_adv.xml"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\menu_toolbar.xml.flat",

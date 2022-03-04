@@ -91,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
         binding.navView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.navigation_addadvertisement:
-                    replaceFragment(new DashboardFragment());
+                    navViewToolbar.setVisibility(View.INVISIBLE);
+                    replaceFragment(new AddAdvFragment());
                     break;
                 case R.id.navigation_home:
                     navViewToolbar.setVisibility(View.VISIBLE);
