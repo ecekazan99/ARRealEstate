@@ -36,15 +36,20 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final BottomNavigationView navView2;
 
+  @NonNull
+  public final BottomNavigationView navView3;
+
   private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull Button buttonOrderHide,
       @NonNull ConstraintLayout container, @NonNull FrameLayout navHostFragmentActivityMain,
-      @NonNull BottomNavigationView navView, @NonNull BottomNavigationView navView2) {
+      @NonNull BottomNavigationView navView, @NonNull BottomNavigationView navView2,
+      @NonNull BottomNavigationView navView3) {
     this.rootView = rootView;
     this.buttonOrderHide = buttonOrderHide;
     this.container = container;
     this.navHostFragmentActivityMain = navHostFragmentActivityMain;
     this.navView = navView;
     this.navView2 = navView2;
+    this.navView3 = navView3;
   }
 
   @Override
@@ -100,8 +105,14 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.nav_view3;
+      BottomNavigationView navView3 = ViewBindings.findChildViewById(rootView, id);
+      if (navView3 == null) {
+        break missingId;
+      }
+
       return new ActivityMainBinding((ConstraintLayout) rootView, buttonOrderHide, container,
-          navHostFragmentActivityMain, navView, navView2);
+          navHostFragmentActivityMain, navView, navView2, navView3);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

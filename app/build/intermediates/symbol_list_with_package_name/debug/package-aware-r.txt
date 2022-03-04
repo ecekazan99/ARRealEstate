@@ -2581,6 +2581,7 @@ drawable design_snackbar_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_action_back
+drawable ic_action_fav
 drawable ic_action_filter
 drawable ic_action_name
 drawable ic_baseline_add_circle_outline_24
@@ -2827,6 +2828,7 @@ id add_book_activity_imageViewBookImage
 id address
 id adjust_height
 id adjust_width
+id advFavourite
 id advItem_imageViewAdv
 id adv_item_textViewAdvAcıklama
 id adv_item_textViewAdvPrice
@@ -2848,6 +2850,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id back
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3114,6 +3117,7 @@ id nav_host_fragment_activity_main
 id nav_host_fragment_container
 id nav_view
 id nav_view2
+id nav_view3
 id navigation_addadvertisement
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
@@ -3525,6 +3529,7 @@ menu example_menu
 menu example_menu2
 menu popup
 menu toolbar
+menu toolbar_advdetail
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation mobile_navigation

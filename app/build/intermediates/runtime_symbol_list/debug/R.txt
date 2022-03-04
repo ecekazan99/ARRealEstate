@@ -2580,6 +2580,7 @@ int drawable design_snackbar_background 0x7f080077
 int drawable googleg_disabled_color_18 0x7f080078
 int drawable googleg_standard_color_18 0x7f080079
 int drawable ic_action_back 0x7f08007a
+int drawable ic_action_fav 0x7f0800bd
 int drawable ic_action_filter 0x7f08007b
 int drawable ic_action_name 0x7f08007c
 int drawable ic_baseline_add_circle_outline_24 0x7f08007d
@@ -2826,6 +2827,7 @@ int id add_book_activity_imageViewBookImage 0x7f0900af
 int id address 0x7f0900b0
 int id adjust_height 0x7f0900b1
 int id adjust_width 0x7f0900b2
+int id advFavourite 0x7f0902a5
 int id advItem_imageViewAdv 0x7f0900b3
 int id adv_item_textViewAdvAcıklama 0x7f0900b4
 int id adv_item_textViewAdvPrice 0x7f0900b5
@@ -2847,6 +2849,7 @@ int id auto 0x7f0900c4
 int id autoComplete 0x7f0900c5
 int id autoCompleteToEnd 0x7f0900c6
 int id autoCompleteToStart 0x7f0900c7
+int id back 0x7f0902a6
 int id barrier 0x7f0900c8
 int id baseline 0x7f0900c9
 int id beginOnFirstDraw 0x7f0900ca
@@ -3113,6 +3116,7 @@ int id nav_host_fragment_activity_main 0x7f0901ce
 int id nav_host_fragment_container 0x7f0901cf
 int id nav_view 0x7f0901d0
 int id nav_view2 0x7f0901d1
+int id nav_view3 0x7f0902a4
 int id navigation_addadvertisement 0x7f0901d2
 int id navigation_bar_item_active_indicator_view 0x7f0901d3
 int id navigation_bar_item_icon_container 0x7f0901d4
@@ -3524,6 +3528,7 @@ int menu example_menu 0x7f0d0001
 int menu example_menu2 0x7f0d0002
 int menu popup 0x7f0d0003
 int menu toolbar 0x7f0d0004
+int menu toolbar_advdetail 0x7f0d0005
 int mipmap ic_launcher 0x7f0e0000
 int mipmap ic_launcher_round 0x7f0e0001
 int navigation mobile_navigation 0x7f0f0000

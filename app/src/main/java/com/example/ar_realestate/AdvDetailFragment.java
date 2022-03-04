@@ -133,6 +133,7 @@ public class AdvDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentAdvDetailBinding.inflate(inflater, container, false);
+
         init();
 
         txtAdvTitle.setText(advTitle);

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi_ic_action_fav.xml.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-anydpi\\ic_action_fav.xml"
+    },
+    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.webp.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
     },
@@ -48,12 +52,20 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
     },
     {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_action_fav.png.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_fav.png"
+    },
+    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_notifications_black_24dp.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable\\ic_notifications_black_24dp.xml"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_action_back.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-hdpi\\ic_action_back.png"
+    },
+    {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_fav.png.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-mdpi\\ic_action_fav.png"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
@@ -98,6 +110,10 @@
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_back.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-mdpi\\ic_action_back.png"
+    },
+    {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_action_fav.png.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_fav.png"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_input_field.xml.flat",
@@ -164,6 +180,10 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_action_fav.png.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-hdpi\\ic_action_fav.png"
+    },
+    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_photo_camera_24.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable\\ic_baseline_photo_camera_24.xml"
     },
@@ -194,6 +214,10 @@
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi_ic_action_name.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-anydpi\\ic_action_name.xml"
+    },
+    {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\menu_toolbar_advdetail.xml.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\menu\\toolbar_advdetail.xml"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_person_24.xml.flat",
