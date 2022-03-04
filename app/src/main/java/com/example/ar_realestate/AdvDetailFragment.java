@@ -61,7 +61,7 @@ public class AdvDetailFragment extends Fragment {
         txtCity=(TextView)binding.detailAdvCity;
         txtTown=(TextView) binding.detailAdvTown;
 
-        if(AddAdvFragment.add_Adv==false){
+        if(AddAdvFragment.add_Adv==false && MyAdvertisementFragment.clickMyAdvDetail!=true){
 
             advTitle=HomeFragment.advDetail.getAdvTitle();
             advImagePng=HomeFragment.advDetail.getAdv_image();
@@ -91,7 +91,7 @@ public class AdvDetailFragment extends Fragment {
 
 
         }
-        else if(AddAdvFragment.add_Adv==true){
+        else if(AddAdvFragment.add_Adv==true && MyAdvertisementFragment.clickMyAdvDetail!=true){
             advTitle=AddAdvFragment.advDetailLast.getAdvTitle();
             advImagePng=AddAdvFragment.advDetailLast.getAdv_image();
             price=AddAdvFragment.advDetailLast.getPrice();
@@ -118,6 +118,36 @@ public class AdvDetailFragment extends Fragment {
             city=AddAdvFragment.advDetailLast.getCity();
             town=AddAdvFragment.advDetailLast.getTown();
         }
+        else if(MyAdvertisementFragment.clickMyAdvDetail==true){
+
+            advTitle=MyAdvertisementFragment.advDetail.getAdvTitle();
+            advImagePng=MyAdvertisementFragment.advDetail.getAdv_image();
+            price=MyAdvertisementFragment.advDetail.getPrice();
+            advStatus=MyAdvertisementFragment.advDetail.getAdvStatus();
+            roomNum=MyAdvertisementFragment.advDetail.getRoomNum();
+            squareMeters=MyAdvertisementFragment.advDetail.getSquareMeters();
+            buildingFloors=MyAdvertisementFragment.advDetail.getBuildingFloors();
+            floorLoc=MyAdvertisementFragment.advDetail.getFloorLoc();
+            buildAge=MyAdvertisementFragment.advDetail.getBuildAge();
+            buildType=MyAdvertisementFragment.advDetail.getBuildType();
+            itemStatus=MyAdvertisementFragment.advDetail.getItemStatus();
+            warmType=MyAdvertisementFragment.advDetail.getWarmType();
+            numOfBathr=MyAdvertisementFragment.advDetail.getNumOfBathr();
+            elgForCredit=MyAdvertisementFragment.advDetail.getElgForCredit();
+            usingStatus=MyAdvertisementFragment.advDetail.getUsingStatus();
+            stateBuilding=MyAdvertisementFragment.advDetail.getStateBuilding();
+            rentalIncome=MyAdvertisementFragment.advDetail.getRentalIncome();
+            dues=MyAdvertisementFragment.advDetail.getDues();
+            swap=MyAdvertisementFragment.advDetail.getSwap();
+            front=MyAdvertisementFragment.advDetail.getFront();
+            fuelType=MyAdvertisementFragment.advDetail.getFuelType();
+            date=MyAdvertisementFragment.advDetail.getDate();
+            address=MyAdvertisementFragment.advDetail.getAddress();
+            city=MyAdvertisementFragment.advDetail.getCity();
+            town=MyAdvertisementFragment.advDetail.getTown();
+
+        }
+        MyAdvertisementFragment.clickMyAdvDetail=false;
         AddAdvFragment.add_Adv=false;
 
     }

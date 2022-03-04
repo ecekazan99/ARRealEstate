@@ -21,6 +21,7 @@ public class MyAdvertisementFragment extends Fragment {
     static public AdvDetail advDetail;
     RecyclerView recyclerView;
     ArrayList<Advertisement> adv;
+    public static Boolean clickMyAdvDetail=false;
 
 
 
@@ -56,7 +57,7 @@ public class MyAdvertisementFragment extends Fragment {
         //burayı ekledim
 
         advAdapter.setOnItemClickListener(adv ->  {
-
+            clickMyAdvDetail=true;
             advDetail=new AdvDetail(adv.getAdvTitle(),adv.getAdvImage(),adv.getPrice(),adv.getAdvStatus(),
                     adv.getRoomNum(),adv.getSquareMeters(),adv.getBuildingFloors(),adv.getFloorLoc(),
                     adv.getBuildAge(),adv.getBuildType(),adv.getItemStatus(),adv.getWarmType(),adv.getNumOfBathr(),
