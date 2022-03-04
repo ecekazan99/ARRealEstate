@@ -77,8 +77,12 @@ public class UserProfileFragment extends Fragment {
                 if(!TextUtils.isEmpty(inputUserName.getText().toString()) && !TextUtils.isEmpty(inputUserSurname.getText().toString()) &&
                         !TextUtils.isEmpty(inputUserMail.getText().toString()) && !TextUtils.isEmpty(inputPassword.getText().toString()) ){
 
-                    if(inputPassword.getText().toString().equals(userPassword)){
-                        Database database=new Database(getContext());
+                    Database database=new Database(getContext());
+
+                    if(!database.checkEmailExist(inputUserMail.getText().toString())){
+                        Toast.makeText(getActivity(), "You cannot use this e-mail address !!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(inputPassword.getText().toString().equals(userPassword)){
                         int updateUserInfo=0;
                         String tempPassword="";
                         int temp=0;
@@ -118,22 +122,16 @@ public class UserProfileFragment extends Fragment {
                             alert.show();
                         }
                         else{
-                            Toast.makeText(getActivity(), "New Password is too short !!",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "New Password is too short !!",Toast.LENGTH_SHORT).show();
                         }
                     }
                     else{
-                        Toast.makeText(getActivity(), "Current Password is null or wrong !!",
-                                Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Current Password is null or wrong !!",Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
-                    Toast.makeText(getActivity(), "Please fill in all the blanks !!",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Please fill in all the blanks !!", Toast.LENGTH_SHORT).show();
                 }
-
-
-
             }
         });
         return  binding.getRoot();
