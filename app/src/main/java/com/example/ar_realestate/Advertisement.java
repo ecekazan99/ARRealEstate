@@ -262,6 +262,7 @@ public class Advertisement {
         try {
 
             if(FilterAdvFragment.applButton==true){
+                System.out.println("Burayaa girdii 1111111");
                 sqlQuery= "SELECT * FROM  Advertisements  WHERE AdvStatus  = ? AND  (Price BETWEEN "+FilterAdvFragment.priceMin+" AND "+FilterAdvFragment.priceMax+ " )"
                         +" AND RoomNum = ? AND (SquareMeter BETWEEN "+FilterAdvFragment.squareMeterMin+" AND "+FilterAdvFragment.squareMeterMax+")"
                         +" AND (BuildingFloors BETWEEN "+FilterAdvFragment.buildingFloorsMin+" AND "+FilterAdvFragment.buildingFloorsMax+")"
@@ -280,16 +281,19 @@ public class Advertisement {
             }
             else if(FilterAdvFragment.applButton!=true && MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==false)
             {
+                System.out.println("Burayaa girdii 2222222222");
                 sqlQuery="SELECT * FROM Advertisements";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }
             else if(MainActivity.incrPriceClick==true && MainActivity.decrsPriceClick==false)
             {
+                System.out.println("Burayaa girdii 33333333");
                 sqlQuery="SELECT * FROM Advertisements ORDER BY Price ASC";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }
             else if(MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==true)
             {
+                System.out.println("Burayaa girdii 4444444444");
                 sqlQuery="SELECT * FROM Advertisements ORDER BY Price DESC";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }

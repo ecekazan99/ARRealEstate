@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -58,12 +60,22 @@ public class HomeFragment extends Fragment {
                     adv.getBuildAge(),adv.getBuildType(),adv.getItemStatus(),adv.getWarmType(),adv.getNumOfBathr(),
                     adv.getElgForCredit(),adv.getUsingStatus(),adv.getStateBuilding(),adv.getRentalIncome(),
                     adv.getDues(),adv.getSwap(),adv.getFront(),adv.getFuelType(),adv.getDate(),adv.getAddress(),adv.getCity(),adv.getTown());
-            Intent detailIntent=new Intent(getActivity(),AdvDetailActivity.class);
 
-            startActivity(detailIntent);
+            MainActivity.navViewToolbar.setVisibility(View.INVISIBLE);
+            replaceFragment(new AdvDetailFragment());
 
         }); // buraya kadar kısım
 
         return view;
     }
+    private void replaceFragment(Fragment fragment){
+
+        FragmentManager fragmentManager=getFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment);
+        fragmentTransaction.commit();
+    }
+
+
+
 }

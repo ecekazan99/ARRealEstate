@@ -3432,6 +3432,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_add_adv
+layout fragment_adv_detail
 layout fragment_dashboard
 layout fragment_filter_adv
 layout fragment_home

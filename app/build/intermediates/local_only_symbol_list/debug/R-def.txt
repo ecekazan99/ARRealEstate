@@ -224,6 +224,7 @@ layout activity_main
 layout adv_item
 layout advertisement_card
 layout fragment_add_adv
+layout fragment_adv_detail
 layout fragment_dashboard
 layout fragment_filter_adv
 layout fragment_home

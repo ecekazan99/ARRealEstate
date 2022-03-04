@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private ActionBar actionBar;
     private Button btn;
+    static  public  BottomNavigationView navViewToolbar;
     static public Boolean incrPriceClick=false;
     static public Boolean decrsPriceClick=false;
 
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
        // getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_activity_main, new HomeFragment()).commit();
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        BottomNavigationView navViewToolbar = findViewById(R.id.nav_view2);
+        navViewToolbar = findViewById(R.id.nav_view2);
         System.out.println("Error 1");
         btn=(Button)findViewById(R.id.buttonOrderHide);
         btn.setOnClickListener(new View.OnClickListener() {
