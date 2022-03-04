@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             switch (item_toolbar.getItemId()) {
                 case R.id.toolbar_filter:
                     navViewToolbar.setVisibility(View.INVISIBLE);
-                    navViewToolbar_detail.setVisibility(View.INVISIBLE);
+                    navViewToolbar_detail.setVisibility(View.VISIBLE);
                     replaceFragment(new FilterAdvFragment());
                     break;
                 case R.id.toolbar_Order:

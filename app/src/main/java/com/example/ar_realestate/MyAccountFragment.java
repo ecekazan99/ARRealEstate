@@ -39,6 +39,18 @@ public class MyAccountFragment extends Fragment {
             }
         });
 
+        binding.myAdv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,new MyAdvertisementFragment());
+                fragmentTransaction.commit();
+
+            }
+        });
+
         binding.exitAccount.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {

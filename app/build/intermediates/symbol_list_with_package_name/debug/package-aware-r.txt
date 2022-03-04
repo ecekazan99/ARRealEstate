@@ -3441,6 +3441,7 @@ layout fragment_dashboard
 layout fragment_filter_adv
 layout fragment_home
 layout fragment_login
+layout fragment_my_advertisement
 layout fragment_myaccount
 layout fragment_sign_up
 layout fragment_user_profile

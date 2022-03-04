@@ -44,6 +44,10 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_home.xml"
     },
     {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_my_advertisement.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_my_advertisement.xml"
+    },
+    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_sign_up.xml",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_sign_up.xml"
     },

@@ -36,6 +36,7 @@ public class Database extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE IF NOT EXISTS District(DistrictId INTEGER PRIMARY KEY AUTOINCREMENT,DistrictName TEXT NOT NULL,CityId INTEGER NOT NULL);");
 
+        db.execSQL("CREATE TABLE IF NOT EXISTS  UserAdvertisement( UserId INTEGER,AdvId INTEGER, FOREIGN KEY (UserId) REFERENCES UserInformation(UserId), FOREIGN KEY (AdvId) REFERENCES Advertisements(AdvId));");
     }
 
     @Override
@@ -45,6 +46,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS UserInformation;");
         db.execSQL("DROP TABLE IF EXISTS Cities;");
         db.execSQL("DROP TABLE IF EXISTS District;");
+        db.execSQL("DROP TABLE IF EXISTS UserAdvertisement;");
 
         onCreate(db);
     }

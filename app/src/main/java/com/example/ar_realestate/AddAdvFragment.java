@@ -75,6 +75,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     private CitiesAndTownInsert citiesAndTownInsert;
 
     public static int cityId;
+    public static int userId;
+    public static int advId;
     public static String[] cities=new String[81];
     public static ArrayList<String> districties=new ArrayList<>();
     ArrayAdapter<String> adapterCities;
@@ -338,6 +340,15 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        Intent intent=getActivity().getIntent();
+        User user=(User)intent.getSerializableExtra("UserInformation");
+        if(user!=null)
+        {
+            userId=user.getUserId();
+            System.out.println("Userr ıddd:"+user.getUserId());
+        }
+
+
         binding = FragmentAddAdvBinding.inflate(inflater, container, false);
         SupportMapFragment supportMapFragment=(SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
         supportMapFragment.getMapAsync(this);
@@ -367,7 +378,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-            System.out.println("111111111111");
+
         binding.addAdvBtnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -491,12 +502,18 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 c.close();
                 // int advTitleIndex=cursor.getColumnIndex("AdvTitle");
                 System.out.println("ADV ID Last Insert :"+lastInsertedAdvId);
-
+                advId=lastInsertedAdvId;
                 String sqlQueryImage="INSERT INTO AdvertisementImage (AdvImage,AdvId)VALUES(?,?)";
                 SQLiteStatement statementImg = MainActivity.db.compileStatement(sqlQueryImage);
                 statementImg.bindBlob(1,kayıtedilecekImage);
                 statementImg.bindString(2,String.valueOf(lastInsertedAdvId));
                 statementImg.execute();
+
+                String sqlQueryUserAdv="INSERT INTO UserAdvertisement (UserId,AdvId)VALUES(?,?);";
+                SQLiteStatement statementUserAdv = MainActivity.db.compileStatement(sqlQueryUserAdv);
+                statementUserAdv.bindString(1,String.valueOf(userId));
+                statementUserAdv.bindString(2,String.valueOf(advId));
+                statementUserAdv.execute();
 
 
 
