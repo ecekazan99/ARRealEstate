@@ -16,6 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
 import android.text.TextUtils;
@@ -478,9 +480,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                     advDetailLast=new AdvDetail(advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
                             buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,
                             stateBuilding,rentalIncome,dues,swap,front,fuelType,date,address,city,town);
-                    Intent detailIntent=new Intent(getActivity(),AdvDetailActivity.class);
-
-                    startActivity(detailIntent);
+                    MainActivity.navViewToolbar_detail.setVisibility(View.VISIBLE);
+                    replaceFragment(new AdvDetailFragment());
                 }
                 int lastInsertedAdvId = 0;
                 Cursor c=MainActivity.db.rawQuery("select last_insert_rowid()",null);
@@ -509,7 +510,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     }
 
     private Bitmap imageSmall(Bitmap img) {
-        return Bitmap.createScaledBitmap(img,120,150,true);
+        return Bitmap.createScaledBitmap(img,300,220,true);
     }
 
     public void selectImage(View view) {
@@ -595,6 +596,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         editTxtFloorLoc.setText("");
         editTxtRentalIncome.setText("");
         editTxtSquareMt.setText("");
+        editTxtNumofBath.setText("");
 
         spinnerAdvStatus.setSelection(0);
         spinnerBuildType.setSelection(0);
@@ -673,5 +675,12 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
 
             }
         });
+    }
+    private void replaceFragment(Fragment fragment){
+
+        FragmentManager fragmentManager=getFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment);
+        fragmentTransaction.commit();
     }
 }
