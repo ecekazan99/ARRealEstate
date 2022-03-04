@@ -3168,6 +3168,7 @@ id radio
 id ratio
 id rectangles
 id recview
+id recviewMyAdvs
 id reverseSawtooth
 id right
 id rightToLeft

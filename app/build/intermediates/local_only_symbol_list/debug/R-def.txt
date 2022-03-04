@@ -209,6 +209,7 @@ id navigation_notifications
 id navigation_user
 id price
 id recview
+id recviewMyAdvs
 id signUp
 id textPrice
 id textView
