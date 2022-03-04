@@ -18,8 +18,8 @@ public class DashboardFragment extends Fragment {
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        Intent advAddIntent=new Intent(getActivity(),Add_AdvActivity.class);
-        startActivity(advAddIntent);
+       // Intent advAddIntent=new Intent(getActivity(),Add_AdvActivity.class);
+      //  startActivity(advAddIntent);
 
         return root;
     }

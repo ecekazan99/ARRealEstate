@@ -1,20 +1,29 @@
 package com.example.ar_realestate;
 
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,12 +33,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
+import com.example.ar_realestate.databinding.FragmentAddAdvBinding;
+import com.example.ar_realestate.databinding.FragmentFilterAdvBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -44,21 +49,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    /* Button  next;
-    ImageSwitcher imageView;
-    int PICK_IMAGE_MULTIPLE = 1;
-    String imageEncoded;
-    ArrayList<Uri> mArrayUri;
-    int position = 0;
-    List <String> imagesEncodedList;*/
+public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
 
-     /* private ArrayList<Bitmap>SelectedImg=new ArrayList<>();
-    private ArrayList<Bitmap>SmallestedImg=new ArrayList<>();
-    private ArrayList<ImageView>Imgs=new ArrayList<>();*/
-
-
+    private FragmentAddAdvBinding binding;
     GoogleMap gMap;
     private TextView txtViewDate;
     private EditText editTxtTitle,editTxtPrice, editTxtSquareMt,editTxtBuildingFloors, editTxtFloorLoc,editTxtBuildAge,editTxtNumofBath,
@@ -81,46 +75,54 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
     private CitiesAndTownInsert citiesAndTownInsert;
 
     public static int cityId;
+    public static int userId;
+    public static int advId;
     public static String[] cities=new String[81];
     public static ArrayList<String> districties=new ArrayList<>();
     ArrayAdapter<String> adapterCities;
     ArrayAdapter<String> adapterTowns;
 
 
+
+
+    public AddAdvFragment() {
+        // Required empty public constructor
+    }
+
     private void init(){ // initialize part
         citiesAndTownInsert=new CitiesAndTownInsert();
         citiesAndTownInsert.insertCity();
         getCities();
-        editTxtTitle=(EditText) findViewById(R.id.addAdv_editTextAdvTitle);
-        editTxtPrice=(EditText) findViewById(R.id.addAdv_editTextPrice);
-        spinnerAdvStatus=(Spinner)findViewById(R.id.addAdv_spinnerAdvStatus);
-        spinnerRoomNum=(Spinner) findViewById(R.id.addAdv_spinnerRoomNum);
-        editTxtSquareMt=(EditText) findViewById(R.id.addAdv_editTextSquareMeter);
-        editTxtBuildingFloors=(EditText)findViewById(R.id.addAdv_editTextBuildingFloors);
-        editTxtFloorLoc=(EditText) findViewById(R.id.addAdv_editTextFloorLoc);
-        editTxtBuildAge=(EditText) findViewById(R.id.addAdv_editTextBuildAge);
-        spinnerBuildType=(Spinner)findViewById(R.id.addAdv_spinnerBuildType);
-        spinnerItemStatus=(Spinner)findViewById(R.id.addAdv_spinnerItemStatus);
-        spinnerWarmType=(Spinner) findViewById(R.id.addAdv_spinnerWarmType);
-        editTxtNumofBath=(EditText) findViewById(R.id.addAdv_editTextNumOfBath);
-        spinnerElgbCredit=(Spinner) findViewById(R.id.addAdv_spinnerElgCredit);
-        spinnerUsingStatus=(Spinner) findViewById(R.id.addAdv_spinnerUsingStatus);
-        spinnerStateOfBuilding=(Spinner)findViewById(R.id.addAdv_spinnerStateBuilding);
-        editTxtRentalIncome=(EditText)findViewById(R.id.addAdv_editTextRentalIncome);
-        editTxtDues=(EditText)findViewById(R.id.addAdv_editTextDues);
-        spinnerSwap=(Spinner)findViewById(R.id.addAdv_spinnerSwap);
-        spinnerFront=(Spinner)findViewById(R.id.addAdv_spinnerFront);
-        spinnerFuelType=(Spinner)findViewById(R.id.addAdv_spinnerFuelType);
-        txtViewDate=(TextView) findViewById(R.id.addAdv_editTextDate);
+        editTxtTitle=(EditText) binding.addAdvEditTextAdvTitle;
+        editTxtPrice=(EditText) binding.addAdvEditTextPrice;
+        spinnerAdvStatus=(Spinner)binding.addAdvSpinnerAdvStatus;
+        spinnerRoomNum=(Spinner) binding.addAdvSpinnerRoomNum;
+        editTxtSquareMt=(EditText) binding.addAdvEditTextSquareMeter;
+        editTxtBuildingFloors=(EditText)binding.addAdvEditTextBuildingFloors;
+        editTxtFloorLoc=(EditText) binding.addAdvEditTextFloorLoc;
+        editTxtBuildAge=(EditText) binding.addAdvEditTextBuildAge;
+        spinnerBuildType=(Spinner)binding.addAdvSpinnerBuildType;
+        spinnerItemStatus=(Spinner)binding.addAdvSpinnerItemStatus;
+        spinnerWarmType=(Spinner) binding.addAdvSpinnerWarmType;
+        editTxtNumofBath=(EditText) binding.addAdvEditTextNumOfBath;
+        spinnerElgbCredit=(Spinner) binding.addAdvSpinnerElgCredit;
+        spinnerUsingStatus=(Spinner) binding.addAdvSpinnerUsingStatus;
+        spinnerStateOfBuilding=(Spinner)binding.addAdvSpinnerStateBuilding;
+        editTxtRentalIncome=(EditText)binding.addAdvEditTextRentalIncome;
+        editTxtDues=(EditText)binding.addAdvEditTextDues;
+        spinnerSwap=(Spinner)binding.addAdvSpinnerSwap;
+        spinnerFront=(Spinner)binding.addAdvSpinnerFront;
+        spinnerFuelType=(Spinner)binding.addAdvSpinnerFuelType;
+        txtViewDate=(TextView) binding.addAdvEditTextDate;
         txtViewDate.setText(getTodayDate());
-        editTxtAddress=(EditText)findViewById(R.id.addAdv_editTextAddress);
-        spinnerCity=(Spinner)findViewById(R.id.addAdv_spinnerCity);
-        spinnerTown=(Spinner)findViewById(R.id.addAdv_spinnerTown);
+        editTxtAddress=(EditText)binding.addAdvEditTextAddress;
+        spinnerCity=(Spinner)binding.addAdvSpinnerCity;
+        spinnerTown=(Spinner)binding.addAdvSpinnerTown;
 
-        imageAdv=(ImageView) findViewById(R.id.add_book_activity_imageViewBookImage);
-        btnSubmitAdv=(Button) findViewById(R.id.addAdv_btnSubmit);
+        imageAdv=(ImageView) binding.addAdvImage;
+        btnSubmitAdv=(Button) binding.addAdvBtnSubmit;
 
-        ArrayAdapter<CharSequence>adapterAdvStatus=ArrayAdapter.createFromResource(this,R.array.Adv_Status, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapterAdvStatus=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.Adv_Status, android.R.layout.simple_spinner_item);
         adapterAdvStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAdvStatus.setAdapter(adapterAdvStatus);
         spinnerAdvStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -135,7 +137,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
-        ArrayAdapter<CharSequence>adapterBuildType=ArrayAdapter.createFromResource(this,R.array.BuildingType, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapterBuildType=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.BuildingType, android.R.layout.simple_spinner_item);
         adapterBuildType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerBuildType.setAdapter(adapterBuildType);
@@ -151,7 +153,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
-        ArrayAdapter<CharSequence>adapterItemStatus=ArrayAdapter.createFromResource(this,R.array.ItemStatus, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapterItemStatus=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.ItemStatus, android.R.layout.simple_spinner_item);
         adapterItemStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerItemStatus.setAdapter(adapterItemStatus);
@@ -167,7 +169,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
-        ArrayAdapter<CharSequence>adapterElgbCredit=ArrayAdapter.createFromResource(this,R.array.ElgForCredit, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapterElgbCredit=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.ElgForCredit, android.R.layout.simple_spinner_item);
         adapterElgbCredit.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerElgbCredit.setAdapter(adapterElgbCredit);
         spinnerElgbCredit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -182,7 +184,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
-        ArrayAdapter<CharSequence>adapterUsingStatus=ArrayAdapter.createFromResource(this,R.array.UsingStatus, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapterUsingStatus=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.UsingStatus, android.R.layout.simple_spinner_item);
         adapterUsingStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerUsingStatus.setAdapter(adapterUsingStatus);
         spinnerUsingStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -197,7 +199,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
-        ArrayAdapter<CharSequence>adapterStateOfBuilding=ArrayAdapter.createFromResource(this,R.array.StateBuilding, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapterStateOfBuilding=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.StateBuilding, android.R.layout.simple_spinner_item);
         adapterStateOfBuilding.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerStateOfBuilding.setAdapter(adapterStateOfBuilding);
         spinnerStateOfBuilding.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -212,7 +214,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
-        ArrayAdapter<CharSequence>adapterSwap=ArrayAdapter.createFromResource(this,R.array.Swap, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapterSwap=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.Swap, android.R.layout.simple_spinner_item);
         adapterSwap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSwap.setAdapter(adapterSwap);
         spinnerSwap.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -227,7 +229,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
-        ArrayAdapter<CharSequence>adapterFront=ArrayAdapter.createFromResource(this,R.array.Front, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapterFront=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.Front, android.R.layout.simple_spinner_item);
         adapterFront.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFront.setAdapter(adapterFront);
         spinnerFront.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -242,7 +244,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
-        ArrayAdapter<CharSequence>adapterFuelType=ArrayAdapter.createFromResource(this,R.array.FuelType, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapterFuelType=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.FuelType, android.R.layout.simple_spinner_item);
         adapterFuelType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFuelType.setAdapter(adapterFuelType);
         spinnerFuelType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -257,7 +259,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
-        ArrayAdapter<CharSequence>adapterRoomNum=ArrayAdapter.createFromResource(this,R.array.RoomNumber, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapterRoomNum=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.RoomNumber, android.R.layout.simple_spinner_item);
         adapterRoomNum.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerRoomNum.setAdapter(adapterRoomNum);
         spinnerRoomNum.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -272,7 +274,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
-        ArrayAdapter<CharSequence>adapterWarmType=ArrayAdapter.createFromResource(this,R.array.WarmType, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapterWarmType=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.WarmType, android.R.layout.simple_spinner_item);
         adapterWarmType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerWarmType.setAdapter(adapterWarmType);
         spinnerWarmType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -286,11 +288,11 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
             }
         });
-        adapterTowns=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,districties);
+        adapterTowns=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,districties);
         adapterTowns.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTown.setAdapter(adapterTowns);
 
-        adapterCities=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,cities);
+        adapterCities=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,cities);
         adapterCities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCity.setAdapter(adapterCities);
         spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -299,7 +301,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                 city=adapterView.getItemAtPosition(i).toString();
                 districties.clear();
                 getTown(city);
-                adapterTowns=new ArrayAdapter<String>(Add_AdvActivity.this,android.R.layout.simple_spinner_item,districties);
+                adapterTowns=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,districties);
                 adapterTowns.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerTown.setAdapter(adapterTowns);
                 spinnerTown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -325,16 +327,67 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
     }
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_adv);
-        SupportMapFragment supportMapFragment=(SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_map);
-        supportMapFragment.getMapAsync(this);
-        init();
+
+        // init();
+
 
     }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
+        Intent intent=getActivity().getIntent();
+        User user=(User)intent.getSerializableExtra("UserInformation");
+        if(user!=null)
+        {
+            userId=user.getUserId();
+            System.out.println("Userr ıddd:"+user.getUserId());
+        }
+
+
+        binding = FragmentAddAdvBinding.inflate(inflater, container, false);
+        SupportMapFragment supportMapFragment=(SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
+        supportMapFragment.getMapAsync(this);
+
+        init();
+
+        binding.addAdvImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},imgNoPermissionCod);
+                }
+                else{
+
+                    Intent imageGet=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(imageGet,imgPermissionCod);
+
+                    // Select one more images from galery
+         /*   Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, "Select images"), imgPermissionCod);*/
+
+
+                }
+            }
+        });
+
+
+        binding.addAdvBtnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveAdv(view);
+            }
+        });
+
+        return binding.getRoot();
+    }
     private String getTodayDate(){
         return new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
     }
@@ -347,22 +400,22 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                 roomNum.equals("Select Room Number") || warmType.equals("Select Warm Type") || city.equals("Select City") ){
             checkEmpty =false;
 
-            Toast.makeText(getApplicationContext(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
 
         }else if(TextUtils.isEmpty(advTitle)  || TextUtils.isEmpty(address)|| TextUtils.isEmpty(editTxtPrice.getText().toString())||
                 TextUtils.isEmpty(editTxtSquareMt.getText().toString())||TextUtils.isEmpty(editTxtBuildingFloors.getText().toString())||
-            TextUtils.isEmpty(editTxtFloorLoc.getText().toString()) ||TextUtils.isEmpty(editTxtBuildAge.getText().toString())||
+                TextUtils.isEmpty(editTxtFloorLoc.getText().toString()) ||TextUtils.isEmpty(editTxtBuildAge.getText().toString())||
                 TextUtils.isEmpty(editTxtNumofBath.getText().toString())||TextUtils.isEmpty(editTxtRentalIncome.getText().toString())||TextUtils.isEmpty(editTxtDues.getText().toString())){
 
             checkEmpty=false;
-            Toast.makeText(getApplicationContext(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
 
         }else if(!TextUtils.isDigitsOnly(editTxtPrice.getText()) || !TextUtils.isDigitsOnly(editTxtSquareMt.getText()) ||
                 !TextUtils.isDigitsOnly(editTxtBuildingFloors.getText()) || !TextUtils.isDigitsOnly(editTxtFloorLoc.getText()) ||
                 !TextUtils.isDigitsOnly(editTxtBuildAge.getText()) || !TextUtils.isDigitsOnly(editTxtRentalIncome.getText())||
                 !TextUtils.isDigitsOnly(editTxtDues.getText()) || !TextUtils.isDigitsOnly(editTxtNumofBath.getText())) {
             checkEmpty =false;
-            Toast.makeText(getApplicationContext(),"Please Incorrect Inputs",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Please Incorrect Inputs",Toast.LENGTH_SHORT).show();
         }
         System.out.println("Girildi 1: "+ city);
         return checkEmpty;
@@ -370,7 +423,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
     public void saveAdv(View view) {
 
-         try {
+        try {
             advTitle=editTxtTitle.getText().toString();
             date=txtViewDate.toString();
             address=editTxtAddress.getText().toString();
@@ -382,16 +435,16 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
             numOfBathr=Integer.parseInt(editTxtNumofBath.getText().toString());
             rentalIncome=Integer.parseInt(editTxtRentalIncome.getText().toString());
             dues=Integer.parseInt(editTxtDues.getText().toString());
-         }catch (Exception e ){
-             System.out.println("HATAAAAAAAAAAAAA");
-         }
+        }catch (Exception e ){
+            System.out.println("HATAAAAAAAAAAAAA");
+        }
         ByteArrayOutputStream outputStream =new ByteArrayOutputStream();
         smallestedImg=imageSmall(selectedİmg);
         smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStream);
         byte[] kayıtedilecekImage=outputStream.toByteArray();
 
         if(advInputControl()==true){
-             try {
+            try {
 
                 MainActivity.database.onCreate(MainActivity.db);
                 String sqlQuery="INSERT INTO Advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc,BuildAge,BuildType,ItemStatus,WarmType,NumOfBathrooms,ElgCredit,UsingStatus,StateBuilding,RentalIncome,Dues,Swap,Front,FuelType,Date,Address,Cities,Town,xCoordinate,yCoordinate)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -429,7 +482,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                 statement.execute();
 
                 Nesneleri_temizle();
-                Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Kayıt başarıyla eklendi",Toast.LENGTH_SHORT).show();
                 add_Adv=true;
 
                 if(add_Adv==true)
@@ -438,9 +491,8 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                     advDetailLast=new AdvDetail(advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
                             buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,
                             stateBuilding,rentalIncome,dues,swap,front,fuelType,date,address,city,town);
-                    Intent detailIntent=new Intent(this,AdvDetailActivity.class);
-
-                    startActivity(detailIntent);
+                    MainActivity.navViewToolbar_detail.setVisibility(View.VISIBLE);
+                    replaceFragment(new AdvDetailFragment());
                 }
                 int lastInsertedAdvId = 0;
                 Cursor c=MainActivity.db.rawQuery("select last_insert_rowid()",null);
@@ -450,12 +502,18 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                 c.close();
                 // int advTitleIndex=cursor.getColumnIndex("AdvTitle");
                 System.out.println("ADV ID Last Insert :"+lastInsertedAdvId);
-
+                advId=lastInsertedAdvId;
                 String sqlQueryImage="INSERT INTO AdvertisementImage (AdvImage,AdvId)VALUES(?,?)";
                 SQLiteStatement statementImg = MainActivity.db.compileStatement(sqlQueryImage);
                 statementImg.bindBlob(1,kayıtedilecekImage);
                 statementImg.bindString(2,String.valueOf(lastInsertedAdvId));
                 statementImg.execute();
+
+                String sqlQueryUserAdv="INSERT INTO UserAdvertisement (UserId,AdvId)VALUES(?,?);";
+                SQLiteStatement statementUserAdv = MainActivity.db.compileStatement(sqlQueryUserAdv);
+                statementUserAdv.bindString(1,String.valueOf(userId));
+                statementUserAdv.bindString(2,String.valueOf(advId));
+                statementUserAdv.execute();
 
 
 
@@ -469,12 +527,12 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
     }
 
     private Bitmap imageSmall(Bitmap img) {
-        return Bitmap.createScaledBitmap(img,120,150,true);
+        return Bitmap.createScaledBitmap(img,300,220,true);
     }
 
     public void selectImage(View view) {
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},imgNoPermissionCod);
+        if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},imgNoPermissionCod);
         }
         else{
 
@@ -505,10 +563,14 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
         super.onRequestPermissionsResult(requestCode,permissions,grantResults);
     }
+
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
         if(requestCode==imgPermissionCod){
-            if(resultCode==RESULT_OK && data !=null){
+            if(resultCode==-1 && data !=null){
                 Uri imgUrl=data.getData();
 
                 try {
@@ -524,11 +586,11 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                             selectedİmg = ImageDecoder.decodeBitmap(imgSource);
                             imageAdv.setImageBitmap(selectedİmg);
                         }*/
-                        ImageDecoder.Source imgSource=ImageDecoder.createSource(this.getContentResolver(),imgUrl);
+                        ImageDecoder.Source imgSource=ImageDecoder.createSource(getActivity().getContentResolver(),imgUrl);
                         selectedİmg=ImageDecoder.decodeBitmap(imgSource);
                         imageAdv.setImageBitmap(selectedİmg);
                     }else{
-                        selectedİmg= MediaStore.Images.Media.getBitmap(this.getContentResolver(),imgUrl);
+                        selectedİmg= MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imgUrl);
                         imageAdv.setImageBitmap(selectedİmg);
                     }
 
@@ -540,7 +602,6 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
             }
         }
 
-        super.onActivityResult(requestCode, resultCode, data);
     }
     private void Nesneleri_temizle(){
         editTxtTitle.setText("");
@@ -552,6 +613,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
         editTxtFloorLoc.setText("");
         editTxtRentalIncome.setText("");
         editTxtSquareMt.setText("");
+        editTxtNumofBath.setText("");
 
         spinnerAdvStatus.setSelection(0);
         spinnerBuildType.setSelection(0);
@@ -607,6 +669,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
         }
     }
 
+
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         gMap=googleMap;
@@ -629,5 +692,12 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
 
             }
         });
+    }
+    private void replaceFragment(Fragment fragment){
+
+        FragmentManager fragmentManager=getFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment);
+        fragmentTransaction.commit();
     }
 }

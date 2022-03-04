@@ -3,20 +3,37 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ARRealEstate/app/src/main/res/drawable-anydpi/ic_action_back.xml" value="0.138" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/drawable-anydpi/ic_action_fav.xml" value="0.138" />
         <entry key="..\:/ARRealEstate/app/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.194" />
         <entry key="..\:/ARRealEstate/app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" value="0.1" />
         <entry key="..\:/ARRealEstate/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.194" />
         <entry key="..\:/ARRealEstate/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.194" />
         <entry key="..\:/ARRealEstate/app/src/main/res/drawable/input_cerceve.xml" value="0.1" />
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/activity_add_adv.xml" value="0.16" />
+<<<<<<< HEAD
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/activity_adv_detail.xml" value="0.1" />
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/activity_main.xml" value="0.1" />
+=======
+        <entry key="..\:/ARRealEstate/app/src/main/res/layout/activity_adv_detail.xml" value="0.16" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/layout/activity_main.xml" value="0.2" />
+>>>>>>> df80ac73dc4ebe20e94926f30ca47ab4c9ce2635
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/adv_item.xml" value="0.1" />
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/advertisement_card.xml" value="0.17346014492753623" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_addAdv.xml" value="0.2109375" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_add_adv.xml" value="0.2109375" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_adv_detail.xml" value="0.215625" />
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_dashboard.xml" value="0.19635416666666666" />
+<<<<<<< HEAD
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_filter_adv.xml" value="0.2" />
+=======
+        <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_filter_adv.xml" value="0.1832412523020258" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+>>>>>>> df80ac73dc4ebe20e94926f30ca47ab4c9ce2635
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_login.xml" value="0.19635416666666666" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_my_advertisement.xml" value="0.15715579710144928" />
         <entry key="..\:/ARRealEstate/app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
+        <entry key="..\:/ARRealEstate/app/src/main/res/menu/toolbar_advdetail.xml" value="0.203125" />
         <entry key="..\:/ARRealEstate/app/src/main/res/menu/top_bar.xml" value="0.264" />
         <entry key="..\:/bitirme/ARRealEstate/app/src/main/res/layout/activity_adv_detail.xml" value="0.21302083333333333" />
         <entry key="..\:/bitirme/ARRealEstate/app/src/main/res/layout/activity_main.xml" value="0.16799999999999998" />

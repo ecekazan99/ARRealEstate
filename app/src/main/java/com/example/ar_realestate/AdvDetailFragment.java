@@ -1,16 +1,22 @@
 package com.example.ar_realestate;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.ar_realestate.R;
+import com.example.ar_realestate.databinding.FragmentAddAdvBinding;
+import com.example.ar_realestate.databinding.FragmentAdvDetailBinding;
 
+public class AdvDetailFragment extends Fragment {
 
-public class AdvDetailActivity extends AppCompatActivity {
-
+    private FragmentAdvDetailBinding binding;
 
     private ImageView advImageView;
     private TextView txtAdvTitle, txtAdvPrice, txtAdvStatus, txtAdvRoomNum, txtSquareMeter,
@@ -24,35 +30,38 @@ public class AdvDetailActivity extends AppCompatActivity {
 
     private Bitmap advImagePng;
 
+    public AdvDetailFragment() {
+        // Required empty public constructor
+    }
     private void init() {
         System.out.println("Hereeeeeeeee1 ");
-        advImageView = (ImageView) findViewById(R.id.detail_AdvImage);
-        txtAdvTitle = (TextView) findViewById(R.id.detail_AdvTitle);
-        txtAdvPrice = (TextView) findViewById(R.id.detail_AdvPrice);
-        txtAdvStatus = (TextView) findViewById(R.id.detail_AdvStatus);
-        txtAdvRoomNum = (TextView) findViewById(R.id.detail_AdvRoomNum);
-        txtSquareMeter = (TextView) findViewById(R.id.detail_AdvSquareMeter);
-        txtBuildingFloors = (TextView) findViewById(R.id.detail_AdvBuildingFloors);
-        txtFloorLocation = (TextView) findViewById(R.id.detail_AdvFloorLoc);
-        txtBuildingAge = (TextView) findViewById(R.id.detail_AdvBuildingAge);
-        txtBuildingType = (TextView) findViewById(R.id.detail_AdvBuildingType);
-        txtItemStatus = (TextView) findViewById(R.id.detail_AdvItemStatus);
-        txtWarmType = (TextView) findViewById(R.id.detail_AdvWarmType);
-        txtNumOfBathr = (TextView) findViewById(R.id.detail_AdvNumOfBathr);
-        txtElgForCredit = (TextView) findViewById(R.id.detail_AdvElgCredit);
-        txtUsingStatus = (TextView) findViewById(R.id.detail_AdvUsingStatus);
-        txtStateBuilding = (TextView) findViewById(R.id.detail_AdvStateOfBuilding);
-        txtRentalIncome = (TextView) findViewById(R.id.detail_AdvRentalIncome);
-        txtDues = (TextView) findViewById(R.id.detail_AdvDues);
-        txtSwap = (TextView) findViewById(R.id.detail_AdvSwap);
-        txtFront = (TextView) findViewById(R.id.detail_AdvFront);
-        txtFuelType = (TextView) findViewById(R.id.detail_AdvFuelType);
-        txtDate = (TextView) findViewById(R.id.detail_AdvDate);
-        txtAddress = (TextView) findViewById(R.id.detail_AdvAddress);
-        txtCity=(TextView)findViewById(R.id.detail_AdvCity);
-        txtTown=(TextView) findViewById(R.id.detail_AdvTown);
+        advImageView = (ImageView) binding.detailAdvImage;
+        txtAdvTitle = (TextView) binding.detailAdvTitle;
+        txtAdvPrice = (TextView) binding.detailAdvPrice;
+        txtAdvStatus = (TextView) binding.detailAdvStatus;
+        txtAdvRoomNum = (TextView) binding.detailAdvRoomNum;
+        txtSquareMeter = (TextView) binding.detailAdvSquareMeter;
+        txtBuildingFloors = (TextView) binding.detailAdvBuildingFloors;
+        txtFloorLocation = (TextView) binding.detailAdvFloorLoc;
+        txtBuildingAge = (TextView) binding.detailAdvBuildingAge;
+        txtBuildingType = (TextView) binding.detailAdvBuildingType;
+        txtItemStatus = (TextView) binding.detailAdvItemStatus;
+        txtWarmType = (TextView) binding.detailAdvWarmType;
+        txtNumOfBathr = (TextView) binding.detailAdvNumOfBathr;
+        txtElgForCredit = (TextView) binding.detailAdvElgCredit;
+        txtUsingStatus = (TextView) binding.detailAdvUsingStatus;
+        txtStateBuilding = (TextView) binding.detailAdvStateOfBuilding;
+        txtRentalIncome = (TextView) binding.detailAdvRentalIncome;
+        txtDues = (TextView) binding.detailAdvDues;
+        txtSwap = (TextView) binding.detailAdvSwap;
+        txtFront = (TextView) binding.detailAdvFront;
+        txtFuelType = (TextView) binding.detailAdvFuelType;
+        txtDate = (TextView) binding.detailAdvDate;
+        txtAddress = (TextView) binding.detailAdvAddress;
+        txtCity=(TextView)binding.detailAdvCity;
+        txtTown=(TextView) binding.detailAdvTown;
 
-        if(AddAdvFragment.add_Adv==false){
+        if(AddAdvFragment.add_Adv==false && MyAdvertisementFragment.clickMyAdvDetail!=true){
 
             advTitle=HomeFragment.advDetail.getAdvTitle();
             advImagePng=HomeFragment.advDetail.getAdv_image();
@@ -82,7 +91,7 @@ public class AdvDetailActivity extends AppCompatActivity {
 
 
         }
-        else if(AddAdvFragment.add_Adv==true){
+        else if(AddAdvFragment.add_Adv==true && MyAdvertisementFragment.clickMyAdvDetail!=true){
             advTitle=AddAdvFragment.advDetailLast.getAdvTitle();
             advImagePng=AddAdvFragment.advDetailLast.getAdv_image();
             price=AddAdvFragment.advDetailLast.getPrice();
@@ -109,14 +118,52 @@ public class AdvDetailActivity extends AppCompatActivity {
             city=AddAdvFragment.advDetailLast.getCity();
             town=AddAdvFragment.advDetailLast.getTown();
         }
+        else if(MyAdvertisementFragment.clickMyAdvDetail==true){
+
+            advTitle=MyAdvertisementFragment.advDetail.getAdvTitle();
+            advImagePng=MyAdvertisementFragment.advDetail.getAdv_image();
+            price=MyAdvertisementFragment.advDetail.getPrice();
+            advStatus=MyAdvertisementFragment.advDetail.getAdvStatus();
+            roomNum=MyAdvertisementFragment.advDetail.getRoomNum();
+            squareMeters=MyAdvertisementFragment.advDetail.getSquareMeters();
+            buildingFloors=MyAdvertisementFragment.advDetail.getBuildingFloors();
+            floorLoc=MyAdvertisementFragment.advDetail.getFloorLoc();
+            buildAge=MyAdvertisementFragment.advDetail.getBuildAge();
+            buildType=MyAdvertisementFragment.advDetail.getBuildType();
+            itemStatus=MyAdvertisementFragment.advDetail.getItemStatus();
+            warmType=MyAdvertisementFragment.advDetail.getWarmType();
+            numOfBathr=MyAdvertisementFragment.advDetail.getNumOfBathr();
+            elgForCredit=MyAdvertisementFragment.advDetail.getElgForCredit();
+            usingStatus=MyAdvertisementFragment.advDetail.getUsingStatus();
+            stateBuilding=MyAdvertisementFragment.advDetail.getStateBuilding();
+            rentalIncome=MyAdvertisementFragment.advDetail.getRentalIncome();
+            dues=MyAdvertisementFragment.advDetail.getDues();
+            swap=MyAdvertisementFragment.advDetail.getSwap();
+            front=MyAdvertisementFragment.advDetail.getFront();
+            fuelType=MyAdvertisementFragment.advDetail.getFuelType();
+            date=MyAdvertisementFragment.advDetail.getDate();
+            address=MyAdvertisementFragment.advDetail.getAddress();
+            city=MyAdvertisementFragment.advDetail.getCity();
+            town=MyAdvertisementFragment.advDetail.getTown();
+
+        }
+        MyAdvertisementFragment.clickMyAdvDetail=false;
         AddAdvFragment.add_Adv=false;
 
     }
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adv_detail);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentAdvDetailBinding.inflate(inflater, container, false);
+
         init();
 
         txtAdvTitle.setText(advTitle);
@@ -147,5 +194,9 @@ public class AdvDetailActivity extends AppCompatActivity {
         txtCity.setText(city);
         System.out.println("Hereeee 4444");
         txtTown.setText(town);
+
+        return binding.getRoot();
+
     }
+
 }

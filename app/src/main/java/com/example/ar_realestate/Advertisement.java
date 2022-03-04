@@ -224,6 +224,7 @@ public class Advertisement {
 
     static public ArrayList<Advertisement> getData(Context context){
 
+        int advertisementId=0;
         String sqlQuery="";
         Cursor cursor = null;
         ArrayList<Advertisement> advertisementList=new ArrayList<>();
@@ -253,7 +254,7 @@ public class Advertisement {
         ArrayList<Integer> numOfBathrList=new ArrayList<>();
         ArrayList<Integer> rentalIncomeList=new ArrayList<>();
         ArrayList<Integer> duesList=new ArrayList<>();
-
+        ArrayList<Integer> advIdList=new ArrayList<>();
         ArrayList<Bitmap> ImageList=new ArrayList<>();
 
         ArrayList<Long>xCoordinateList=new ArrayList<>();
@@ -262,6 +263,7 @@ public class Advertisement {
         try {
 
             if(FilterAdvFragment.applButton==true){
+                System.out.println("Burayaa girdii 1111111");
                 sqlQuery= "SELECT * FROM  Advertisements  WHERE AdvStatus  = ? AND  (Price BETWEEN "+FilterAdvFragment.priceMin+" AND "+FilterAdvFragment.priceMax+ " )"
                         +" AND RoomNum = ? AND (SquareMeter BETWEEN "+FilterAdvFragment.squareMeterMin+" AND "+FilterAdvFragment.squareMeterMax+")"
                         +" AND (BuildingFloors BETWEEN "+FilterAdvFragment.buildingFloorsMin+" AND "+FilterAdvFragment.buildingFloorsMax+")"
@@ -278,20 +280,37 @@ public class Advertisement {
 
 
             }
-            else if(FilterAdvFragment.applButton!=true && MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==false)
+            else if(FilterAdvFragment.applButton!=true && MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==false && MyAccountFragment.clickMyAdv!=true)
             {
+                System.out.println("Burayaa girdii 2222222222");
                 sqlQuery="SELECT * FROM Advertisements";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }
             else if(MainActivity.incrPriceClick==true && MainActivity.decrsPriceClick==false)
             {
+                System.out.println("Burayaa girdii 33333333");
                 sqlQuery="SELECT * FROM Advertisements ORDER BY Price ASC";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }
             else if(MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==true)
             {
+                System.out.println("Burayaa girdii 4444444444");
                 sqlQuery="SELECT * FROM Advertisements ORDER BY Price DESC";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
+            }
+            else if(MyAccountFragment.clickMyAdv==true)
+            {
+                System.out.println("Burayaa girdii 555555");
+                sqlQuery="SELECT AdvId FROM  UserAdvertisement WHERE UserId = ? ";
+                cursor=MainActivity.db.rawQuery(sqlQuery, new String[] { String.valueOf(MyAccountFragment.userMyId)});
+                while (cursor.moveToNext()){
+                    System.out.println("ADVVVVVVVV IDDDDDDD: "+cursor.getString(0));
+                    advertisementId= Integer.parseInt(cursor.getString(0));
+                    cursor.close();
+                }
+                sqlQuery="SELECT * FROM  Advertisements WHERE AdvId = ? ";
+                cursor=MainActivity.db.rawQuery(sqlQuery, new String[] { String.valueOf(advertisementId)});
+
             }
 
 
@@ -322,6 +341,7 @@ public class Advertisement {
             int townIndex=cursor.getColumnIndex("Town");
             int xCoordinateIndex=cursor.getColumnIndex("xCoordinate");
             int yCoordinateIndex=cursor.getColumnIndex("yCoordinate");
+            int advIdIndex=cursor.getColumnIndex("AdvId");
 
             while (cursor.moveToNext()){
                 advTitleList.add(cursor.getString(advTitleIndex));
@@ -349,7 +369,7 @@ public class Advertisement {
                 numOfBathrList.add(cursor.getInt(numOfBathroomsIndex));
                 rentalIncomeList.add(cursor.getInt(rentalIncomeIndex));
                 duesList.add(cursor.getInt(duesIndex));
-
+                advIdList.add(cursor.getInt(advIdIndex));
                 byte[] imageByte=cursor.getBlob(ImageIndex);
                 Bitmap imageAdv= BitmapFactory.decodeByteArray(imageByte,0,imageByte.length);
                 ImageList.add(imageAdv);
@@ -388,18 +408,18 @@ public class Advertisement {
                 adv.setTown(townList.get(i));
                 adv.setLatitude(xCoordinateList.get(i));
                 adv.setLongitude(yCoordinateList.get(i));
-
-
-
+                adv.setAdvId(advIdList.get(i));
                 advertisementList.add(adv);
 
             }
         }catch (Exception e){
             e.printStackTrace();
         }
+        MyAccountFragment.clickMyAdv=false;
         MainActivity.decrsPriceClick=false;
         MainActivity.incrPriceClick=false;
         FilterAdvFragment.applButton=false;
         return advertisementList;
     }
+
 }

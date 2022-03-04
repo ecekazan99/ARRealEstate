@@ -12,26 +12,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
-
+public class MyAdvertisementFragment extends Fragment {
     private AdvertisementAdapter advAdapter;
     static public AdvDetail advDetail;
     RecyclerView recyclerView;
     ArrayList<Advertisement> adv;
+    public static Boolean clickMyAdvDetail=false;
 
-    public HomeFragment() {
+
+
+    public MyAdvertisementFragment() {
         // Required empty public constructor
     }
 
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,19 +39,25 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        Intent intent=getActivity().getIntent();
+        User user=(User)intent.getSerializableExtra("UserInformation");
 
-        View view=inflater.inflate(R.layout.fragment_home,container,false);
-        recyclerView=(RecyclerView) view.findViewById(R.id.recview);
+        System.out.println(user.getUserId());
+
+
+        View view=inflater.inflate(R.layout.fragment_my_advertisement,container,false);
+        recyclerView=(RecyclerView) view.findViewById(R.id.recviewMyAdvs);
         // burayı ekledim
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         advAdapter=new AdvertisementAdapter(Advertisement.getData(getContext()),getContext());
 
-       recyclerView.setAdapter(advAdapter);
+        recyclerView.setAdapter(advAdapter);
         //burayı ekledim
 
         advAdapter.setOnItemClickListener(adv ->  {
-
+            clickMyAdvDetail=true;
             advDetail=new AdvDetail(adv.getAdvTitle(),adv.getAdvImage(),adv.getPrice(),adv.getAdvStatus(),
                     adv.getRoomNum(),adv.getSquareMeters(),adv.getBuildingFloors(),adv.getFloorLoc(),
                     adv.getBuildAge(),adv.getBuildType(),adv.getItemStatus(),adv.getWarmType(),adv.getNumOfBathr(),
@@ -64,11 +67,12 @@ public class HomeFragment extends Fragment {
             MainActivity.navViewToolbar.setVisibility(View.INVISIBLE);
             MainActivity.navViewToolbar_detail.setVisibility(View.VISIBLE);
             replaceFragment(new AdvDetailFragment());
-           // MainActivity.navViewToolbar_detail.setVisibility(View.INVISIBLE);
+            // MainActivity.navViewToolbar_detail.setVisibility(View.INVISIBLE);
         }); // buraya kadar kısım
 
         return view;
     }
+
     private void replaceFragment(Fragment fragment){
 
         FragmentManager fragmentManager=getFragmentManager();
@@ -76,7 +80,5 @@ public class HomeFragment extends Fragment {
         fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment);
         fragmentTransaction.commit();
     }
-
-
 
 }

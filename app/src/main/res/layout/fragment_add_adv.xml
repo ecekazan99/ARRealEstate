@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FilterAdvFragment">
-    <!--/// filter sayfa designi yeniden düzenlenecek -->
+    tools:context=".Add_AdvActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:padding="10dp"
+        android:padding="1dp"
         android:layout_height="wrap_content">
 
         <LinearLayout
@@ -17,16 +17,27 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/TextAdvFilter"
+
+            <EditText
+                android:id="@+id/addAdv_editTextAdvTitle"
                 android:layout_width="382dp"
                 android:layout_height="52dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/input_cerceve"
-                android:text="FILTER"
-                android:textAlignment="center"
-                android:textSize="35sp"
-                android:textStyle="normal" />
+                android:hint="Advertisement Title"
+                android:textAlignment="center" />
+
+            <ImageView
+                android:id="@+id/addAdvImage"
+                android:layout_width="370dp"
+                android:layout_height="230dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_baseline_photo_camera_24"
+                android:baselineAligned="false"
+                android:onClick="selectImage"
+                android:scaleType="fitXY"
+                tools:ignore="SpeakableTextPresentCheck" />
+
 
             <LinearLayout
                 android:layout_width="407dp"
@@ -35,7 +46,37 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/TextAdvStatus"
+                    android:id="@+id/add_adv_TextPrice"
+                    android:layout_width="90dp"
+                    android:layout_height="41dp"
+                    android:layout_marginLeft="40dp"
+                    android:text="Price"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/addAdv_editTextPrice"
+                    android:layout_width="223dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/add_book_activity_imageViewBookImage"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/input_cerceve"
+                    android:hint="Price"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="407dp"
+                android:layout_height="82dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/add_adv_TextAdvStatus"
                     android:layout_width="141dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
@@ -46,12 +87,13 @@
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/Filter_spinnerAdvStatus"
+                    android:id="@+id/addAdv_spinnerAdvStatus"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
-                    android:layout_weight="1" />
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_cerceve" />
 
             </LinearLayout>
 
@@ -62,66 +104,28 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="49dp"
-                    android:layout_marginLeft="4dp"
-                    android:gravity="center"
-                    android:text="Price \nRange"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/Filter_PriceMin"
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:hint="min"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/Filter_PriceMax"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:hint="max"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="407dp"
-                android:layout_height="82dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/TextRoomNum"
+                    android:id="@+id/addAdv_TextRoomNum"
                     android:layout_width="143dp"
                     android:layout_height="42dp"
                     android:layout_marginLeft="4dp"
+                    android:gravity="center"
                     android:text="Room Number"
-                    android:gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/Filter_spinnerRoomNum"
+                    android:id="@+id/addAdv_spinnerRoomNum"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginLeft="40dp"
                     android:layout_weight="1"
-                    />
+                    android:background="@drawable/input_cerceve" />
+
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="407dp"
                 android:layout_height="82dp"
@@ -129,178 +133,149 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/TextSquareMeter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_marginLeft="4dp"
-                    android:text="Square \nMeter"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/Filter_SquareMin"
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:hint="min"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/Filter_SquareMax"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:hint="max"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="407dp"
-                android:layout_height="82dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/TextBuildingFloors"
-                    android:layout_width="wrap_content"
-                    android:layout_height="47dp"
-                    android:layout_marginLeft="5dp"
-                    android:text=" Building \nFloors"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/Filter_BuildingFloorMin"
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:hint="min"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/Filter_BuildingFloorMax"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:hint="max"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="407dp"
-                android:layout_height="82dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/TextFloorLoc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="46dp"
-                    android:layout_marginLeft="4dp"
-                    android:gravity="center"
-                    android:text="Floor \nLocation"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-
-                <EditText
-                    android:id="@+id/Filter_FloorLocMin"
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:hint="min"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/Filter_FloorLocMax"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:hint="max"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="407dp"
-                android:layout_height="82dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/TextBuildAge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="49dp"
-                    android:layout_marginLeft="4dp"
-                    android:text=" Building \n Age"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/Filter_BuildAgeMin"
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:hint="min"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/Filter_BuildAgeMax"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:hint="max"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="407dp"
-                android:layout_height="82dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/TextBuildType"
+                    android:id="@+id/add_adv_TextSquareMeter"
                     android:layout_width="143dp"
                     android:layout_height="42dp"
                     android:layout_marginLeft="4dp"
+                    android:gravity="center"
+                    android:text="Square Meter"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/addAdv_editTextSquareMeter"
+                    android:layout_width="215dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addAdv_spinnerRoomNum"
+                    android:layout_marginLeft="25dp"
+                    android:background="@drawable/input_cerceve"
+                    android:hint="Square Meter"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="407dp"
+                android:layout_height="82dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/add_adv_TextBuildingFloors"
+                    android:layout_width="143dp"
+                    android:layout_height="47dp"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center"
+                    android:text="Building Floors"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/addAdv_editTextBuildingFloors"
+                    android:layout_width="215dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addAdv_editTextSquareMeter"
+                    android:layout_marginLeft="25dp"
+                    android:background="@drawable/input_cerceve"
+                    android:hint="Building Floors"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="407dp"
+                android:layout_height="82dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/add_adv_TextFloorLoc"
+                    android:layout_width="143dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center"
+                    android:text="Floor Location"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/addAdv_editTextFloorLoc"
+                    android:layout_width="215dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addAdv_editTextSquareMeter"
+                    android:layout_marginLeft="25dp"
+                    android:background="@drawable/input_cerceve"
+                    android:hint="Floor Location"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="407dp"
+                android:layout_height="82dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/add_adv_TextBuildAge"
+                    android:layout_width="143dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center"
+                    android:text="Building Age"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/addAdv_editTextBuildAge"
+                    android:layout_width="215dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addAdv_editTextFloorLoc"
+                    android:layout_marginLeft="25dp"
+                    android:background="@drawable/input_cerceve"
+                    android:hint="Building Age"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="407dp"
+                android:layout_height="82dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/add_adv_TextBuildType"
+                    android:layout_width="143dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center"
                     android:text="Building Type"
-                    android:gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/Filter_spinnerBuildType"
+                    android:id="@+id/addAdv_spinnerBuildType"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    />
+                    android:background="@drawable/input_cerceve" />
             </LinearLayout>
 
             <LinearLayout
@@ -310,25 +285,25 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/TextItemStatus"
+                    android:id="@+id/add_adv_TextItemStatus"
                     android:layout_width="143dp"
                     android:layout_height="42dp"
                     android:layout_marginLeft="4dp"
+                    android:gravity="center"
                     android:text="Item Status"
-                    android:gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/Filter_spinnerItemStatus"
+                    android:id="@+id/addAdv_spinnerItemStatus"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    />
+                    android:background="@drawable/input_cerceve" />
             </LinearLayout>
 
 
@@ -339,64 +314,26 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/TextWarmType"
+                    android:id="@+id/add_adv_TextWarmType"
                     android:layout_width="143dp"
                     android:layout_height="42dp"
                     android:layout_marginLeft="4dp"
-                    android:text="Warm Type"
                     android:gravity="center"
+                    android:text="Warm Type"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/Filter_WarmType"
+                    android:id="@+id/addAdv_spinnerWarmType"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="407dp"
-                android:layout_height="82dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/TextNumOfBath"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="4dp"
-                    android:gravity="center"
-                    android:text="    Number of \n Bathrooms "
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/Filter_NumofBathMin"
-                    android:layout_width="106dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="38dp"
                     android:layout_marginRight="10dp"
-                    android:hint="min"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
+                    android:layout_weight="1"
+                    android:background="@drawable/input_cerceve" />
 
-                <EditText
-                    android:id="@+id/Filter_NumofBathMax"
-                    android:layout_width="106dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:hint="max"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -406,25 +343,28 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/TextElgForCredit"
+                    android:id="@+id/add_adv_TextNumOfBath"
                     android:layout_width="143dp"
                     android:layout_height="47dp"
                     android:layout_marginLeft="4dp"
-                    android:text="Eligibility for Credit"
                     android:gravity="center"
+                    android:text="Number of Bathrooms"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <Spinner
-                    android:id="@+id/Filter_spinnerElgCredit"
-                    android:layout_width="223dp"
-                    android:layout_height="44dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_weight="1"
-                    />
+                <EditText
+                    android:id="@+id/addAdv_editTextNumOfBath"
+                    android:layout_width="215dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addAdv_editTextWarmType"
+                    android:layout_marginLeft="25dp"
+                    android:background="@drawable/input_cerceve"
+                    android:hint="Number Of Bathrooms"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -434,25 +374,53 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/TextUsingStatus"
+                    android:id="@+id/add_adv_TextElgForCredit"
+                    android:layout_width="143dp"
+                    android:layout_height="47dp"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center"
+                    android:text="Eligibility for Credit"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/addAdv_spinnerElgCredit"
+                    android:layout_width="223dp"
+                    android:layout_height="44dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_cerceve" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="407dp"
+                android:layout_height="82dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/add_adv_TextUsingStatus"
                     android:layout_width="143dp"
                     android:layout_height="42dp"
                     android:layout_marginLeft="4dp"
-                    android:text="Using Status"
                     android:gravity="center"
+                    android:text="Using Status"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/Filter_spinnerUsingStatus"
+                    android:id="@+id/addAdv_spinnerUsingStatus"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    />
+                    android:background="@drawable/input_cerceve" />
             </LinearLayout>
 
             <LinearLayout
@@ -462,25 +430,25 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/TextStateBuilding"
+                    android:id="@+id/add_adv_TextStateBuilding"
                     android:layout_width="143dp"
                     android:layout_height="48dp"
                     android:layout_marginLeft="4dp"
-                    android:text="State of Building"
                     android:gravity="center"
+                    android:text="State of Building"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/Filter_spinnerStateBuilding"
+                    android:id="@+id/addAdv_spinnerStateBuilding"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    />
+                    android:background="@drawable/input_cerceve" />
             </LinearLayout>
 
             <LinearLayout
@@ -490,34 +458,26 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/TextRentalIncome"
-                    android:layout_width="wrap_content"
-                    android:layout_height="47dp"
+                    android:id="@+id/add_adv_TextRentalIncome"
+                    android:layout_width="143dp"
+                    android:layout_height="42dp"
                     android:layout_marginLeft="4dp"
-                    android:text=" Rental \n Income"
                     android:gravity="center"
+                    android:text="Rental Income"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/Filter_RentalMin"
-                    android:layout_width="135dp"
+                    android:id="@+id/addAdv_editTextRentalIncome"
+                    android:layout_width="215dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:hint="min"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/Filter_RentalMax"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:hint="max"
-                    android:inputType="text"
+                    android:layout_below="@+id/addAdv_editTextUsingStatus"
+                    android:layout_marginLeft="25dp"
+                    android:background="@drawable/input_cerceve"
+                    android:hint="Rental Income"
+                    android:inputType="textPersonName"
                     android:padding="12dp"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -529,10 +489,10 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/TextDues"
-                    android:layout_width="123dp"
+                    android:id="@+id/add_adv_TextDues"
+                    android:layout_width="143dp"
                     android:layout_height="42dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="4dp"
                     android:gravity="center"
                     android:text="Dues"
                     android:textAlignment="center"
@@ -541,137 +501,14 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/Filter_DuesMin"
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:hint="min"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/Filter_DuesMax"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:hint="max"
-                    android:inputType="text"
-                    android:padding="12dp"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="407dp"
-                android:layout_height="82dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/TextSwap"
-                    android:layout_width="143dp"
-                    android:layout_height="42dp"
-                    android:layout_marginLeft="4dp"
-                    android:text="Swap"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/Filter_spinnerSwap"
-                    android:layout_width="223dp"
-                    android:layout_height="44dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_weight="1"
-                    />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="407dp"
-                android:layout_height="82dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/TextFront"
-                    android:layout_width="143dp"
-                    android:layout_height="42dp"
-                    android:layout_marginLeft="4dp"
-                    android:text="Front"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/Filter_spinnerFront"
-                    android:layout_width="223dp"
-                    android:layout_height="44dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_weight="1"
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="407dp"
-                android:layout_height="82dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/TextFuelType"
-                    android:layout_width="143dp"
-                    android:layout_height="42dp"
-                    android:layout_marginLeft="4dp"
-                    android:text="Fuel Type"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/Filter_spinnerFuelType"
-                    android:layout_width="223dp"
-                    android:layout_height="44dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_weight="1"
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="407dp"
-                android:layout_height="82dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/TextAddress"
-                    android:layout_width="143dp"
-                    android:layout_height="42dp"
-                    android:layout_marginLeft="4dp"
-                    android:text="Address"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/Filter_editTextAddress"
+                    android:id="@+id/addAdv_editTextDues"
                     android:layout_width="215dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/Filter_spinnerFuelType"
+                    android:layout_below="@+id/addAdv_editTextRentalIncome"
                     android:layout_marginLeft="25dp"
-                    android:maxLines="3"
-                    android:inputType="text"
+                    android:background="@drawable/input_cerceve"
+                    android:hint="Dues"
+                    android:inputType="textPersonName"
                     android:padding="12dp"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -683,26 +520,28 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/TextCity"
+                    android:id="@+id/add_adv_TextSwap"
                     android:layout_width="143dp"
                     android:layout_height="42dp"
                     android:layout_marginLeft="4dp"
-                    android:text="City"
                     android:gravity="center"
+                    android:text="Swap"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/Filter_spinnerCity"
+                    android:id="@+id/addAdv_spinnerSwap"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    />
+                    android:background="@drawable/input_cerceve" />
             </LinearLayout>
+
+
             <LinearLayout
                 android:layout_width="407dp"
                 android:layout_height="82dp"
@@ -710,46 +549,209 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/TextTown"
+                    android:id="@+id/add_adv_TextFront"
                     android:layout_width="143dp"
                     android:layout_height="42dp"
                     android:layout_marginLeft="4dp"
-                    android:text="Town "
                     android:gravity="center"
+                    android:text="Front"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/Filter_spinnerTown"
+                    android:id="@+id/addAdv_spinnerFront"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    />
+                    android:background="@drawable/input_cerceve" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="407dp"
-                android:layout_height="190dp"
+                android:layout_height="82dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/add_adv_TextFuelType"
+                    android:layout_width="143dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center"
+                    android:text="Fuel Type"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/addAdv_spinnerFuelType"
+                    android:layout_width="223dp"
+                    android:layout_height="44dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_cerceve" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="407dp"
+                android:layout_height="82dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/add_adv_TextDate"
+                    android:layout_width="143dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center"
+                    android:text="Date"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/addAdv_editTextDate"
+                    android:layout_width="215dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addAdv_spinnerFuelType"
+                    android:layout_marginLeft="25dp"
+                    android:background="@drawable/input_cerceve"
+                    android:padding="12dp"
+                    android:text=""
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="407dp"
+                android:layout_height="82dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/add_adv_TextAddress"
+                    android:layout_width="143dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center"
+                    android:text="Address"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/addAdv_editTextAddress"
+                    android:layout_width="215dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addAdv_editTextDate"
+                    android:layout_marginLeft="25dp"
+                    android:background="@drawable/input_cerceve"
+                    android:hint="Address"
+                    android:inputType="textPersonName"
+                    android:maxLines="3"
+                    android:padding="12dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="407dp"
+                android:layout_height="82dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/add_adv_TextCity"
+                    android:layout_width="143dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center"
+                    android:text="City"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/addAdv_spinnerCity"
+                    android:layout_width="223dp"
+                    android:layout_height="44dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_cerceve" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="407dp"
+                android:layout_height="82dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/add_adv_TextTown"
+                    android:layout_width="143dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center"
+                    android:text="Town"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/addAdv_spinnerTown"
+                    android:layout_width="223dp"
+                    android:layout_height="44dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_cerceve" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="407dp"
+                android:layout_height="82dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/Filter_btnApply"
-                    android:layout_width="271dp"
+                    android:id="@+id/addAdv_btnSubmit"
+                    android:layout_width="230dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="1dp"
-                    android:text="apply filter"
+                    android:layout_marginTop="25dp"
+                    android:enabled="false"
+                    android:onClick="saveAdv"
+                    android:text="Add Adv"
                     android:textAlignment="center"
+                    android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textSize="19sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="407dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <fragment
+                    android:id="@+id/google_map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    class="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
 
 
         </LinearLayout>

@@ -19,6 +19,8 @@ import com.example.ar_realestate.databinding.FragmentMyaccountBinding;
 public class MyAccountFragment extends Fragment {
 
     private FragmentMyaccountBinding binding;
+    public static Boolean clickMyAdv=false;
+    public static int userMyId;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -26,6 +28,10 @@ public class MyAccountFragment extends Fragment {
 
         binding = FragmentMyaccountBinding.inflate(inflater, container, false);
 
+        Intent intent=getActivity().getIntent();
+        User user=(User)intent.getSerializableExtra("UserInformation");
+        System.out.println(user.getUserId());
+        userMyId=user.getUserId();
 
         binding.myInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +40,18 @@ public class MyAccountFragment extends Fragment {
                 FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,new UserProfileFragment());
+                fragmentTransaction.commit();
+
+            }
+        });
+
+        binding.myAdv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickMyAdv=true;
+                FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,new MyAdvertisementFragment());
                 fragmentTransaction.commit();
 
             }

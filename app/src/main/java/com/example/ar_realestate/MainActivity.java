@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private ActionBar actionBar;
     private Button btn;
+    static  public  BottomNavigationView navViewToolbar;
+    static  public  BottomNavigationView navViewToolbar_detail;
     static public Boolean incrPriceClick=false;
     static public Boolean decrsPriceClick=false;
 
@@ -33,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        navViewToolbar_detail=findViewById(R.id.nav_view3);
+        navViewToolbar_detail.setVisibility(View.INVISIBLE);
 
 
         try{
@@ -51,15 +54,14 @@ public class MainActivity extends AppCompatActivity {
        // getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_activity_main, new HomeFragment()).commit();
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        BottomNavigationView navViewToolbar = findViewById(R.id.nav_view2);
-        System.out.println("Error 1");
+        navViewToolbar = findViewById(R.id.nav_view2);
+
         btn=(Button)findViewById(R.id.buttonOrderHide);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 PopupMenu popupMenu = new PopupMenu(MainActivity.this, btn);
 
-                // Inflating popup menu from popup_menu.xml file
                 popupMenu.getMenuInflater().inflate(R.menu.popup, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
@@ -67,47 +69,50 @@ public class MainActivity extends AppCompatActivity {
                         if(menuItem.getItemId()==R.id.inc_price)
                         {
                             incrPriceClick=true;
+                            navViewToolbar_detail.setVisibility(View.INVISIBLE);
                             replaceFragment(new HomeFragment());
                         }
                         else if(menuItem.getItemId()==R.id.dcrs_price)
                         {
                             decrsPriceClick=true;
+                            navViewToolbar_detail.setVisibility(View.INVISIBLE);
                             replaceFragment(new HomeFragment());
                         }
-                       // Toast.makeText(MainActivity.this, "You Clicked " + menuItem.getTitle(), Toast.LENGTH_SHORT).show();
-                        return true;
+                      return true;
                     }
                 });
-                // Showing the popup menu
+
                 popupMenu.show();
             }
         });
-
-        System.out.println("Error 2");
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
 
 
         binding.navView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.navigation_addadvertisement:
-                    replaceFragment(new DashboardFragment());
+                    navViewToolbar.setVisibility(View.INVISIBLE);
+                    navViewToolbar_detail.setVisibility(View.INVISIBLE);
+                    replaceFragment(new AddAdvFragment());
                     break;
                 case R.id.navigation_home:
                     navViewToolbar.setVisibility(View.VISIBLE);
-
+                    navViewToolbar_detail.setVisibility(View.INVISIBLE);
                     replaceFragment(new HomeFragment());
-
                     break;
                 case R.id.navigation_notifications:
                     Intent intent=getIntent();
                     User user=(User)intent.getSerializableExtra("UserInformation");
 
-                    if(user==null)
+                    if(user==null){
+                        navViewToolbar_detail.setVisibility(View.INVISIBLE);
                         replaceFragment(new LoginFragment());
-                    else
-                        replaceFragment(new MyAccountFragment());
+                    }
 
+                    else{
+                        navViewToolbar_detail.setVisibility(View.INVISIBLE);
+                        replaceFragment(new MyAccountFragment());
+                    }
+                    navViewToolbar_detail.setVisibility(View.INVISIBLE);
                     navViewToolbar.setVisibility(View.INVISIBLE);
                     break;
             }
@@ -118,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             switch (item_toolbar.getItemId()) {
                 case R.id.toolbar_filter:
                     navViewToolbar.setVisibility(View.INVISIBLE);
+                    navViewToolbar_detail.setVisibility(View.VISIBLE);
                     replaceFragment(new FilterAdvFragment());
                     break;
                 case R.id.toolbar_Order:
@@ -126,6 +132,15 @@ public class MainActivity extends AppCompatActivity {
            return true;
         });
 
+        binding.navView3.setOnItemReselectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.back:
+                    navViewToolbar.setVisibility(View.VISIBLE);
+                    navViewToolbar_detail.setVisibility(View.INVISIBLE);
+                    replaceFragment(new HomeFragment());
+                    break;
+            }
+        });
         //  getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
     }
 

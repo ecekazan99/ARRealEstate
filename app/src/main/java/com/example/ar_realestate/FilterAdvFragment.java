@@ -319,45 +319,54 @@ public class FilterAdvFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                applButton=true;
-                priceMin=Integer.parseInt(editTxtPriceMin.getText().toString());
-                priceMax=Integer.parseInt(editTxtPriceMax.getText().toString());
+                try {
+                    priceMin = Integer.parseInt(editTxtPriceMin.getText().toString());
+                    priceMax = Integer.parseInt(editTxtPriceMax.getText().toString());
 
-                squareMeterMin=Integer.parseInt(editTxtSquareMin.getText().toString());
-                squareMeterMax=Integer.parseInt(editTxtSquareMax.getText().toString());
+                    squareMeterMin = Integer.parseInt(editTxtSquareMin.getText().toString());
+                    squareMeterMax = Integer.parseInt(editTxtSquareMax.getText().toString());
 
-                buildingFloorsMin=Integer.parseInt(editTextBuildFloorMin.getText().toString());
-                buildingFloorsMax=Integer.parseInt(editTextBuildFloorMax.getText().toString());
+                    buildingFloorsMin = Integer.parseInt(editTextBuildFloorMin.getText().toString());
+                    buildingFloorsMax = Integer.parseInt(editTextBuildFloorMax.getText().toString());
 
-                floorLocMin=Integer.parseInt(editTxtFloorLocMin.getText().toString());
-                floorLocMax=Integer.parseInt(editTxtFloorLocMax.getText().toString());
+                    floorLocMin = Integer.parseInt(editTxtFloorLocMin.getText().toString());
+                    floorLocMax = Integer.parseInt(editTxtFloorLocMax.getText().toString());
 
-                buildAgeMin=Integer.parseInt(editTextBuildAgeMin.getText().toString());
-                buildAgeMax=Integer.parseInt(editTextBuildAgeMax.getText().toString());
+                    buildAgeMin = Integer.parseInt(editTextBuildAgeMin.getText().toString());
+                    buildAgeMax = Integer.parseInt(editTextBuildAgeMax.getText().toString());
 
-                numOfBathrMin=Integer.parseInt(editTxtNumofBathMin.getText().toString());
-                numOfBathrMax=Integer.parseInt(editTxtNumofBathMax.getText().toString());
+                    numOfBathrMin = Integer.parseInt(editTxtNumofBathMin.getText().toString());
+                    numOfBathrMax = Integer.parseInt(editTxtNumofBathMax.getText().toString());
 
-                rentalIncomeMin=Integer.parseInt(editTxtRentalIncomeMin.getText().toString());
-                rentalIncomeMax=Integer.parseInt(editTxtRentalIncomeMax.getText().toString());
+                    rentalIncomeMin = Integer.parseInt(editTxtRentalIncomeMin.getText().toString());
+                    rentalIncomeMax = Integer.parseInt(editTxtRentalIncomeMax.getText().toString());
 
-                duesMin=Integer.parseInt(editTxtDuesMin.getText().toString());
-                duesMax=Integer.parseInt(editTxtDuesMax.getText().toString());
+                    duesMin = Integer.parseInt(editTxtDuesMin.getText().toString());
+                    duesMax = Integer.parseInt(editTxtDuesMax.getText().toString());
 
-                address=editTxtAddress.getText().toString();
+                    address = editTxtAddress.getText().toString();
 
+                }catch (Exception e){
+                    System.out.println("Hataa");
+                }
 
-                HomeFragment homeFragment = new HomeFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, homeFragment);
-                fragmentTransaction.commit();
+                if(filterInputControl()==true){
+                    applButton=true;
+                    HomeFragment homeFragment = new HomeFragment();
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, homeFragment);
+                    fragmentTransaction.commit();
+                }
+
             }
         });
 
 
         return binding.getRoot();
     }
+
+
     public void getCities()
     {
         int counter=0;
@@ -367,7 +376,6 @@ public class FilterAdvFragment extends Fragment {
         while (cursor.isAfterLast()==false){
             cities[counter]=cursor.getString(1);
             counter++;
-            // System.out.println(cursor.getString(0));
             cursor.moveToNext();
 
         }
@@ -378,8 +386,6 @@ public class FilterAdvFragment extends Fragment {
         Cursor cursor=MainActivity.db.rawQuery(selectSquery,null);
         while (cursor.moveToNext()){
             cityId=Integer.parseInt(cursor.getString(0));
-          //  System.out.println("City idddd"+cursor.getString(0));
-           // System.out.println("City Name"+cityName);
             cursor.close();
         }
 
@@ -389,11 +395,46 @@ public class FilterAdvFragment extends Fragment {
         while (cursor.isAfterLast()==false){
 
             districties.add(cursor.getString(1));
-           //System.out.println("District Name :" + cursor.getString(1));
             cursor.moveToNext();
 
         }
     }
+        public boolean filterInputControl(){
 
+            Boolean checkEmpty =true;
+            if(advStatus.equals("Select Adv Status") || buildType.equals("Select Build Type") || itemStatus.equals("Select Item Status") ||
+                    elgForCredit.equals("Select Elg Credit") || usingStatus.equals("Select Using Status") || stateBuilding.equals("Select State Building")||
+                    swap.equals("Select Swap")|| front.equals("Select Front") || fuelType.equals("Select Fuel Type") ||
+                    roomNum.equals("Select Room Number") || warmType.equals("Select Warm Type") || city.equals("Select City") ){
+                checkEmpty =false;
+
+                Toast.makeText(getActivity(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
+
+            }else if(TextUtils.isEmpty(address)|| TextUtils.isEmpty(editTxtPriceMin.getText().toString())|| TextUtils.isEmpty(editTxtPriceMax.getText().toString())||
+                    TextUtils.isEmpty(editTxtSquareMin.getText().toString())||TextUtils.isEmpty(editTxtSquareMax.getText().toString())||
+                    TextUtils.isEmpty(editTextBuildFloorMin.getText().toString())|| TextUtils.isEmpty(editTextBuildFloorMax.getText().toString())||
+                    TextUtils.isEmpty(editTxtFloorLocMin.getText().toString()) ||TextUtils.isEmpty(editTxtFloorLocMax.getText().toString()) ||
+                    TextUtils.isEmpty(editTextBuildAgeMin.getText().toString())||TextUtils.isEmpty(editTextBuildAgeMax.getText().toString()) ||
+                    TextUtils.isEmpty(editTxtNumofBathMin.getText().toString())||TextUtils.isEmpty(editTxtNumofBathMax.getText().toString()) ||
+                    TextUtils.isEmpty(editTxtRentalIncomeMin.getText().toString())||TextUtils.isEmpty(editTxtRentalIncomeMax.getText().toString())||
+                    TextUtils.isEmpty(editTxtDuesMin.getText().toString()) || TextUtils.isEmpty(editTxtDuesMax.getText().toString())){
+
+                checkEmpty=false;
+                Toast.makeText(getActivity(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
+
+            }else if(!TextUtils.isDigitsOnly(editTxtPriceMin.getText()) || !TextUtils.isDigitsOnly(editTxtPriceMax.getText()) ||
+                    !TextUtils.isDigitsOnly(editTxtSquareMin.getText()) || !TextUtils.isDigitsOnly(editTxtSquareMax.getText())||
+                    !TextUtils.isDigitsOnly(editTextBuildFloorMin.getText()) || !TextUtils.isDigitsOnly(editTextBuildFloorMax.getText()) ||
+                    !TextUtils.isDigitsOnly(editTxtFloorLocMin.getText()) || !TextUtils.isDigitsOnly(editTxtFloorLocMax.getText()) ||
+                    !TextUtils.isDigitsOnly(editTextBuildAgeMin.getText()) || !TextUtils.isDigitsOnly(editTextBuildAgeMax.getText()) ||
+                    !TextUtils.isDigitsOnly(editTxtRentalIncomeMin.getText())|| !TextUtils.isDigitsOnly(editTxtRentalIncomeMin.getText())||
+                    !TextUtils.isDigitsOnly(editTxtDuesMin.getText()) || !TextUtils.isDigitsOnly(editTxtDuesMax.getText()) ||
+                    !TextUtils.isDigitsOnly(editTxtNumofBathMin.getText()) || !TextUtils.isDigitsOnly(editTxtNumofBathMin.getText())) {
+                checkEmpty =false;
+                Toast.makeText(getActivity(),"Please Incorrect Inputs",Toast.LENGTH_SHORT).show();
+            }
+            System.out.println("Girildi 1: "+ city);
+            return checkEmpty;
+        }
 }
 

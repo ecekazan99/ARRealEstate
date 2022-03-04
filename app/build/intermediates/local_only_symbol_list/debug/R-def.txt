@@ -24,6 +24,7 @@ dimen activity_vertical_margin
 dimen fragment_horizontal_margin
 dimen fragment_vertical_margin
 drawable ic_action_back
+drawable ic_action_fav
 drawable ic_action_filter
 drawable ic_action_name
 drawable ic_baseline_add_circle_outline_24
@@ -89,6 +90,7 @@ id TextSwap
 id TextTown
 id TextUsingStatus
 id TextWarmType
+id addAdvImage
 id addAdv_TextRoomNum
 id addAdv_btnSubmit
 id addAdv_editTextAddress
@@ -141,10 +143,12 @@ id add_adv_TextUsingStatus
 id add_adv_TextWarmType
 id add_book_activity_imageViewBookImage
 id address
+id advFavourite
 id advItem_imageViewAdv
 id adv_item_textViewAdvAcıklama
 id adv_item_textViewAdvPrice
 id adv_item_textViewAdvTitle
+id back
 id buttonHaveAccount
 id buttonLogin
 id buttonOrderHide
@@ -197,6 +201,7 @@ id mySpecialAdv
 id nav_host_fragment_activity_main
 id nav_view
 id nav_view2
+id nav_view3
 id navigation_addadvertisement
 id navigation_dashboard
 id navigation_home
@@ -204,6 +209,7 @@ id navigation_notifications
 id navigation_user
 id price
 id recview
+id recviewMyAdvs
 id signUp
 id textPrice
 id textView
@@ -222,16 +228,20 @@ layout activity_adv_detail
 layout activity_main
 layout adv_item
 layout advertisement_card
+layout fragment_add_adv
+layout fragment_adv_detail
 layout fragment_dashboard
 layout fragment_filter_adv
 layout fragment_home
 layout fragment_login
+layout fragment_my_advertisement
 layout fragment_myaccount
 layout fragment_sign_up
 layout fragment_user_profile
 menu bottom_nav_menu
 menu popup
 menu toolbar
+menu toolbar_advdetail
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation mobile_navigation
