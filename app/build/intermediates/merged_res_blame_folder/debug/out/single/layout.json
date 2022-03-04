@@ -20,6 +20,10 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\adv_item.xml"
     },
     {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_my_adv_update.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_my_adv_update.xml"
+    },
+    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_add_adv.xml",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_add_adv.xml"
     },

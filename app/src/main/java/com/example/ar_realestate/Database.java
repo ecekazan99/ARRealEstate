@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
 import android.widget.Toast;
 
 public class Database extends SQLiteOpenHelper {
@@ -89,6 +90,7 @@ public class Database extends SQLiteOpenHelper {
         return user;
     }
 
+
     public int updateUser(int id,String name, String surname, String email, String password, String newPassword){
 
         try{
@@ -102,6 +104,54 @@ public class Database extends SQLiteOpenHelper {
 
 
             db.update("UserInformation", values, "UserId=?", new String[]{String.valueOf(id)});
+            db.close();
+
+        }catch (Exception e){
+            return 0;
+        }
+        return 1;
+    }
+
+
+
+    public int updateMyAdv(int advId, String advTitle, byte[]  advImage, int price, String advStatus, String roomNum, int squareMeter,int buildingFloors,
+                           int floorLoc,int buildAge,int buildType,String itemStatus,String warmTpe,int numOfBathrooms,String elgCredit,
+                           String usingStatus,String stateBuilding,int rentalIncome, int dues, String swap,String front,String fuelType,String date,
+                           String address, String city,String town, long xCoordinate, long yCoordinate){
+
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+
+            values.put("AdvTitle",advTitle);
+            values.put("AdvImage",advImage);
+            values.put("Price",price);
+            values.put("AdvStatus",advStatus);
+            values.put("RoomNum",roomNum);
+            values.put("SquareMeter",squareMeter);
+            values.put("BuildingFloors",buildingFloors);
+            values.put("FloorLoc",floorLoc);
+            values.put("BuildAge",buildAge);
+            values.put("BuildType",buildType);
+            values.put("ItemStatus",itemStatus);
+            values.put("WarmType",warmTpe);
+            values.put("NumOfBathrooms",numOfBathrooms);
+            values.put("ElgCredit",elgCredit);
+            values.put("UsingStatus",usingStatus);
+            values.put("StateBuilding",stateBuilding);
+            values.put("RentalIncome",rentalIncome);
+            values.put("Dues",dues);
+            values.put("Swap",swap);
+            values.put("Front",front);
+            values.put("FuelType",fuelType);
+            values.put("Date",date);
+            values.put("Address",address);
+            values.put("Cities",city);
+            values.put("Town",town);
+            values.put("xCoordinate",xCoordinate);
+            values.put("yCoordinate",yCoordinate);
+
+            db.update("Advertisements", values, "AdvId=?", new String[]{String.valueOf(advId)});
             db.close();
 
         }catch (Exception e){

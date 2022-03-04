@@ -65,7 +65,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     static public AdvDetail advDetailLast;
 
     private Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType,spinnerItemStatus,spinnerWarmType,spinnerElgbCredit,spinnerUsingStatus, spinnerStateOfBuilding,spinnerSwap,spinnerFront,spinnerFuelType,spinnerCity,spinnerTown;
-
+    public static int advStatusPos,roomNumPos,buildTypePos,itemStatusPos,warmTypePos,elgCreditPos,usingStatusPos,stateBuildingPos,swapPos,frontPos,fuelTypePos,cityPos,townPos;
     private int imgNoPermissionCod=0,imgPermissionCod=1;
 
     String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
@@ -129,7 +129,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 advStatus = adapterView.getItemAtPosition(i).toString();
-
+                advStatusPos=i;
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -145,6 +145,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 buildType=adapterView.getItemAtPosition(i).toString();
+                buildTypePos=i;
             }
 
             @Override
@@ -161,6 +162,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 itemStatus=adapterView.getItemAtPosition(i).toString();
+               itemStatusPos=i;
             }
 
             @Override
@@ -176,6 +178,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 elgForCredit=adapterView.getItemAtPosition(i).toString();
+                elgCreditPos=i;
             }
 
             @Override
@@ -191,6 +194,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 usingStatus=adapterView.getItemAtPosition(i).toString();
+                usingStatusPos=i;
             }
 
             @Override
@@ -206,6 +210,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 stateBuilding=adapterView.getItemAtPosition(i).toString();
+                stateBuildingPos=i;
             }
 
             @Override
@@ -221,6 +226,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 swap=adapterView.getItemAtPosition(i).toString();
+                swapPos=i;
             }
 
             @Override
@@ -236,6 +242,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 front=adapterView.getItemAtPosition(i).toString();
+                frontPos=i;
             }
 
             @Override
@@ -251,6 +258,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 fuelType=adapterView.getItemAtPosition(i).toString();
+                fuelTypePos=i;
             }
 
             @Override
@@ -266,6 +274,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 roomNum=adapterView.getItemAtPosition(i).toString();
+                roomNumPos=i;
             }
 
             @Override
@@ -281,6 +290,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 warmType=adapterView.getItemAtPosition(i).toString();
+                warmTypePos=i;
             }
 
             @Override
@@ -299,6 +309,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 city=adapterView.getItemAtPosition(i).toString();
+                cityPos=i;
+                System.out.println("Cityyy Poss   "+i);
                 districties.clear();
                 getTown(city);
                 adapterTowns=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,districties);
@@ -308,6 +320,9 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         town=adapterView.getItemAtPosition(i).toString();
+                        townPos=i;
+                        System.out.println("Town Poss   "+i);
+
                     }
 
                     @Override

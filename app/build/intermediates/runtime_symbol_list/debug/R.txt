@@ -3303,6 +3303,8 @@ int id unchecked 0x7f090287
 int id uniform 0x7f090288
 int id unlabeled 0x7f090289
 int id up 0x7f09028a
+int id updateAdv 0x7f0902a8
+int id updateAdv_btn 0x7f0902a9
 int id useLogo 0x7f09028b
 int id userMail 0x7f09028c
 int id userName 0x7f09028d
@@ -3437,10 +3439,10 @@ int layout design_text_input_end_icon 0x7f0c002f
 int layout design_text_input_start_icon 0x7f0c0030
 int layout fragment_add_adv 0x7f0c0088
 int layout fragment_adv_detail 0x7f0c0089
-int layout fragment_dashboard 0x7f0c0031
 int layout fragment_filter_adv 0x7f0c0032
 int layout fragment_home 0x7f0c0033
 int layout fragment_login 0x7f0c0034
+int layout fragment_my_adv_update 0x7f0c008b
 int layout fragment_my_advertisement 0x7f0c008a
 int layout fragment_myaccount 0x7f0c0035
 int layout fragment_sign_up 0x7f0c0036

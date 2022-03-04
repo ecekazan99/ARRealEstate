@@ -218,6 +218,8 @@ id title
 id toolbar_Order
 id toolbar_back
 id toolbar_filter
+id updateAdv
+id updateAdv_btn
 id userMail
 id userName
 id userNewPassword
@@ -230,10 +232,10 @@ layout adv_item
 layout advertisement_card
 layout fragment_add_adv
 layout fragment_adv_detail
-layout fragment_dashboard
 layout fragment_filter_adv
 layout fragment_home
 layout fragment_login
+layout fragment_my_adv_update
 layout fragment_my_advertisement
 layout fragment_myaccount
 layout fragment_sign_up

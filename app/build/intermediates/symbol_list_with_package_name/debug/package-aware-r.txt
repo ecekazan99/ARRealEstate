@@ -3304,6 +3304,8 @@ id unchecked
 id uniform
 id unlabeled
 id up
+id updateAdv
+id updateAdv_btn
 id useLogo
 id userMail
 id userName
@@ -3438,10 +3440,10 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_add_adv
 layout fragment_adv_detail
-layout fragment_dashboard
 layout fragment_filter_adv
 layout fragment_home
 layout fragment_login
+layout fragment_my_adv_update
 layout fragment_my_advertisement
 layout fragment_myaccount
 layout fragment_sign_up

@@ -124,6 +124,10 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable\\input_field.xml"
     },
     {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_my_adv_update.xml.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_my_adv_update.xml"
+    },
+    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_action_filter.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_filter.png"
     },
@@ -198,10 +202,6 @@
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_action_name.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_name.png"
-    },
-    {
-        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_dashboard.xml.flat",
-        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_dashboard.xml"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_input_cerceve.xml.flat",

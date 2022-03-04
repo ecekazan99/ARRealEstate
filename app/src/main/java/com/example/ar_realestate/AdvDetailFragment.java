@@ -163,6 +163,12 @@ public class AdvDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentAdvDetailBinding.inflate(inflater, container, false);
+        if(MyAdvertisementFragment.clickMyAdvDetail==false){
+            binding.updateAdv.setVisibility(View.INVISIBLE);
+        }
+        else if(MyAdvertisementFragment.clickMyAdvDetail==true) {
+            binding.updateAdv.setVisibility(View.VISIBLE);
+        }
 
         init();
 
