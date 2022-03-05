@@ -28,6 +28,7 @@ drawable ic_action_fav
 drawable ic_action_filter
 drawable ic_action_name
 drawable ic_baseline_add_circle_outline_24
+drawable ic_baseline_favorite_24
 drawable ic_baseline_location_on_24
 drawable ic_baseline_person_24
 drawable ic_baseline_photo_camera_24

@@ -2584,6 +2584,7 @@ int drawable ic_action_fav 0x7f08007b
 int drawable ic_action_filter 0x7f08007c
 int drawable ic_action_name 0x7f08007d
 int drawable ic_baseline_add_circle_outline_24 0x7f08007e
+int drawable ic_baseline_favorite_24 0x7f0800bf
 int drawable ic_baseline_location_on_24 0x7f08007f
 int drawable ic_baseline_person_24 0x7f080080
 int drawable ic_baseline_photo_camera_24 0x7f080081
