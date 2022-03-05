@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.navigation_home:
                     navViewToolbar.setVisibility(View.VISIBLE);
+                    MyAdvertisementFragment.clickMyAdvDetail=false;
                     navViewToolbar_detail.setVisibility(View.INVISIBLE);
                     replaceFragment(new HomeFragment());
                     break;

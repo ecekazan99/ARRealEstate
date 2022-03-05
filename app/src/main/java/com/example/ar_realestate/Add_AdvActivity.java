@@ -432,7 +432,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                 Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi",Toast.LENGTH_SHORT).show();
                 add_Adv=true;
 
-                if(add_Adv==true)
+               /* if(add_Adv==true)
                 {
                     System.out.println("jgdfgm");
                     advDetailLast=new AdvDetail(advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
@@ -441,7 +441,7 @@ public class Add_AdvActivity extends AppCompatActivity implements OnMapReadyCall
                     Intent detailIntent=new Intent(this,AdvDetailActivity.class);
 
                     startActivity(detailIntent);
-                }
+                }*/
                 int lastInsertedAdvId = 0;
                 Cursor c=MainActivity.db.rawQuery("select last_insert_rowid()",null);
                 if (c!= null && c.moveToFirst()) {

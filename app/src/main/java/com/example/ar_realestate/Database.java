@@ -115,7 +115,7 @@ public class Database extends SQLiteOpenHelper {
 
 
     public int updateMyAdv(int advId, String advTitle, byte[]  advImage, int price, String advStatus, String roomNum, int squareMeter,int buildingFloors,
-                           int floorLoc,int buildAge,int buildType,String itemStatus,String warmTpe,int numOfBathrooms,String elgCredit,
+                           int floorLoc,int buildAge,String buildType,String itemStatus,String warmTpe,int numOfBathrooms,String elgCredit,
                            String usingStatus,String stateBuilding,int rentalIncome, int dues, String swap,String front,String fuelType,String date,
                            String address, String city,String town, long xCoordinate, long yCoordinate){
 
@@ -158,5 +158,20 @@ public class Database extends SQLiteOpenHelper {
             return 0;
         }
         return 1;
+    }
+    public boolean checkAdvTitleExist(String advTitle){
+
+        try{
+            SQLiteDatabase sqLiteDatabase=getReadableDatabase();
+            Cursor cursor=sqLiteDatabase.rawQuery("SELECT * FROM Advertisements " +
+                    "WHERE AdvTitle = ?",new String[]{advTitle});
+
+            if(cursor.moveToFirst()){
+                return false;
+            }
+        }catch (Exception e){
+            return true;
+        }
+        return true;
     }
 }

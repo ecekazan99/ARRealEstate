@@ -500,15 +500,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 Toast.makeText(getActivity(),"Kayıt başarıyla eklendi",Toast.LENGTH_SHORT).show();
                 add_Adv=true;
 
-                if(add_Adv==true)
-                {
-                    System.out.println("jgdfgm");
-                    advDetailLast=new AdvDetail(advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
-                            buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,
-                            stateBuilding,rentalIncome,dues,swap,front,fuelType,date,address,city,town);
-                    MainActivity.navViewToolbar_detail.setVisibility(View.VISIBLE);
-                    replaceFragment(new AdvDetailFragment());
-                }
                 int lastInsertedAdvId = 0;
                 Cursor c=MainActivity.db.rawQuery("select last_insert_rowid()",null);
                 if (c!= null && c.moveToFirst()) {
@@ -531,6 +522,16 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 statementUserAdv.execute();
 
 
+
+                if(add_Adv==true)
+                {
+                    System.out.println("jgdfgm");
+                    advDetailLast=new AdvDetail(advId,advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
+                            buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,
+                            stateBuilding,rentalIncome,dues,swap,front,fuelType,date,address,city,town);
+                    MainActivity.navViewToolbar_detail.setVisibility(View.VISIBLE);
+                    replaceFragment(new AdvDetailFragment());
+                }
 
             }catch (Exception e){
                 e.printStackTrace();
@@ -647,7 +648,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         imageAdv.setImageBitmap(firstImage);
         btnSubmitAdv.setEnabled(false);
     }
-    public void getCities()
+    public static  void getCities()
     {
         int counter=0;
         MainActivity.database.onCreate(MainActivity.db);
@@ -662,7 +663,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         }
 
     }
-    public void getTown(String cityName){
+    public  static void getTown(String cityName){
         String selectSquery="SELECT CityId FROM Cities WHERE CityName = '"+cityName+"'";
         Cursor cursor=MainActivity.db.rawQuery(selectSquery,null);
         while (cursor.moveToNext()){

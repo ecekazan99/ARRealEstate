@@ -25,7 +25,7 @@ public class AdvDetailFragment extends Fragment {
             txtFuelType, txtDate, txtAddress,txtCity,txtTown;
 
     String advTitle, advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, date, address,city,town;
-    int price, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncome, dues;
+    int advId,price, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncome, dues;
     long latitude, longitude;
 
     private Bitmap advImagePng;
@@ -34,7 +34,7 @@ public class AdvDetailFragment extends Fragment {
         // Required empty public constructor
     }
     private void init() {
-        System.out.println("Hereeeeeeeee1 ");
+
         advImageView = (ImageView) binding.detailAdvImage;
         txtAdvTitle = (TextView) binding.detailAdvTitle;
         txtAdvPrice = (TextView) binding.detailAdvPrice;
@@ -62,7 +62,7 @@ public class AdvDetailFragment extends Fragment {
         txtTown=(TextView) binding.detailAdvTown;
 
         if(AddAdvFragment.add_Adv==false && MyAdvertisementFragment.clickMyAdvDetail!=true){
-
+           advId=HomeFragment.advDetail.getAdvId();
             advTitle=HomeFragment.advDetail.getAdvTitle();
             advImagePng=HomeFragment.advDetail.getAdv_image();
             price=HomeFragment.advDetail.getPrice();
@@ -92,6 +92,7 @@ public class AdvDetailFragment extends Fragment {
 
         }
         else if(AddAdvFragment.add_Adv==true && MyAdvertisementFragment.clickMyAdvDetail!=true){
+            advId=AddAdvFragment.advDetailLast.getAdvId();
             advTitle=AddAdvFragment.advDetailLast.getAdvTitle();
             advImagePng=AddAdvFragment.advDetailLast.getAdv_image();
             price=AddAdvFragment.advDetailLast.getPrice();
@@ -119,7 +120,7 @@ public class AdvDetailFragment extends Fragment {
             town=AddAdvFragment.advDetailLast.getTown();
         }
         else if(MyAdvertisementFragment.clickMyAdvDetail==true){
-
+            advId=MyAdvertisementFragment.advDetail.getAdvId();
             advTitle=MyAdvertisementFragment.advDetail.getAdvTitle();
             advImagePng=MyAdvertisementFragment.advDetail.getAdv_image();
             price=MyAdvertisementFragment.advDetail.getPrice();
@@ -176,9 +177,7 @@ public class AdvDetailFragment extends Fragment {
         advImageView.setImageBitmap(advImagePng);
         txtAdvPrice.setText(String.valueOf(price));
         txtAdvStatus.setText(advStatus);
-        System.out.println("HEREEEEEEEEEEEEE22");
         txtAdvRoomNum.setText(roomNum);
-        System.out.println("HEREEEEEEEEEEEEE33");
         txtSquareMeter.setText(String.valueOf(squareMeters));
         txtBuildingFloors.setText(String.valueOf(buildingFloors));
         txtFloorLocation.setText(String.valueOf(floorLoc));
@@ -198,9 +197,7 @@ public class AdvDetailFragment extends Fragment {
         txtDate.setText(date);
         txtAddress.setText(address);
         txtCity.setText(city);
-        System.out.println("Hereeee 4444");
         txtTown.setText(town);
-
         return binding.getRoot();
 
     }

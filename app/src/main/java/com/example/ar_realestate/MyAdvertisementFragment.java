@@ -17,10 +17,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MyAdvertisementFragment extends Fragment {
-    private AdvertisementAdapter advAdapter;
+    public static AdvertisementAdapter advAdapter;
     static public AdvDetail advDetail;
+    public  static int id;
     RecyclerView recyclerView;
-    ArrayList<Advertisement> adv;
+    public static ArrayList<Advertisement> adv;
     public static Boolean clickMyAdvDetail=false;
 
 
@@ -28,7 +29,12 @@ public class MyAdvertisementFragment extends Fragment {
     public MyAdvertisementFragment() {
         // Required empty public constructor
     }
-
+    public static MyAdvertisementFragment newInstance(String param1, String param2) {
+        MyAdvertisementFragment fragment = new MyAdvertisementFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,7 @@ public class MyAdvertisementFragment extends Fragment {
         // burayı ekledim
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
         advAdapter=new AdvertisementAdapter(Advertisement.getData(getContext()),getContext());
 
         recyclerView.setAdapter(advAdapter);
@@ -58,11 +65,12 @@ public class MyAdvertisementFragment extends Fragment {
 
         advAdapter.setOnItemClickListener(adv ->  {
             clickMyAdvDetail=true;
-            advDetail=new AdvDetail(adv.getAdvTitle(),adv.getAdvImage(),adv.getPrice(),adv.getAdvStatus(),
+            advDetail=new AdvDetail(adv.getAdvId(),adv.getAdvTitle(),adv.getAdvImage(),adv.getPrice(),adv.getAdvStatus(),
                     adv.getRoomNum(),adv.getSquareMeters(),adv.getBuildingFloors(),adv.getFloorLoc(),
                     adv.getBuildAge(),adv.getBuildType(),adv.getItemStatus(),adv.getWarmType(),adv.getNumOfBathr(),
                     adv.getElgForCredit(),adv.getUsingStatus(),adv.getStateBuilding(),adv.getRentalIncome(),
                     adv.getDues(),adv.getSwap(),adv.getFront(),adv.getFuelType(),adv.getDate(),adv.getAddress(),adv.getCity(),adv.getTown());
+            id=adv.getAdvId();
 
             MainActivity.navViewToolbar.setVisibility(View.INVISIBLE);
             MainActivity.navViewToolbar_detail.setVisibility(View.INVISIBLE);

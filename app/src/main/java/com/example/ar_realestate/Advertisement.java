@@ -7,9 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Advertisement {
+public class Advertisement implements Serializable {
     private String  advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
     private  int advId, price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
 
@@ -17,6 +18,8 @@ public class Advertisement {
     //private int adv_image;
 
     private  Bitmap advImage;
+    private byte[] kayıtImage;
+
     public Advertisement() {
     }
 
@@ -29,7 +32,15 @@ public class Advertisement {
         this.advId=advId;
     }
 
-    public Advertisement(String advTitle, Bitmap advImage,int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address,String city,String town) {
+    public byte[] getKayıtImage() {
+        return kayıtImage;
+    }
+
+    public void setKayıtImage(byte[] kayıtImage) {
+        this.kayıtImage = kayıtImage;
+    }
+
+    public Advertisement(String advTitle, Bitmap advImage, int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address, String city, String town) {
         this.advTitle = advTitle;
         this.advImage=advImage;
         this.price=price;
@@ -224,11 +235,11 @@ public class Advertisement {
 
     static public ArrayList<Advertisement> getData(Context context){
 
-        int advertisementId=0;
         String sqlQuery="";
         Cursor cursor = null;
+        int count=0;
+        Boolean flagMyAdv=false;
         ArrayList<Advertisement> advertisementList=new ArrayList<>();
-
         ArrayList<String> advTitleList=new ArrayList<>();
         ArrayList<String> advStatusList=new ArrayList<>();
         ArrayList<String> roomNumList=new ArrayList<>();
@@ -259,6 +270,7 @@ public class Advertisement {
 
         ArrayList<Long>xCoordinateList=new ArrayList<>();
         ArrayList<Long>yCoordinateList=new ArrayList<>();
+
 
         try {
 
@@ -298,120 +310,211 @@ public class Advertisement {
                 sqlQuery="SELECT * FROM Advertisements ORDER BY Price DESC";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }
-            else if(MyAccountFragment.clickMyAdv==true)
-            {
+            else if (MyAccountFragment.clickMyAdv == true) {
                 System.out.println("Burayaa girdii 555555");
-                sqlQuery="SELECT AdvId FROM  UserAdvertisement WHERE UserId = ? ";
-                cursor=MainActivity.db.rawQuery(sqlQuery, new String[] { String.valueOf(MyAccountFragment.userMyId)});
-                while (cursor.moveToNext()){
-                    System.out.println("ADVVVVVVVV IDDDDDDD: "+cursor.getString(0));
-                    advertisementId= Integer.parseInt(cursor.getString(0));
-                    cursor.close();
+                flagMyAdv = true;
+                sqlQuery = "SELECT AdvId FROM UserAdvertisement WHERE UserId= ?";
+                cursor = MainActivity.db.rawQuery(sqlQuery, new String[]{String.valueOf(MyAccountFragment.userMyId)});
+                while (cursor.moveToNext()) {
+                    int advertisementId = Integer.parseInt(cursor.getString(0));
+                    sqlQuery = "SELECT * FROM  Advertisements WHERE AdvId = ? ";
+                    Cursor cursorTemp = MainActivity.db.rawQuery(sqlQuery, new String[]{String.valueOf(advertisementId)});
+                    int advTitleIndex = cursorTemp.getColumnIndex("AdvTitle");
+                    int ImageIndex = cursorTemp.getColumnIndex("AdvImage");
+                    int priceIncex = cursorTemp.getColumnIndex("Price");
+                    int advStatusIndex = cursorTemp.getColumnIndex("AdvStatus");
+                    int roomNumIndex = cursorTemp.getColumnIndex("RoomNum");
+                    int squareMeterIndex = cursorTemp.getColumnIndex("SquareMeter");
+                    int buildingFloorsIndex = cursorTemp.getColumnIndex("BuildingFloors");
+                    int floorLocIndex = cursorTemp.getColumnIndex("FloorLoc");
+                    int buildAgeIndex = cursorTemp.getColumnIndex("BuildAge");
+                    int buildTypeIndex = cursorTemp.getColumnIndex("BuildType");
+                    int itemStatusIndex = cursorTemp.getColumnIndex("ItemStatus");
+                    int warmTypeIndex = cursorTemp.getColumnIndex("WarmType");
+                    int numOfBathroomsIndex = cursorTemp.getColumnIndex("NumOfBathrooms");
+                    int elgCreditIndex = cursorTemp.getColumnIndex("ElgCredit");
+                    int usingStatusIndex = cursorTemp.getColumnIndex("UsingStatus");
+                    int stateBuildingIndex = cursorTemp.getColumnIndex("StateBuilding");
+                    int rentalIncomeIndex = cursorTemp.getColumnIndex("RentalIncome");
+                    int duesIndex = cursorTemp.getColumnIndex("Dues");
+                    int swapIndex = cursorTemp.getColumnIndex("Swap");
+                    int frontIndex = cursorTemp.getColumnIndex("Front");
+                    int fuelTypeIndex = cursorTemp.getColumnIndex("FuelType");
+                    int dateIndex = cursorTemp.getColumnIndex("Date");
+                    int addressIndex = cursorTemp.getColumnIndex("Address");
+                    int cityIndex = cursorTemp.getColumnIndex("Cities");
+                    int townIndex = cursorTemp.getColumnIndex("Town");
+                    int xCoordinateIndex = cursorTemp.getColumnIndex("xCoordinate");
+                    int yCoordinateIndex = cursorTemp.getColumnIndex("yCoordinate");
+                    int advIdIndex = cursorTemp.getColumnIndex("AdvId");
+                    while (cursorTemp.moveToNext()) {
+                        advTitleList.add(cursorTemp.getString(advTitleIndex));
+                        advStatusList.add(cursorTemp.getString(advStatusIndex));
+                        roomNumList.add(cursorTemp.getString(roomNumIndex));
+                        warmTypeList.add(cursorTemp.getString(warmTypeIndex));
+                        elgForCreditList.add(cursorTemp.getString(elgCreditIndex));
+                        usingStatusList.add(cursorTemp.getString(usingStatusIndex));
+                        buildTypeList.add(cursorTemp.getString(buildTypeIndex));
+                        itemStatusList.add(cursorTemp.getString(itemStatusIndex));
+                        stateBuildingList.add(cursorTemp.getString(stateBuildingIndex));
+                        swapList.add(cursorTemp.getString(swapIndex));
+                        frontList.add(cursorTemp.getString(frontIndex));
+                        fuelTypeList.add(cursorTemp.getString(fuelTypeIndex));
+                        dateList.add(cursorTemp.getString(dateIndex));
+                        addressList.add(cursorTemp.getString(addressIndex));
+                        cityList.add(cursorTemp.getString(cityIndex));
+                        townList.add(cursorTemp.getString(townIndex));
+                        priceList.add(cursorTemp.getInt(priceIncex));
+                        squareMetersList.add(cursorTemp.getInt(squareMeterIndex));
+                        buildingFloorsList.add(cursorTemp.getInt(buildingFloorsIndex));
+                        floorLocList.add(cursorTemp.getInt(floorLocIndex));
+                        buildAgeList.add(cursorTemp.getInt(buildAgeIndex));
+                        numOfBathrList.add(cursorTemp.getInt(numOfBathroomsIndex));
+                        rentalIncomeList.add(cursorTemp.getInt(rentalIncomeIndex));
+                        duesList.add(cursorTemp.getInt(duesIndex));
+                        advIdList.add(cursorTemp.getInt(advIdIndex));
+                        byte[] imageByte = cursorTemp.getBlob(ImageIndex);
+                        Bitmap imageAdv = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
+                        ImageList.add(imageAdv);
+                        xCoordinateList.add(cursorTemp.getLong(xCoordinateIndex));
+                        yCoordinateList.add(cursorTemp.getLong(yCoordinateIndex));
+
+                    }
+                    cursorTemp.close();
+                    for (int i = count; i < advTitleList.size(); i++) {
+                        Advertisement adv = new Advertisement();
+                        adv.setAdvTitle(advTitleList.get(i));
+                        adv.setAdvImage(ImageList.get(i));
+                        adv.setPrice(priceList.get(i));
+                        adv.setAdvStatus(advStatusList.get(i));
+                        adv.setRoomNum(roomNumList.get(i));
+                        adv.setSquareMeters(squareMetersList.get(i));
+                        adv.setBuildingFloors(buildingFloorsList.get(i));
+                        adv.setFloorLoc(floorLocList.get(i));
+                        adv.setBuildAge(buildAgeList.get(i));
+                        adv.setBuildType(buildTypeList.get(i));
+                        adv.setItemStatus(itemStatusList.get(i));
+                        adv.setWarmType(warmTypeList.get(i));
+                        adv.setNumOfBathr(numOfBathrList.get(i));
+                        adv.setElgForCredit(elgForCreditList.get(i));
+                        adv.setUsingStatus(usingStatusList.get(i));
+                        adv.setStateBuilding(stateBuildingList.get(i));
+                        adv.setRentalIncome(rentalIncomeList.get(i));
+                        adv.setDues(duesList.get(i));
+                        adv.setSwap(swapList.get(i));
+                        adv.setFront(frontList.get(i));
+                        adv.setFuelType(fuelTypeList.get(i));
+                        adv.setDate(dateList.get(i));
+                        adv.setAddress(addressList.get(i));
+                        adv.setCity(cityList.get(i));
+                        adv.setTown(townList.get(i));
+                        adv.setLatitude(xCoordinateList.get(i));
+                        adv.setLongitude(yCoordinateList.get(i));
+                        adv.setAdvId(advIdList.get(i));
+                        advertisementList.add(adv);
+                    }
+                    count++;
                 }
-                sqlQuery="SELECT * FROM  Advertisements WHERE AdvId = ? ";
-                cursor=MainActivity.db.rawQuery(sqlQuery, new String[] { String.valueOf(advertisementId)});
+                cursor.close();
+            }
+            if(flagMyAdv==false) {
+                int advTitleIndex = cursor.getColumnIndex("AdvTitle");
+                int ImageIndex = cursor.getColumnIndex("AdvImage");
+                int priceIncex = cursor.getColumnIndex("Price");
+                int advStatusIndex = cursor.getColumnIndex("AdvStatus");
+                int roomNumIndex = cursor.getColumnIndex("RoomNum");
+                int squareMeterIndex = cursor.getColumnIndex("SquareMeter");
+                int buildingFloorsIndex = cursor.getColumnIndex("BuildingFloors");
+                int floorLocIndex = cursor.getColumnIndex("FloorLoc");
+                int buildAgeIndex = cursor.getColumnIndex("BuildAge");
+                int buildTypeIndex = cursor.getColumnIndex("BuildType");
+                int itemStatusIndex = cursor.getColumnIndex("ItemStatus");
+                int warmTypeIndex = cursor.getColumnIndex("WarmType");
+                int numOfBathroomsIndex = cursor.getColumnIndex("NumOfBathrooms");
+                int elgCreditIndex = cursor.getColumnIndex("ElgCredit");
+                int usingStatusIndex = cursor.getColumnIndex("UsingStatus");
+                int stateBuildingIndex = cursor.getColumnIndex("StateBuilding");
+                int rentalIncomeIndex = cursor.getColumnIndex("RentalIncome");
+                int duesIndex = cursor.getColumnIndex("Dues");
+                int swapIndex = cursor.getColumnIndex("Swap");
+                int frontIndex = cursor.getColumnIndex("Front");
+                int fuelTypeIndex = cursor.getColumnIndex("FuelType");
+                int dateIndex = cursor.getColumnIndex("Date");
+                int addressIndex = cursor.getColumnIndex("Address");
+                int cityIndex = cursor.getColumnIndex("Cities");
+                int townIndex = cursor.getColumnIndex("Town");
+                int xCoordinateIndex = cursor.getColumnIndex("xCoordinate");
+                int yCoordinateIndex = cursor.getColumnIndex("yCoordinate");
+                int advIdIndex = cursor.getColumnIndex("AdvId");
+                while (cursor.moveToNext()) {
+                    advTitleList.add(cursor.getString(advTitleIndex));
+                    advStatusList.add(cursor.getString(advStatusIndex));
+                    roomNumList.add(cursor.getString(roomNumIndex));
+                    warmTypeList.add(cursor.getString(warmTypeIndex));
+                    elgForCreditList.add(cursor.getString(elgCreditIndex));
+                    usingStatusList.add(cursor.getString(usingStatusIndex));
+                    buildTypeList.add(cursor.getString(buildTypeIndex));
+                    itemStatusList.add(cursor.getString(itemStatusIndex));
+                    stateBuildingList.add(cursor.getString(stateBuildingIndex));
+                    swapList.add(cursor.getString(swapIndex));
+                    frontList.add(cursor.getString(frontIndex));
+                    fuelTypeList.add(cursor.getString(fuelTypeIndex));
+                    dateList.add(cursor.getString(dateIndex));
+                    addressList.add(cursor.getString(addressIndex));
+                    cityList.add(cursor.getString(cityIndex));
+                    townList.add(cursor.getString(townIndex));
+                    priceList.add(cursor.getInt(priceIncex));
+                    squareMetersList.add(cursor.getInt(squareMeterIndex));
+                    buildingFloorsList.add(cursor.getInt(buildingFloorsIndex));
+                    floorLocList.add(cursor.getInt(floorLocIndex));
+                    buildAgeList.add(cursor.getInt(buildAgeIndex));
+                    numOfBathrList.add(cursor.getInt(numOfBathroomsIndex));
+                    rentalIncomeList.add(cursor.getInt(rentalIncomeIndex));
+                    duesList.add(cursor.getInt(duesIndex));
+                    advIdList.add(cursor.getInt(advIdIndex));
+                    byte[] imageByte = cursor.getBlob(ImageIndex);
+                    Bitmap imageAdv = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
+                    ImageList.add(imageAdv);
+                    xCoordinateList.add(cursor.getLong(xCoordinateIndex));
+                    yCoordinateList.add(cursor.getLong(yCoordinateIndex));
 
+                }
+                cursor.close();
+                for (int i = 0; i < advTitleList.size(); i++) {
+                    Advertisement adv = new Advertisement();
+                    adv.setAdvTitle(advTitleList.get(i));
+                    adv.setAdvImage(ImageList.get(i));
+                    adv.setPrice(priceList.get(i));
+                    adv.setAdvStatus(advStatusList.get(i));
+                    adv.setRoomNum(roomNumList.get(i));
+                    adv.setSquareMeters(squareMetersList.get(i));
+                    adv.setBuildingFloors(buildingFloorsList.get(i));
+                    adv.setFloorLoc(floorLocList.get(i));
+                    adv.setBuildAge(buildAgeList.get(i));
+                    adv.setBuildType(buildTypeList.get(i));
+                    adv.setItemStatus(itemStatusList.get(i));
+                    adv.setWarmType(warmTypeList.get(i));
+                    adv.setNumOfBathr(numOfBathrList.get(i));
+                    adv.setElgForCredit(elgForCreditList.get(i));
+                    adv.setUsingStatus(usingStatusList.get(i));
+                    adv.setStateBuilding(stateBuildingList.get(i));
+                    adv.setRentalIncome(rentalIncomeList.get(i));
+                    adv.setDues(duesList.get(i));
+                    adv.setSwap(swapList.get(i));
+                    adv.setFront(frontList.get(i));
+                    adv.setFuelType(fuelTypeList.get(i));
+                    adv.setDate(dateList.get(i));
+                    adv.setAddress(addressList.get(i));
+                    adv.setCity(cityList.get(i));
+                    adv.setTown(townList.get(i));
+                    adv.setLatitude(xCoordinateList.get(i));
+                    adv.setLongitude(yCoordinateList.get(i));
+                    adv.setAdvId(advIdList.get(i));
+                    advertisementList.add(adv);
+
+                }
             }
 
-
-            int advTitleIndex=cursor.getColumnIndex("AdvTitle");
-            int ImageIndex=cursor.getColumnIndex("AdvImage");
-            int priceIncex=cursor.getColumnIndex("Price");
-            int advStatusIndex=cursor.getColumnIndex("AdvStatus");
-            int roomNumIndex=cursor.getColumnIndex("RoomNum");
-            int squareMeterIndex=cursor.getColumnIndex("SquareMeter");
-            int buildingFloorsIndex=cursor.getColumnIndex("BuildingFloors");
-            int floorLocIndex=cursor.getColumnIndex("FloorLoc");
-            int buildAgeIndex=cursor.getColumnIndex("BuildAge");
-            int buildTypeIndex=cursor.getColumnIndex("BuildType");
-            int itemStatusIndex=cursor.getColumnIndex("ItemStatus");
-            int warmTypeIndex=cursor.getColumnIndex("WarmType");
-            int numOfBathroomsIndex=cursor.getColumnIndex("NumOfBathrooms");
-            int elgCreditIndex=cursor.getColumnIndex("ElgCredit");
-            int usingStatusIndex=cursor.getColumnIndex("UsingStatus");
-            int stateBuildingIndex=cursor.getColumnIndex("StateBuilding");
-            int rentalIncomeIndex=cursor.getColumnIndex("RentalIncome");
-            int duesIndex=cursor.getColumnIndex("Dues");
-            int swapIndex=cursor.getColumnIndex("Swap");
-            int frontIndex=cursor.getColumnIndex("Front");
-            int fuelTypeIndex=cursor.getColumnIndex("FuelType");
-            int dateIndex=cursor.getColumnIndex("Date");
-            int addressIndex=cursor.getColumnIndex("Address");
-            int cityIndex=cursor.getColumnIndex("Cities");
-            int townIndex=cursor.getColumnIndex("Town");
-            int xCoordinateIndex=cursor.getColumnIndex("xCoordinate");
-            int yCoordinateIndex=cursor.getColumnIndex("yCoordinate");
-            int advIdIndex=cursor.getColumnIndex("AdvId");
-
-            while (cursor.moveToNext()){
-                advTitleList.add(cursor.getString(advTitleIndex));
-                advStatusList.add(cursor.getString(advStatusIndex));
-                roomNumList.add(cursor.getString(roomNumIndex));
-                warmTypeList.add(cursor.getString(warmTypeIndex));
-                elgForCreditList.add(cursor.getString(elgCreditIndex));
-                usingStatusList.add(cursor.getString(usingStatusIndex));
-                buildTypeList.add(cursor.getString(buildTypeIndex));
-                itemStatusList.add(cursor.getString(itemStatusIndex));
-                stateBuildingList.add(cursor.getString(stateBuildingIndex));
-                swapList.add(cursor.getString(swapIndex));
-                frontList.add(cursor.getString(frontIndex));
-                fuelTypeList.add(cursor.getString(fuelTypeIndex));
-                dateList.add(cursor.getString(dateIndex));
-                addressList.add(cursor.getString(addressIndex));
-                cityList.add(cursor.getString(cityIndex));
-                townList.add(cursor.getString(townIndex));
-                //  System.out.println("PRICEEEEEEE:"+cursor.getInt(priceIncex));
-                priceList.add(cursor.getInt(priceIncex));
-                squareMetersList.add(cursor.getInt(squareMeterIndex));
-                buildingFloorsList.add(cursor.getInt(buildingFloorsIndex));
-                floorLocList.add(cursor.getInt(floorLocIndex));
-                buildAgeList.add(cursor.getInt(buildAgeIndex));
-                numOfBathrList.add(cursor.getInt(numOfBathroomsIndex));
-                rentalIncomeList.add(cursor.getInt(rentalIncomeIndex));
-                duesList.add(cursor.getInt(duesIndex));
-                advIdList.add(cursor.getInt(advIdIndex));
-                byte[] imageByte=cursor.getBlob(ImageIndex);
-                Bitmap imageAdv= BitmapFactory.decodeByteArray(imageByte,0,imageByte.length);
-                ImageList.add(imageAdv);
-
-                xCoordinateList.add(cursor.getLong(xCoordinateIndex));
-                yCoordinateList.add(cursor.getLong(yCoordinateIndex));
-
-            }
-            cursor.close();
-            for (int i=0;i<advTitleList.size();i++){
-                Advertisement adv=new Advertisement();
-                adv.setAdvTitle(advTitleList.get(i));
-                adv.setAdvImage(ImageList.get(i));
-                adv.setPrice(priceList.get(i));
-                adv.setAdvStatus(advStatusList.get(i));
-                adv.setRoomNum(roomNumList.get(i));
-                adv.setSquareMeters(squareMetersList.get(i));
-                adv.setBuildingFloors(buildingFloorsList.get(i));
-                adv.setFloorLoc(floorLocList.get(i));
-                adv.setBuildAge(buildAgeList.get(i));
-                adv.setBuildType(buildTypeList.get(i));
-                adv.setItemStatus(itemStatusList.get(i));
-                adv.setWarmType(warmTypeList.get(i));
-                adv.setNumOfBathr(numOfBathrList.get(i));
-                adv.setElgForCredit(elgForCreditList.get(i));
-                adv.setUsingStatus(usingStatusList.get(i));
-                adv.setStateBuilding(stateBuildingList.get(i));
-                adv.setRentalIncome(rentalIncomeList.get(i));
-                adv.setDues(duesList.get(i));
-                adv.setSwap(swapList.get(i));
-                adv.setFront(frontList.get(i));
-                adv.setFuelType(fuelTypeList.get(i));
-                adv.setDate(dateList.get(i));
-                adv.setAddress(addressList.get(i));
-                adv.setCity(cityList.get(i));
-                adv.setTown(townList.get(i));
-                adv.setLatitude(xCoordinateList.get(i));
-                adv.setLongitude(yCoordinateList.get(i));
-                adv.setAdvId(advIdList.get(i));
-                advertisementList.add(adv);
-
-            }
         }catch (Exception e){
             e.printStackTrace();
         }
