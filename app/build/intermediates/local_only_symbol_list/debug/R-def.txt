@@ -28,6 +28,8 @@ drawable ic_action_fav
 drawable ic_action_filter
 drawable ic_action_name
 drawable ic_baseline_add_circle_outline_24
+drawable ic_baseline_favorite_24
+drawable ic_baseline_location_on_24
 drawable ic_baseline_person_24
 drawable ic_baseline_photo_camera_24
 drawable ic_dashboard_black_24dp
@@ -205,6 +207,7 @@ id nav_view
 id nav_view2
 id nav_view3
 id navigation_addadvertisement
+id navigation_ar
 id navigation_dashboard
 id navigation_home
 id navigation_notifications
@@ -234,6 +237,7 @@ layout adv_item
 layout advertisement_card
 layout fragment_add_adv
 layout fragment_adv_detail
+layout fragment_ar
 layout fragment_filter_adv
 layout fragment_home
 layout fragment_login
@@ -262,7 +266,7 @@ string map_key
 string prompt_email
 string prompt_password
 string title_addadvertisement
-string title_dashboard
+string title_ar
 string title_home
 string title_user
 string welcome

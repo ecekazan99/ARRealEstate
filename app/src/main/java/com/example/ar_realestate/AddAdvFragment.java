@@ -354,34 +354,38 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        binding = FragmentAddAdvBinding.inflate(inflater, container, false);
 
         Intent intent=getActivity().getIntent();
         User user=(User)intent.getSerializableExtra("UserInformation");
-        if(user!=null)
-        {
-            userId=user.getUserId();
-            System.out.println("Userr ıddd:"+user.getUserId());
+
+        if(user==null){
+            FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,new LoginFragment());
+            fragmentTransaction.commit();
         }
+        else{
+            userId=user.getUserId();
 
 
-        binding = FragmentAddAdvBinding.inflate(inflater, container, false);
-        SupportMapFragment supportMapFragment=(SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
-        supportMapFragment.getMapAsync(this);
+            SupportMapFragment supportMapFragment=(SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
+            supportMapFragment.getMapAsync(this);
 
-        init();
+            init();
 
-        binding.addAdvImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},imgNoPermissionCod);
-                }
-                else{
+            binding.addAdvImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+                        ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},imgNoPermissionCod);
+                    }
+                    else{
 
-                    Intent imageGet=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(imageGet,imgPermissionCod);
+                        Intent imageGet=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(imageGet,imgPermissionCod);
 
-                    // Select one more images from galery
+                        // Select one more images from galery
          /*   Intent intent = new Intent();
             intent.setType("image/*");
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
@@ -389,17 +393,19 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             startActivityForResult(Intent.createChooser(intent, "Select images"), imgPermissionCod);*/
 
 
+                    }
                 }
-            }
-        });
+            });
 
 
-        binding.addAdvBtnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveAdv(view);
-            }
-        });
+            binding.addAdvBtnSubmit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    saveAdv(view);
+                }
+            });
+        }
+
 
         return binding.getRoot();
     }
