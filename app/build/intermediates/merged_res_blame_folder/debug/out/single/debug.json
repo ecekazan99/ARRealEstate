@@ -96,6 +96,10 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_myaccount.xml"
     },
     {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_my_adv_list.xml.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\my_adv_list.xml"
+    },
+    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_name.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-mdpi\\ic_action_name.png"
     },
@@ -226,6 +230,10 @@
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_person_24.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable\\ic_baseline_person_24.xml"
+    },
+    {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\menu_option_myadv.xml.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\menu\\option_myadv.xml"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.webp.flat",

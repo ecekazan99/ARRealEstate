@@ -2832,6 +2832,7 @@ int id advItem_imageViewAdv 0x7f0900b5
 int id adv_item_textViewAdvAcıklama 0x7f0900b6
 int id adv_item_textViewAdvPrice 0x7f0900b7
 int id adv_item_textViewAdvTitle 0x7f0900b8
+int id adv_update 0x7f0902aa
 int id alertTitle 0x7f0900b9
 int id aligned 0x7f0900ba
 int id all 0x7f0900bb
@@ -2916,6 +2917,7 @@ int id decelerate 0x7f090109
 int id decelerateAndComplete 0x7f09010a
 int id decor_content_parent 0x7f09010b
 int id default_activity_button 0x7f09010c
+int id delete_adv 0x7f0902ab
 int id deltaRelative 0x7f09010d
 int id dependency_ordering 0x7f09010e
 int id design_bottom_sheet 0x7f09010f
@@ -3270,6 +3272,7 @@ int id textSpacerNoTitle 0x7f09026b
 int id textStart 0x7f09026c
 int id textTop 0x7f09026d
 int id textView 0x7f09026e
+int id textViewOptions 0x7f0902ac
 int id text_input_end_icon 0x7f09026f
 int id text_input_error_icon 0x7f090270
 int id text_input_start_icon 0x7f090271
@@ -3303,7 +3306,6 @@ int id unchecked 0x7f09028c
 int id uniform 0x7f09028d
 int id unlabeled 0x7f09028e
 int id up 0x7f09028f
-int id updateAdv 0x7f090290
 int id updateAdv_btn 0x7f090291
 int id useLogo 0x7f090292
 int id userMail 0x7f090293
@@ -3493,6 +3495,7 @@ int layout mtrl_picker_header_title_text 0x7f0c0065
 int layout mtrl_picker_header_toggle 0x7f0c0066
 int layout mtrl_picker_text_input_date 0x7f0c0067
 int layout mtrl_picker_text_input_date_range 0x7f0c0068
+int layout my_adv_list 0x7f0c008b
 int layout notification_action 0x7f0c0069
 int layout notification_action_tombstone 0x7f0c006a
 int layout notification_media_action 0x7f0c006b
@@ -3530,6 +3533,7 @@ int layout text_view_without_line_height 0x7f0c008a
 int menu bottom_nav_menu 0x7f0d0000
 int menu example_menu 0x7f0d0001
 int menu example_menu2 0x7f0d0002
+int menu option_myadv 0x7f0d0006
 int menu popup 0x7f0d0003
 int menu toolbar 0x7f0d0004
 int menu toolbar_advdetail 0x7f0d0005

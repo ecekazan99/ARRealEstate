@@ -2833,6 +2833,7 @@ id advItem_imageViewAdv
 id adv_item_textViewAdvAcıklama
 id adv_item_textViewAdvPrice
 id adv_item_textViewAdvTitle
+id adv_update
 id alertTitle
 id aligned
 id all
@@ -2917,6 +2918,7 @@ id decelerate
 id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
+id delete_adv
 id deltaRelative
 id dependency_ordering
 id design_bottom_sheet
@@ -3271,6 +3273,7 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id textView
+id textViewOptions
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3304,7 +3307,6 @@ id unchecked
 id uniform
 id unlabeled
 id up
-id updateAdv
 id updateAdv_btn
 id useLogo
 id userMail
@@ -3494,6 +3496,7 @@ layout mtrl_picker_header_title_text
 layout mtrl_picker_header_toggle
 layout mtrl_picker_text_input_date
 layout mtrl_picker_text_input_date_range
+layout my_adv_list
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
@@ -3531,6 +3534,7 @@ layout text_view_without_line_height
 menu bottom_nav_menu
 menu example_menu
 menu example_menu2
+menu option_myadv
 menu popup
 menu toolbar
 menu toolbar_advdetail
