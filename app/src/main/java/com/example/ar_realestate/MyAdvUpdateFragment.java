@@ -310,7 +310,7 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
         getCities();
         spinnerCity=(Spinner)binding.addAdvSpinnerCity;
         adapterCity=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,cities);
-        System.out.println("Şehirrrrrrrrrrrrrr 11111");
+
         adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCity.setAdapter(adapterCity);
         if (MyAdvertisementFragment.advDetail.getCity()!= null) {
