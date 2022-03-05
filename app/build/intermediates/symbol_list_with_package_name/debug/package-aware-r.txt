@@ -2585,6 +2585,7 @@ drawable ic_action_fav
 drawable ic_action_filter
 drawable ic_action_name
 drawable ic_baseline_add_circle_outline_24
+drawable ic_baseline_location_on_24
 drawable ic_baseline_person_24
 drawable ic_baseline_photo_camera_24
 drawable ic_clock_black_24dp
@@ -3119,6 +3120,7 @@ id nav_view
 id nav_view2
 id nav_view3
 id navigation_addadvertisement
+id navigation_ar
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -3440,6 +3442,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_add_adv
 layout fragment_adv_detail
+layout fragment_ar
 layout fragment_filter_adv
 layout fragment_home
 layout fragment_login
@@ -3700,7 +3703,7 @@ string prompt_password
 string search_menu_title
 string status_bar_notification_info_overflow
 string title_addadvertisement
-string title_dashboard
+string title_ar
 string title_home
 string title_user
 string welcome

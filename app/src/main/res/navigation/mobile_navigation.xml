@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
+    app:labelVisibilityMode="labeled"
     app:startDestination="@+id/navigation_home">
+    <fragment
+        android:id="@+id/navigation_ar"
+        android:name="com.example.ar_realestate.ARFragment"
+        android:label="@string/title_ar"
+        tools:layout="@layout/fragment_ar" />
 
     <fragment
         android:id="@+id/navigation_home"
@@ -13,9 +19,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.ar_realestate.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:name="com.example.ar_realestate.AddAdvFragment"
+        android:label="@string/title_addadvertisement"
+        tools:layout="@layout/fragment_add_adv" />
 
     <fragment
         android:id="@+id/navigation_user"

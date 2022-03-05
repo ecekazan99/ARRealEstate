@@ -13,7 +13,6 @@ public class Database extends SQLiteOpenHelper {
     private static final String DATABASE_NAME="RealEstate";
     private static final int VERSION=1;
 
-
     public Database(Context c){
 
         super(c, DATABASE_NAME, null, VERSION);
@@ -33,6 +32,10 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS UserInformation (UserId INTEGER PRIMARY KEY AUTOINCREMENT,UserName TEXT NOT NULL," +
                 " UserSurname TEXT NOT NULL, MailAddress TEXT NOT NULL,Password TEXT NOT NULL);");
 
+        db.execSQL("CREATE TABLE IF NOT EXISTS Favorite (UserId INTEGER,AdvId INTEGER,FavoriteStatus INTEGER,FOREIGN KEY (UserId) REFERENCES UserInformation(UserId), FOREIGN KEY (AdvId) REFERENCES Advertisements(AdvId));");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS UserPastAdvertisement (UserId INTEGER,AdvId INTEGER,FOREIGN KEY (UserId) REFERENCES UserInformation(UserId), FOREIGN KEY (AdvId) REFERENCES Advertisements(AdvId));");
+
         db.execSQL("CREATE TABLE IF NOT EXISTS Cities (CityId INTEGER PRIMARY KEY AUTOINCREMENT,CityName TEXT NOT NULL UNIQUE);");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS District(DistrictId INTEGER PRIMARY KEY AUTOINCREMENT,DistrictName TEXT NOT NULL,CityId INTEGER NOT NULL);");
@@ -48,7 +51,8 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Cities;");
         db.execSQL("DROP TABLE IF EXISTS District;");
         db.execSQL("DROP TABLE IF EXISTS UserAdvertisement;");
-
+        db.execSQL("DROP TABLE IF EXISTS Favorite;");
+        db.execSQL("DROP TABLE IF EXISTS UserPastAdvertisement;");
         onCreate(db);
     }
 
@@ -90,7 +94,6 @@ public class Database extends SQLiteOpenHelper {
         return user;
     }
 
-
     public int updateUser(int id,String name, String surname, String email, String password, String newPassword){
 
         try{
@@ -102,7 +105,6 @@ public class Database extends SQLiteOpenHelper {
             values.put("MailAddress",email);
             values.put("Password",password);
 
-
             db.update("UserInformation", values, "UserId=?", new String[]{String.valueOf(id)});
             db.close();
 
@@ -111,8 +113,6 @@ public class Database extends SQLiteOpenHelper {
         }
         return 1;
     }
-
-
 
     public int updateMyAdv(int advId, String advTitle, byte[]  advImage, int price, String advStatus, String roomNum, int squareMeter,int buildingFloors,
                            int floorLoc,int buildAge,String buildType,String itemStatus,String warmTpe,int numOfBathrooms,String elgCredit,

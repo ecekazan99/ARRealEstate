@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AR-RealEstate</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_ar">AR Map</string>
     <string name="title_user">User</string>
     <string name="title_addadvertisement">Add Advertisement</string>
 
