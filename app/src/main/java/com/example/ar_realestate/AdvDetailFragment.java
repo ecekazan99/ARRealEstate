@@ -119,7 +119,8 @@ public class AdvDetailFragment extends Fragment {
             city=AddAdvFragment.advDetailLast.getCity();
             town=AddAdvFragment.advDetailLast.getTown();
         }
-        else if(MyAdvertisementFragment.clickMyAdvDetail==true){
+        else if(MyAdvertisementFragment.clickMyAdvDetail==true || MyAdvertisementAdapter.clickAdvUpdate==true){
+
             advId=MyAdvertisementFragment.advDetail.getAdvId();
             advTitle=MyAdvertisementFragment.advDetail.getAdvTitle();
             advImagePng=MyAdvertisementFragment.advDetail.getAdv_image();
@@ -149,6 +150,7 @@ public class AdvDetailFragment extends Fragment {
 
         }
         MyAdvertisementFragment.clickMyAdvDetail=false;
+        MyAdvertisementAdapter.clickAdvUpdate=false;
         AddAdvFragment.add_Adv=false;
 
     }
@@ -164,12 +166,7 @@ public class AdvDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentAdvDetailBinding.inflate(inflater, container, false);
-        if(MyAdvertisementFragment.clickMyAdvDetail==false){
-            binding.updateAdv.setVisibility(View.INVISIBLE);
-        }
-        else if(MyAdvertisementFragment.clickMyAdvDetail==true) {
-            binding.updateAdv.setVisibility(View.VISIBLE);
-        }
+
 
         init();
 

@@ -17,14 +17,14 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MyAdvertisementFragment extends Fragment {
-    public static AdvertisementAdapter advAdapter;
+    public static MyAdvertisementAdapter advAdapter;
     static public AdvDetail advDetail;
     public  static int id;
     RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView.Adapter adapter;
     public static ArrayList<Advertisement> adv;
     public static Boolean clickMyAdvDetail=false;
-
-
 
     public MyAdvertisementFragment() {
         // Required empty public constructor
@@ -55,10 +55,11 @@ public class MyAdvertisementFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_my_advertisement,container,false);
         recyclerView=(RecyclerView) view.findViewById(R.id.recviewMyAdvs);
         // burayı ekledim
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-        advAdapter=new AdvertisementAdapter(Advertisement.getData(getContext()),getContext());
+        advAdapter=new MyAdvertisementAdapter(Advertisement.getData(getContext()),getContext());
 
         recyclerView.setAdapter(advAdapter);
         //burayı ekledim
@@ -74,8 +75,8 @@ public class MyAdvertisementFragment extends Fragment {
 
             MainActivity.navViewToolbar.setVisibility(View.INVISIBLE);
             MainActivity.navViewToolbar_detail.setVisibility(View.INVISIBLE);
-            replaceFragment(new MyAdvUpdateFragment());
-            // MainActivity.navViewToolbar_detail.setVisibility(View.INVISIBLE);
+            replaceFragment(new AdvDetailFragment());
+
         }); // buraya kadar kısım
 
         return view;

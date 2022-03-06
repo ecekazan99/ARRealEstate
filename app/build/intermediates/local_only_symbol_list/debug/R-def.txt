@@ -150,6 +150,7 @@ id advItem_imageViewAdv
 id adv_item_textViewAdvAcıklama
 id adv_item_textViewAdvPrice
 id adv_item_textViewAdvTitle
+id adv_update
 id back
 id buttonHaveAccount
 id buttonLogin
@@ -159,6 +160,7 @@ id buttonUpdate
 id clickDetail
 id container
 id dcrs_price
+id delete_adv
 id detail_AdvAddress
 id detail_AdvBuildingAge
 id detail_AdvBuildingFloors
@@ -216,12 +218,12 @@ id recviewMyAdvs
 id signUp
 id textPrice
 id textView
+id textViewOptions
 id text_notifications
 id title
 id toolbar_Order
 id toolbar_back
 id toolbar_filter
-id updateAdv
 id updateAdv_btn
 id userMail
 id userName
@@ -244,7 +246,9 @@ layout fragment_my_advertisement
 layout fragment_myaccount
 layout fragment_sign_up
 layout fragment_user_profile
+layout my_adv_list
 menu bottom_nav_menu
+menu option_myadv
 menu popup
 menu toolbar
 menu toolbar_advdetail
