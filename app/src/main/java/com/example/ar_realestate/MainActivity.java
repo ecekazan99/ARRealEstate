@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
         replaceFragment(new HomeFragment());
 
-
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navViewToolbar = findViewById(R.id.nav_view2);
 
