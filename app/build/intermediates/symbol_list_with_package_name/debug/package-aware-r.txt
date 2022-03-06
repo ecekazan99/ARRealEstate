@@ -73,7 +73,6 @@ animator nav_default_pop_enter_anim
 animator nav_default_pop_exit_anim
 array Adv_Status
 array BuildingType
-array Cities
 array ElgForCredit
 array Front
 array FuelType

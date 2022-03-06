@@ -39,6 +39,7 @@ import com.example.ar_realestate.databinding.FragmentUserProfileBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -100,6 +101,9 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
 
         Intent intent=getActivity().getIntent();
         advertisement=(Advertisement)intent.getSerializableExtra("Advertisements");
+
+        SupportMapFragment supportMapFragment=(SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
+        supportMapFragment.getMapAsync(this);
 
         imageAdv=(ImageView)binding.addAdvImage;
         binding.addAdvImage.setOnClickListener(new View.OnClickListener() {

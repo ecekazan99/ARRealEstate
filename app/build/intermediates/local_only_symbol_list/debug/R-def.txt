@@ -2,7 +2,6 @@ R_DEF: Internal format may change without notice
 local
 array Adv_Status
 array BuildingType
-array Cities
 array ElgForCredit
 array Front
 array FuelType
