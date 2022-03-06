@@ -40,7 +40,10 @@ public class Advertisement implements Serializable {
         this.kayıtImage = kayıtImage;
     }
 
-    public Advertisement(String advTitle, Bitmap advImage, int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address, String city, String town) {
+    public Advertisement(String advTitle, Bitmap advImage, int price, String advStatus, String roomNum,
+                         int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus,
+                         String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome,
+                         int dues, String swap, String front, String fuelType, String date, String address, String city, String town) {
         this.advTitle = advTitle;
         this.advImage=advImage;
         this.price=price;

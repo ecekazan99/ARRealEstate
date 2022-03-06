@@ -3174,6 +3174,7 @@ int id ratio 0x7f090208
 int id rectangles 0x7f090209
 int id recview 0x7f09020a
 int id recviewMyAdvs 0x7f09020b
+int id recviewMyFavs 0x7f0902ad
 int id reverseSawtooth 0x7f09020c
 int id right 0x7f09020d
 int id rightToLeft 0x7f09020e
@@ -3451,6 +3452,7 @@ int layout fragment_home 0x7f0c0035
 int layout fragment_login 0x7f0c0036
 int layout fragment_my_adv_update 0x7f0c0037
 int layout fragment_my_advertisement 0x7f0c0038
+int layout fragment_my_favorites 0x7f0c008d
 int layout fragment_myaccount 0x7f0c0039
 int layout fragment_sign_up 0x7f0c003a
 int layout fragment_user_profile 0x7f0c003b

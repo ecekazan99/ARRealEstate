@@ -56,6 +56,10 @@
         "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\advertisement_card.xml"
     },
     {
+        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_my_favorites.xml",
+        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_my_favorites.xml"
+    },
+    {
         "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_filter_adv.xml",
         "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_filter_adv.xml"
     },

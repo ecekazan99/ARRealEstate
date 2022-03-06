@@ -216,6 +216,7 @@ id navigation_user
 id price
 id recview
 id recviewMyAdvs
+id recviewMyFavs
 id signUp
 id textPrice
 id textView
@@ -244,6 +245,7 @@ layout fragment_home
 layout fragment_login
 layout fragment_my_adv_update
 layout fragment_my_advertisement
+layout fragment_my_favorites
 layout fragment_myaccount
 layout fragment_sign_up
 layout fragment_user_profile
