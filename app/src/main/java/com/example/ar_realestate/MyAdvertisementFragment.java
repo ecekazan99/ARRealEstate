@@ -74,7 +74,6 @@ public class MyAdvertisementFragment extends Fragment {
             id=adv.getAdvId();
 
             MainActivity.navViewToolbar.setVisibility(View.INVISIBLE);
-            MainActivity.navViewToolbar_detail.setVisibility(View.INVISIBLE);
             replaceFragment(new AdvDetailFragment());
 
         }); // buraya kadar kısım

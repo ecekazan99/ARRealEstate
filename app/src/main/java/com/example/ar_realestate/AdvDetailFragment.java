@@ -1,6 +1,11 @@
 package com.example.ar_realestate;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,8 +13,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ar_realestate.databinding.FragmentAddAdvBinding;
 import com.example.ar_realestate.databinding.FragmentAdvDetailBinding;
@@ -17,6 +24,7 @@ import com.example.ar_realestate.databinding.FragmentAdvDetailBinding;
 public class AdvDetailFragment extends Fragment {
 
     private FragmentAdvDetailBinding binding;
+    static public SQLiteDatabase db;
 
     private ImageView advImageView;
     private TextView txtAdvTitle, txtAdvPrice, txtAdvStatus, txtAdvRoomNum, txtSquareMeter,
@@ -160,6 +168,7 @@ public class AdvDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
 
     @Override
@@ -195,6 +204,93 @@ public class AdvDetailFragment extends Fragment {
         txtAddress.setText(address);
         txtCity.setText(city);
         txtTown.setText(town);
+
+        Intent intent=getActivity().getIntent();
+        User user=(User)intent.getSerializableExtra("UserInformation");
+
+        MainActivity.database.onCreate(MainActivity.db);
+        db = MainActivity.database.getWritableDatabase();
+
+        Drawable addFav = getResources().getDrawable(R.drawable.ic_baseline_favorite_24);
+
+        Drawable notFav = getContext().getDrawable(R.drawable.ic_baseline_favorite_border_24);
+
+        if(user==null){
+            binding.buttonFav1.setImageDrawable(notFav);
+        }
+        else{
+            Cursor c1 = db.rawQuery("SELECT * FROM Favorite WHERE UserId=?  AND AdvId=? AND FavoriteStatus=? ;",
+                    new String[]{String.valueOf(user.getUserId()), String.valueOf(advId), "1"});
+
+            if(c1.moveToFirst()){
+                System.out.println("zaten fav");
+                binding.buttonFav1.setImageDrawable(addFav);
+            }
+            else{
+                System.out.println("fav değil");
+                binding.buttonFav1.setImageDrawable(notFav);
+            }
+        }
+
+        binding.buttonFav1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(user==null){
+                    Toast.makeText(getActivity(),  "Please login to your account!!",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else{
+                   Cursor c = db.rawQuery("SELECT * FROM Favorite WHERE UserId=?  AND AdvId=? AND FavoriteStatus=? ;",
+                            new String[]{String.valueOf(user.getUserId()),  String.valueOf(advId), "1"});
+
+                    if(c.moveToFirst()){ // Fav
+                        binding.buttonFav1.setImageDrawable(notFav);
+
+                        db.execSQL("UPDATE Favorite SET FavoriteStatus = 0 WHERE UserId = "+ String.valueOf(user.getUserId())+
+                                    " AND AdvId="+String.valueOf(advId)+";");
+
+                        Toast.makeText(getActivity(),  "It has been deleted to the list of favorites !!",
+                                Toast.LENGTH_SHORT).show();
+
+                        System.out.println("favv");
+                    }
+                    else{
+                        binding.buttonFav1.setImageDrawable(addFav);
+
+                        c = db.rawQuery("SELECT * FROM Favorite WHERE UserId=?  AND AdvId=? AND FavoriteStatus=? ;",
+                                new String[]{String.valueOf(user.getUserId()), String.valueOf(advId), "0"});
+
+                        if(c.moveToFirst()) { // Fav olmuş eskiden
+
+                            System.out.println("favv olmuş");
+
+                            db.execSQL("UPDATE Favorite SET FavoriteStatus = 1 WHERE UserId = "+ String.valueOf(user.getUserId())+
+                                            " AND AdvId= "+String.valueOf(advId)+";");
+
+                            Toast.makeText(getActivity(),  "It has been added to the list of favorites !!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        else{// Hiç fav olmamış
+
+                            System.out.println("favv olmamuş");
+
+                            MainActivity.database.onCreate(MainActivity.db);
+                            String sqlQuery="INSERT INTO Favorite (UserId ,AdvId ,FavoriteStatus)  VALUES(?,?,?);";
+                            SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
+
+                            statement.bindString(1,String.valueOf(user.getUserId()));
+                            statement.bindString(2,String.valueOf(advId));
+                            statement.bindString(3,"1");
+                            statement.execute();
+
+                            Toast.makeText(getActivity(),  "It has been added to the list of favorites !!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+        });
         return binding.getRoot();
 
     }

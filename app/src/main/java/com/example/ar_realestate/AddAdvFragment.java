@@ -535,7 +535,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                     advDetailLast=new AdvDetail(advId,advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
                             buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,
                             stateBuilding,rentalIncome,dues,swap,front,fuelType,date,address,city,town);
-                    MainActivity.navViewToolbar_detail.setVisibility(View.VISIBLE);
+
                     replaceFragment(new AdvDetailFragment());
                 }
 

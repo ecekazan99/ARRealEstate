@@ -62,7 +62,6 @@ public class HomeFragment extends Fragment {
                     adv.getDues(),adv.getSwap(),adv.getFront(),adv.getFuelType(),adv.getDate(),adv.getAddress(),adv.getCity(),adv.getTown());
 
             MainActivity.navViewToolbar.setVisibility(View.INVISIBLE);
-            MainActivity.navViewToolbar_detail.setVisibility(View.VISIBLE);
             replaceFragment(new AdvDetailFragment());
            // MainActivity.navViewToolbar_detail.setVisibility(View.INVISIBLE);
         }); // buraya kadar kısım

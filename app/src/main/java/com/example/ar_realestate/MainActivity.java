@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private ActionBar actionBar;
     private Button btn;
     static  public  BottomNavigationView navViewToolbar;
-    static  public  BottomNavigationView navViewToolbar_detail;
     static public Boolean incrPriceClick=false;
     static public Boolean decrsPriceClick=false;
 
@@ -38,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        navViewToolbar_detail=findViewById(R.id.nav_view3);
-        navViewToolbar_detail.setVisibility(View.INVISIBLE);
 
 
         try{
@@ -71,13 +68,11 @@ public class MainActivity extends AppCompatActivity {
                         if(menuItem.getItemId()==R.id.inc_price)
                         {
                             incrPriceClick=true;
-                            navViewToolbar_detail.setVisibility(View.INVISIBLE);
                             replaceFragment(new HomeFragment());
                         }
                         else if(menuItem.getItemId()==R.id.dcrs_price)
                         {
                             decrsPriceClick=true;
-                            navViewToolbar_detail.setVisibility(View.INVISIBLE);
                             replaceFragment(new HomeFragment());
                         }
                       return true;
@@ -98,13 +93,11 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.navigation_addadvertisement:
                     navViewToolbar.setVisibility(View.INVISIBLE);
-                    navViewToolbar_detail.setVisibility(View.INVISIBLE);
                     replaceFragment(new AddAdvFragment());
                     break;
                 case R.id.navigation_home:
                     navViewToolbar.setVisibility(View.VISIBLE);
                     MyAdvertisementFragment.clickMyAdvDetail=false;
-                    navViewToolbar_detail.setVisibility(View.INVISIBLE);
                     replaceFragment(new HomeFragment());
                     break;
                 case R.id.navigation_notifications:
@@ -112,15 +105,12 @@ public class MainActivity extends AppCompatActivity {
                     User user=(User)intent.getSerializableExtra("UserInformation");
 
                     if(user==null){
-                        navViewToolbar_detail.setVisibility(View.INVISIBLE);
                         replaceFragment(new LoginFragment());
                     }
 
                     else{
-                        navViewToolbar_detail.setVisibility(View.INVISIBLE);
                         replaceFragment(new MyAccountFragment());
                     }
-                    navViewToolbar_detail.setVisibility(View.INVISIBLE);
                     navViewToolbar.setVisibility(View.INVISIBLE);
                     break;
             }
@@ -131,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
             switch (item_toolbar.getItemId()) {
                 case R.id.toolbar_filter:
                     navViewToolbar.setVisibility(View.INVISIBLE);
-                    navViewToolbar_detail.setVisibility(View.VISIBLE);
                     replaceFragment(new FilterAdvFragment());
                     break;
                 case R.id.toolbar_Order:
@@ -140,66 +129,8 @@ public class MainActivity extends AppCompatActivity {
            return true;
         });
 
-        binding.navView3.setOnItemReselectedListener(item -> {
 
-            Intent intentAdv=this.getIntent();
-            AdvDetailFragment adv=(AdvDetailFragment)intentAdv.getSerializableExtra("AdvDetailFragment");
 
-            switch (item.getItemId()){
-                case R.id.back:
-                    navViewToolbar.setVisibility(View.VISIBLE);
-                    navViewToolbar_detail.setVisibility(View.INVISIBLE);
-                    replaceFragment(new HomeFragment());
-                    break;
-                case R.id.advFavourite:
-                    Intent intent=getIntent();
-                    User user=(User)intent.getSerializableExtra("UserInformation");
-
-                    Drawable myDrawable = getResources().getDrawable(R.drawable.ic_baseline_favorite_24); // The ID of your drawable.
-
-                    MainActivity.database.onCreate(MainActivity.db);
-
-                    Cursor c = db.rawQuery("SELECT * FROM Favorite WHERE UserId=?  AND AdvId=? AND FavoriteStatus=? ;",
-                            new String[]{String.valueOf(user.getUserId()), "1", "1"});
-
-                    if(c.moveToFirst()){ // Fav
-                        item.setIcon(R.drawable.ic_action_fav);
-
-                        db.execSQL("UPDATE Favorite SET FavoriteStatus = 0 WHERE UserId = "+ String.valueOf(user.getUserId())+ " AND AdvId=1");
-
-                     //   System.out.println("favv");
-                    }
-                    else{
-                        item.setIcon(myDrawable);
-
-                        c = db.rawQuery("SELECT * FROM Favorite WHERE UserId=?  AND AdvId=? AND FavoriteStatus=? ;",
-                                new String[]{String.valueOf(user.getUserId()), "1", "0"});
-
-                        if(c.moveToFirst()) { // Fav olmuş eskiden
-
-                          //  System.out.println("favv olmuş");
-
-                            db.execSQL("UPDATE Favorite SET FavoriteStatus = 1 WHERE UserId = "+ String.valueOf(user.getUserId())+ " AND AdvId=1");
-                        }
-                        else{// Hiç fav olmamış
-
-                          //  System.out.println("favv olmamuş");
-
-                            MainActivity.database.onCreate(MainActivity.db);
-                            String sqlQuery="INSERT INTO Favorite (UserId ,AdvId ,FavoriteStatus)  VALUES(?,?,?);";
-                            SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
-
-                            statement.bindString(1,String.valueOf(user.getUserId()));
-                            statement.bindString(2,"1");
-                            statement.bindString(3,"1");
-                            statement.execute();
-                        }
-
-                    }
-                    break;
-
-            }
-        });
         //  getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
     }
 
