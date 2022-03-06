@@ -20,6 +20,7 @@ public class MyAccountFragment extends Fragment {
 
     private FragmentMyaccountBinding binding;
     public static Boolean clickMyAdv=false;
+    public static Boolean clickMyFav=false;
     public static int userMyId;
 
     @Override
@@ -60,7 +61,7 @@ public class MyAccountFragment extends Fragment {
         binding.myFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickMyAdv=true;
+                clickMyFav=true;
                 FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,new MyFavoritesFragment());
