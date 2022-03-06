@@ -51,7 +51,6 @@ import java.util.Locale;
 
 
 public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
-
     private FragmentAddAdvBinding binding;
     GoogleMap gMap;
     private TextView txtViewDate;

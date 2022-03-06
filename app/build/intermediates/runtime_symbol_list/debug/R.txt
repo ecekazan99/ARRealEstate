@@ -72,7 +72,6 @@ int animator nav_default_pop_enter_anim 0x7f020022
 int animator nav_default_pop_exit_anim 0x7f020023
 int array Adv_Status 0x7f030000
 int array BuildingType 0x7f030001
-int array Cities 0x7f030002
 int array ElgForCredit 0x7f030003
 int array Front 0x7f030004
 int array FuelType 0x7f030005
