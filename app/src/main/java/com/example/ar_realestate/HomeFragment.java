@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        MyFavoritesFragment.clickMyFav=false;
+        MyFavoritesFragment.clickMyFavDetail=false;
         MyAccountFragment.clickMyAdv=false;
         View view=inflater.inflate(R.layout.fragment_home,container,false);
         recyclerView=(RecyclerView) view.findViewById(R.id.recview);
@@ -142,7 +142,7 @@ public class HomeFragment extends Fragment {
 
 
             }
-            else if(FilterAdvFragment.applButton!=true && MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==false && MyAccountFragment.clickMyAdv!=true &&  MyFavoritesFragment.clickMyFav!=true && MyFavoritesFragment.clickMyFavDetail!=true)
+            else if(FilterAdvFragment.applButton!=true && MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==false && MyAccountFragment.clickMyAdv!=true &&  MyFavoritesFragment.clickMyFavDetail!=true)
             {
                 System.out.println("Burayaa girdii 2222222222");
                 sqlQuery="SELECT * FROM Advertisements";
