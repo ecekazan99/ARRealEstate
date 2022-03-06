@@ -57,7 +57,6 @@ id Filter_SquareMax
 id Filter_SquareMin
 id Filter_WarmType
 id Filter_btnApply
-id Filter_editTextAddress
 id Filter_spinnerAdvStatus
 id Filter_spinnerBuildType
 id Filter_spinnerCity
@@ -70,7 +69,6 @@ id Filter_spinnerStateBuilding
 id Filter_spinnerSwap
 id Filter_spinnerTown
 id Filter_spinnerUsingStatus
-id TextAddress
 id TextAdvFilter
 id TextAdvStatus
 id TextBuildAge

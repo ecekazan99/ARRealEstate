@@ -2672,7 +2672,6 @@ int id Filter_SquareMax 0x7f090013
 int id Filter_SquareMin 0x7f090014
 int id Filter_WarmType 0x7f090015
 int id Filter_btnApply 0x7f090016
-int id Filter_editTextAddress 0x7f090017
 int id Filter_spinnerAdvStatus 0x7f090018
 int id Filter_spinnerBuildType 0x7f090019
 int id Filter_spinnerCity 0x7f09001a
@@ -2694,7 +2693,6 @@ int id SHOW_PROGRESS 0x7f090029
 int id SYM 0x7f09002a
 int id TOP_END 0x7f09002b
 int id TOP_START 0x7f09002c
-int id TextAddress 0x7f09002d
 int id TextAdvFilter 0x7f09002e
 int id TextAdvStatus 0x7f09002f
 int id TextBuildAge 0x7f090030

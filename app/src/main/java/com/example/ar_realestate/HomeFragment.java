@@ -131,11 +131,11 @@ public class HomeFragment extends Fragment {
                         +" AND BuildType = ? AND ItemStatus = ? AND WarmType = ?" + "AND (NumOfBathrooms BETWEEN "+FilterAdvFragment.numOfBathrMin+" AND "+FilterAdvFragment.numOfBathrMax+") "
                         +" AND ElgCredit = ? AND UsingStatus = ? AND StateBuilding = ? "
                         +" AND (RentalIncome BETWEEN "+FilterAdvFragment.rentalIncomeMin+" AND "+FilterAdvFragment.rentalIncomeMax+") AND (Dues BETWEEN "+FilterAdvFragment.duesMin+" AND "+FilterAdvFragment.duesMax+") "
-                        +" AND Swap = ? AND Front = ? AND FuelType = ? AND Address = ? AND Cities = ? AND Town = ?";
+                        +" AND Swap = ? AND Front = ? AND FuelType = ?  AND Cities = ? AND Town = ?";
 
                 cursor=MainActivity.db.rawQuery(sqlQuery, new String[] { FilterAdvFragment.advStatus,FilterAdvFragment.roomNum, FilterAdvFragment.buildType,
                         FilterAdvFragment.itemStatus,FilterAdvFragment.warmType,FilterAdvFragment.elgForCredit, FilterAdvFragment.usingStatus,
-                        FilterAdvFragment.stateBuilding, FilterAdvFragment.swap,FilterAdvFragment.front,FilterAdvFragment.fuelType,FilterAdvFragment.address,FilterAdvFragment.city,FilterAdvFragment.town});
+                        FilterAdvFragment.stateBuilding, FilterAdvFragment.swap,FilterAdvFragment.front,FilterAdvFragment.fuelType,FilterAdvFragment.city,FilterAdvFragment.town});
 
 
             }

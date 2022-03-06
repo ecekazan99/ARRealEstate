@@ -233,5 +233,4 @@ public class Advertisement implements Serializable {
         this.stateBuilding = stateBuilding;
     }
 
-
 }

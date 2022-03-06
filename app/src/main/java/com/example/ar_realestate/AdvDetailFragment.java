@@ -182,6 +182,7 @@ public class AdvDetailFragment extends Fragment {
         txtAdvTitle.setText(advTitle);
         advImageView.setImageBitmap(advImagePng);
         txtAdvPrice.setText(String.valueOf(price));
+        System.out.println("ADVDETAIL FRG "+ price);
         txtAdvStatus.setText(advStatus);
         txtAdvRoomNum.setText(roomNum);
         txtSquareMeter.setText(String.valueOf(squareMeters));

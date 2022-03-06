@@ -2673,7 +2673,6 @@ id Filter_SquareMax
 id Filter_SquareMin
 id Filter_WarmType
 id Filter_btnApply
-id Filter_editTextAddress
 id Filter_spinnerAdvStatus
 id Filter_spinnerBuildType
 id Filter_spinnerCity
@@ -2695,7 +2694,6 @@ id SHOW_PROGRESS
 id SYM
 id TOP_END
 id TOP_START
-id TextAddress
 id TextAdvFilter
 id TextAdvStatus
 id TextBuildAge

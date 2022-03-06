@@ -69,7 +69,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
 
     String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
     int price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
-    long latitude,longitude;
+    long latitude;
+    long longitude;
 
     private CitiesAndTownInsert citiesAndTownInsert;
 
@@ -414,6 +415,12 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     public boolean advInputControl(){
 
         Boolean checkEmpty =true;
+        if(MainActivity.database.checkAdvTitleExist(advTitle)==false)
+        {
+            checkEmpty=false;
+            Toast.makeText(getActivity(), "You cannot use this adv title", Toast.LENGTH_SHORT).show();
+        }
+
         if(advStatus.equals("Select Adv Status") || buildType.equals("Select Build Type") || itemStatus.equals("Select Item Status") ||
                 elgForCredit.equals("Select Elg Credit") || usingStatus.equals("Select Using Status") || stateBuilding.equals("Select State Building")||
                 swap.equals("Select Swap")|| front.equals("Select Front") || fuelType.equals("Select Fuel Type") ||
@@ -445,7 +452,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
 
         try {
             advTitle=editTxtTitle.getText().toString();
-            date=txtViewDate.toString();
+            date=getTodayDate();
             address=editTxtAddress.getText().toString();
             price= Integer.parseInt( editTxtPrice.getText().toString());
             squareMeters=Integer.parseInt(editTxtSquareMt.getText().toString());
@@ -497,8 +504,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 statement.bindString(23,address);
                 statement.bindString(24,city);
                 statement.bindString(25,town);
-                statement.bindLong(26,  latitude);
-                statement.bindLong(27, longitude);
+                statement.bindLong(26, (long) latitude);
+                statement.bindLong(27, (long) longitude);
                 statement.execute();
 
                 Nesneleri_temizle();
@@ -531,6 +538,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 if(add_Adv==true)
                 {
                     System.out.println("jgdfgm");
+                    System.out.println("ADD ADV FRG "+price);
                     advDetailLast=new AdvDetail(advId,advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
                             buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,
                             stateBuilding,rentalIncome,dues,swap,front,fuelType,date,address,city,town);
@@ -701,8 +709,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 markerOptions.position(latLng);
                 markerOptions.title(latLng.latitude+" : "+latLng.longitude);
                 System.out.println(latLng.latitude+" : "+latLng.longitude);
-                //latitude=latLng.latitude;
-                //   longitude=latLng.longitude;
+                latitude= (long) latLng.latitude;
+               longitude= (long) latLng.longitude;
 
                 gMap.clear();
 
