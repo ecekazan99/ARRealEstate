@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdapter.myviewholder>{
@@ -31,7 +30,6 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
     public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.advertisement_card,parent,false);
-
         return new myviewholder(view);
     }
 
@@ -43,16 +41,6 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
         holder.addresss.setText(adv.get(position).getAddress());
         holder.pricee.setText(String.valueOf(adv.get(position).getPrice()));
 
-
-       /* holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), "sill",Toast.LENGTH_SHORT).show();
-
-                Intent advDetail=new Intent(view.getContext(), AdvDetailActivity.class);
-               view.getContext().startActivity(advDetail);
-            }
-        });*/
     }
 
     @Override
@@ -65,18 +53,12 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
         TextView titlee, addresss, pricee;
         LinearLayout clickDetail;
 
-
         public myviewholder (@NonNull View itemView){
             super(itemView);
-
             img=itemView.findViewById(R.id.image);
             titlee=itemView.findViewById(R.id.title);
             addresss=itemView.findViewById(R.id.address);
             pricee=itemView.findViewById(R.id.price);
-
-           // clickDetail=itemView.findViewById(R.id.clickDetail);
-
-            //burayı ekledim
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -86,14 +68,9 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
                         listener.onItemClick(adv.get(position));
                     }
                 }
-            }); //buraya kadar
-
-
+            });
         }
-
     }
-
-    // buraları da ekledim
     public interface OnItemClickListener{
         void onItemClick(Advertisement adv);
     }

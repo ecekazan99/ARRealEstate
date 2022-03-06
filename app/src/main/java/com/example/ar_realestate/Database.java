@@ -24,7 +24,7 @@ public class Database extends SQLiteOpenHelper {
                 "AdvImage BLOB,Price INTEGER,AdvStatus TEXT,RoomNum TEXT,SquareMeter INTEGER,BuildingFloors INTEGER," +
                 "FloorLoc INTEGER,BuildAge INTEGER,BuildType TEXT,ItemStatus TEXT,WarmType TEXT,NumOfBathrooms INTEGER," +
                 "ElgCredit TEXT,UsingStatus TEXT,StateBuilding TEXT,RentalIncome INTEGER,Dues INTEGER,Swap TEXT,Front TEXT," +
-                "FuelType TEXT,Date DATE,Address TEXT,Cities TEXT,Town TEXT,xCoordinate REAL,yCoordinate REAL );");
+                "FuelType TEXT,Date TEXT,Address TEXT,Cities TEXT,Town TEXT,xCoordinate REAL,yCoordinate REAL );");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS  AdvertisementImage( ImageId  INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "advImage  BLOB, AdvId INTEGER,  FOREIGN KEY (AdvId) REFERENCES Advertisements(AdvId));");

@@ -23,6 +23,7 @@ public class MyFavoritesFragment extends Fragment {
 
     private AdvertisementAdapter advAdapter;
     static public AdvDetail advDetail;
+    public static Boolean clickMyFav=false;
     RecyclerView recyclerView;
     ArrayList<Advertisement> adv;
     static public SQLiteDatabase db;
@@ -50,7 +51,7 @@ public class MyFavoritesFragment extends Fragment {
 
         Intent intent=getActivity().getIntent();
         User user=(User)intent.getSerializableExtra("UserInformation");
-
+        clickMyFav=true;
         MainActivity.database.onCreate(MainActivity.db);
         db = MainActivity.database.getWritableDatabase();
 

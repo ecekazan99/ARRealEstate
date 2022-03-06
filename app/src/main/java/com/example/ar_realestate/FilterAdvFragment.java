@@ -35,12 +35,12 @@ public class FilterAdvFragment extends Fragment {
     private FragmentFilterAdvBinding binding;
 
     EditText editTxtPriceMin,editTxtPriceMax, editTxtSquareMin,editTxtSquareMax, editTxtFloorLocMin,editTxtFloorLocMax, editTxtNumofBathMin,editTxtNumofBathMax,
-            editTxtRentalIncomeMin,editTxtRentalIncomeMax, editTxtDuesMin,editTxtDuesMax, editTxtAddress,editTextBuildFloorMin,
+            editTxtRentalIncomeMin,editTxtRentalIncomeMax, editTxtDuesMin,editTxtDuesMax, editTextBuildFloorMin,
             editTextBuildFloorMax,editTextBuildAgeMin,editTextBuildAgeMax;
 
     Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType, spinnerItemStatus,spinnerWarmtype, spinnerElgbCredit, spinnerUsingStatus, spinnerStateOfBuilding, spinnerSwap, spinnerFront, spinnerFuelType,spinnerCity,spinnerTown;
 
-    static public String advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, address,city,town;
+    static public String advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, city,town;
 
     static public int priceMin, priceMax, squareMeterMin,squareMeterMax, buildingFloorsMin,buildingFloorsMax, floorLocMin,floorLocMax, buildAgeMin,buildAgeMax, numOfBathrMin,numOfBathrMax, rentalIncomeMin,rentalIncomeMax, duesMin,duesMax;
 
@@ -86,7 +86,6 @@ public class FilterAdvFragment extends Fragment {
         spinnerSwap = (Spinner) binding.FilterSpinnerSwap;
         spinnerFront = (Spinner) binding.FilterSpinnerFront;
         spinnerFuelType = (Spinner) binding.FilterSpinnerFuelType;
-        editTxtAddress = (EditText) binding.FilterEditTextAddress;
         spinnerCity=(Spinner)binding.FilterSpinnerCity;
         spinnerTown=(Spinner)binding.FilterSpinnerTown;
 
@@ -344,7 +343,6 @@ public class FilterAdvFragment extends Fragment {
                     duesMin = Integer.parseInt(editTxtDuesMin.getText().toString());
                     duesMax = Integer.parseInt(editTxtDuesMax.getText().toString());
 
-                    address = editTxtAddress.getText().toString();
 
                 }catch (Exception e){
                     System.out.println("Hataa");
@@ -410,7 +408,7 @@ public class FilterAdvFragment extends Fragment {
 
                 Toast.makeText(getActivity(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
 
-            }else if(TextUtils.isEmpty(address)|| TextUtils.isEmpty(editTxtPriceMin.getText().toString())|| TextUtils.isEmpty(editTxtPriceMax.getText().toString())||
+            }else if(TextUtils.isEmpty(editTxtPriceMin.getText().toString())|| TextUtils.isEmpty(editTxtPriceMax.getText().toString())||
                     TextUtils.isEmpty(editTxtSquareMin.getText().toString())||TextUtils.isEmpty(editTxtSquareMax.getText().toString())||
                     TextUtils.isEmpty(editTextBuildFloorMin.getText().toString())|| TextUtils.isEmpty(editTextBuildFloorMax.getText().toString())||
                     TextUtils.isEmpty(editTxtFloorLocMin.getText().toString()) ||TextUtils.isEmpty(editTxtFloorLocMax.getText().toString()) ||
