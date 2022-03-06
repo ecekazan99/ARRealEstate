@@ -26,7 +26,7 @@ public class MyFavoritesFragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<Advertisement> adv;
     static public SQLiteDatabase db;
-
+    public static Boolean clickMyFavDetail=false;
     public MyFavoritesFragment() {
         // Required empty public constructor
     }
@@ -127,7 +127,7 @@ public class MyFavoritesFragment extends Fragment {
             newAdv.setAdvImage(imageAdv);
             newAdv.setLatitude(c1.getLong(xCoordinateIndex));
             newAdv.setLongitude(c1.getLong(yCoordinateIndex));
-
+            System.out.println("asd "+newAdv.getAdvId());
             adv.add(newAdv);
         }
 
@@ -135,7 +135,7 @@ public class MyFavoritesFragment extends Fragment {
         recyclerView.setAdapter(advAdapter);
 
         advAdapter.setOnItemClickListener(adv ->  {
-
+            clickMyFavDetail=true;
             advDetail=new AdvDetail(adv.getAdvId(),adv.getAdvTitle(),adv.getAdvImage(),adv.getPrice(),adv.getAdvStatus(),
                     adv.getRoomNum(),adv.getSquareMeters(),adv.getBuildingFloors(),adv.getFloorLoc(),
                     adv.getBuildAge(),adv.getBuildType(),adv.getItemStatus(),adv.getWarmType(),adv.getNumOfBathr(),
