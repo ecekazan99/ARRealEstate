@@ -23,6 +23,7 @@ public class HomeFragment extends Fragment {
 
     private AdvertisementAdapter advAdapter;
     static public AdvDetail advDetail;
+
     RecyclerView recyclerView;
     ArrayList<Advertisement> adv;
 
@@ -46,7 +47,8 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        MyFavoritesFragment.clickMyFav=false;
+        MyAccountFragment.clickMyAdv=false;
         View view=inflater.inflate(R.layout.fragment_home,container,false);
         recyclerView=(RecyclerView) view.findViewById(R.id.recview);
         // burayı ekledim
@@ -118,10 +120,11 @@ public class HomeFragment extends Fragment {
 
         ArrayList<Long>xCoordinateList=new ArrayList<>();
         ArrayList<Long>yCoordinateList=new ArrayList<>();
-
+        // burası yüzünden  home-fav sorunu
+       System.out.println(MyAccountFragment.clickMyAdv);
         try {
 
-            if(FilterAdvFragment.applButton==true){
+            if(FilterAdvFragment.applButton==true && MyFavoritesFragment.clickMyFav!=true){
                 System.out.println("Burayaa girdii 1111111");
                 sqlQuery= "SELECT * FROM  Advertisements  WHERE AdvStatus  = ? AND  (Price BETWEEN "+FilterAdvFragment.priceMin+" AND "+FilterAdvFragment.priceMax+ " )"
                         +" AND RoomNum = ? AND (SquareMeter BETWEEN "+FilterAdvFragment.squareMeterMin+" AND "+FilterAdvFragment.squareMeterMax+")"
@@ -139,7 +142,7 @@ public class HomeFragment extends Fragment {
 
 
             }
-            else if(FilterAdvFragment.applButton!=true && MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==false && MyAccountFragment.clickMyAdv!=true)
+            else if(FilterAdvFragment.applButton!=true && MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==false && MyAccountFragment.clickMyAdv!=true &&  MyFavoritesFragment.clickMyFav!=true && MyFavoritesFragment.clickMyFavDetail!=true)
             {
                 System.out.println("Burayaa girdii 2222222222");
                 sqlQuery="SELECT * FROM Advertisements";
@@ -157,6 +160,7 @@ public class HomeFragment extends Fragment {
                 sqlQuery="SELECT * FROM Advertisements ORDER BY Price DESC";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }
+
             int advTitleIndex = cursor.getColumnIndex("AdvTitle");
             int ImageIndex = cursor.getColumnIndex("AdvImage");
             int priceIncex = cursor.getColumnIndex("Price");
@@ -260,6 +264,7 @@ public class HomeFragment extends Fragment {
         MainActivity.decrsPriceClick=false;
         MainActivity.incrPriceClick=false;
         FilterAdvFragment.applButton=false;
+        MyFavoritesFragment.clickMyFavDetail=false;
         return advertisementList;
     }
 }

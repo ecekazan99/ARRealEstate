@@ -69,7 +69,7 @@ public class AdvDetailFragment extends Fragment {
         txtCity=(TextView)binding.detailAdvCity;
         txtTown=(TextView) binding.detailAdvTown;
 
-        if(AddAdvFragment.add_Adv==false && MyAdvertisementFragment.clickMyAdvDetail!=true){
+        if(AddAdvFragment.add_Adv==false && MyAdvertisementFragment.clickMyAdvDetail!=true&&MyFavoritesFragment.clickMyFavDetail==false){
            advId=HomeFragment.advDetail.getAdvId();
             advTitle=HomeFragment.advDetail.getAdvTitle();
             advImagePng=HomeFragment.advDetail.getAdv_image();
@@ -99,7 +99,7 @@ public class AdvDetailFragment extends Fragment {
 
 
         }
-        else if(AddAdvFragment.add_Adv==true && MyAdvertisementFragment.clickMyAdvDetail!=true){
+        else if(AddAdvFragment.add_Adv==true && MyAdvertisementFragment.clickMyAdvDetail!=true &&MyFavoritesFragment.clickMyFavDetail==false){
             advId=AddAdvFragment.advDetailLast.getAdvId();
             advTitle=AddAdvFragment.advDetailLast.getAdvTitle();
             advImagePng=AddAdvFragment.advDetailLast.getAdv_image();
@@ -155,6 +155,37 @@ public class AdvDetailFragment extends Fragment {
             address=MyAdvertisementFragment.advDetail.getAddress();
             city=MyAdvertisementFragment.advDetail.getCity();
             town=MyAdvertisementFragment.advDetail.getTown();
+
+        }
+
+        else if(MyFavoritesFragment.clickMyFavDetail==true){
+
+            advId=MyFavoritesFragment.advDetail.getAdvId();
+            advTitle=MyFavoritesFragment.advDetail.getAdvTitle();
+            advImagePng=MyFavoritesFragment.advDetail.getAdv_image();
+            price=MyFavoritesFragment.advDetail.getPrice();
+            advStatus=MyFavoritesFragment.advDetail.getAdvStatus();
+            roomNum=MyFavoritesFragment.advDetail.getRoomNum();
+            squareMeters=MyFavoritesFragment.advDetail.getSquareMeters();
+            buildingFloors=MyFavoritesFragment.advDetail.getBuildingFloors();
+            floorLoc=MyFavoritesFragment.advDetail.getFloorLoc();
+            buildAge=MyFavoritesFragment.advDetail.getBuildAge();
+            buildType=MyFavoritesFragment.advDetail.getBuildType();
+            itemStatus=MyFavoritesFragment.advDetail.getItemStatus();
+            warmType=MyFavoritesFragment.advDetail.getWarmType();
+            numOfBathr=MyFavoritesFragment.advDetail.getNumOfBathr();
+            elgForCredit=MyFavoritesFragment.advDetail.getElgForCredit();
+            usingStatus=MyFavoritesFragment.advDetail.getUsingStatus();
+            stateBuilding=MyFavoritesFragment.advDetail.getStateBuilding();
+            rentalIncome=MyFavoritesFragment.advDetail.getRentalIncome();
+            dues=MyFavoritesFragment.advDetail.getDues();
+            swap=MyFavoritesFragment.advDetail.getSwap();
+            front=MyFavoritesFragment.advDetail.getFront();
+            fuelType=MyFavoritesFragment.advDetail.getFuelType();
+            date=MyFavoritesFragment.advDetail.getDate();
+            address=MyFavoritesFragment.advDetail.getAddress();
+            city=MyFavoritesFragment.advDetail.getCity();
+            town=MyFavoritesFragment.advDetail.getTown();
 
         }
         MyAdvertisementFragment.clickMyAdvDetail=false;

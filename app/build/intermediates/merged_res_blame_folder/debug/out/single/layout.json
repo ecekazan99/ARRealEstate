@@ -24,6 +24,10 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_add_adv.xml"
     },
     {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_my_favorites.xml",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_my_favorites.xml"
+    },
+    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_adv_detail.xml",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_adv_detail.xml"
     },
