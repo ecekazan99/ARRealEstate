@@ -32,10 +32,10 @@
                 android:layout_width="370dp"
                 android:layout_height="230dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/ic_baseline_photo_camera_24"
+                android:src="@drawable/ic_baseline_add_a_photo_24"
                 android:baselineAligned="false"
                 android:onClick="selectImage"
-                android:scaleType="fitXY"
+                android:scaleType="fitCenter"
                 tools:ignore="SpeakableTextPresentCheck" />
 
 

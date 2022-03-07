@@ -368,7 +368,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         else{
             userId=user.getUserId();
 
-
             SupportMapFragment supportMapFragment=(SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
             supportMapFragment.getMapAsync(this);
 
