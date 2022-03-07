@@ -255,11 +255,11 @@ public class AdvDetailFragment extends Fragment {
                     new String[]{String.valueOf(user.getUserId()), String.valueOf(advId), "1"});
 
             if(c1.moveToFirst()){
-                System.out.println("zaten fav");
+              //  System.out.println("zaten fav");
                 binding.buttonFav1.setImageDrawable(addFav);
             }
             else{
-                System.out.println("fav değil");
+                //System.out.println("fav değil");
                 binding.buttonFav1.setImageDrawable(notFav);
             }
         }
@@ -295,7 +295,7 @@ public class AdvDetailFragment extends Fragment {
 
                         if(c.moveToFirst()) { // Fav olmuş eskiden
 
-                            System.out.println("favv olmuş");
+                            //System.out.println("favv olmuş");
 
                             db.execSQL("UPDATE Favorite SET FavoriteStatus = 1 WHERE UserId = "+ String.valueOf(user.getUserId())+
                                             " AND AdvId= "+String.valueOf(advId)+";");
@@ -305,7 +305,7 @@ public class AdvDetailFragment extends Fragment {
                         }
                         else{// Hiç fav olmamış
 
-                            System.out.println("favv olmamuş");
+                          //  System.out.println("favv olmamuş");
 
                             MainActivity.database.onCreate(MainActivity.db);
                             String sqlQuery="INSERT INTO Favorite (UserId ,AdvId ,FavoriteStatus)  VALUES(?,?,?);";
