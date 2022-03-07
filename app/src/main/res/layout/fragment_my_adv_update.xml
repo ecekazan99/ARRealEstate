@@ -23,7 +23,7 @@
                 android:layout_width="382dp"
                 android:layout_height="52dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/input_cerceve"
+                android:background="@drawable/input_field"
                 android:hint="Advertisement Title"
                 android:textAlignment="center" />
 
@@ -32,10 +32,9 @@
                 android:layout_width="370dp"
                 android:layout_height="230dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/ic_baseline_photo_camera_24"
+                android:src="@drawable/ic_baseline_add_a_photo_24"
                 android:baselineAligned="false"
                 android:onClick="selectImage"
-                android:scaleType="fitXY"
                 tools:ignore="SpeakableTextPresentCheck" />
 
 
@@ -62,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/add_book_activity_imageViewBookImage"
                     android:layout_marginLeft="40dp"
-                    android:background="@drawable/input_cerceve"
+                    android:background="@drawable/input_field"
                     android:hint="Price"
                     android:inputType="textPersonName"
                     android:padding="12dp"
@@ -93,7 +92,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/input_cerceve" />
+                    android:background="@drawable/input_field" />
 
             </LinearLayout>
 
@@ -122,7 +121,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/input_cerceve" />
+                    android:background="@drawable/input_field" />
 
             </LinearLayout>
 
@@ -150,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/addAdv_spinnerRoomNum"
                     android:layout_marginLeft="25dp"
-                    android:background="@drawable/input_cerceve"
+                    android:background="@drawable/input_field"
                     android:hint="Square Meter"
                     android:inputType="textPersonName"
                     android:padding="12dp"
@@ -181,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/addAdv_editTextSquareMeter"
                     android:layout_marginLeft="25dp"
-                    android:background="@drawable/input_cerceve"
+                    android:background="@drawable/input_field"
                     android:hint="Building Floors"
                     android:inputType="textPersonName"
                     android:padding="12dp"
@@ -212,7 +211,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/addAdv_editTextSquareMeter"
                     android:layout_marginLeft="25dp"
-                    android:background="@drawable/input_cerceve"
+                    android:background="@drawable/input_field"
                     android:hint="Floor Location"
                     android:inputType="textPersonName"
                     android:padding="12dp"
@@ -243,7 +242,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/addAdv_editTextFloorLoc"
                     android:layout_marginLeft="25dp"
-                    android:background="@drawable/input_cerceve"
+                    android:background="@drawable/input_field"
                     android:hint="Building Age"
                     android:inputType="textPersonName"
                     android:padding="12dp"
@@ -275,7 +274,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/input_cerceve" />
+                    android:background="@drawable/input_field" />
             </LinearLayout>
 
             <LinearLayout
@@ -303,7 +302,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/input_cerceve" />
+                    android:background="@drawable/input_field" />
             </LinearLayout>
 
 
@@ -332,7 +331,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/input_cerceve" />
+                    android:background="@drawable/input_field" />
 
             </LinearLayout>
 
@@ -360,7 +359,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/addAdv_editTextWarmType"
                     android:layout_marginLeft="25dp"
-                    android:background="@drawable/input_cerceve"
+                    android:background="@drawable/input_field"
                     android:hint="Number Of Bathrooms"
                     android:inputType="textPersonName"
                     android:padding="12dp"
@@ -392,7 +391,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/input_cerceve" />
+                    android:background="@drawable/input_field" />
             </LinearLayout>
 
             <LinearLayout
@@ -420,7 +419,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/input_cerceve" />
+                    android:background="@drawable/input_field" />
             </LinearLayout>
 
             <LinearLayout
@@ -448,7 +447,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/input_cerceve" />
+                    android:background="@drawable/input_field" />
             </LinearLayout>
 
             <LinearLayout
@@ -475,7 +474,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/addAdv_editTextUsingStatus"
                     android:layout_marginLeft="25dp"
-                    android:background="@drawable/input_cerceve"
+                    android:background="@drawable/input_field"
                     android:hint="Rental Income"
                     android:inputType="textPersonName"
                     android:padding="12dp"
@@ -506,7 +505,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/addAdv_editTextRentalIncome"
                     android:layout_marginLeft="25dp"
-                    android:background="@drawable/input_cerceve"
+                    android:background="@drawable/input_field"
                     android:hint="Dues"
                     android:inputType="textPersonName"
                     android:padding="12dp"
@@ -538,7 +537,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/input_cerceve" />
+                    android:background="@drawable/input_field" />
             </LinearLayout>
 
 
@@ -567,7 +566,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/input_cerceve" />
+                    android:background="@drawable/input_field" />
             </LinearLayout>
 
             <LinearLayout
@@ -595,7 +594,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/input_cerceve" />
+                    android:background="@drawable/input_field" />
             </LinearLayout>
 
             <LinearLayout
@@ -622,41 +621,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/addAdv_spinnerFuelType"
                     android:layout_marginLeft="25dp"
-                    android:background="@drawable/input_cerceve"
+                    android:background="@drawable/input_field"
                     android:padding="12dp"
                     android:text=""
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="407dp"
-                android:layout_height="82dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/add_adv_TextAddress"
-                    android:layout_width="143dp"
-                    android:layout_height="42dp"
-                    android:layout_marginLeft="4dp"
-                    android:gravity="center"
-                    android:text="Address"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/addAdv_editTextAddress"
-                    android:layout_width="215dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/addAdv_editTextDate"
-                    android:layout_marginLeft="25dp"
-                    android:background="@drawable/input_cerceve"
-                    android:hint="Address"
-                    android:inputType="textPersonName"
-                    android:maxLines="3"
-                    android:padding="12dp"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -685,7 +652,7 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/input_cerceve" />
+                    android:background="@drawable/input_field"/>
             </LinearLayout>
 
             <LinearLayout
@@ -713,9 +680,8 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/input_cerceve" />
+                    android:background="@drawable/input_field" />
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="407dp"
@@ -723,23 +689,36 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/updateAdv_btn"
-                    android:layout_width="230dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="25dp"
-                    android:text="update"
+                <TextView
+                    android:id="@+id/add_adv_TextAddress"
+                    android:layout_width="143dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center"
+                    android:text="Address"
                     android:textAlignment="center"
-                    android:textAllCaps="false"
                     android:textColor="@color/black"
-                    android:textSize="19sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/addAdv_editTextAddress"
+                    android:layout_width="215dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addAdv_editTextDate"
+                    android:layout_marginLeft="25dp"
+                    android:background="@drawable/input_field"
+                    android:hint="Address"
+                    android:inputType="textPersonName"
+                    android:maxLines="3"
+                    android:padding="12dp"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="407dp"
                 android:layout_height="300dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="30dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -750,6 +729,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="407dp"
+                android:layout_height="200dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/updateAdv_btn"
+                    android:layout_width="280dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="30dp"
+                    android:backgroundTint="@color/cardview_dark_background"
+                    android:enabled="false"
+                    android:text="UPDATE"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"  />
+            </LinearLayout>
+
+
 
 
         </LinearLayout>

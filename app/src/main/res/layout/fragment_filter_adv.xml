@@ -22,7 +22,7 @@
                 android:layout_width="382dp"
                 android:layout_height="52dp"
                 android:layout_marginTop="50dp"
-                android:background="@drawable/input_cerceve"
+                android:background="@drawable/input_field"
                 android:text="FILTER"
                 android:textAlignment="center"
                 android:textSize="35sp"
@@ -49,6 +49,7 @@
                     android:id="@+id/Filter_spinnerAdvStatus"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
+                    android:background="@drawable/input_field"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1" />
@@ -75,19 +76,21 @@
 
                 <EditText
                     android:id="@+id/Filter_PriceMin"
-                    android:layout_width="135dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="20dp"
                     android:hint="min"
+                    android:background="@drawable/input_field"
                     android:inputType="text"
                     android:padding="12dp"
                     android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/Filter_PriceMax"
-                    android:layout_width="130dp"
+                    android:layout_width="146dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
+                    android:background="@drawable/input_field"
                     android:hint="max"
                     android:inputType="text"
                     android:padding="12dp"
@@ -117,6 +120,7 @@
                     android:id="@+id/Filter_spinnerRoomNum"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
+                    android:background="@drawable/input_field"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
@@ -142,19 +146,21 @@
 
                 <EditText
                     android:id="@+id/Filter_SquareMin"
-                    android:layout_width="135dp"
+                    android:layout_width="123dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="20dp"
                     android:hint="min"
+                    android:background="@drawable/input_field"
                     android:inputType="text"
                     android:padding="12dp"
                     android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/Filter_SquareMax"
-                    android:layout_width="130dp"
+                    android:layout_width="144dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
+                    android:background="@drawable/input_field"
                     android:hint="max"
                     android:inputType="text"
                     android:padding="12dp"
@@ -169,10 +175,9 @@
                 <TextView
                     android:id="@+id/TextBuildingFloors"
                     android:layout_width="wrap_content"
-                    android:layout_height="47dp"
-                    android:layout_marginLeft="5dp"
-                    android:text=" Building \nFloors"
+                    android:layout_height="50dp"
                     android:gravity="center"
+                    android:text=" Building  \nFloors     "
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -182,7 +187,8 @@
                     android:id="@+id/Filter_BuildingFloorMin"
                     android:layout_width="135dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/input_field"
                     android:hint="min"
                     android:inputType="text"
                     android:padding="12dp"
@@ -190,9 +196,10 @@
 
                 <EditText
                     android:id="@+id/Filter_BuildingFloorMax"
-                    android:layout_width="130dp"
+                    android:layout_width="141dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/input_field"
                     android:hint="max"
                     android:inputType="text"
                     android:padding="12dp"
@@ -207,10 +214,10 @@
                 <TextView
                     android:id="@+id/TextFloorLoc"
                     android:layout_width="wrap_content"
-                    android:layout_height="46dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="4dp"
                     android:gravity="center"
-                    android:text="Floor \nLocation"
+                    android:text="Floor   \n  Location   "
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -219,9 +226,10 @@
 
                 <EditText
                     android:id="@+id/Filter_FloorLocMin"
-                    android:layout_width="135dp"
+                    android:layout_width="124dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/input_field"
                     android:hint="min"
                     android:inputType="text"
                     android:padding="12dp"
@@ -229,9 +237,10 @@
 
                 <EditText
                     android:id="@+id/Filter_FloorLocMax"
-                    android:layout_width="130dp"
+                    android:layout_width="131dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/input_field"
                     android:hint="max"
                     android:inputType="text"
                     android:padding="12dp"
@@ -246,9 +255,9 @@
                 <TextView
                     android:id="@+id/TextBuildAge"
                     android:layout_width="wrap_content"
-                    android:layout_height="49dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="4dp"
-                    android:text=" Building \n Age"
+                    android:text=" Building      \n Age"
                     android:gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/black"
@@ -257,9 +266,10 @@
 
                 <EditText
                     android:id="@+id/Filter_BuildAgeMin"
-                    android:layout_width="135dp"
+                    android:layout_width="134dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/input_field"
                     android:hint="min"
                     android:inputType="text"
                     android:padding="12dp"
@@ -267,9 +277,10 @@
 
                 <EditText
                     android:id="@+id/Filter_BuildAgeMax"
-                    android:layout_width="130dp"
+                    android:layout_width="126dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/input_field"
                     android:hint="max"
                     android:inputType="text"
                     android:padding="12dp"
@@ -297,6 +308,7 @@
                     android:id="@+id/Filter_spinnerBuildType"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
+                    android:background="@drawable/input_field"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
@@ -325,6 +337,7 @@
                     android:id="@+id/Filter_spinnerItemStatus"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
+                    android:background="@drawable/input_field"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
@@ -354,6 +367,7 @@
                     android:id="@+id/Filter_WarmType"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
+                    android:background="@drawable/input_field"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1" />
@@ -379,21 +393,22 @@
 
                 <EditText
                     android:id="@+id/Filter_NumofBathMin"
-                    android:layout_width="106dp"
+                    android:layout_width="116dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="38dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="4dp"
                     android:hint="min"
+                    android:background="@drawable/input_field"
                     android:inputType="text"
                     android:padding="12dp"
                     android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/Filter_NumofBathMax"
-                    android:layout_width="106dp"
+                    android:layout_width="116dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="4dp"
                     android:hint="max"
+                    android:background="@drawable/input_field"
                     android:inputType="text"
                     android:padding="12dp"
                     android:textSize="20sp" />
@@ -421,6 +436,7 @@
                     android:id="@+id/Filter_spinnerElgCredit"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
+                    android:background="@drawable/input_field"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
@@ -448,6 +464,7 @@
                 <Spinner
                     android:id="@+id/Filter_spinnerUsingStatus"
                     android:layout_width="223dp"
+                    android:background="@drawable/input_field"
                     android:layout_height="44dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
@@ -477,6 +494,7 @@
                     android:id="@+id/Filter_spinnerStateBuilding"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
+                    android:background="@drawable/input_field"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
@@ -491,11 +509,11 @@
 
                 <TextView
                     android:id="@+id/TextRentalIncome"
-                    android:layout_width="wrap_content"
+                    android:layout_width="116dp"
                     android:layout_height="47dp"
                     android:layout_marginLeft="4dp"
-                    android:text=" Rental \n Income"
                     android:gravity="center"
+                    android:text=" Rental \n Income"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -503,9 +521,10 @@
 
                 <EditText
                     android:id="@+id/Filter_RentalMin"
-                    android:layout_width="135dp"
+                    android:layout_width="116dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/input_field"
                     android:hint="min"
                     android:inputType="text"
                     android:padding="12dp"
@@ -513,9 +532,10 @@
 
                 <EditText
                     android:id="@+id/Filter_RentalMax"
-                    android:layout_width="130dp"
+                    android:layout_width="115dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
+                    android:background="@drawable/input_field"
                     android:hint="max"
                     android:inputType="text"
                     android:padding="12dp"
@@ -532,7 +552,7 @@
                     android:id="@+id/TextDues"
                     android:layout_width="123dp"
                     android:layout_height="42dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="4dp"
                     android:gravity="center"
                     android:text="Dues"
                     android:textAlignment="center"
@@ -542,9 +562,10 @@
 
                 <EditText
                     android:id="@+id/Filter_DuesMin"
-                    android:layout_width="135dp"
+                    android:layout_width="116dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/input_field"
                     android:hint="min"
                     android:inputType="text"
                     android:padding="12dp"
@@ -552,9 +573,10 @@
 
                 <EditText
                     android:id="@+id/Filter_DuesMax"
-                    android:layout_width="130dp"
+                    android:layout_width="116dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/input_field"
                     android:hint="max"
                     android:inputType="text"
                     android:padding="12dp"
@@ -583,6 +605,7 @@
                     android:id="@+id/Filter_spinnerSwap"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
+                    android:background="@drawable/input_field"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
@@ -612,6 +635,7 @@
                     android:id="@+id/Filter_spinnerFront"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
+                    android:background="@drawable/input_field"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
@@ -640,6 +664,7 @@
                     android:id="@+id/Filter_spinnerFuelType"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
+                    android:background="@drawable/input_field"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
@@ -668,6 +693,7 @@
                     android:id="@+id/Filter_spinnerCity"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
+                    android:background="@drawable/input_field"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
@@ -695,6 +721,7 @@
                     android:id="@+id/Filter_spinnerTown"
                     android:layout_width="223dp"
                     android:layout_height="44dp"
+                    android:background="@drawable/input_field"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="1"
@@ -710,14 +737,17 @@
 
                 <Button
                     android:id="@+id/Filter_btnApply"
-                    android:layout_width="271dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="1dp"
-                    android:text="apply filter"
+                    android:layout_width="280dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="30dp"
+                    android:backgroundTint="@color/cardview_dark_background"
+                    android:text="APPLY FILTER"
+                    android:enabled="false"
                     android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="19sp"
-                    android:textStyle="bold" />
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"  />
             </LinearLayout>
 
 
