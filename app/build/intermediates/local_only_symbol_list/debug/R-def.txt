@@ -26,6 +26,8 @@ drawable ic_action_back
 drawable ic_action_fav
 drawable ic_action_filter
 drawable ic_action_name
+drawable ic_action_next
+drawable ic_action_previous
 drawable ic_baseline_add_a_photo_24
 drawable ic_baseline_add_circle_outline_24
 drawable ic_baseline_favorite_24
@@ -211,6 +213,8 @@ id navigation_dashboard
 id navigation_home
 id navigation_notifications
 id navigation_user
+id next
+id previous
 id price
 id recview
 id recviewMyAdvs

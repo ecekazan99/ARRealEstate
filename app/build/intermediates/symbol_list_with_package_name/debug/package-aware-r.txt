@@ -2583,6 +2583,8 @@ drawable ic_action_back
 drawable ic_action_fav
 drawable ic_action_filter
 drawable ic_action_name
+drawable ic_action_next
+drawable ic_action_previous
 drawable ic_baseline_add_a_photo_24
 drawable ic_baseline_add_circle_outline_24
 drawable ic_baseline_favorite_24
@@ -3137,6 +3139,7 @@ id navigation_user
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
+id next
 id noScroll
 id noState
 id none
@@ -3165,6 +3168,7 @@ id percent
 id pin
 id position
 id postLayout
+id previous
 id price
 id progress_circular
 id progress_horizontal
