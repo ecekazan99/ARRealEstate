@@ -69,8 +69,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
 
     String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
     int price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
-    long latitude;
-    long longitude;
+    Double latitude;
+    Double longitude;
 
     private CitiesAndTownInsert citiesAndTownInsert;
 
@@ -503,8 +503,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 statement.bindString(23,address);
                 statement.bindString(24,city);
                 statement.bindString(25,town);
-                statement.bindLong(26, (long) latitude);
-                statement.bindLong(27, (long) longitude);
+                statement.bindDouble(26, latitude);
+                statement.bindDouble(27, longitude);
                 statement.execute();
 
                 Nesneleri_temizle();
@@ -708,8 +708,9 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 markerOptions.position(latLng);
                 markerOptions.title(latLng.latitude+" : "+latLng.longitude);
                 System.out.println(latLng.latitude+" : "+latLng.longitude);
-                latitude= (long) latLng.latitude;
-               longitude= (long) latLng.longitude;
+                latitude=  latLng.latitude;
+                longitude= latLng.longitude;
+                System.out.println(latitude);
 
                 gMap.clear();
 
