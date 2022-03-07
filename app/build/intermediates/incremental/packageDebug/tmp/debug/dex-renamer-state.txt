@@ -1,12 +1,20 @@
+<<<<<<< HEAD
 #Mon Mar 07 22:44:46 TRT 2022
+=======
+<<<<<<< HEAD
+#Mon Mar 07 10:05:26 TRT 2022
+=======
+#Mon Mar 07 21:34:08 TRT 2022
+>>>>>>> 2518d28badb697a595bd2f70008aa2ebb2f58672
+>>>>>>> 7da4d5bfe63a4dda54f12aa4a80d7b840d54953a
 path.3=9/classes.dex
 path.2=15/classes.dex
 path.1=0/classes.dex
 path.0=classes.dex
-base.3=D\:\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.2=D\:\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
-base.1=D\:\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.0=D\:\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.3=D\:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
+base.2=D\:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
+base.1=D\:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.0=D\:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
