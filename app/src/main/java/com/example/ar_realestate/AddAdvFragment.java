@@ -636,39 +636,51 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         System.out.println("Activityyy");
+        int count=0;
         if(requestCode==imgPermissionCod){
             if(resultCode==-1 && data !=null){
 
                 try {
                     Uri imgUrl=data.getData();
-                    int count = data.getClipData().getItemCount();
                     System.out.println("Activityyy 1111111");
-                    if(Build.VERSION.SDK_INT>=28){
+                    if (Build.VERSION.SDK_INT >= 28) {
                         System.out.println("Activityyy 2222222222");
 
-                    }else{
+                    } else {
                         System.out.println("Activityyy 33333333");
-                        for (int i = 0; i < count; i++) {
-                            Uri imageUri = data.getClipData().getItemAt(i).getUri();
-                            mArrayUri.add(imageUri);
-                            System.out.println("Activityyy 444444");
-                            System.out.println(imageUri);
-                        }
-                        for (int j = 0; j < mArrayUri.size(); j++) {
-                            System.out.println("Activityyy 5555555555555");
-                            System.out.println(mArrayUri.get(j));
-                            //selectedİmg=MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),mArrayUri.get(j));
-                            imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),mArrayUri.get(j)));
-                            firstSelectedImage=imagesSelect.get(0);
-                            selectedİmg=imagesSelect.get(j);
-                            imageAdv.setImageBitmap(selectedİmg);
-                            imageCount++;
-                        }
+                        if(data.getClipData()!=null){
+                            count = data.getClipData().getItemCount();
+                            for (int i = 0; i < count; i++) {
+                                Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                                mArrayUri.add(imageUri);
+                                System.out.println("Activityyy 444444");
+                                System.out.println(imageUri);
+                            }
 
+                            for (int j = 0; j < mArrayUri.size(); j++) {
+                                System.out.println("Activityyy 5555555555555");
+                                System.out.println(mArrayUri.get(j));
+
+                                imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), mArrayUri.get(j)));
+                                firstSelectedImage = imagesSelect.get(0);
+                                selectedİmg = imagesSelect.get(j);
+                                imageAdv.setImageBitmap(selectedİmg);
+                                imageCount++;
+                            }
+                        }
+                        else if(data.getClipData()==null)
+                        {
+                            imageCount=1;
+                            imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imgUrl));
+                            selectedİmg= imagesSelect.get(0);
+                            firstSelectedImage = imagesSelect.get(0);
+                            imageAdv.setImageBitmap(selectedİmg);
+                        }
                     }
 
 
                     btnSubmitAdv.setEnabled(true);
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
