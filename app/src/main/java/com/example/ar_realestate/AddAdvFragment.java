@@ -56,9 +56,16 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     private TextView txtViewDate;
     private EditText editTxtTitle,editTxtPrice, editTxtSquareMt,editTxtBuildingFloors, editTxtFloorLoc,editTxtBuildAge,editTxtNumofBath,
             editTxtRentalIncome,editTxtDues,editTxtAddress;
+
     private ImageView imageAdv,imageAdv2,imageAdv3;
-    private Bitmap selectedİmg,smallestedImg,firstImage;
+    private Bitmap selectedİmg,smallestedImg,firstImage,firstSelectedImage;
     private Button btnSubmitAdv;
+    ArrayList<Uri> mArrayUri;
+    private Button next,previous;
+    private int position=0;
+    public static int imageCount=0;
+    private ArrayList<Bitmap>imagesSelect;
+    private ArrayList<Bitmap>imagesSmall;
 
     static public boolean add_Adv=false;
     static public AdvDetail advDetailLast;
@@ -120,6 +127,11 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         spinnerTown=(Spinner)binding.addAdvSpinnerTown;
 
         imageAdv=(ImageView) binding.addAdvImage;
+        mArrayUri=new ArrayList<>();
+        imagesSelect=new ArrayList<Bitmap>();
+        imagesSelect=new ArrayList<Bitmap>();
+        next=(Button)binding.next;
+        previous=(Button)binding.previous;
         btnSubmitAdv=(Button) binding.addAdvBtnSubmit;
 
         ArrayAdapter<CharSequence>adapterAdvStatus=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.Adv_Status, android.R.layout.simple_spinner_item);
@@ -162,7 +174,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 itemStatus=adapterView.getItemAtPosition(i).toString();
-               itemStatusPos=i;
+                itemStatusPos=i;
             }
 
             @Override
@@ -374,28 +386,50 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             init();
 
             binding.addAdvImage.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View view) {
+                    System.out.println("ADDD İMAGEEE");
                     if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
                         ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},imgNoPermissionCod);
                     }
                     else{
 
-                        Intent imageGet=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        startActivityForResult(imageGet,imgPermissionCod);
+                        // Intent imageGet=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        // startActivityForResult(imageGet,imgPermissionCod);
 
                         // Select one more images from galery
-         /*   Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Select images"), imgPermissionCod);*/
+                        Intent intent = new Intent();
+                        intent.setType("image/*");
+                        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                        intent.setAction(Intent.ACTION_GET_CONTENT);
+                        startActivityForResult(Intent.createChooser(intent, "Select images"), imgPermissionCod);
 
 
                     }
                 }
             });
 
+            binding.next.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("Imagee countttt "+imageCount);
+                    if(position<mArrayUri.size()-1)
+                    {
+                        position++;
+                        imageAdv.setImageURI(mArrayUri.get(position));
+                    }
+                }
+            });
+            binding.previous.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(position>0){
+                        position--;
+                        imageAdv.setImageURI(mArrayUri.get(position));
+                    }
+                }
+            });
 
             binding.addAdvBtnSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -465,7 +499,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             System.out.println("HATAAAAAAAAAAAAA");
         }
         ByteArrayOutputStream outputStream =new ByteArrayOutputStream();
-        smallestedImg=imageSmall(selectedİmg);
+        smallestedImg=imageSmall(firstSelectedImage);
         smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStream);
         byte[] kayıtedilecekImage=outputStream.toByteArray();
 
@@ -520,12 +554,17 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 // int advTitleIndex=cursor.getColumnIndex("AdvTitle");
                 System.out.println("ADV ID Last Insert :"+lastInsertedAdvId);
                 advId=lastInsertedAdvId;
-                String sqlQueryImage="INSERT INTO AdvertisementImage (AdvImage,AdvId)VALUES(?,?)";
-                SQLiteStatement statementImg = MainActivity.db.compileStatement(sqlQueryImage);
-                statementImg.bindBlob(1,kayıtedilecekImage);
-                statementImg.bindString(2,String.valueOf(lastInsertedAdvId));
-                statementImg.execute();
-
+                for (int i=0;i<imageCount;i++) {
+                    ByteArrayOutputStream outputStreamMulti =new ByteArrayOutputStream();
+                    smallestedImg=imageSmall(imagesSelect.get(i));
+                    smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStreamMulti);
+                    byte[] kayıtedilecekImageMulti=outputStreamMulti.toByteArray();
+                    String sqlQueryImage = "INSERT INTO AdvertisementImage (AdvImage,AdvId)VALUES(?,?)";
+                    SQLiteStatement statementImg = MainActivity.db.compileStatement(sqlQueryImage);
+                    statementImg.bindBlob(1, kayıtedilecekImageMulti);
+                    statementImg.bindString(2, String.valueOf(lastInsertedAdvId));
+                    statementImg.execute();
+                }
                 String sqlQueryUserAdv="INSERT INTO UserAdvertisement (UserId,AdvId)VALUES(?,?);";
                 SQLiteStatement statementUserAdv = MainActivity.db.compileStatement(sqlQueryUserAdv);
                 statementUserAdv.bindString(1,String.valueOf(userId));
@@ -596,30 +635,36 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        System.out.println("Activityyy");
         if(requestCode==imgPermissionCod){
             if(resultCode==-1 && data !=null){
-                Uri imgUrl=data.getData();
 
                 try {
+                    Uri imgUrl=data.getData();
+                    int count = data.getClipData().getItemCount();
+                    System.out.println("Activityyy 1111111");
                     if(Build.VERSION.SDK_INT>=28){
+                        System.out.println("Activityyy 2222222222");
 
-                        // One more than images uri (not work well)
-                      /*  for (int i = 0; i < count; i++) {
+                    }else{
+                        System.out.println("Activityyy 33333333");
+                        for (int i = 0; i < count; i++) {
                             Uri imageUri = data.getClipData().getItemAt(i).getUri();
                             mArrayUri.add(imageUri);
+                            System.out.println("Activityyy 444444");
+                            System.out.println(imageUri);
                         }
                         for (int j = 0; j < mArrayUri.size(); j++) {
-                            ImageDecoder.Source imgSource = ImageDecoder.createSource(this.getContentResolver(), mArrayUri.get(j));
-                            selectedİmg = ImageDecoder.decodeBitmap(imgSource);
+                            System.out.println("Activityyy 5555555555555");
+                            System.out.println(mArrayUri.get(j));
+                            //selectedİmg=MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),mArrayUri.get(j));
+                            imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),mArrayUri.get(j)));
+                            firstSelectedImage=imagesSelect.get(0);
+                            selectedİmg=imagesSelect.get(j);
                             imageAdv.setImageBitmap(selectedİmg);
-                        }*/
-                        ImageDecoder.Source imgSource=ImageDecoder.createSource(getActivity().getContentResolver(),imgUrl);
-                        selectedİmg=ImageDecoder.decodeBitmap(imgSource);
-                        imageAdv.setImageBitmap(selectedİmg);
-                    }else{
-                        selectedİmg= MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imgUrl);
-                        imageAdv.setImageBitmap(selectedİmg);
+                            imageCount++;
+                        }
+
                     }
 
 
