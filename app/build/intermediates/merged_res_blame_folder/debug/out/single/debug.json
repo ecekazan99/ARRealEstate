@@ -12,12 +12,12 @@
         "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable\\ic_dashboard_black_24dp.xml"
     },
     {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_home.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_home.xml"
-    },
-    {
         "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_action_filter.png.flat",
         "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-hdpi\\ic_action_filter.png"
+    },
+    {
+        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_home.xml.flat",
+        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_home.xml"
     },
     {
         "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_my_adv_list.xml.flat",
