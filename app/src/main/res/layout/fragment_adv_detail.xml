@@ -48,6 +48,27 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/previous"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="295dp"
+                    android:drawableBottom="@drawable/ic_action_previous" />
+
+                <Button
+                    android:id="@+id/next"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:drawableBottom="@drawable/ic_action_next" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="34dp"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal"
