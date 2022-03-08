@@ -49,12 +49,6 @@ public class MyAdvertisementFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        Intent intent=getActivity().getIntent();
-        User user=(User)intent.getSerializableExtra("UserInformation");
-
-        System.out.println(user.getUserId());
-
 
         View view=inflater.inflate(R.layout.fragment_my_advertisement,container,false);
         recyclerView=(RecyclerView) view.findViewById(R.id.recviewMyAdvs);
@@ -130,7 +124,6 @@ public class MyAdvertisementFragment extends Fragment {
         try {
 
              if (MyAccountFragment.clickMyAdv == true) {
-                System.out.println("Burayaa girdii 555555");
                 flagMyAdv = true;
                 sqlQuery = "SELECT AdvId FROM UserAdvertisement WHERE UserId= ?";
                 cursor = MainActivity.db.rawQuery(sqlQuery, new String[]{String.valueOf(MyAccountFragment.userMyId)});
@@ -246,6 +239,5 @@ public class MyAdvertisementFragment extends Fragment {
        // FilterAdvFragment.applButton=false;
         return advertisementList;
     }
-
 }
 

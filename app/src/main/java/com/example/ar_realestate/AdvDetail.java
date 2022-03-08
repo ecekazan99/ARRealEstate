@@ -13,7 +13,7 @@ public class AdvDetail  {
     private String advTitle, advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, date, address,city,town;
     private int advId,price, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncome, dues;
 
-    private long latitude, longitude;
+    private double latitude, longitude;
 
 
     private Bitmap adv_image;
@@ -118,11 +118,11 @@ public class AdvDetail  {
         return rentalIncome;
     }
 
-    public long getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public long getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 

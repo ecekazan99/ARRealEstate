@@ -391,7 +391,6 @@ public class FilterAdvFragment extends Fragment {
         cursor=MainActivity.db.rawQuery(selectSquery,null);
         cursor.moveToFirst();
         while (cursor.isAfterLast()==false){
-
             districties.add(cursor.getString(1));
             cursor.moveToNext();
 

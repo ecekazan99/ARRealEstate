@@ -16,16 +16,11 @@ public class CitiesAndTownInsert {
         Cursor cursor=MainActivity.db.rawQuery("SELECT * FROM Cities",null);
         cursor.moveToFirst();
         while (cursor.isAfterLast()==false){
-
             counter++;
             lastCityId=Integer.parseInt(cursor.getString(0));
-            // System.out.println(cursor.getString(0));
             cursor.moveToNext();
-
         }
-
         if(lastCityId!=81) {
-
             String sqlQuery = "INSERT INTO Cities (CityName)VALUES\n" +
                     "('ADANA'),\n" +
                     "('ADIYAMAN'),\n" +

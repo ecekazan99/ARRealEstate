@@ -234,8 +234,6 @@ id userName
 id userNewPassword
 id userPassword
 id userSurname
-layout activity_add_adv
-layout activity_adv_detail
 layout activity_main
 layout adv_item
 layout advertisement_card

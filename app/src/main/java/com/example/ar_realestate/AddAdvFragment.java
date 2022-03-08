@@ -71,7 +71,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     static public AdvDetail advDetailLast;
 
     private Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType,spinnerItemStatus,spinnerWarmType,spinnerElgbCredit,spinnerUsingStatus, spinnerStateOfBuilding,spinnerSwap,spinnerFront,spinnerFuelType,spinnerCity,spinnerTown;
-    public static int advStatusPos,roomNumPos,buildTypePos,itemStatusPos,warmTypePos,elgCreditPos,usingStatusPos,stateBuildingPos,swapPos,frontPos,fuelTypePos,cityPos,townPos;
     private int imgNoPermissionCod=0,imgPermissionCod=1;
 
     String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
@@ -88,8 +87,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     public static ArrayList<String> districties=new ArrayList<>();
     ArrayAdapter<String> adapterCities;
     ArrayAdapter<String> adapterTowns;
-
-
 
 
     public AddAdvFragment() {
@@ -141,7 +138,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 advStatus = adapterView.getItemAtPosition(i).toString();
-                advStatusPos=i;
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -157,7 +153,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 buildType=adapterView.getItemAtPosition(i).toString();
-                buildTypePos=i;
             }
 
             @Override
@@ -174,12 +169,10 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 itemStatus=adapterView.getItemAtPosition(i).toString();
-                itemStatusPos=i;
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 
@@ -190,7 +183,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 elgForCredit=adapterView.getItemAtPosition(i).toString();
-                elgCreditPos=i;
             }
 
             @Override
@@ -206,7 +198,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 usingStatus=adapterView.getItemAtPosition(i).toString();
-                usingStatusPos=i;
             }
 
             @Override
@@ -222,7 +213,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 stateBuilding=adapterView.getItemAtPosition(i).toString();
-                stateBuildingPos=i;
             }
 
             @Override
@@ -238,7 +228,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 swap=adapterView.getItemAtPosition(i).toString();
-                swapPos=i;
             }
 
             @Override
@@ -254,7 +243,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 front=adapterView.getItemAtPosition(i).toString();
-                frontPos=i;
             }
 
             @Override
@@ -270,7 +258,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 fuelType=adapterView.getItemAtPosition(i).toString();
-                fuelTypePos=i;
             }
 
             @Override
@@ -286,7 +273,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 roomNum=adapterView.getItemAtPosition(i).toString();
-                roomNumPos=i;
             }
 
             @Override
@@ -302,9 +288,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 warmType=adapterView.getItemAtPosition(i).toString();
-                warmTypePos=i;
-            }
 
+            }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -321,8 +306,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 city=adapterView.getItemAtPosition(i).toString();
-                cityPos=i;
-                System.out.println("Cityyy Poss   "+i);
                 districties.clear();
                 getTown(city);
                 adapterTowns=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,districties);
@@ -332,36 +315,23 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         town=adapterView.getItemAtPosition(i).toString();
-                        townPos=i;
-                        System.out.println("Town Poss   "+i);
-
-                    }
-
+                     }
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
 
                     }
                 });
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
-
-
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // init();
-
-
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -386,25 +356,17 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             init();
 
             binding.addAdvImage.setOnClickListener(new View.OnClickListener() {
-
                 @Override
                 public void onClick(View view) {
-                    System.out.println("ADDD İMAGEEE");
                     if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
                         ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},imgNoPermissionCod);
                     }
                     else{
-
-                        // Intent imageGet=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        // startActivityForResult(imageGet,imgPermissionCod);
-
-                        // Select one more images from galery
                         Intent intent = new Intent();
                         intent.setType("image/*");
                         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                         intent.setAction(Intent.ACTION_GET_CONTENT);
                         startActivityForResult(Intent.createChooser(intent, "Select images"), imgPermissionCod);
-
 
                     }
                 }
@@ -413,7 +375,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             binding.next.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    System.out.println("Imagee countttt "+imageCount);
                     if(position<mArrayUri.size()-1)
                     {
                         position++;
@@ -439,7 +400,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             });
         }
 
-
         return binding.getRoot();
     }
     private String getTodayDate(){
@@ -461,7 +421,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             checkEmpty =false;
 
             Toast.makeText(getActivity(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
-
         }else if(TextUtils.isEmpty(advTitle)  || TextUtils.isEmpty(address)|| TextUtils.isEmpty(editTxtPrice.getText().toString())||
                 TextUtils.isEmpty(editTxtSquareMt.getText().toString())||TextUtils.isEmpty(editTxtBuildingFloors.getText().toString())||
                 TextUtils.isEmpty(editTxtFloorLoc.getText().toString()) ||TextUtils.isEmpty(editTxtBuildAge.getText().toString())||
@@ -477,7 +436,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             checkEmpty =false;
             Toast.makeText(getActivity(),"Please Incorrect Inputs",Toast.LENGTH_SHORT).show();
         }
-        System.out.println("Girildi 1: "+ city);
         return checkEmpty;
     }
 
@@ -513,9 +471,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 statement.bindBlob(2,kayıtedilecekImage);
                 statement.bindString(3, String.valueOf(price));
                 statement.bindString(4,advStatus);
-                System.out.println("Girildi 2");
                 statement.bindString(5,roomNum);
-                System.out.println("Girildi 3");
                 statement.bindString(6, String.valueOf(squareMeters));
                 statement.bindString(7, String.valueOf(buildingFloors));
                 statement.bindString(8, String.valueOf(floorLoc));
@@ -523,7 +479,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 statement.bindString(10,buildType);
                 statement.bindString(11,itemStatus);
                 statement.bindString(12,warmType);
-                System.out.println("Girildi 4");
                 statement.bindString(13, String.valueOf(numOfBathr));
                 statement.bindString(14,elgForCredit);
                 statement.bindString(15,usingStatus);
@@ -551,8 +506,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                     lastInsertedAdvId = c.getInt(0); //The 0 is the column index, we only have 1 column, so the index is 0
                 }
                 c.close();
-                // int advTitleIndex=cursor.getColumnIndex("AdvTitle");
-                System.out.println("ADV ID Last Insert :"+lastInsertedAdvId);
+
                 advId=lastInsertedAdvId;
                 for (int i=0;i<imageCount;i++) {
                     ByteArrayOutputStream outputStreamMulti =new ByteArrayOutputStream();
@@ -575,8 +529,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
 
                 if(add_Adv==true)
                 {
-                    System.out.println("jgdfgm");
-                    System.out.println("ADD ADV FRG "+price);
                     advDetailLast=new AdvDetail(advId,advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
                             buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,
                             stateBuilding,rentalIncome,dues,swap,front,fuelType,date,address,city,town);
@@ -587,38 +539,15 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             }catch (Exception e){
                 e.printStackTrace();
             }
-
         }
-
-
     }
 
     private Bitmap imageSmall(Bitmap img) {
         return Bitmap.createScaledBitmap(img,300,220,true);
     }
 
-    public void selectImage(View view) {
-        if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},imgNoPermissionCod);
-        }
-        else{
-
-            Intent imageGet=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(imageGet,imgPermissionCod);
-
-            // Select one more images from galery
-         /*   Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Select images"), imgPermissionCod);*/
-
-
-        }
-    }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int [] grantResults){
-
 
         if(requestCode==imgNoPermissionCod)
         {
@@ -631,36 +560,25 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         super.onRequestPermissionsResult(requestCode,permissions,grantResults);
     }
 
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("Activityyy");
         int count=0;
         if(requestCode==imgPermissionCod){
             if(resultCode==-1 && data !=null){
-
                 try {
                     Uri imgUrl=data.getData();
-                    System.out.println("Activityyy 1111111");
                     if (Build.VERSION.SDK_INT >= 28) {
-                        System.out.println("Activityyy 2222222222");
+                      // BURAYI UNUTMAAAAAAAAAAAAA !!!!!!!!!
 
                     } else {
-                        System.out.println("Activityyy 33333333");
                         if(data.getClipData()!=null){
                             count = data.getClipData().getItemCount();
                             for (int i = 0; i < count; i++) {
                                 Uri imageUri = data.getClipData().getItemAt(i).getUri();
                                 mArrayUri.add(imageUri);
-                                System.out.println("Activityyy 444444");
-                                System.out.println(imageUri);
                             }
-
                             for (int j = 0; j < mArrayUri.size(); j++) {
-                                System.out.println("Activityyy 5555555555555");
-                                System.out.println(mArrayUri.get(j));
-
                                 imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), mArrayUri.get(j)));
                                 firstSelectedImage = imagesSelect.get(0);
                                 selectedİmg = imagesSelect.get(j);
@@ -678,15 +596,12 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                         }
                     }
 
-
                     btnSubmitAdv.setEnabled(true);
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
-
     }
     private void Nesneleri_temizle(){
         editTxtTitle.setText("");
@@ -713,7 +628,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         spinnerWarmType.setSelection(0);
         spinnerRoomNum.setSelection(0);
 
-        // firstImage= BitmapFactory.decodeResource(this.getResources(),R.drawable.);
         imageAdv.setImageBitmap(firstImage);
         btnSubmitAdv.setEnabled(false);
     }
@@ -726,19 +640,14 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         while (cursor.isAfterLast()==false){
             cities[counter]=cursor.getString(1);
             counter++;
-            // System.out.println(cursor.getString(0));
             cursor.moveToNext();
-
         }
-
     }
     public  static void getTown(String cityName){
         String selectSquery="SELECT CityId FROM Cities WHERE CityName = '"+cityName+"'";
         Cursor cursor=MainActivity.db.rawQuery(selectSquery,null);
         while (cursor.moveToNext()){
             cityId=Integer.parseInt(cursor.getString(0));
-            System.out.println("City idddd"+cursor.getString(0));
-            System.out.println("City Name"+cityName);
             cursor.close();
         }
 
@@ -746,14 +655,10 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         cursor=MainActivity.db.rawQuery(selectSquery,null);
         cursor.moveToFirst();
         while (cursor.isAfterLast()==false){
-
             districties.add(cursor.getString(1));
-            System.out.println("District Name :" + cursor.getString(1));
             cursor.moveToNext();
-
         }
     }
-
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -767,20 +672,14 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 System.out.println(latLng.latitude+" : "+latLng.longitude);
                 latitude=  latLng.latitude;
                 longitude= latLng.longitude;
-                System.out.println(latitude);
 
                 gMap.clear();
-
                 gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
-
                 gMap.addMarker(markerOptions);
-
-
             }
         });
     }
     private void replaceFragment(Fragment fragment){
-
         FragmentManager fragmentManager=getFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment);

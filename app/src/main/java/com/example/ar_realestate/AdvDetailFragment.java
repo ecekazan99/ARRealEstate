@@ -232,7 +232,6 @@ public class AdvDetailFragment extends Fragment {
         binding.next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("Imagess "+count);
                 if(position<(count-1)){
                     position++;
                     advImageView.setImageBitmap(images.get(position));
@@ -250,7 +249,6 @@ public class AdvDetailFragment extends Fragment {
         });
 
         txtAdvPrice.setText(String.valueOf(price));
-        System.out.println("ADVDETAIL FRG "+ price);
         txtAdvStatus.setText(advStatus);
         txtAdvRoomNum.setText(roomNum);
         txtSquareMeter.setText(String.valueOf(squareMeters));

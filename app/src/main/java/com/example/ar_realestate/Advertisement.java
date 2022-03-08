@@ -14,7 +14,7 @@ public class Advertisement implements Serializable {
     private String  advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
     private  int advId, price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
 
-    private long latitude,longitude;
+    private double latitude,longitude;
     //private int adv_image;
 
     private  Bitmap advImage;
@@ -43,7 +43,7 @@ public class Advertisement implements Serializable {
     public Advertisement(String advTitle, Bitmap advImage, int price, String advStatus, String roomNum,
                          int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus,
                          String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome,
-                         int dues, String swap, String front, String fuelType, String date, String address, String city, String town) {
+                         int dues, String swap, String front, String fuelType, String date, String address, String city, String town,double latitude,double longitude) {
         this.advTitle = advTitle;
         this.advImage=advImage;
         this.price=price;
@@ -69,6 +69,8 @@ public class Advertisement implements Serializable {
         this.address=address;
         this.city=city;
         this.town=town;
+        this.latitude=latitude;
+        this.longitude=longitude;
     }
 
     public String getTown() { return town; }
@@ -163,16 +165,16 @@ public class Advertisement implements Serializable {
     public void setRentalIncome(int rentalIncome) {
         this.rentalIncome = rentalIncome;
     }
-    public long getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
-    public void setLatitude(long latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
-    public long getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
-    public void setLongitude(long longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
     public String getBuildType() {

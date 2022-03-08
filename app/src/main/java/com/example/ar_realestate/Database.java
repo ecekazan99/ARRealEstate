@@ -117,7 +117,7 @@ public class Database extends SQLiteOpenHelper {
     public int updateMyAdv(int advId, String advTitle, byte[]  advImage, int price, String advStatus, String roomNum, int squareMeter,int buildingFloors,
                            int floorLoc,int buildAge,String buildType,String itemStatus,String warmTpe,int numOfBathrooms,String elgCredit,
                            String usingStatus,String stateBuilding,int rentalIncome, int dues, String swap,String front,String fuelType,String date,
-                           String address, String city,String town, long xCoordinate, long yCoordinate){
+                           String address, String city,String town, double xCoordinate, double yCoordinate){
 
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -158,6 +158,25 @@ public class Database extends SQLiteOpenHelper {
             return 0;
         }
         return 1;
+    }
+
+    public int updateMyAdvImages(int imageId,byte[] advImage,int advId){
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+
+            values.put("ImageId",imageId);
+            values.put("AdvImage",advImage);
+            values.put( "AdvId",advId);
+
+            db.update("AdvertisementImage", values, "AdvId=? AND ImageId = ?", new String[]{String.valueOf(advId), String.valueOf(imageId)});
+            db.close();
+
+        }catch (Exception e){
+            return 0;
+        }
+        return 1;
+
     }
     public boolean checkAdvTitleExist(String advTitle){
 
