@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -21,10 +22,15 @@ import android.widget.Toast;
 import com.example.ar_realestate.databinding.FragmentAddAdvBinding;
 import com.example.ar_realestate.databinding.FragmentAdvDetailBinding;
 
+import java.util.ArrayList;
+
 public class AdvDetailFragment extends Fragment {
 
     private FragmentAdvDetailBinding binding;
     static public SQLiteDatabase db;
+    Button next,previous;
+    private int position=0;
+    private int count=0;
 
     private ImageView advImageView;
     private TextView txtAdvTitle, txtAdvPrice, txtAdvStatus, txtAdvRoomNum, txtSquareMeter,
@@ -37,7 +43,7 @@ public class AdvDetailFragment extends Fragment {
     long latitude, longitude;
 
     private Bitmap advImagePng;
-
+    private ArrayList<Bitmap>ımages;
     public AdvDetailFragment() {
         // Required empty public constructor
     }
@@ -68,9 +74,12 @@ public class AdvDetailFragment extends Fragment {
         txtAddress = (TextView) binding.detailAdvAddress;
         txtCity=(TextView)binding.detailAdvCity;
         txtTown=(TextView) binding.detailAdvTown;
+        next=(Button) binding.next;
+        previous=(Button)binding.previous;
+        ımages=new ArrayList<Bitmap>();
 
         if(AddAdvFragment.add_Adv==false && MyAdvertisementFragment.clickMyAdvDetail!=true&&MyFavoritesFragment.clickMyFavDetail==false){
-           advId=HomeFragment.advDetail.getAdvId();
+            advId=HomeFragment.advDetail.getAdvId();
             advTitle=HomeFragment.advDetail.getAdvTitle();
             advImagePng=HomeFragment.advDetail.getAdv_image();
             price=HomeFragment.advDetail.getPrice();
@@ -207,11 +216,39 @@ public class AdvDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentAdvDetailBinding.inflate(inflater, container, false);
 
-
         init();
-
+        ArrayList<Bitmap>images=new ArrayList<>();
+        String sqlQuery="SELECT * FROM AdvertisementImage WHERE AdvId = '"+advId+"'";
+        Cursor imageCursor=MainActivity.db.rawQuery(sqlQuery,null);
+        int indexImage=imageCursor.getColumnIndex("advImage");
+        while (imageCursor.moveToNext()){
+            count++;
+            byte[] imageByte = imageCursor.getBlob(indexImage);
+            Bitmap imageAdv = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
+            images.add(imageAdv);
+        }
         txtAdvTitle.setText(advTitle);
-        advImageView.setImageBitmap(advImagePng);
+        advImageView.setImageBitmap(images.get(0));
+        binding.next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("Imagess "+count);
+                if(position<(count-1)){
+                    position++;
+                    advImageView.setImageBitmap(images.get(position));
+                }
+            }
+        });
+        binding.previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(position>0){
+                    position--;
+                    advImageView.setImageBitmap(images.get(position));
+                }
+            }
+        });
+
         txtAdvPrice.setText(String.valueOf(price));
         System.out.println("ADVDETAIL FRG "+ price);
         txtAdvStatus.setText(advStatus);
@@ -255,7 +292,7 @@ public class AdvDetailFragment extends Fragment {
                     new String[]{String.valueOf(user.getUserId()), String.valueOf(advId), "1"});
 
             if(c1.moveToFirst()){
-              //  System.out.println("zaten fav");
+                //  System.out.println("zaten fav");
                 binding.buttonFav1.setImageDrawable(addFav);
             }
             else{
@@ -273,14 +310,14 @@ public class AdvDetailFragment extends Fragment {
                             Toast.LENGTH_SHORT).show();
                 }
                 else{
-                   Cursor c = db.rawQuery("SELECT * FROM Favorite WHERE UserId=?  AND AdvId=? AND FavoriteStatus=? ;",
+                    Cursor c = db.rawQuery("SELECT * FROM Favorite WHERE UserId=?  AND AdvId=? AND FavoriteStatus=? ;",
                             new String[]{String.valueOf(user.getUserId()),  String.valueOf(advId), "1"});
 
                     if(c.moveToFirst()){ // Fav
                         binding.buttonFav1.setImageDrawable(notFav);
 
                         db.execSQL("UPDATE Favorite SET FavoriteStatus = 0 WHERE UserId = "+ String.valueOf(user.getUserId())+
-                                    " AND AdvId="+String.valueOf(advId)+";");
+                                " AND AdvId="+String.valueOf(advId)+";");
 
                         Toast.makeText(getActivity(),  "It has been deleted to the list of favorites !!",
                                 Toast.LENGTH_SHORT).show();
@@ -298,14 +335,14 @@ public class AdvDetailFragment extends Fragment {
                             //System.out.println("favv olmuş");
 
                             db.execSQL("UPDATE Favorite SET FavoriteStatus = 1 WHERE UserId = "+ String.valueOf(user.getUserId())+
-                                            " AND AdvId= "+String.valueOf(advId)+";");
+                                    " AND AdvId= "+String.valueOf(advId)+";");
 
                             Toast.makeText(getActivity(),  "It has been added to the list of favorites !!",
                                     Toast.LENGTH_SHORT).show();
                         }
                         else{// Hiç fav olmamış
 
-                          //  System.out.println("favv olmamuş");
+                            //  System.out.println("favv olmamuş");
 
                             MainActivity.database.onCreate(MainActivity.db);
                             String sqlQuery="INSERT INTO Favorite (UserId ,AdvId ,FavoriteStatus)  VALUES(?,?,?);";

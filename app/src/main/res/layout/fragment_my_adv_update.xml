@@ -59,7 +59,7 @@
                     android:id="@+id/addAdv_editTextPrice"
                     android:layout_width="223dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/add_book_activity_imageViewBookImage"
+                    android:layout_below="@+id/addAdvImage"
                     android:layout_marginLeft="40dp"
                     android:background="@drawable/input_field"
                     android:hint="Price"

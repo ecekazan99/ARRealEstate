@@ -15,7 +15,7 @@ public class AdvDetail  {
 
     private long latitude, longitude;
 
-    // imageyı düzelltim int türünden bitmap türüne
+
     private Bitmap adv_image;
     public AdvDetail(int advId, Bitmap adv_image,String advTitle, String address,int pric) {
         this.advTitle = advTitle;

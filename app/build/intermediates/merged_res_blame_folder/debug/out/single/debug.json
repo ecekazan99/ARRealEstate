@@ -1,16 +1,15 @@
 [
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi_ic_action_fav.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-anydpi\\ic_action_fav.xml"
     },
     {
-        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_my_favorites.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_my_favorites.xml"
+    },
+    {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_previous.png.flat",
@@ -19,35 +18,14 @@
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\menu_popup.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\menu\\popup.xml"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.webp"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\navigation_mobile_navigation.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\navigation\\mobile_navigation.xml"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_dashboard_black_24dp.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable\\ic_dashboard_black_24dp.xml"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_filter.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-mdpi\\ic_action_filter.png"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_my_advertisement.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_my_advertisement.xml"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_action_filter.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-hdpi\\ic_action_filter.png"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_my_adv_list.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\my_adv_list.xml"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.webp.flat",
@@ -58,17 +36,8 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-anydpi\\ic_action_filter.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.webp"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_add_a_photo_24.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable\\ic_baseline_add_a_photo_24.xml"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_notifications_black_24dp.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable\\ic_notifications_black_24dp.xml"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_home.xml.flat",
@@ -103,17 +72,8 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable\\ic_notifications_black_24dp.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_fav.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-mdpi\\ic_action_fav.png"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_adv_detail.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_adv_detail.xml"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_action_name.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_name.png"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
@@ -124,7 +84,6 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_add_adv.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_action_next.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_next.png"
     },
@@ -135,39 +94,18 @@
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_action_name.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-hdpi\\ic_action_name.png"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_fav.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-mdpi\\ic_action_fav.png"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi_ic_action_back.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-anydpi\\ic_action_back.xml"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_favorite_border_24.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable\\ic_baseline_favorite_border_24.xml"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi_ic_action_next.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-anydpi\\ic_action_next.xml"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\activity_main.xml"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_action_previous.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-hdpi\\ic_action_previous.png"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_name.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-mdpi\\ic_action_name.png"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_myaccount.xml.flat",
@@ -178,7 +116,6 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\my_adv_list.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_name.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-mdpi\\ic_action_name.png"
     },
@@ -189,18 +126,6 @@
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_advertisement_card.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\advertisement_card.xml"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_action_previous.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_previous.png"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_advertisement_card.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\advertisement_card.xml"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_my_favorites.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_my_favorites.xml"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_sign_up.xml.flat",
@@ -211,17 +136,8 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable\\ic_baseline_add_circle_outline_24.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_action_fav.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_fav.png"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_ar.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_ar.xml"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.webp"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_input_field.xml.flat",
@@ -232,29 +148,12 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_my_adv_update.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_action_filter.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_filter.png"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_action_next.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-hdpi\\ic_action_next.png"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_action_next.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-hdpi\\ic_action_next.png"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_action_next.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_next.png"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_action_fav.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_fav.png"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_action_previous.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_previous.png"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_add_adv.xml.flat",
@@ -273,17 +172,12 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_name.png"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_action_filter.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-hdpi\\ic_action_filter.png"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_ar.xml.flat",
@@ -294,7 +188,6 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\adv_item.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_action_previous.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_previous.png"
     },
@@ -317,18 +210,6 @@
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.webp"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.webp"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_adv_item.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\adv_item.xml"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_action_filter.png.flat",
@@ -355,7 +236,6 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_adv_detail.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_action_name.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_name.png"
     },
@@ -370,22 +250,6 @@
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_favorite_24.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable\\ic_baseline_favorite_24.xml"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_next.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-mdpi\\ic_action_next.png"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi_ic_action_previous.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-anydpi\\ic_action_previous.xml"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_action_fav.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_fav.png"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\navigation_mobile_navigation.xml.flat",
@@ -396,17 +260,12 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\menu\\bottom_nav_menu.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_action_previous.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-hdpi\\ic_action_previous.png"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\menu_toolbar_advdetail.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\menu\\toolbar_advdetail.xml"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_my_advertisement.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_my_advertisement.xml"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_location_on_24.xml.flat",
@@ -425,45 +284,23 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\menu\\option_myadv.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_action_previous.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_previous.png"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.webp"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_action_next.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_next.png"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_previous.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-mdpi\\ic_action_previous.png"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\menu_popup.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\menu\\popup.xml"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.webp"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_home_black_24dp.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable\\ic_home_black_24dp.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_login.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_login.xml"
-=======
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_action_name.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_name.png"
->>>>>>> 3175641e5fdd9586fc181ea14b478b78b6c36613
     }
 ]
