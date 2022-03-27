@@ -27,10 +27,8 @@ public class SignUpFragment extends Fragment {
 
     private FragmentSignUpBinding binding;
     String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
-
     EditText userName, userSurname, userMail, userPassword;
     Button register;
-
     String regex =  "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     TextView deneme;
@@ -71,12 +69,11 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(controlUserInfo(userName.getText().toString(),userSurname.getText().toString(),userMail.getText().toString(),userPassword.getText().toString())){
-
+                if(controlUserInfo(userName.getText().toString(),userSurname.getText().toString(),userMail.getText().toString(),
+                        userPassword.getText().toString())){
                     MainActivity.database.onCreate(MainActivity.db);
                     String sqlQuery="INSERT INTO UserInformation (UserName, UserSurname, MailAddress, Password) VALUES(?,?,?,?);";
                     SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
-
                     statement.bindString(1,userName.getText().toString());
                     statement.bindString(2,userSurname.getText().toString());
                     statement.bindString(3,userMail.getText().toString());
@@ -99,7 +96,6 @@ public class SignUpFragment extends Fragment {
     }
 
     public boolean controlUserInfo(String userName, String userSurname, String userMail, String userPassword){
-
         Database database=new Database(getContext());
 
         if(TextUtils.isEmpty(userName)||TextUtils.isEmpty(userSurname)||TextUtils.isEmpty(userMail)||TextUtils.isEmpty(userPassword)){

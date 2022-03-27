@@ -12,20 +12,11 @@ import java.util.ArrayList;
 public class AdvDetail  {
     private String advTitle, advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, date, address,city,town;
     private int advId,price, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncome, dues;
-
-    private double latitude, longitude;
-
-
     private Bitmap adv_image;
-    public AdvDetail(int advId, Bitmap adv_image,String advTitle, String address,int pric) {
-        this.advTitle = advTitle;
-        this.address = address;
-        this.price = pric;
-        this.adv_image=adv_image;
-        this.advId=advId;
-    }
 
-    public AdvDetail(int advId,String advTitle,Bitmap adv_image, int price, String advStatus, String roomNum, int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address,String city,String town) {
+    public AdvDetail(int advId,String advTitle,Bitmap adv_image, int price, String advStatus, String roomNum, int squareMeters, int buildingFloors,
+                     int floorLoc, int buildAge, String buildType, String itemStatus, String warmType, int numOfBathr, String elgForCredit, String usingStatus,
+                     String stateOfBuilding, int rentalIncome, int dues, String swap, String front, String fuelType, String date, String address,String city,String town){
         this.advId=advId;
         this.advTitle = advTitle;
         this.adv_image=adv_image;
@@ -116,14 +107,6 @@ public class AdvDetail  {
 
     public int getRentalIncome() {
         return rentalIncome;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
     }
 
     public String getBuildType() {

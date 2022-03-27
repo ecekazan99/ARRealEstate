@@ -71,15 +71,11 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
     ArrayList<Bitmap>images=new ArrayList<>();
     private ArrayList<Bitmap>imagesSmall;
     private Boolean flag=false;
-
     private Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType,spinnerItemStatus,spinnerWarmType,spinnerElgbCredit,spinnerUsingStatus, spinnerStateOfBuilding,spinnerSwap,spinnerFront,spinnerFuelType,spinnerCity,spinnerTown;
-
     static  String tempStatus;
     String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
     int price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
     double latitude,longitude;
-
-    public static Boolean clickUpdate=false;
     private int imgNoPermissionCod=0,imgPermissionCod=1;
     private String cityName="";
     private CitiesAndTownInsert citiesAndTownInsert;
@@ -89,22 +85,18 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
     public static String[] cities=new String[81];
     public static ArrayList<String> districties=new ArrayList<>();
 
-
     public MyAdvUpdateFragment() {
         // Required empty public constructor
     }
-
     public static MyAdvUpdateFragment newInstance(String param1, String param2) {
         MyAdvUpdateFragment fragment = new MyAdvUpdateFragment();
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -112,22 +104,20 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
         binding= FragmentMyAdvUpdateBinding.inflate(inflater,container,false);
         Intent intent=getActivity().getIntent();
         advertisement=(Advertisement)intent.getSerializableExtra("Advertisements");
-
         SupportMapFragment supportMapFragment=(SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
         supportMapFragment.getMapAsync(this);
-
         imageAdv=(ImageView)binding.addAdvImage;
         imageAdv=(ImageView) binding.addAdvImage;
         mArrayUri=new ArrayList<>();
         imagesSelect=new ArrayList<Bitmap>();
-
         initFirst();
-
         binding.addAdvImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},imgNoPermissionCod);
+                if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}
+                            ,imgNoPermissionCod);
                 }
                 else{
                     Intent intent = new Intent();
@@ -136,16 +126,13 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                     intent.setAction(Intent.ACTION_GET_CONTENT);
                     flag=true;
                     startActivityForResult(Intent.createChooser(intent, "Select images"), imgPermissionCod);
-
                 }
             }
         });
-
         binding.next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(position<mArrayUri.size()-1 && flag==true)
-                {
+                if(position<mArrayUri.size()-1 && flag==true) {
                     position++;
                     imageAdv.setImageURI(mArrayUri.get(position));
                 }
@@ -166,7 +153,6 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                     position--;
                     binding.addAdvImage.setImageBitmap(images.get(position));
                 }
-
             }
         });
         binding.updateAdvBtn.setOnClickListener(new View.OnClickListener() {
@@ -176,7 +162,6 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                 int updateAdv=0;
                 int updateAdvImages=0;
                 init();
-
                 Database database=new Database(getContext());
                 try {
                     advTitle=editTxtTitle.getText().toString();
@@ -208,12 +193,12 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                     city=spinnerCity.getSelectedItem().toString();
                     town=spinnerTown.getSelectedItem().toString();
                 }catch (Exception e ){
-                    System.out.println("HATAAAAAAAAAAAAA");
+                    System.out.println("Error");
                 }
                 ByteArrayOutputStream outputStream =new ByteArrayOutputStream();
                 if(selectedİmg==null)
                 {
-                    System.out.println("Resimmmmmm Yokkkkkkkkkkkkkkkkkk");
+                    System.out.println("There is not image");
                     selectedİmg=MyAdvertisementAdapter.selectedİmg;
                 }
                 for(int a=0;a<imagesSelect.size();a++)
@@ -221,15 +206,15 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                     ByteArrayOutputStream outputStreamMulti =new ByteArrayOutputStream();
                     smallestedImg=imageSmall(imagesSelect.get(a));
                     smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStreamMulti);
-                    byte[] kayıtedilecekImageMulti=outputStreamMulti.toByteArray();
-                    updateAdvImages=database.updateMyAdvImages(imagesId.get(a),kayıtedilecekImageMulti,advIdImages.get(0));
-
+                    byte[] ImageMulti=outputStreamMulti.toByteArray();
+                    updateAdvImages=database.updateMyAdvImages(imagesId.get(a),ImageMulti,advIdImages.get(0));
                 }
                 smallestedImg=imageSmall(firstSelectedImage);
                 smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStream);
-                byte[] kayıtedilecekImage=outputStream.toByteArray();
-                updateAdv=database.updateMyAdv(advId,advTitle,kayıtedilecekImage,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,buildAge,buildType,itemStatus,
-                        warmType,numOfBathr,elgForCredit,usingStatus,stateBuilding,rentalIncome,dues,swap,front,fuelType,date,address,city,town,latitude,longitude);
+                byte[] Image=outputStream.toByteArray();
+                updateAdv=database.updateMyAdv(advId,advTitle,Image,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
+                        buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,stateBuilding,rentalIncome,dues,
+                        swap,front,fuelType,date,address,city,town,latitude,longitude);
 
                 if(updateAdv==1 && updateAdvImages==1){
                     AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
@@ -255,7 +240,6 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
         return binding.getRoot();
     }
     public void initFirst(){
-
         binding.addAdvEditTextAdvTitle.setText(MyAdvertisementAdapter.advTitle);
         String sqlQuery="SELECT * FROM AdvertisementImage WHERE AdvId = '"+MyAdvertisementAdapter.advId+"'";
         Cursor imageCursor=MainActivity.db.rawQuery(sqlQuery,null);
@@ -273,7 +257,8 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
         binding.addAdvImage.setImageBitmap(images.get(position));
         binding.addAdvEditTextPrice.setText(String.valueOf(MyAdvertisementAdapter.price));
         spinnerAdvStatus=(Spinner)binding.addAdvSpinnerAdvStatus;
-        ArrayAdapter<CharSequence> adapterAdvStatus=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.Adv_Status, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapterAdvStatus=ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                R.array.Adv_Status, android.R.layout.simple_spinner_item);
         adapterAdvStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAdvStatus.setAdapter(adapterAdvStatus);
         if (MyAdvertisementAdapter.advStatus != null) {
@@ -283,7 +268,8 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
         }
 
         spinnerRoomNum=(Spinner)binding.addAdvSpinnerRoomNum;
-        ArrayAdapter<CharSequence> adapterRoomNum=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.RoomNumber, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapterRoomNum=ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                R.array.RoomNumber, android.R.layout.simple_spinner_item);
         adapterRoomNum.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerRoomNum.setAdapter(adapterRoomNum);
         if (MyAdvertisementAdapter.roomNum != null) {

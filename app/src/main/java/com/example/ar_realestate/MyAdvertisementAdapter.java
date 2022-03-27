@@ -58,7 +58,6 @@ public static Boolean clickAdvUpdate=false;
         holder.buttonViewOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 PopupMenu popup = new PopupMenu(context, holder.buttonViewOption);
                 popup.inflate(R.menu.option_myadv);
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -103,7 +102,6 @@ public static Boolean clickAdvUpdate=false;
                              sqlQuery="DELETE FROM UserAdvertisement WHERE AdvId = '"+deleteAdvId+"'";
                             MainActivity.db.execSQL(sqlQuery);
                             replaceFragment(new MyAdvertisementFragment());
-
                         }
                         return true;
                     }

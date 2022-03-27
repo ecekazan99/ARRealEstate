@@ -51,23 +51,17 @@ public class UserProfileFragment extends Fragment {
 
 
         binding= FragmentUserProfileBinding.inflate(inflater,container,false);
-
         Intent intent=getActivity().getIntent();
         User user=(User)intent.getSerializableExtra("UserInformation");
-
         binding.inputUserName.setText(user.getUserName());
         binding.inputUserSurname.setText(user.getUserSurname());
         binding.inputUserMail.setText(user.getMailAddress());
-
         buttonUpdate=(Button) binding.buttonUpdate;
-
         binding.buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 int userId=user.getUserId();
                 String userPassword=user.getPassword();
-
                 inputUserName=(EditText)binding.inputUserName;
                 inputUserSurname=(EditText)binding.inputUserSurname;
                 inputUserMail=(EditText) binding.inputUserMail;

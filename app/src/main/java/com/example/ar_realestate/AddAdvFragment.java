@@ -88,11 +88,9 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     ArrayAdapter<String> adapterCities;
     ArrayAdapter<String> adapterTowns;
 
-
     public AddAdvFragment() {
         // Required empty public constructor
     }
-
     private void init(){ // initialize part
         citiesAndTownInsert=new CitiesAndTownInsert();
         citiesAndTownInsert.insertCity();
@@ -122,7 +120,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         editTxtAddress=(EditText)binding.addAdvEditTextAddress;
         spinnerCity=(Spinner)binding.addAdvSpinnerCity;
         spinnerTown=(Spinner)binding.addAdvSpinnerTown;
-
         imageAdv=(ImageView) binding.addAdvImage;
         mArrayUri=new ArrayList<>();
         imagesSelect=new ArrayList<Bitmap>();
@@ -131,7 +128,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         previous=(Button)binding.previous;
         btnSubmitAdv=(Button) binding.addAdvBtnSubmit;
 
-        ArrayAdapter<CharSequence>adapterAdvStatus=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.Adv_Status, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapterAdvStatus=ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                R.array.Adv_Status, android.R.layout.simple_spinner_item);
         adapterAdvStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAdvStatus.setAdapter(adapterAdvStatus);
         spinnerAdvStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -145,7 +143,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        ArrayAdapter<CharSequence>adapterBuildType=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.BuildingType, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapterBuildType=ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                R.array.BuildingType, android.R.layout.simple_spinner_item);
         adapterBuildType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerBuildType.setAdapter(adapterBuildType);
@@ -154,7 +153,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 buildType=adapterView.getItemAtPosition(i).toString();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -334,13 +332,10 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
     }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentAddAdvBinding.inflate(inflater, container, false);
-
         Intent intent=getActivity().getIntent();
         User user=(User)intent.getSerializableExtra("UserInformation");
-
         if(user==null){
             FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
@@ -349,17 +344,16 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         }
         else{
             userId=user.getUserId();
-
             SupportMapFragment supportMapFragment=(SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
             supportMapFragment.getMapAsync(this);
-
             init();
-
             binding.addAdvImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-                        ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},imgNoPermissionCod);
+                    if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(),
+                            Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+                        ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                                imgNoPermissionCod);
                     }
                     else{
                         Intent intent = new Intent();
@@ -367,11 +361,9 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                         intent.setAction(Intent.ACTION_GET_CONTENT);
                         startActivityForResult(Intent.createChooser(intent, "Select images"), imgPermissionCod);
-
                     }
                 }
             });
-
             binding.next.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -406,29 +398,24 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         return new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
     }
     public boolean advInputControl(){
-
         Boolean checkEmpty =true;
-        if(MainActivity.database.checkAdvTitleExist(advTitle)==false)
-        {
+        if(MainActivity.database.checkAdvTitleExist(advTitle)==false) {
             checkEmpty=false;
             Toast.makeText(getActivity(), "You cannot use this adv title", Toast.LENGTH_SHORT).show();
         }
-
         if(advStatus.equals("Select Adv Status") || buildType.equals("Select Build Type") || itemStatus.equals("Select Item Status") ||
                 elgForCredit.equals("Select Elg Credit") || usingStatus.equals("Select Using Status") || stateBuilding.equals("Select State Building")||
                 swap.equals("Select Swap")|| front.equals("Select Front") || fuelType.equals("Select Fuel Type") ||
                 roomNum.equals("Select Room Number") || warmType.equals("Select Warm Type") || city.equals("Select City") ){
             checkEmpty =false;
-
             Toast.makeText(getActivity(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
         }else if(TextUtils.isEmpty(advTitle)  || TextUtils.isEmpty(address)|| TextUtils.isEmpty(editTxtPrice.getText().toString())||
                 TextUtils.isEmpty(editTxtSquareMt.getText().toString())||TextUtils.isEmpty(editTxtBuildingFloors.getText().toString())||
                 TextUtils.isEmpty(editTxtFloorLoc.getText().toString()) ||TextUtils.isEmpty(editTxtBuildAge.getText().toString())||
-                TextUtils.isEmpty(editTxtNumofBath.getText().toString())||TextUtils.isEmpty(editTxtRentalIncome.getText().toString())||TextUtils.isEmpty(editTxtDues.getText().toString())){
-
+                TextUtils.isEmpty(editTxtNumofBath.getText().toString())||TextUtils.isEmpty(editTxtRentalIncome.getText().toString())||
+                TextUtils.isEmpty(editTxtDues.getText().toString())){
             checkEmpty=false;
             Toast.makeText(getActivity(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
-
         }else if(!TextUtils.isDigitsOnly(editTxtPrice.getText()) || !TextUtils.isDigitsOnly(editTxtSquareMt.getText()) ||
                 !TextUtils.isDigitsOnly(editTxtBuildingFloors.getText()) || !TextUtils.isDigitsOnly(editTxtFloorLoc.getText()) ||
                 !TextUtils.isDigitsOnly(editTxtBuildAge.getText()) || !TextUtils.isDigitsOnly(editTxtRentalIncome.getText())||
@@ -440,7 +427,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     }
 
     public void saveAdv(View view) {
-
         try {
             advTitle=editTxtTitle.getText().toString();
             date=getTodayDate();
@@ -454,21 +440,24 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             rentalIncome=Integer.parseInt(editTxtRentalIncome.getText().toString());
             dues=Integer.parseInt(editTxtDues.getText().toString());
         }catch (Exception e ){
-            System.out.println("HATAAAAAAAAAAAAA");
+            System.out.println("ERROR");
         }
         ByteArrayOutputStream outputStream =new ByteArrayOutputStream();
         smallestedImg=imageSmall(firstSelectedImage);
         smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStream);
-        byte[] kayıtedilecekImage=outputStream.toByteArray();
-
+        byte[] Image=outputStream.toByteArray();
+        if(advInputControl()==false){
+            advInputControl();
+        }
         if(advInputControl()==true){
             try {
-
                 MainActivity.database.onCreate(MainActivity.db);
-                String sqlQuery="INSERT INTO Advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc,BuildAge,BuildType,ItemStatus,WarmType,NumOfBathrooms,ElgCredit,UsingStatus,StateBuilding,RentalIncome,Dues,Swap,Front,FuelType,Date,Address,Cities,Town,xCoordinate,yCoordinate)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                String sqlQuery="INSERT INTO Advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc" +
+                        ",BuildAge,BuildType,ItemStatus,WarmType,NumOfBathrooms,ElgCredit,UsingStatus,StateBuilding,RentalIncome,Dues,Swap,Front," +
+                        "FuelType,Date,Address,Cities,Town,xCoordinate,yCoordinate)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
                 statement.bindString(1,advTitle);
-                statement.bindBlob(2,kayıtedilecekImage);
+                statement.bindBlob(2,Image);
                 statement.bindString(3, String.valueOf(price));
                 statement.bindString(4,advStatus);
                 statement.bindString(5,roomNum);
@@ -496,26 +485,24 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 statement.bindDouble(27, longitude);
                 statement.execute();
 
-                Nesneleri_temizle();
-                Toast.makeText(getActivity(),"Kayıt başarıyla eklendi",Toast.LENGTH_SHORT).show();
+                Object_Clear();
+                Toast.makeText(getActivity(),"Adding Advertisement Successful ",Toast.LENGTH_SHORT).show();
                 add_Adv=true;
-
                 int lastInsertedAdvId = 0;
                 Cursor c=MainActivity.db.rawQuery("select last_insert_rowid()",null);
                 if (c!= null && c.moveToFirst()) {
-                    lastInsertedAdvId = c.getInt(0); //The 0 is the column index, we only have 1 column, so the index is 0
+                    lastInsertedAdvId = c.getInt(0);
                 }
                 c.close();
-
                 advId=lastInsertedAdvId;
                 for (int i=0;i<imageCount;i++) {
                     ByteArrayOutputStream outputStreamMulti =new ByteArrayOutputStream();
                     smallestedImg=imageSmall(imagesSelect.get(i));
                     smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStreamMulti);
-                    byte[] kayıtedilecekImageMulti=outputStreamMulti.toByteArray();
+                    byte[] imageMulti=outputStreamMulti.toByteArray();
                     String sqlQueryImage = "INSERT INTO AdvertisementImage (AdvImage,AdvId)VALUES(?,?)";
                     SQLiteStatement statementImg = MainActivity.db.compileStatement(sqlQueryImage);
-                    statementImg.bindBlob(1, kayıtedilecekImageMulti);
+                    statementImg.bindBlob(1, imageMulti);
                     statementImg.bindString(2, String.valueOf(lastInsertedAdvId));
                     statementImg.execute();
                 }
@@ -525,8 +512,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 statementUserAdv.bindString(2,String.valueOf(advId));
                 statementUserAdv.execute();
 
-
-
                 if(add_Adv==true)
                 {
                     advDetailLast=new AdvDetail(advId,advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
@@ -535,7 +520,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
 
                     replaceFragment(new AdvDetailFragment());
                 }
-
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -556,7 +540,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 startActivityForResult(imageGet,imgPermissionCod);
             }
         }
-
         super.onRequestPermissionsResult(requestCode,permissions,grantResults);
     }
 
@@ -569,7 +552,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 try {
                     Uri imgUrl=data.getData();
                     if (Build.VERSION.SDK_INT >= 28) {
-                      // BURAYI UNUTMAAAAAAAAAAAAA !!!!!!!!!
 
                     } else {
                         if(data.getClipData()!=null){
@@ -586,8 +568,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                                 imageCount++;
                             }
                         }
-                        else if(data.getClipData()==null)
-                        {
+                        else if(data.getClipData()==null) {
                             imageCount=1;
                             imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imgUrl));
                             selectedİmg= imagesSelect.get(0);
@@ -595,7 +576,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                             imageAdv.setImageBitmap(selectedİmg);
                         }
                     }
-
                     btnSubmitAdv.setEnabled(true);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -603,7 +583,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             }
         }
     }
-    private void Nesneleri_temizle(){
+    private void Object_Clear(){
         editTxtTitle.setText("");
         editTxtAddress.setText("");
         editTxtPrice.setText("");
@@ -614,7 +594,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         editTxtRentalIncome.setText("");
         editTxtSquareMt.setText("");
         editTxtNumofBath.setText("");
-
         spinnerAdvStatus.setSelection(0);
         spinnerBuildType.setSelection(0);
         spinnerFront.setSelection(0);
@@ -627,7 +606,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         spinnerCity.setSelection(0);
         spinnerWarmType.setSelection(0);
         spinnerRoomNum.setSelection(0);
-
         imageAdv.setImageBitmap(firstImage);
         btnSubmitAdv.setEnabled(false);
     }
@@ -672,7 +650,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 System.out.println(latLng.latitude+" : "+latLng.longitude);
                 latitude=  latLng.latitude;
                 longitude= latLng.longitude;
-
                 gMap.clear();
                 gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
                 gMap.addMarker(markerOptions);

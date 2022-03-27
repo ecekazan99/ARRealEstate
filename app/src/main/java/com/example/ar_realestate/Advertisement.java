@@ -13,17 +13,10 @@ import java.util.ArrayList;
 public class Advertisement implements Serializable {
     private String  advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
     private  int advId, price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
-
     private double latitude,longitude;
-    //private int adv_image;
-
     private  Bitmap advImage;
-    private byte[] kayıtImage;
-
     public Advertisement() {
     }
-
-    // imageyi bitmap olarak değiştirdim
     public Advertisement(int advId, Bitmap adv_image,String advTitle, String address,int pric) {
         this.advTitle = advTitle;
         this.address = address;
@@ -31,19 +24,11 @@ public class Advertisement implements Serializable {
         this.advImage = adv_image;
         this.advId=advId;
     }
-
-    public byte[] getKayıtImage() {
-        return kayıtImage;
-    }
-
-    public void setKayıtImage(byte[] kayıtImage) {
-        this.kayıtImage = kayıtImage;
-    }
-
     public Advertisement(String advTitle, Bitmap advImage, int price, String advStatus, String roomNum,
                          int squareMeters, int buildingFloors, int floorLoc, int buildAge, String buildType, String itemStatus,
                          String warmType, int numOfBathr, String elgForCredit, String usingStatus, String stateOfBuilding, int rentalIncome,
-                         int dues, String swap, String front, String fuelType, String date, String address, String city, String town,double latitude,double longitude) {
+                         int dues, String swap, String front, String fuelType, String date, String address, String city,
+                         String town,double latitude,double longitude) {
         this.advTitle = advTitle;
         this.advImage=advImage;
         this.price=price;

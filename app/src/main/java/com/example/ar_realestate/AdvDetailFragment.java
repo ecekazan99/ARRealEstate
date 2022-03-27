@@ -38,9 +38,9 @@ public class AdvDetailFragment extends Fragment {
             txtElgForCredit, txtUsingStatus, txtStateBuilding, txtRentalIncome, txtDues, txtSwap, txtFront,
             txtFuelType, txtDate, txtAddress,txtCity,txtTown;
 
-    String advTitle, advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, date, address,city,town;
+    String advTitle, advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap,
+            front, fuelType, date, address,city,town;
     int advId,price, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncome, dues;
-    long latitude, longitude;
 
     private Bitmap advImagePng;
     private ArrayList<Bitmap>ımages;
@@ -168,7 +168,6 @@ public class AdvDetailFragment extends Fragment {
         }
 
         else if(MyFavoritesFragment.clickMyFavDetail==true){
-
             advId=MyFavoritesFragment.advDetail.getAdvId();
             advTitle=MyFavoritesFragment.advDetail.getAdvTitle();
             advImagePng=MyFavoritesFragment.advDetail.getAdv_image();
@@ -195,7 +194,6 @@ public class AdvDetailFragment extends Fragment {
             address=MyFavoritesFragment.advDetail.getAddress();
             city=MyFavoritesFragment.advDetail.getCity();
             town=MyFavoritesFragment.advDetail.getTown();
-
         }
         MyAdvertisementFragment.clickMyAdvDetail=false;
         MyAdvertisementAdapter.clickAdvUpdate=false;
@@ -203,11 +201,9 @@ public class AdvDetailFragment extends Fragment {
 
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
     }
 
@@ -215,7 +211,6 @@ public class AdvDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentAdvDetailBinding.inflate(inflater, container, false);
-
         init();
         ArrayList<Bitmap>images=new ArrayList<>();
         String sqlQuery="SELECT * FROM AdvertisementImage WHERE AdvId = '"+advId+"'";
@@ -274,85 +269,58 @@ public class AdvDetailFragment extends Fragment {
 
         Intent intent=getActivity().getIntent();
         User user=(User)intent.getSerializableExtra("UserInformation");
-
         MainActivity.database.onCreate(MainActivity.db);
         db = MainActivity.database.getWritableDatabase();
-
         Drawable addFav = getResources().getDrawable(R.drawable.ic_baseline_favorite_24);
-
         Drawable notFav = getContext().getDrawable(R.drawable.ic_baseline_favorite_border_24);
-
         if(user==null){
             binding.buttonFav1.setImageDrawable(notFav);
         }
         else{
             Cursor c1 = db.rawQuery("SELECT * FROM Favorite WHERE UserId=?  AND AdvId=? AND FavoriteStatus=? ;",
                     new String[]{String.valueOf(user.getUserId()), String.valueOf(advId), "1"});
-
             if(c1.moveToFirst()){
-                //  System.out.println("zaten fav");
                 binding.buttonFav1.setImageDrawable(addFav);
             }
             else{
-                //System.out.println("fav değil");
                 binding.buttonFav1.setImageDrawable(notFav);
             }
         }
-
         binding.buttonFav1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if(user==null){
-                    Toast.makeText(getActivity(),  "Please login to your account!!",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),  "Please login to your account!!", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Cursor c = db.rawQuery("SELECT * FROM Favorite WHERE UserId=?  AND AdvId=? AND FavoriteStatus=? ;",
                             new String[]{String.valueOf(user.getUserId()),  String.valueOf(advId), "1"});
-
-                    if(c.moveToFirst()){ // Fav
+                    if(c.moveToFirst()){
                         binding.buttonFav1.setImageDrawable(notFav);
-
                         db.execSQL("UPDATE Favorite SET FavoriteStatus = 0 WHERE UserId = "+ String.valueOf(user.getUserId())+
                                 " AND AdvId="+String.valueOf(advId)+";");
-
                         Toast.makeText(getActivity(),  "It has been deleted to the list of favorites !!",
                                 Toast.LENGTH_SHORT).show();
-
-                        System.out.println("favv");
                     }
                     else{
                         binding.buttonFav1.setImageDrawable(addFav);
-
                         c = db.rawQuery("SELECT * FROM Favorite WHERE UserId=?  AND AdvId=? AND FavoriteStatus=? ;",
                                 new String[]{String.valueOf(user.getUserId()), String.valueOf(advId), "0"});
-
-                        if(c.moveToFirst()) { // Fav olmuş eskiden
-
-                            //System.out.println("favv olmuş");
-
+                        if(c.moveToFirst()) {
                             db.execSQL("UPDATE Favorite SET FavoriteStatus = 1 WHERE UserId = "+ String.valueOf(user.getUserId())+
                                     " AND AdvId= "+String.valueOf(advId)+";");
 
-                            Toast.makeText(getActivity(),  "It has been added to the list of favorites !!",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(),  "It has been added to the list of favorites !!", Toast.LENGTH_SHORT).show();
                         }
-                        else{// Hiç fav olmamış
-
-                            //  System.out.println("favv olmamuş");
-
+                        else{
                             MainActivity.database.onCreate(MainActivity.db);
                             String sqlQuery="INSERT INTO Favorite (UserId ,AdvId ,FavoriteStatus)  VALUES(?,?,?);";
                             SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
-
                             statement.bindString(1,String.valueOf(user.getUserId()));
                             statement.bindString(2,String.valueOf(advId));
                             statement.bindString(3,"1");
                             statement.execute();
-
-                            Toast.makeText(getActivity(),  "It has been added to the list of favorites !!",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(),  "It has been added to the list of favorites !!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

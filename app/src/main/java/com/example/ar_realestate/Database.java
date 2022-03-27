@@ -12,7 +12,6 @@ public class Database extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME="RealEstate";
     private static final int VERSION=1;
-
     public Database(Context c){
 
         super(c, DATABASE_NAME, null, VERSION);
@@ -32,15 +31,19 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS UserInformation (UserId INTEGER PRIMARY KEY AUTOINCREMENT,UserName TEXT NOT NULL," +
                 " UserSurname TEXT NOT NULL, MailAddress TEXT NOT NULL,Password TEXT NOT NULL);");
 
-        db.execSQL("CREATE TABLE IF NOT EXISTS Favorite (UserId INTEGER,AdvId INTEGER,FavoriteStatus INTEGER,FOREIGN KEY (UserId) REFERENCES UserInformation(UserId), FOREIGN KEY (AdvId) REFERENCES Advertisements(AdvId));");
+        db.execSQL("CREATE TABLE IF NOT EXISTS Favorite (UserId INTEGER,AdvId INTEGER,FavoriteStatus INTEGER,FOREIGN KEY (UserId) " +
+                "REFERENCES UserInformation(UserId), FOREIGN KEY (AdvId) REFERENCES Advertisements(AdvId));");
 
-        db.execSQL("CREATE TABLE IF NOT EXISTS UserPastAdvertisement (UserId INTEGER,AdvId INTEGER,FOREIGN KEY (UserId) REFERENCES UserInformation(UserId), FOREIGN KEY (AdvId) REFERENCES Advertisements(AdvId));");
+        db.execSQL("CREATE TABLE IF NOT EXISTS UserPastAdvertisement (UserId INTEGER,AdvId INTEGER,FOREIGN KEY (UserId) " +
+                "REFERENCES UserInformation(UserId), FOREIGN KEY (AdvId) REFERENCES Advertisements(AdvId));");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS Cities (CityId INTEGER PRIMARY KEY AUTOINCREMENT,CityName TEXT NOT NULL UNIQUE);");
 
-        db.execSQL("CREATE TABLE IF NOT EXISTS District(DistrictId INTEGER PRIMARY KEY AUTOINCREMENT,DistrictName TEXT NOT NULL,CityId INTEGER NOT NULL);");
+        db.execSQL("CREATE TABLE IF NOT EXISTS District(DistrictId INTEGER PRIMARY KEY AUTOINCREMENT,DistrictName TEXT NOT NULL," +
+                "CityId INTEGER NOT NULL);");
 
-        db.execSQL("CREATE TABLE IF NOT EXISTS  UserAdvertisement( UserId INTEGER,AdvId INTEGER, FOREIGN KEY (UserId) REFERENCES UserInformation(UserId), FOREIGN KEY (AdvId) REFERENCES Advertisements(AdvId));");
+        db.execSQL("CREATE TABLE IF NOT EXISTS  UserAdvertisement( UserId INTEGER,AdvId INTEGER, FOREIGN KEY (UserId) " +
+                "REFERENCES UserInformation(UserId), FOREIGN KEY (AdvId) REFERENCES Advertisements(AdvId));");
     }
 
     @Override
@@ -57,7 +60,6 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public boolean checkEmailExist(String email){
-
         try{
             SQLiteDatabase sqLiteDatabase=getReadableDatabase();
             Cursor cursor=sqLiteDatabase.rawQuery("SELECT * FROM UserInformation " +
@@ -78,7 +80,6 @@ public class Database extends SQLiteOpenHelper {
             SQLiteDatabase sqLiteDatabase=getReadableDatabase();
           Cursor cursor=sqLiteDatabase.rawQuery("SELECT * FROM UserInformation " +
                   "WHERE MailAddress = ? AND Password = ?",new String[]{email,password});
-
           if(cursor.moveToFirst()){
               user=new User();
               user.setUserId(cursor.getInt(0));
@@ -87,13 +88,11 @@ public class Database extends SQLiteOpenHelper {
               user.setMailAddress(cursor.getString(3));
               user.setPassword(cursor.getString(4));
           }
-
         }catch (Exception e){
             user=null;
         }
         return user;
     }
-
     public int updateUser(int id,String name, String surname, String email, String password, String newPassword){
 
         try{
@@ -114,77 +113,54 @@ public class Database extends SQLiteOpenHelper {
         return 1;
     }
 
-    public int updateMyAdv(int advId, String advTitle, byte[]  advImage, int price, String advStatus, String roomNum, int squareMeter,int buildingFloors,
-                           int floorLoc,int buildAge,String buildType,String itemStatus,String warmTpe,int numOfBathrooms,String elgCredit,
-                           String usingStatus,String stateBuilding,int rentalIncome, int dues, String swap,String front,String fuelType,String date,
+    public int updateMyAdv(int advId, String advTitle, byte[]  advImage, int price, String advStatus, String roomNum,
+                           int squareMeter, int buildingFloors, int floorLoc,int buildAge,String buildType,String itemStatus,
+                           String warmTpe,int numOfBathrooms,String elgCredit, String usingStatus,String stateBuilding,
+                           int rentalIncome, int dues, String swap,String front,String fuelType,String date,
                            String address, String city,String town, double xCoordinate, double yCoordinate){
-
         try{
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues values = new ContentValues();
-
-            values.put("AdvTitle",advTitle);
-            values.put("AdvImage",advImage);
-            values.put("Price",price);
-            values.put("AdvStatus",advStatus);
-            values.put("RoomNum",roomNum);
-            values.put("SquareMeter",squareMeter);
-            values.put("BuildingFloors",buildingFloors);
-            values.put("FloorLoc",floorLoc);
-            values.put("BuildAge",buildAge);
-            values.put("BuildType",buildType);
-            values.put("ItemStatus",itemStatus);
-            values.put("WarmType",warmTpe);
-            values.put("NumOfBathrooms",numOfBathrooms);
-            values.put("ElgCredit",elgCredit);
-            values.put("UsingStatus",usingStatus);
-            values.put("StateBuilding",stateBuilding);
-            values.put("RentalIncome",rentalIncome);
-            values.put("Dues",dues);
-            values.put("Swap",swap);
-            values.put("Front",front);
-            values.put("FuelType",fuelType);
-            values.put("Date",date);
-            values.put("Address",address);
-            values.put("Cities",city);
-            values.put("Town",town);
-            values.put("xCoordinate",xCoordinate);
+            values.put("AdvTitle",advTitle);                values.put("AdvImage",advImage);
+            values.put("Price",price);                      values.put("AdvStatus",advStatus);
+            values.put("RoomNum",roomNum);                  values.put("SquareMeter",squareMeter);
+            values.put("BuildingFloors",buildingFloors);    values.put("FloorLoc",floorLoc);
+            values.put("BuildAge",buildAge);                values.put("BuildType",buildType);
+            values.put("ItemStatus",itemStatus);            values.put("WarmType",warmTpe);
+            values.put("NumOfBathrooms",numOfBathrooms);    values.put("ElgCredit",elgCredit);
+            values.put("UsingStatus",usingStatus);          values.put("StateBuilding",stateBuilding);
+            values.put("RentalIncome",rentalIncome);        values.put("Dues",dues);
+            values.put("Swap",swap);                        values.put("Front",front);
+            values.put("FuelType",fuelType);                values.put("Date",date);
+            values.put("Address",address);                  values.put("Cities",city);
+            values.put("Town",town);                        values.put("xCoordinate",xCoordinate);
             values.put("yCoordinate",yCoordinate);
-
             db.update("Advertisements", values, "AdvId=?", new String[]{String.valueOf(advId)});
             db.close();
-
         }catch (Exception e){
             return 0;
         }
         return 1;
     }
-
     public int updateMyAdvImages(int imageId,byte[] advImage,int advId){
         try{
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues values = new ContentValues();
-
             values.put("ImageId",imageId);
             values.put("AdvImage",advImage);
             values.put( "AdvId",advId);
-
             db.update("AdvertisementImage", values, "AdvId=? AND ImageId = ?", new String[]{String.valueOf(advId), String.valueOf(imageId)});
             db.close();
-
         }catch (Exception e){
             return 0;
         }
         return 1;
-
     }
     public boolean checkAdvTitleExist(String advTitle){
-
         try{
             SQLiteDatabase sqLiteDatabase=getReadableDatabase();
             Cursor cursor=sqLiteDatabase.rawQuery("SELECT * FROM Advertisements " +
                     "WHERE AdvTitle = ?",new String[]{advTitle});
-
             if(cursor.moveToFirst()){
                 return false;
             }
@@ -193,5 +169,4 @@ public class Database extends SQLiteOpenHelper {
         }
         return true;
     }
-
 }
