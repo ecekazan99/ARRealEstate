@@ -481,41 +481,41 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        int countSelect=0;
+        int count=0;
         if(requestCode==imgPermissionCod){
             if(resultCode==-1 && data !=null){
                 try {
                     Uri imgUrl=data.getData();
-                    if (Build.VERSION.SDK_INT >= 28) {
-                       // BURAYIIII UNUTMAAAAAAAAAA !!!!!!!!!!!!!
-                    } else {
-                        if(data.getClipData()!=null){
-                            countSelect = data.getClipData().getItemCount();
-                            if(countSelect>count){
-                                Toast.makeText(getActivity().getBaseContext(),"Please select as many pictures as the number of pre-recorded pictures.",Toast.LENGTH_SHORT).show();
-                            }
-                            else if(countSelect<=count) {
-                                for (int i = 0; i < countSelect; i++) {
-                                    Uri imageUri = data.getClipData().getItemAt(i).getUri();
-                                    mArrayUri.add(imageUri);
-                                }
-                                for (int j = 0; j < mArrayUri.size(); j++) {
-                                    imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), mArrayUri.get(j)));
-                                    firstSelectedImage = imagesSelect.get(0);
-                                    selectedİmg = imagesSelect.get(j);
-                                    imageAdv.setImageBitmap(selectedİmg);
-                                    imageCount++;
-                                }
-                            }
+
+                    if(data.getClipData()!=null){
+                        count = data.getClipData().getItemCount();
+                        for (int i = 0; i < count; i++) {
+                            Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                            mArrayUri.add(imageUri);
                         }
-                        else if(data.getClipData()==null)
-                        {
-                            imageCount=1;
-                            imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imgUrl));
-                            selectedİmg= imagesSelect.get(0);
+                        for (int j = 0; j < mArrayUri.size(); j++) {
+                            if(Build.VERSION.SDK_INT>=28)
+                            {
+                                ImageDecoder.Source imgSource=ImageDecoder.createSource(getActivity().getContentResolver(),mArrayUri.get(j));
+                                imagesSelect.add(ImageDecoder.decodeBitmap(imgSource));
+                            }
+                            else
+                            {
+                                imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), mArrayUri.get(j)));
+                            }
                             firstSelectedImage = imagesSelect.get(0);
+                            selectedİmg=imagesSelect.get(j);
                             imageAdv.setImageBitmap(selectedİmg);
+                            imageCount++;
+
                         }
+                    }
+                    else if(data.getClipData()==null) {
+                        imageCount=1;
+                        imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imgUrl));
+                        selectedİmg= imagesSelect.get(0);
+                        firstSelectedImage = imagesSelect.get(0);
+                        imageAdv.setImageBitmap(selectedİmg);
                     }
 
                 } catch (IOException e) {

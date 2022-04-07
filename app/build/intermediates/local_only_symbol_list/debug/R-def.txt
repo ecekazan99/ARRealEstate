@@ -153,6 +153,7 @@ id adv_item_textViewAdvPrice
 id adv_item_textViewAdvTitle
 id adv_update
 id back
+id button
 id buttonFav1
 id buttonHaveAccount
 id buttonLogin

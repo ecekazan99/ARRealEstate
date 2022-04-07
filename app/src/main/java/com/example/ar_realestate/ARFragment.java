@@ -1,15 +1,26 @@
 package com.example.ar_realestate;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.example.ar_realestate.databinding.FragmentAddAdvBinding;
+import com.example.ar_realestate.databinding.FragmentArBinding;
+import com.example.ar_realestate.databinding.FragmentLoginBinding;
 
 public class ARFragment extends Fragment {
-
+    private FragmentArBinding binding;
     public ARFragment() {
         // Required empty public constructor
     }
@@ -29,7 +40,20 @@ public class ARFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ar, container, false);
+        binding= FragmentArBinding.inflate(inflater,container,false);
+        binding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                PackageManager manager = getContext().getPackageManager();
+                Intent intent = manager.getLaunchIntentForPackage("com.DefaultCompany.deneme16_gps");
+                intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                startActivity(intent);
+
+            }
+        });
+
+
+        return binding.getRoot();
     }
 }

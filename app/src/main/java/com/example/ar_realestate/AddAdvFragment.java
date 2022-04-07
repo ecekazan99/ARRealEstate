@@ -313,7 +313,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         town=adapterView.getItemAtPosition(i).toString();
-                     }
+                    }
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -551,31 +551,38 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             if(resultCode==-1 && data !=null){
                 try {
                     Uri imgUrl=data.getData();
-                    if (Build.VERSION.SDK_INT >= 28) {
 
-                    } else {
-                        if(data.getClipData()!=null){
-                            count = data.getClipData().getItemCount();
-                            for (int i = 0; i < count; i++) {
-                                Uri imageUri = data.getClipData().getItemAt(i).getUri();
-                                mArrayUri.add(imageUri);
-                            }
-                            for (int j = 0; j < mArrayUri.size(); j++) {
-                                imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), mArrayUri.get(j)));
-                                firstSelectedImage = imagesSelect.get(0);
-                                selectedİmg = imagesSelect.get(j);
-                                imageAdv.setImageBitmap(selectedİmg);
-                                imageCount++;
-                            }
+                    if(data.getClipData()!=null){
+                        count = data.getClipData().getItemCount();
+                        for (int i = 0; i < count; i++) {
+                            Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                            mArrayUri.add(imageUri);
                         }
-                        else if(data.getClipData()==null) {
-                            imageCount=1;
-                            imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imgUrl));
-                            selectedİmg= imagesSelect.get(0);
+                        for (int j = 0; j < mArrayUri.size(); j++) {
+                            if(Build.VERSION.SDK_INT>=28)
+                            {
+                                ImageDecoder.Source imgSource=ImageDecoder.createSource(getActivity().getContentResolver(),mArrayUri.get(j));
+                                imagesSelect.add(ImageDecoder.decodeBitmap(imgSource));
+                            }
+                            else
+                            {
+                                imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), mArrayUri.get(j)));
+                            }
                             firstSelectedImage = imagesSelect.get(0);
+                            selectedİmg=imagesSelect.get(j);
                             imageAdv.setImageBitmap(selectedİmg);
+                            imageCount++;
+
                         }
                     }
+                    else if(data.getClipData()==null) {
+                        imageCount=1;
+                        imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imgUrl));
+                        selectedİmg= imagesSelect.get(0);
+                        firstSelectedImage = imagesSelect.get(0);
+                        imageAdv.setImageBitmap(selectedİmg);
+                    }
+
                     btnSubmitAdv.setEnabled(true);
                 } catch (IOException e) {
                     e.printStackTrace();
