@@ -14,17 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ARRealEstate">
-        <activity
-            android:name=".AdvDetailActivity"
-            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
 
-        <activity
-            android:name=".Add_AdvActivity"
-            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

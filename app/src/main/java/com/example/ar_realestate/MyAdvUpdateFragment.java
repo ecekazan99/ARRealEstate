@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
@@ -58,16 +59,23 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
     private EditText editTxtTitle,editTxtPrice, editTxtSquareMt,editTxtBuildingFloors, editTxtFloorLoc,editTxtBuildAge,editTxtNumofBath,
             editTxtRentalIncome,editTxtDues,editTxtAddress;
     private ImageView imageAdv;
-    private Bitmap selectedİmg,smallestedImg;
-
+    private Bitmap selectedİmg,smallestedImg,firstImage,firstSelectedImage;
+    ArrayList<Uri> mArrayUri;
+    ArrayList<Integer>advIdImages=new ArrayList<>();// for images
+    ArrayList<Integer>imagesId=new ArrayList<>();
+    private Button next,previous;
+    private int position=0;
+    public static int imageCount=0;
+    private int count=0;
+    private ArrayList<Bitmap>imagesSelect;
+    ArrayList<Bitmap>images=new ArrayList<>();
+    private ArrayList<Bitmap>imagesSmall;
+    private Boolean flag=false;
     private Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType,spinnerItemStatus,spinnerWarmType,spinnerElgbCredit,spinnerUsingStatus, spinnerStateOfBuilding,spinnerSwap,spinnerFront,spinnerFuelType,spinnerCity,spinnerTown;
-
     static  String tempStatus;
     String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
     int price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
-    long latitude,longitude;
-
-    public static Boolean clickUpdate=false;
+    double latitude,longitude;
     private int imgNoPermissionCod=0,imgPermissionCod=1;
     private String cityName="";
     private CitiesAndTownInsert citiesAndTownInsert;
@@ -77,56 +85,83 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
     public static String[] cities=new String[81];
     public static ArrayList<String> districties=new ArrayList<>();
 
-
     public MyAdvUpdateFragment() {
         // Required empty public constructor
     }
-
     public static MyAdvUpdateFragment newInstance(String param1, String param2) {
         MyAdvUpdateFragment fragment = new MyAdvUpdateFragment();
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         binding= FragmentMyAdvUpdateBinding.inflate(inflater,container,false);
-
         Intent intent=getActivity().getIntent();
         advertisement=(Advertisement)intent.getSerializableExtra("Advertisements");
-
         SupportMapFragment supportMapFragment=(SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
         supportMapFragment.getMapAsync(this);
-
         imageAdv=(ImageView)binding.addAdvImage;
+        imageAdv=(ImageView) binding.addAdvImage;
+        mArrayUri=new ArrayList<>();
+        imagesSelect=new ArrayList<Bitmap>();
+        initFirst();
         binding.addAdvImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},imgNoPermissionCod);
+                if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}
+                            ,imgNoPermissionCod);
                 }
                 else{
-
-                    Intent imageGet=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(imageGet,imgPermissionCod);
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    flag=true;
+                    startActivityForResult(Intent.createChooser(intent, "Select images"), imgPermissionCod);
                 }
             }
         });
-        initFirst();
+        binding.next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(position<mArrayUri.size()-1 && flag==true) {
+                    position++;
+                    imageAdv.setImageURI(mArrayUri.get(position));
+                }
+               else  if(position<(count-1) && flag==false){
+                    position++;
+                    binding.addAdvImage.setImageBitmap(images.get(position));
+                }
+            }
+        });
+        binding.previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(position>0 && flag==true){
+                    position--;
+                    imageAdv.setImageURI(mArrayUri.get(position));
+                }
+                else if(position>0 && flag==false){
+                    position--;
+                    binding.addAdvImage.setImageBitmap(images.get(position));
+                }
+            }
+        });
         binding.updateAdvBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int advId=MyAdvertisementAdapter.advId;
                 int updateAdv=0;
+                int updateAdvImages=0;
                 init();
-
                 Database database=new Database(getContext());
                 try {
                     advTitle=editTxtTitle.getText().toString();
@@ -158,31 +193,39 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                     city=spinnerCity.getSelectedItem().toString();
                     town=spinnerTown.getSelectedItem().toString();
                 }catch (Exception e ){
-                    System.out.println("HATAAAAAAAAAAAAA");
+                    System.out.println("Error");
                 }
                 ByteArrayOutputStream outputStream =new ByteArrayOutputStream();
                 if(selectedİmg==null)
                 {
-                    System.out.println("Resimmmmmm Yokkkkkkkkkkkkkkkkkk");
+                    System.out.println("There is not image");
                     selectedİmg=MyAdvertisementAdapter.selectedİmg;
                 }
-                smallestedImg=imageSmall(selectedİmg);
+                for(int a=0;a<imagesSelect.size();a++)
+                {
+                    ByteArrayOutputStream outputStreamMulti =new ByteArrayOutputStream();
+                    smallestedImg=imageSmall(imagesSelect.get(a));
+                    smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStreamMulti);
+                    byte[] ImageMulti=outputStreamMulti.toByteArray();
+                    updateAdvImages=database.updateMyAdvImages(imagesId.get(a),ImageMulti,advIdImages.get(0));
+                }
+                smallestedImg=imageSmall(firstSelectedImage);
                 smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStream);
-                byte[] kayıtedilecekImage=outputStream.toByteArray();
-                updateAdv=database.updateMyAdv(advId,advTitle,kayıtedilecekImage,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,buildAge,buildType,itemStatus,
-                        warmType,numOfBathr,elgForCredit,usingStatus,stateBuilding,rentalIncome,dues,swap,front,fuelType,date,address,city,town,latitude,longitude);
+                byte[] Image=outputStream.toByteArray();
+                updateAdv=database.updateMyAdv(advId,advTitle,Image,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
+                        buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,stateBuilding,rentalIncome,dues,
+                        swap,front,fuelType,date,address,city,town,latitude,longitude);
 
-                if(updateAdv==1){
+                if(updateAdv==1 && updateAdvImages==1){
                     AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
                     if(advControl()==true) {
                         builder.setMessage("Are you sure?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                //  System.out.println("Advvvvvvv tittttleeeee "+ advTitle);
-                                MyAdvertisementFragment myAdvertisementFragment = new MyAdvertisementFragment();
+                               MyAccountFragment accountFragment = new MyAccountFragment();
                                 FragmentManager fragmentManager = getFragmentManager();
                                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                                fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, myAdvertisementFragment);
+                                fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, accountFragment);
                                 fragmentTransaction.commit();
                             }
                         }).setNegativeButton("No", null);
@@ -197,13 +240,25 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
         return binding.getRoot();
     }
     public void initFirst(){
-
         binding.addAdvEditTextAdvTitle.setText(MyAdvertisementAdapter.advTitle);
-        binding.addAdvImage.setImageBitmap(MyAdvertisementAdapter.selectedİmg);
+        String sqlQuery="SELECT * FROM AdvertisementImage WHERE AdvId = '"+MyAdvertisementAdapter.advId+"'";
+        Cursor imageCursor=MainActivity.db.rawQuery(sqlQuery,null);
+        int indexImage=imageCursor.getColumnIndex("advImage");
+        int indexImageId=imageCursor.getColumnIndex("ImageId");
+        int indexAdvId=imageCursor.getColumnIndex("AdvId");
+        while (imageCursor.moveToNext()){
+            count++;
+            advIdImages.add(Integer.parseInt(imageCursor.getString(indexAdvId)));
+            imagesId.add(Integer.parseInt(imageCursor.getString(indexImageId)));
+            byte[] imageByte = imageCursor.getBlob(indexImage);
+            Bitmap imageAdv = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
+            images.add(imageAdv);
+        }
+        binding.addAdvImage.setImageBitmap(images.get(position));
         binding.addAdvEditTextPrice.setText(String.valueOf(MyAdvertisementAdapter.price));
-
         spinnerAdvStatus=(Spinner)binding.addAdvSpinnerAdvStatus;
-        ArrayAdapter<CharSequence> adapterAdvStatus=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.Adv_Status, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapterAdvStatus=ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                R.array.Adv_Status, android.R.layout.simple_spinner_item);
         adapterAdvStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAdvStatus.setAdapter(adapterAdvStatus);
         if (MyAdvertisementAdapter.advStatus != null) {
@@ -213,7 +268,8 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
         }
 
         spinnerRoomNum=(Spinner)binding.addAdvSpinnerRoomNum;
-        ArrayAdapter<CharSequence> adapterRoomNum=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.RoomNumber, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapterRoomNum=ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                R.array.RoomNumber, android.R.layout.simple_spinner_item);
         adapterRoomNum.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerRoomNum.setAdapter(adapterRoomNum);
         if (MyAdvertisementAdapter.roomNum != null) {
@@ -310,7 +366,7 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
             int spinnerPosition = adapterFuelType.getPosition(MyAdvertisementAdapter.fuelType);
             spinnerFuelType.setSelection(spinnerPosition);
         }
-       // binding.addAdvEditTextDate.setText(MyAdvertisementFragment.advDetail.getDate());
+        binding.addAdvEditTextDate.setText(MyAdvertisementAdapter.date);
         binding.addAdvEditTextAddress.setText((MyAdvertisementAdapter.address));
 
         getCities();
@@ -339,15 +395,12 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                         spinnerTown.setSelection(spinnerPositionTown);
                     }
                 }
-
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
 
                 }
             });
-
         }
-
     }
     public void init(){ // initialize part
         citiesAndTownInsert=new CitiesAndTownInsert();
@@ -377,10 +430,6 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
         editTxtAddress=(EditText)binding.addAdvEditTextAddress;
         spinnerCity=(Spinner)binding.addAdvSpinnerCity;
         spinnerTown=(Spinner)binding.addAdvSpinnerTown;
-
-        imageAdv=(ImageView) binding.addAdvImage;
-
-
     }
     private String getTodayDate(){
         return new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
@@ -411,35 +460,14 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
             checkEmpty =false;
             Toast.makeText(getActivity(),"Please Incorrect Inputs",Toast.LENGTH_SHORT).show();
         }
-        System.out.println("Girildi 1: "+ city);
         return checkEmpty;
     }
     private Bitmap imageSmall(Bitmap img) {
         return Bitmap.createScaledBitmap(img,300,220,true);
     }
 
-    public void selectImage(View view) {
-        if(ContextCompat.checkSelfPermission(getActivity().getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},imgNoPermissionCod);
-        }
-        else{
-
-            Intent imageGet=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(imageGet,imgPermissionCod);
-
-            // Select one more images from galery
-         /*   Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Select images"), imgPermissionCod);*/
-
-
-        }
-    }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int [] grantResults){
-
 
         if(requestCode==imgNoPermissionCod)
         {
@@ -448,37 +476,45 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                 startActivityForResult(imageGet,imgPermissionCod);
             }
         }
-
         super.onRequestPermissionsResult(requestCode,permissions,grantResults);
     }
-
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        int count=0;
         if(requestCode==imgPermissionCod){
             if(resultCode==-1 && data !=null){
-                Uri imgUrl=data.getData();
-
                 try {
-                    if(Build.VERSION.SDK_INT>=28){
+                    Uri imgUrl=data.getData();
 
-                        // One more than images uri (not work well)
-                      /*  for (int i = 0; i < count; i++) {
+                    if(data.getClipData()!=null){
+                        count = data.getClipData().getItemCount();
+                        for (int i = 0; i < count; i++) {
                             Uri imageUri = data.getClipData().getItemAt(i).getUri();
                             mArrayUri.add(imageUri);
                         }
                         for (int j = 0; j < mArrayUri.size(); j++) {
-                            ImageDecoder.Source imgSource = ImageDecoder.createSource(this.getContentResolver(), mArrayUri.get(j));
-                            selectedİmg = ImageDecoder.decodeBitmap(imgSource);
+                            if(Build.VERSION.SDK_INT>=28)
+                            {
+                                ImageDecoder.Source imgSource=ImageDecoder.createSource(getActivity().getContentResolver(),mArrayUri.get(j));
+                                imagesSelect.add(ImageDecoder.decodeBitmap(imgSource));
+                            }
+                            else
+                            {
+                                imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), mArrayUri.get(j)));
+                            }
+                            firstSelectedImage = imagesSelect.get(0);
+                            selectedİmg=imagesSelect.get(j);
                             imageAdv.setImageBitmap(selectedİmg);
-                        }*/
-                        ImageDecoder.Source imgSource=ImageDecoder.createSource(getActivity().getContentResolver(),imgUrl);
-                        selectedİmg=ImageDecoder.decodeBitmap(imgSource);
-                        imageAdv.setImageBitmap(selectedİmg);
-                    }else{
-                        selectedİmg= MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imgUrl);
+                            imageCount++;
+
+                        }
+                    }
+                    else if(data.getClipData()==null) {
+                        imageCount=1;
+                        imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imgUrl));
+                        selectedİmg= imagesSelect.get(0);
+                        firstSelectedImage = imagesSelect.get(0);
                         imageAdv.setImageBitmap(selectedİmg);
                     }
 
@@ -487,7 +523,6 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                 }
             }
         }
-
     }
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -499,20 +534,14 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                 markerOptions.position(latLng);
                 markerOptions.title(latLng.latitude+" : "+latLng.longitude);
                 System.out.println(latLng.latitude+" : "+latLng.longitude);
-                //latitude=latLng.latitude;
-                //   longitude=latLng.longitude;
-
+                latitude=latLng.latitude;
+                longitude=latLng.longitude;
                 gMap.clear();
-
                 gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
-
                 gMap.addMarker(markerOptions);
-
-
             }
         });
     }
-
     public static  void getCities()
     {
         int counter=0;
@@ -523,29 +552,21 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
             cities[counter]=cursor.getString(1);
             counter++;
             cursor.moveToNext();
-
         }
-
     }
     public  static void getTown(String cityName){
         String selectSquery="SELECT CityId FROM Cities WHERE CityName = '"+cityName+"'";
         Cursor cursor=MainActivity.db.rawQuery(selectSquery,null);
         while (cursor.moveToNext()){
             cityId=Integer.parseInt(cursor.getString(0));
-            System.out.println("City idddd"+cursor.getString(0));
-            System.out.println("City Name"+cityName);
             cursor.close();
         }
-
         selectSquery="SELECT * FROM District WHERE CityId = '"+cityId+"'";
         cursor=MainActivity.db.rawQuery(selectSquery,null);
         cursor.moveToFirst();
         while (cursor.isAfterLast()==false){
             districties.add(cursor.getString(1));
-            System.out.println("District Name :" + cursor.getString(1));
             cursor.moveToNext();
-
         }
     }
-
 }

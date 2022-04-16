@@ -317,37 +317,26 @@ public class FilterAdvFragment extends Fragment {
         binding.FilterBtnApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 try {
                     priceMin = Integer.parseInt(editTxtPriceMin.getText().toString());
                     priceMax = Integer.parseInt(editTxtPriceMax.getText().toString());
-
                     squareMeterMin = Integer.parseInt(editTxtSquareMin.getText().toString());
                     squareMeterMax = Integer.parseInt(editTxtSquareMax.getText().toString());
-
                     buildingFloorsMin = Integer.parseInt(editTextBuildFloorMin.getText().toString());
                     buildingFloorsMax = Integer.parseInt(editTextBuildFloorMax.getText().toString());
-
                     floorLocMin = Integer.parseInt(editTxtFloorLocMin.getText().toString());
                     floorLocMax = Integer.parseInt(editTxtFloorLocMax.getText().toString());
-
                     buildAgeMin = Integer.parseInt(editTextBuildAgeMin.getText().toString());
                     buildAgeMax = Integer.parseInt(editTextBuildAgeMax.getText().toString());
-
                     numOfBathrMin = Integer.parseInt(editTxtNumofBathMin.getText().toString());
                     numOfBathrMax = Integer.parseInt(editTxtNumofBathMax.getText().toString());
-
                     rentalIncomeMin = Integer.parseInt(editTxtRentalIncomeMin.getText().toString());
                     rentalIncomeMax = Integer.parseInt(editTxtRentalIncomeMax.getText().toString());
-
                     duesMin = Integer.parseInt(editTxtDuesMin.getText().toString());
                     duesMax = Integer.parseInt(editTxtDuesMax.getText().toString());
-
-
                 }catch (Exception e){
-                    System.out.println("Hataa");
+                    System.out.println("Error");
                 }
-
                 if(filterInputControl()==true){
                     applButton=true;
                     HomeFragment homeFragment = new HomeFragment();
@@ -356,11 +345,8 @@ public class FilterAdvFragment extends Fragment {
                     fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, homeFragment);
                     fragmentTransaction.commit();
                 }
-
             }
         });
-
-
         return binding.getRoot();
     }
 
@@ -391,7 +377,6 @@ public class FilterAdvFragment extends Fragment {
         cursor=MainActivity.db.rawQuery(selectSquery,null);
         cursor.moveToFirst();
         while (cursor.isAfterLast()==false){
-
             districties.add(cursor.getString(1));
             cursor.moveToNext();
 

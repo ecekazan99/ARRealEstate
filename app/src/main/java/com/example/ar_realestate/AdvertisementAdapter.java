@@ -24,7 +24,6 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
     public AdvertisementAdapter(ArrayList<Advertisement> adv, Context context) {
         this.adv = adv; this.context = context;
     }
-
     @NonNull
     @Override
     public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -32,27 +31,21 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.advertisement_card,parent,false);
         return new myviewholder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull myviewholder holder, int position) {
-
         holder.img.setImageBitmap(adv.get(position).getAdvImage());
         holder.titlee.setText(adv.get(position).getAdvTitle());
         holder.addresss.setText(adv.get(position).getAddress());
         holder.pricee.setText(String.valueOf(adv.get(position).getPrice()));
-
     }
-
     @Override
     public int getItemCount() {
         return adv.size();
     }
-
     class myviewholder extends RecyclerView.ViewHolder{
         ImageView img;
         TextView titlee, addresss, pricee;
         LinearLayout clickDetail;
-
         public myviewholder (@NonNull View itemView){
             super(itemView);
             img=itemView.findViewById(R.id.image);

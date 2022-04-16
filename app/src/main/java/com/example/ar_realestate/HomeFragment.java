@@ -25,8 +25,7 @@ public class HomeFragment extends Fragment {
     static public AdvDetail advDetail;
 
     RecyclerView recyclerView;
-    ArrayList<Advertisement> adv;
-
+    static ArrayList<Advertisement> adv;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -51,16 +50,10 @@ public class HomeFragment extends Fragment {
         MyAccountFragment.clickMyAdv=false;
         View view=inflater.inflate(R.layout.fragment_home,container,false);
         recyclerView=(RecyclerView) view.findViewById(R.id.recview);
-        // burayı ekledim
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         advAdapter=new AdvertisementAdapter(getData(getContext()),getContext());
-
        recyclerView.setAdapter(advAdapter);
-        //burayı ekledim
-
         advAdapter.setOnItemClickListener(adv ->  {
-
             advDetail=new AdvDetail(adv.getAdvId(),adv.getAdvTitle(),adv.getAdvImage(),adv.getPrice(),adv.getAdvStatus(),
                     adv.getRoomNum(),adv.getSquareMeters(),adv.getBuildingFloors(),adv.getFloorLoc(),
                     adv.getBuildAge(),adv.getBuildType(),adv.getItemStatus(),adv.getWarmType(),adv.getNumOfBathr(),
@@ -69,9 +62,7 @@ public class HomeFragment extends Fragment {
 
             MainActivity.navViewToolbar.setVisibility(View.INVISIBLE);
             replaceFragment(new AdvDetailFragment());
-           // MainActivity.navViewToolbar_detail.setVisibility(View.INVISIBLE);
-        }); // buraya kadar kısım
-
+        });
         return view;
     }
     private void replaceFragment(Fragment fragment){
@@ -89,43 +80,14 @@ public class HomeFragment extends Fragment {
         Cursor cursor = null;
         int count=0;
         Boolean flagMyAdv=false;
-        ArrayList<Advertisement> advertisementList=new ArrayList<>();
-        ArrayList<String> advTitleList=new ArrayList<>();
-        ArrayList<String> advStatusList=new ArrayList<>();
-        ArrayList<String> roomNumList=new ArrayList<>();
-        ArrayList<String> warmTypeList=new ArrayList<>();
-        ArrayList<String> elgForCreditList=new ArrayList<>();
-        ArrayList<String> usingStatusList=new ArrayList<>();
-        ArrayList<String> buildTypeList=new ArrayList<>();
-        ArrayList<String> itemStatusList=new ArrayList<>();
-        ArrayList<String> stateBuildingList=new ArrayList<>();
-        ArrayList<String> swapList=new ArrayList<>();
-        ArrayList<String> frontList=new ArrayList<>();
-        ArrayList<String> fuelTypeList=new ArrayList<>();
-        ArrayList<String> dateList=new ArrayList<>();
-        ArrayList<String> addressList=new ArrayList<>();
-        ArrayList<String> cityList=new ArrayList<>();
-        ArrayList<String> townList=new ArrayList<>();
+        adv=new ArrayList<>();
 
-        ArrayList<Integer> priceList=new ArrayList<>();
-        ArrayList<Integer> squareMetersList=new ArrayList<>();
-        ArrayList<Integer> buildingFloorsList=new ArrayList<>();
-        ArrayList<Integer> floorLocList=new ArrayList<>();
-        ArrayList<Integer> buildAgeList=new ArrayList<>();
-        ArrayList<Integer> numOfBathrList=new ArrayList<>();
-        ArrayList<Integer> rentalIncomeList=new ArrayList<>();
-        ArrayList<Integer> duesList=new ArrayList<>();
-        ArrayList<Integer> advIdList=new ArrayList<>();
-        ArrayList<Bitmap> ImageList=new ArrayList<>();
-
-        ArrayList<Long>xCoordinateList=new ArrayList<>();
-        ArrayList<Long>yCoordinateList=new ArrayList<>();
         // burası yüzünden  home-fav sorunu
        System.out.println(MyAccountFragment.clickMyAdv);
         try {
 
             if(FilterAdvFragment.applButton==true && MyFavoritesFragment.clickMyFav!=true){
-                System.out.println("Burayaa girdii 1111111");
+
                 sqlQuery= "SELECT * FROM  Advertisements  WHERE AdvStatus  = ? AND  (Price BETWEEN "+FilterAdvFragment.priceMin+" AND "+FilterAdvFragment.priceMax+ " )"
                         +" AND RoomNum = ? AND (SquareMeter BETWEEN "+FilterAdvFragment.squareMeterMin+" AND "+FilterAdvFragment.squareMeterMax+")"
                         +" AND (BuildingFloors BETWEEN "+FilterAdvFragment.buildingFloorsMin+" AND "+FilterAdvFragment.buildingFloorsMax+")"
@@ -144,26 +106,26 @@ public class HomeFragment extends Fragment {
             }
             else if(FilterAdvFragment.applButton!=true && MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==false && MyAccountFragment.clickMyAdv!=true &&  MyFavoritesFragment.clickMyFavDetail!=true)
             {
-                System.out.println("Burayaa girdii 2222222222");
+
                 sqlQuery="SELECT * FROM Advertisements";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }
             else if(MainActivity.incrPriceClick==true && MainActivity.decrsPriceClick==false)
             {
-                System.out.println("Burayaa girdii 33333333");
+
                 sqlQuery="SELECT * FROM Advertisements ORDER BY Price ASC";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }
             else if(MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==true)
             {
-                System.out.println("Burayaa girdii 4444444444");
+
                 sqlQuery="SELECT * FROM Advertisements ORDER BY Price DESC";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }
 
             int advTitleIndex = cursor.getColumnIndex("AdvTitle");
             int ImageIndex = cursor.getColumnIndex("AdvImage");
-            int priceIncex = cursor.getColumnIndex("Price");
+            int priceIndex = cursor.getColumnIndex("Price");
             int advStatusIndex = cursor.getColumnIndex("AdvStatus");
             int roomNumIndex = cursor.getColumnIndex("RoomNum");
             int squareMeterIndex = cursor.getColumnIndex("SquareMeter");
@@ -190,73 +152,42 @@ public class HomeFragment extends Fragment {
             int yCoordinateIndex = cursor.getColumnIndex("yCoordinate");
             int advIdIndex = cursor.getColumnIndex("AdvId");
             while (cursor.moveToNext()) {
-                advTitleList.add(cursor.getString(advTitleIndex));
-                advStatusList.add(cursor.getString(advStatusIndex));
-                roomNumList.add(cursor.getString(roomNumIndex));
-                warmTypeList.add(cursor.getString(warmTypeIndex));
-                elgForCreditList.add(cursor.getString(elgCreditIndex));
-                usingStatusList.add(cursor.getString(usingStatusIndex));
-                buildTypeList.add(cursor.getString(buildTypeIndex));
-                itemStatusList.add(cursor.getString(itemStatusIndex));
-                stateBuildingList.add(cursor.getString(stateBuildingIndex));
-                swapList.add(cursor.getString(swapIndex));
-                frontList.add(cursor.getString(frontIndex));
-                fuelTypeList.add(cursor.getString(fuelTypeIndex));
-                dateList.add(cursor.getString(dateIndex));
-                addressList.add(cursor.getString(addressIndex));
-                cityList.add(cursor.getString(cityIndex));
-                townList.add(cursor.getString(townIndex));
-                priceList.add(cursor.getInt(priceIncex));
-                squareMetersList.add(cursor.getInt(squareMeterIndex));
-                buildingFloorsList.add(cursor.getInt(buildingFloorsIndex));
-                floorLocList.add(cursor.getInt(floorLocIndex));
-                buildAgeList.add(cursor.getInt(buildAgeIndex));
-                numOfBathrList.add(cursor.getInt(numOfBathroomsIndex));
-                rentalIncomeList.add(cursor.getInt(rentalIncomeIndex));
-                duesList.add(cursor.getInt(duesIndex));
-                advIdList.add(cursor.getInt(advIdIndex));
+                Advertisement newAdv=new Advertisement();
+                newAdv.setAdvTitle(cursor.getString(advTitleIndex));
+                newAdv.setAdvStatus(cursor.getString(advStatusIndex));
+                newAdv.setRoomNum(cursor.getString(roomNumIndex));
+                newAdv.setWarmType(cursor.getString(warmTypeIndex));
+                newAdv.setElgForCredit(cursor.getString(elgCreditIndex));
+                newAdv.setUsingStatus(cursor.getString(usingStatusIndex));
+                newAdv.setBuildType(cursor.getString(buildTypeIndex));
+                newAdv.setItemStatus(cursor.getString(itemStatusIndex));
+                newAdv.setStateBuilding(cursor.getString(stateBuildingIndex));
+                newAdv.setSwap(cursor.getString(swapIndex));
+                newAdv.setFront(cursor.getString(frontIndex));
+                newAdv.setFuelType(cursor.getString(fuelTypeIndex));
+                newAdv.setDate(cursor.getString(dateIndex));
+                newAdv.setAddress(cursor.getString(addressIndex));
+                newAdv.setCity(cursor.getString(cityIndex));
+                newAdv.setTown(cursor.getString(townIndex));
+                newAdv.setPrice(cursor.getInt(priceIndex));
+                newAdv.setSquareMeters(cursor.getInt(squareMeterIndex));
+                newAdv.setBuildingFloors(cursor.getInt(buildingFloorsIndex));
+                newAdv.setFloorLoc(cursor.getInt(floorLocIndex));
+                newAdv.setBuildAge(cursor.getInt(buildAgeIndex));
+                newAdv.setNumOfBathr(cursor.getInt(numOfBathroomsIndex));
+                newAdv.setRentalIncome(cursor.getInt(rentalIncomeIndex));
+                newAdv.setDues(cursor.getInt(duesIndex));
+                newAdv.setAdvId(cursor.getInt(advIdIndex));
                 byte[] imageByte = cursor.getBlob(ImageIndex);
                 Bitmap imageAdv = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
-                ImageList.add(imageAdv);
-                xCoordinateList.add(cursor.getLong(xCoordinateIndex));
-                yCoordinateList.add(cursor.getLong(yCoordinateIndex));
+                newAdv.setAdvImage(imageAdv);
+                newAdv.setLatitude(cursor.getLong(xCoordinateIndex));
+                newAdv.setLongitude(cursor.getLong(yCoordinateIndex));
+               // System.out.println("asd "+newAdv.getAdvId());
+                adv.add(newAdv);
 
             }
             cursor.close();
-            for (int i = 0; i < advTitleList.size(); i++) {
-                Advertisement adv = new Advertisement();
-                adv.setAdvTitle(advTitleList.get(i));
-                adv.setAdvImage(ImageList.get(i));
-                adv.setPrice(priceList.get(i));
-                adv.setAdvStatus(advStatusList.get(i));
-                adv.setRoomNum(roomNumList.get(i));
-                adv.setSquareMeters(squareMetersList.get(i));
-                adv.setBuildingFloors(buildingFloorsList.get(i));
-                adv.setFloorLoc(floorLocList.get(i));
-                adv.setBuildAge(buildAgeList.get(i));
-                adv.setBuildType(buildTypeList.get(i));
-                adv.setItemStatus(itemStatusList.get(i));
-                adv.setWarmType(warmTypeList.get(i));
-                adv.setNumOfBathr(numOfBathrList.get(i));
-                adv.setElgForCredit(elgForCreditList.get(i));
-                adv.setUsingStatus(usingStatusList.get(i));
-                adv.setStateBuilding(stateBuildingList.get(i));
-                adv.setRentalIncome(rentalIncomeList.get(i));
-                adv.setDues(duesList.get(i));
-                adv.setSwap(swapList.get(i));
-                adv.setFront(frontList.get(i));
-                adv.setFuelType(fuelTypeList.get(i));
-                adv.setDate(dateList.get(i));
-                adv.setAddress(addressList.get(i));
-                adv.setCity(cityList.get(i));
-                adv.setTown(townList.get(i));
-                adv.setLatitude(xCoordinateList.get(i));
-                adv.setLongitude(yCoordinateList.get(i));
-                adv.setAdvId(advIdList.get(i));
-                advertisementList.add(adv);
-
-            }
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -265,6 +196,6 @@ public class HomeFragment extends Fragment {
         MainActivity.incrPriceClick=false;
         FilterAdvFragment.applButton=false;
         MyFavoritesFragment.clickMyFavDetail=false;
-        return advertisementList;
+        return adv;
     }
 }

@@ -36,7 +36,7 @@ public static Boolean clickAdvUpdate=false;
     public static String advTitle, advStatus, roomNum, warmType, elgForCredit, usingStatus, buildType, itemStatus, stateBuilding, swap, front, fuelType, date, address,city,town;
     public static int advId,price, squareMeters, buildingFloors, floorLoc, buildAge, numOfBathr, rentalIncome, dues;
 
-    public static long latitude,longitude;
+    public static double latitude,longitude;
 
     public MyAdvertisementAdapter(ArrayList<Advertisement> adv, Context context) {
         this.adv = adv; this.context = context;
@@ -58,7 +58,6 @@ public static Boolean clickAdvUpdate=false;
         holder.buttonViewOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 PopupMenu popup = new PopupMenu(context, holder.buttonViewOption);
                 popup.inflate(R.menu.option_myadv);
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -67,7 +66,6 @@ public static Boolean clickAdvUpdate=false;
                         if(menuItem.getItemId()==R.id.adv_update){
                             clickAdvUpdate=true;
                             advId=adv.get(pos).getAdvId();
-                            System.out.println(advId);
                             advTitle=adv.get(pos).getAdvTitle();
                             advStatus=adv.get(pos).getAdvStatus();
                             roomNum=adv.get(pos).getRoomNum();
@@ -92,8 +90,9 @@ public static Boolean clickAdvUpdate=false;
                             numOfBathr=adv.get(pos).getNumOfBathr();
                             rentalIncome=adv.get(pos).getRentalIncome();
                             dues=adv.get(pos).getDues();
+                            latitude=adv.get(pos).getLatitude();
+                            longitude=adv.get(pos).getLongitude();
                             selectedİmg=adv.get(pos).getAdvImage();
-                            // System.out.println();
                             replaceFragment(new MyAdvUpdateFragment());
                         }
                         else if(menuItem.getItemId()==R.id.delete_adv){
@@ -103,7 +102,6 @@ public static Boolean clickAdvUpdate=false;
                              sqlQuery="DELETE FROM UserAdvertisement WHERE AdvId = '"+deleteAdvId+"'";
                             MainActivity.db.execSQL(sqlQuery);
                             replaceFragment(new MyAdvertisementFragment());
-
                         }
                         return true;
                     }
@@ -113,19 +111,15 @@ public static Boolean clickAdvUpdate=false;
         });
     }
 
-
     @Override
     public int getItemCount() {
         return adv.size();
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         ImageView img;
         TextView titlee, addresss, pricee;
         public TextView buttonViewOption;
-
         public ViewHolder(View itemView) {
             super(itemView);
             img=itemView.findViewById(R.id.image);

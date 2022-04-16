@@ -84,12 +84,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         binding.navView.setOnItemSelectedListener(item -> {
-
             switch (item.getItemId()) {
                 case R.id.navigation_ar:
                     replaceFragment(new ARFragment());
                     break;
-
                 case R.id.navigation_addadvertisement:
                     navViewToolbar.setVisibility(View.INVISIBLE);
                     replaceFragment(new AddAdvFragment());
@@ -102,11 +100,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_notifications:
                     Intent intent=getIntent();
                     User user=(User)intent.getSerializableExtra("UserInformation");
-
                     if(user==null){
                         replaceFragment(new LoginFragment());
                     }
-
                     else{
                         replaceFragment(new MyAccountFragment());
                     }
@@ -128,9 +124,6 @@ public class MainActivity extends AppCompatActivity {
            return true;
         });
 
-
-
-        //  getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
     }
 
     private void replaceFragment(Fragment fragment){

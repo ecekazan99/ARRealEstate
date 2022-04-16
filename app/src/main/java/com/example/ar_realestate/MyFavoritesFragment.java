@@ -54,19 +54,13 @@ public class MyFavoritesFragment extends Fragment {
         clickMyFav=true;
         MainActivity.database.onCreate(MainActivity.db);
         db = MainActivity.database.getWritableDatabase();
-
         View view=inflater.inflate(R.layout.fragment_my_favorites,container,false);
         recyclerView=(RecyclerView) view.findViewById(R.id.recviewMyFavs);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-       // advAdapter=new AdvertisementAdapter(Advertisement.getData(getContext()),getContext());
         Cursor c1 = db.rawQuery("SELECT * FROM Favorite as fav, Advertisements as adv, UserAdvertisement as usAdv "+
                     " WHERE fav.AdvId=usAdv.AdvId AND fav.FavoriteStatus=1 AND fav.AdvId=adv.AdvId AND fav.UserId=?;",
                          new String[]{String.valueOf(user.getUserId())});
-
         adv=new ArrayList<>();
-
         int advTitleIndex = c1.getColumnIndex("AdvTitle");
         int ImageIndex = c1.getColumnIndex("AdvImage");
         int priceIndex = c1.getColumnIndex("Price");

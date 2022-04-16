@@ -57,7 +57,6 @@ public class MyAccountFragment extends Fragment {
 
             }
         });
-
         binding.myFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,10 +65,8 @@ public class MyAccountFragment extends Fragment {
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,new MyFavoritesFragment());
                 fragmentTransaction.commit();
-
             }
         });
-
         binding.exitAccount.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -81,18 +78,14 @@ public class MyAccountFragment extends Fragment {
                         User user=(User)intent.getSerializableExtra("UserInformation");
                         user=null;
                         intent.putExtra("UserInformation",user);
-                        //getActivity().startActivity(intent);
-
                         FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                         fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,new LoginFragment());
                         fragmentTransaction.commit();
                     }
                 }).setNegativeButton("No",null );
-
                 AlertDialog alert=builder.create();
                 alert.show();
-
             }
         });
        return binding.getRoot();

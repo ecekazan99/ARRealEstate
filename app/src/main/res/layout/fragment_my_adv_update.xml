@@ -36,6 +36,27 @@
                 android:baselineAligned="false"
                 android:onClick="selectImage"
                 tools:ignore="SpeakableTextPresentCheck" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/previous"
+                    android:layout_width="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="295dp"
+                    android:drawableBottom="@drawable/ic_action_previous" />
+
+                <Button
+                    android:id="@+id/next"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:drawableBottom="@drawable/ic_action_next" />
+            </LinearLayout>
 
 
             <LinearLayout
@@ -59,7 +80,7 @@
                     android:id="@+id/addAdv_editTextPrice"
                     android:layout_width="223dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/add_book_activity_imageViewBookImage"
+                    android:layout_below="@+id/addAdvImage"
                     android:layout_marginLeft="40dp"
                     android:background="@drawable/input_field"
                     android:hint="Price"
@@ -742,7 +763,6 @@
                     android:layout_height="60dp"
                     android:layout_marginBottom="30dp"
                     android:backgroundTint="@color/cardview_dark_background"
-                    android:enabled="false"
                     android:text="UPDATE"
                     android:textAlignment="center"
                     android:textAllCaps="false"

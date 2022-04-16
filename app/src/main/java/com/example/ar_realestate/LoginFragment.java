@@ -20,10 +20,8 @@ import com.example.ar_realestate.databinding.FragmentLoginBinding;
 public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
-
     private EditText inputUserMail, inputPassword;
     private Button buttonLogin;
-
     public LoginFragment() {
         // Required empty public constructor
     }
