@@ -10,12 +10,12 @@ import android.widget.Toast;
 
 public class Database extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME="RealEstate";
+    private static final String DATABASE_NAME="D:\\bitirme\\RealEstate.db";
     private static final int VERSION=1;
 
     public Database(Context c){
 
-        super(c, DATABASE_NAME, null, VERSION);
+        super(c, "D:\\bitirme\\RealEstate.db", null, VERSION);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
