@@ -12,18 +12,6 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_my_favorites.xml"
     },
     {
-<<<<<<< HEAD
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_action_filter.png.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\drawable-hdpi\\ic_action_filter.png"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_home.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_home.xml"
-    },
-    {
-        "merged": "D:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_my_adv_list.xml.flat",
-        "source": "D:\\bitirme\\ARRealEstate\\app\\src\\main\\res\\layout\\my_adv_list.xml"
-=======
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_previous.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-mdpi\\ic_action_previous.png"
     },
@@ -34,7 +22,6 @@
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_filter.png.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-mdpi\\ic_action_filter.png"
->>>>>>> 2c3a1bde66eed091dd6a55d6b7ad08ed9bc5bd99
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_my_advertisement.xml.flat",

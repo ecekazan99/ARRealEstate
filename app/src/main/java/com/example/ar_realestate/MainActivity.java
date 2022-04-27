@@ -1,7 +1,22 @@
 package com.example.ar_realestate;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Debug;
+import android.os.StrictMode;
+import android.util.Log;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Struct;
+import android.annotation.SuppressLint;
+import android.os.StrictMode;
+import android.util.Log;
+
+import java.sql.*;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.graphics.drawable.Drawable;
@@ -12,6 +27,8 @@ import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -20,8 +37,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.ar_realestate.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+import kotlin.Suppress;
+import kotlin.jvm.Strictfp;
 
+public class MainActivity extends AppCompatActivity {
+    public Connection con;
     static  public Database database;
     static public SQLiteDatabase db;
     private ActivityMainBinding binding;
@@ -38,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
+        connectionClass();
         try{
             database=new Database(this);
             db=database.getWritableDatabase();
@@ -74,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                             decrsPriceClick=true;
                             replaceFragment(new HomeFragment());
                         }
-                      return true;
+                        return true;
                     }
                 });
 
@@ -121,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.toolbar_Order:
 
             }
-           return true;
+            return true;
         });
 
     }
@@ -133,5 +153,32 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment);
         fragmentTransaction.commit();
     }
+    @SuppressLint("NewApi")
+    public Connection connectionClass(){
+        StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        Connection connection=null;
+        String connectionURL=null;
+
+        try {
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");
+
+            connectionURL=String.format("jdbc:jtds:sqlserver://realestate-ar.database.windows.net:1433;database=realestate-ar;user=ece.kazan@ogr.deu.edu.tr@realestate-ar;password=RealEstate99;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
+
+            connection=DriverManager.getConnection(connectionURL);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("Buraya girdi 222");
+        }
+        catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            System.out.println("Buraya girdi 1111");
+        }
+
+
+        return connection;
+    }
+
 
 }
