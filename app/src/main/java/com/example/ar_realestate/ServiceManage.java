@@ -36,19 +36,17 @@ public class ServiceManage {
             SoapObject response=(SoapObject) soapSerializationEnvelope.getResponse();
             for (int i=0;i<response.getPropertyCount();i++){
                 SoapObject responsePr=(SoapObject) response.getProperty(i);
-                /*System.out.println("AAAAAAAAAAAAAAAA"+responsePr.getProperty("AdvId"));
-                System.out.println("BBBBBBBBBBBBB    "+responsePr.getProperty("AdvId").toString());*/
-                int productId=Integer.parseInt(responsePr.getProperty("AdvId").toString());
-                String productName=responsePr.getProperty("AdvTitle").toString();
                 advertisement=new Advertisement();
-                advertisement.setAdvId(productId);
-                advertisement.setAdvTitle(productName);
+                advertisement.setAdvId(Integer.parseInt(responsePr.getProperty("AdvId").toString()));
+                advertisement.setAdvTitle(responsePr.getProperty("AdvTitle").toString());
+                advertisement.setPrice(Integer.parseInt(responsePr.getProperty("Price").toString()));
                 advertisementList.add(advertisement);
             }
         }catch (Exception e){
             e.printStackTrace();
 
         }
+        System.out.println(advertisementList);
         return advertisementList;
     }
 }

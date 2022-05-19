@@ -88,9 +88,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void run() {
                 advertisementList=serviceManage.getAdvertisement();
-                for(int i=0;i<advertisementList.size();i++){
-                    adv.add(advertisementList.get(i));
-                }
+                adv.addAll(advertisementList);
                 //System.out.println(advertisementList.get(0).getAdvTitle());
             }
         });
