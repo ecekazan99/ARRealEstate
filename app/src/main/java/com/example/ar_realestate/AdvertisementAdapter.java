@@ -33,7 +33,7 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
     }
     @Override
     public void onBindViewHolder(@NonNull myviewholder holder, int position) {
-        holder.img.setImageBitmap(adv.get(position).getAdvImage());
+       /* holder.img.setImageBitmap(adv.get(position).getAdvImage());*/
         holder.titlee.setText(adv.get(position).getAdvTitle());
         holder.addresss.setText(adv.get(position).getAddress());
         holder.pricee.setText(String.valueOf(adv.get(position).getPrice()));
@@ -48,7 +48,7 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
         LinearLayout clickDetail;
         public myviewholder (@NonNull View itemView){
             super(itemView);
-            img=itemView.findViewById(R.id.image);
+           /* img=itemView.findViewById(R.id.image);*/
             titlee=itemView.findViewById(R.id.title);
             addresss=itemView.findViewById(R.id.address);
             pricee=itemView.findViewById(R.id.price);

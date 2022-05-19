@@ -17,6 +17,8 @@ import android.os.StrictMode;
 import android.util.Log;
 
 import java.sql.*;
+import java.util.List;
+
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.graphics.drawable.Drawable;
@@ -50,15 +52,23 @@ public class MainActivity extends AppCompatActivity {
     static  public  BottomNavigationView navViewToolbar;
     static public Boolean incrPriceClick=false;
     static public Boolean decrsPriceClick=false;
+     static String server_address="193.140.150.95";
+     static String databaseName="realestate_ar";
+    static String userName="bitirme1";
+    static String password="realE2022";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        connectionClass();
+
         try{
             database=new Database(this);
             db=database.getWritableDatabase();
@@ -153,32 +163,5 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment);
         fragmentTransaction.commit();
     }
-    @SuppressLint("NewApi")
-    public Connection connectionClass(){
-        StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        Connection connection=null;
-        String connectionURL=null;
-
-        try {
-            Class.forName("net.sourceforge.jtds.jdbc.Driver");
-
-            connectionURL=String.format("jdbc:jtds:sqlserver://realestate-ar.database.windows.net:1433;database=realestate-ar;user=ece.kazan@ogr.deu.edu.tr@realestate-ar;password=RealEstate99;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
-
-            connection=DriverManager.getConnection(connectionURL);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("Buraya girdi 222");
-        }
-        catch (SQLException throwables)
-        {
-            throwables.printStackTrace();
-            System.out.println("Buraya girdi 1111");
-        }
-
-
-        return connection;
-    }
-
 
 }

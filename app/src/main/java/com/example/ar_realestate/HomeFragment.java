@@ -18,12 +18,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private AdvertisementAdapter advAdapter;
     static public AdvDetail advDetail;
-
+    private static List<Advertisement> advertisementList;
+    private static List<Advertisement> advTemp;
     RecyclerView recyclerView;
     static ArrayList<Advertisement> adv;
     public HomeFragment() {
@@ -81,10 +83,22 @@ public class HomeFragment extends Fragment {
         int count=0;
         Boolean flagMyAdv=false;
         adv=new ArrayList<>();
+        final ServiceManage serviceManage=new ServiceManage();
+        Thread thread=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                advertisementList=serviceManage.getAdvertisement();
+                for(int i=0;i<advertisementList.size();i++){
+                    adv.add(advertisementList.get(i));
+                }
+                //System.out.println(advertisementList.get(0).getAdvTitle());
+            }
+        });
+        thread.start();
 
         // burası yüzünden  home-fav sorunu
        System.out.println(MyAccountFragment.clickMyAdv);
-        try {
+       /* try {
 
             if(FilterAdvFragment.applButton==true && MyFavoritesFragment.clickMyFav!=true){
 
@@ -190,7 +204,7 @@ public class HomeFragment extends Fragment {
             cursor.close();
         }catch (Exception e){
             e.printStackTrace();
-        }
+        }*/
         MyAccountFragment.clickMyAdv=false;
         MainActivity.decrsPriceClick=false;
         MainActivity.incrPriceClick=false;

@@ -45,10 +45,10 @@ public class ARFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                PackageManager manager = getContext().getPackageManager();
+            /*    PackageManager manager = getContext().getPackageManager();
                 Intent intent = manager.getLaunchIntentForPackage("com.DefaultCompany.deneme16_gps");
                 intent.addCategory(Intent.CATEGORY_LAUNCHER);
-                startActivity(intent);
+                startActivity(intent);*/
 
             }
         });
