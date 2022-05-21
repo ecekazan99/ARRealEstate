@@ -1,12 +1,12 @@
-#Thu May 19 23:26:29 TRT 2022
+#Sat May 21 16:24:19 TRT 2022
 path.3=9/classes.dex
 path.2=15/classes.dex
 path.1=0/classes.dex
 path.0=classes.dex
-base.3=D\:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.2=D\:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
-base.1=D\:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.0=D\:\\bitirme\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.3=D\:\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
+base.2=D\:\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
+base.1=D\:\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.0=D\:\\ARRealEstate\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
