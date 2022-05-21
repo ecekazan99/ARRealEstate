@@ -89,11 +89,11 @@ public class HomeFragment extends Fragment {
             public void run() {
                 advertisementList=serviceManage.getAdvertisement();
                 adv.addAll(advertisementList);
-                //System.out.println(advertisementList.get(0).getAdvTitle());
+
             }
         });
         thread.start();
-
+        System.out.println("AAAA"+adv);
         // burası yüzünden  home-fav sorunu
        System.out.println(MyAccountFragment.clickMyAdv);
        /* try {
