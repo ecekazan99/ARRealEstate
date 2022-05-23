@@ -73,7 +73,7 @@ public class Database extends SQLiteOpenHelper {
         }
         return true;
     }
-
+/*
     public User loginUser(String email, String password){
         User user=null;
         try{
@@ -93,6 +93,8 @@ public class Database extends SQLiteOpenHelper {
         }
         return user;
     }
+
+ */
     public int updateUser(int id,String name, String surname, String email, String password, String newPassword){
 
         try{

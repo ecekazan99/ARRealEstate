@@ -19,7 +19,8 @@ public class ServiceManage {
     private static final String NAMESPACE="http://tempuri.org/";
     private static final String METHOD_NAME_GETPRODUCT="getAdvertisements";
     private static final String METHOD_NAME_LOGINUSER="loginUser";
-//    private static final String SOAP_ACTION_GETPRODUCT="http://tempuri.org/getAdvertisements";
+    private static final String METHOD_NAME_SIGNUPUSER="addNewUser";
+    private static final String METHOD_NAME_CHECKEMAILEXIST="checkEmailExist";
     private static final String URL="http://193.140.150.95/deuarSrv/WebService1.asmx";
 
     private SoapObject soapObject;
@@ -70,9 +71,62 @@ public class ServiceManage {
             user=null;
         }
 
-        System.out.println(user);
+        //System.out.println(user);
         return user;
     }
+
+    public void addNewUser(String userName, String userSurname, String mailAddress, String password){
+        soapObject=new SoapObject(NAMESPACE,METHOD_NAME_SIGNUPUSER);
+        soapObject.addProperty("userName", userName.toString());
+        soapObject.addProperty("userSurname", userSurname.toString());
+        soapObject.addProperty("mailAddress", mailAddress.toString());
+        soapObject.addProperty("password", password.toString());
+
+        soapSerializationEnvelope=new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        soapSerializationEnvelope.dotNet=true;
+        soapSerializationEnvelope.encodingStyle = "utf-8";
+        soapSerializationEnvelope.setOutputSoapObject(soapObject);
+
+        httpTransportSE=new HttpTransportSE(URL);
+        httpTransportSE.debug=true;
+
+        try{
+            httpTransportSE.call(NAMESPACE+METHOD_NAME_SIGNUPUSER,soapSerializationEnvelope);
+            SoapObject response=(SoapObject) soapSerializationEnvelope.getResponse();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public String checkEmailExist(String mailAddress){
+
+        String flag="false";
+        soapObject=new SoapObject(NAMESPACE,METHOD_NAME_CHECKEMAILEXIST);
+        soapObject.addProperty("mailAddress", mailAddress.toString());
+
+        soapSerializationEnvelope=new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        soapSerializationEnvelope.dotNet=true;
+        soapSerializationEnvelope.encodingStyle = "utf-8";
+        soapSerializationEnvelope.setOutputSoapObject(soapObject);
+
+        httpTransportSE=new HttpTransportSE(URL);
+        httpTransportSE.debug=true;
+
+        try{
+            httpTransportSE.call(NAMESPACE+METHOD_NAME_CHECKEMAILEXIST,soapSerializationEnvelope);
+            SoapObject response=(SoapObject) soapSerializationEnvelope.bodyIn;
+            flag= response.getProperty(0).toString();
+            // System.out.println("asdfghgfd  "+response.getProperty(0).toString());
+
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }
+
+        return flag;
+    }
+
     public List<Advertisement> getAdvertisement(){
         advertisement=new Advertisement();
         advertisementList=new ArrayList<>();
