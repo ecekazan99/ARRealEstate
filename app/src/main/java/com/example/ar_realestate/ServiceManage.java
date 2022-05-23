@@ -5,7 +5,9 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 
 import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
@@ -14,9 +16,10 @@ import java.util.List;
 
 public class ServiceManage {
 
-    private static final String NAMESPACE="http://tempuri.org";
+    private static final String NAMESPACE="http://tempuri.org/";
     private static final String METHOD_NAME_GETPRODUCT="getAdvertisements";
-    private static final String SOAP_ACTION_GETPRODUCT="http://tempuri.org/getAdvertisements";
+    private static final String METHOD_NAME_LOGINUSER="loginUser";
+//    private static final String SOAP_ACTION_GETPRODUCT="http://tempuri.org/getAdvertisements";
     private static final String URL="http://193.140.150.95/deuarSrv/WebService1.asmx";
 
     private SoapObject soapObject;
@@ -25,12 +28,50 @@ public class ServiceManage {
     public Advertisement advertisement;
     public List<Advertisement>advertisementList;
 
+    public User user;
+
     public static Bitmap convertStringToBitmap(String string) {
         byte[] byteArray1;
         byteArray1 = Base64.decode(string, Base64.DEFAULT);
         Bitmap bmp = BitmapFactory.decodeByteArray(byteArray1, 0,
                 byteArray1.length);
         return bmp;
+    }
+
+
+    public  User loginUser(String mailAddress, String password){
+        user=new User();
+        soapObject=new SoapObject(NAMESPACE,METHOD_NAME_LOGINUSER);
+        soapObject.addProperty("mailAddress", mailAddress.toString());
+        soapObject.addProperty("password", password.toString());
+
+        soapSerializationEnvelope=new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        soapSerializationEnvelope.dotNet=true;
+        soapSerializationEnvelope.encodingStyle = "utf-8";
+        soapSerializationEnvelope.setOutputSoapObject(soapObject);
+
+        httpTransportSE=new HttpTransportSE(URL);
+        httpTransportSE.debug=true;
+
+        try{
+            httpTransportSE.call(NAMESPACE+METHOD_NAME_LOGINUSER,soapSerializationEnvelope);
+            SoapObject response=(SoapObject) soapSerializationEnvelope.bodyIn;
+            SoapObject  responsePr = (SoapObject) response.getProperty(0);
+
+            user.setUserId(Integer.parseInt(responsePr.getProperty("UserId").toString()));
+            user.setUserName(responsePr.getProperty("UserName").toString());
+            user.setUserSurname(responsePr.getProperty("UserSurname").toString());
+            user.setMailAddress(responsePr.getProperty("MailAddress").toString());
+            user.setPassword(responsePr.getProperty("Password").toString());
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+            user=null;
+        }
+
+        System.out.println(user);
+        return user;
     }
     public List<Advertisement> getAdvertisement(){
         advertisement=new Advertisement();
@@ -43,7 +84,7 @@ public class ServiceManage {
         httpTransportSE.debug=true;
 
         try{
-            httpTransportSE.call(SOAP_ACTION_GETPRODUCT,soapSerializationEnvelope);
+            httpTransportSE.call(NAMESPACE+METHOD_NAME_GETPRODUCT,soapSerializationEnvelope);
             SoapObject response=(SoapObject) soapSerializationEnvelope.getResponse();
             for (int i=0;i<response.getPropertyCount();i++){
                 SoapObject responsePr=(SoapObject) response.getProperty(i);
@@ -93,7 +134,7 @@ public class ServiceManage {
             e.printStackTrace();
 
         }
-        System.out.println(advertisementList);
+        System.out.println("asdfgh"+advertisementList);
         return advertisementList;
     }
 }

@@ -16,12 +16,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ar_realestate.databinding.FragmentLoginBinding;
-
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment{
 
     private FragmentLoginBinding binding;
     private EditText inputUserMail, inputPassword;
     private Button buttonLogin;
+    public  User user;
     public LoginFragment() {
         // Required empty public constructor
     }
@@ -66,8 +66,16 @@ public class LoginFragment extends Fragment {
                     Database database=new Database(getContext());
                     String userMail=inputUserMail.getText().toString();
                     String userPassword=inputPassword.getText().toString();
-                    User user= database.loginUser(userMail,userPassword);
-
+                  /*  user= database.loginUser(userMail,userPassword);
+                   */
+                    final ServiceManage serviceManage=new ServiceManage();
+                    Thread thread=new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            user=serviceManage.loginUser(userMail, userPassword);
+                        }
+                    });
+                    thread.start();
                     if(user!=null){
                         Intent intent=new Intent(getActivity().getBaseContext(),MainActivity.class);
                         intent.putExtra("UserInformation",user);
@@ -83,4 +91,7 @@ public class LoginFragment extends Fragment {
 
         return binding.getRoot();
     }
+
+
+
 }
