@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: D./bitirme/ARRealEstate/app/build/libs/ksoap2-android-assembly-2.4-jar-with-dependencies.jar">
+  <library name="Gradle: D./ARRealEstate/app/build/libs/ksoap2-android-assembly-2.4-jar-with-dependencies.jar">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/app/build/libs/ksoap2-android-assembly-2.4-jar-with-dependencies.jar!/" />
     </CLASSES>

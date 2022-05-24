@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +45,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -66,7 +71,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     public static int imageCount=0;
     private ArrayList<Bitmap>imagesSelect;
     private ArrayList<Bitmap>imagesSmall;
-
+    public static  Date endDate;
     static public boolean add_Adv=false;
     static public AdvDetail advDetailLast;
 
@@ -395,7 +400,10 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         return binding.getRoot();
     }
     private String getTodayDate(){
-        return new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String strDate = sdf.format(c.getTime());
+        return strDate;
     }
     public boolean advInputControl(){
         Boolean checkEmpty =true;
@@ -452,7 +460,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         if(advInputControl()==true){
             try {
                 MainActivity.database.onCreate(MainActivity.db);
-                String sqlQuery="INSERT INTO Advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc" +
+               /* String sqlQuery="INSERT INTO Advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc" +
                         ",BuildAge,BuildType,ItemStatus,WarmType,NumOfBathrooms,ElgCredit,UsingStatus,StateBuilding,RentalIncome,Dues,Swap,Front," +
                         "FuelType,Date,Address,Cities,Town,xCoordinate,yCoordinate)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
@@ -483,7 +491,28 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 statement.bindString(25,town);
                 statement.bindDouble(26, latitude);
                 statement.bindDouble(27, longitude);
-                statement.execute();
+                statement.execute();*/
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date date = new Date(System.currentTimeMillis());
+                String infi = df.format(date);
+                System.out.println(date);
+
+                try {
+                    endDate = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(infi).getTime());
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                final ServiceManage serviceManage=new ServiceManage();
+                Thread thread=new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                      serviceManage.addAdvertisement(advTitle,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,stateBuilding,rentalIncome,dues,
+                                swap,front,fuelType,endDate,address,city,town,latitude,longitude);
+                    }
+                });
+                thread.start();
+
 
                 Object_Clear();
                 Toast.makeText(getActivity(),"Adding Advertisement Successful ",Toast.LENGTH_SHORT).show();
@@ -506,17 +535,26 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                     statementImg.bindString(2, String.valueOf(lastInsertedAdvId));
                     statementImg.execute();
                 }
-                String sqlQueryUserAdv="INSERT INTO UserAdvertisement (UserId,AdvId)VALUES(?,?);";
+
+                final ServiceManage serviceManageUserAdv=new ServiceManage();
+                Thread threadUserAdv=new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        serviceManageUserAdv.addUserAdvertisement(Integer.toString(userId),Integer.toString(advId));
+                    }
+                });
+                threadUserAdv.start();
+               /* String sqlQueryUserAdv="INSERT INTO UserAdvertisement (UserId,AdvId)VALUES(?,?);";
                 SQLiteStatement statementUserAdv = MainActivity.db.compileStatement(sqlQueryUserAdv);
                 statementUserAdv.bindString(1,String.valueOf(userId));
                 statementUserAdv.bindString(2,String.valueOf(advId));
-                statementUserAdv.execute();
+                statementUserAdv.execute();*/
 
                 if(add_Adv==true)
                 {
                     advDetailLast=new AdvDetail(advId,advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
                             buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,
-                            stateBuilding,rentalIncome,dues,swap,front,fuelType,date,address,city,town);
+                            stateBuilding,rentalIncome,dues,swap,front,fuelType,date.toString(),address,city,town);
 
                     replaceFragment(new AdvDetailFragment());
                 }
@@ -669,4 +707,11 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment);
         fragmentTransaction.commit();
     }
+    public static String formatDateTimeFromDate(String mDateFormat, Date date) {
+        if (date == null) {
+            return null;
+        }
+        return DateFormat.format(mDateFormat, date).toString();
+    }
+
 }
