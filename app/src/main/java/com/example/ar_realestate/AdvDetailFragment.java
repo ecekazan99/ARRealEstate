@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,17 +19,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.ar_realestate.databinding.FragmentAdvDetailBinding;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-public class AdvDetailFragment extends Fragment {
+public class AdvDetailFragment extends Fragment  implements OnMapReadyCallback {
 
+    GoogleMap mapAPI;
+    SupportMapFragment mapFragment;
     private FragmentAdvDetailBinding binding;
     static public SQLiteDatabase db;
     Button next,previous;
     private int position=0;
     private int count=0;
-
+    public float xCoordinateAdv;
+    public float yCoordinateAdv;
     private ImageView advImageView;
     private TextView txtAdvTitle, txtAdvPrice, txtAdvStatus, txtAdvRoomNum, txtSquareMeter,
             txtBuildingFloors, txtFloorLocation, txtBuildingAge, txtBuildingType, txtItemStatus, txtWarmType, txtNumOfBathr,
@@ -101,7 +112,6 @@ public class AdvDetailFragment extends Fragment {
             address=HomeFragment.advDetail.getAddress();
             city=HomeFragment.advDetail.getCity();
             town=HomeFragment.advDetail.getTown();
-
 
         }
         else if(AddAdvFragment.add_Adv==true && MyAdvertisementFragment.clickMyAdvDetail!=true &&MyFavoritesFragment.clickMyFavDetail==false){
@@ -191,6 +201,7 @@ public class AdvDetailFragment extends Fragment {
             city=MyFavoritesFragment.advDetail.getCity();
             town=MyFavoritesFragment.advDetail.getTown();
         }
+
         MyAdvertisementFragment.clickMyAdvDetail=false;
         MyAdvertisementAdapter.clickAdvUpdate=false;
         AddAdvFragment.add_Adv=false;
@@ -208,6 +219,8 @@ public class AdvDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentAdvDetailBinding.inflate(inflater, container, false);
         init();
+        mapFragment=(SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_map);
+        mapFragment.getMapAsync(this);
         ArrayList<Bitmap>images=new ArrayList<>();
         String sqlQuery="SELECT * FROM AdvertisementImage WHERE AdvId = '"+advId+"'";
         Cursor imageCursor=MainActivity.db.rawQuery(sqlQuery,null);
@@ -326,4 +339,28 @@ public class AdvDetailFragment extends Fragment {
 
     }
 
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+
+
+        String sqlQuery="SELECT * FROM Advertisements WHERE AdvId = '"+advId+"'";
+        Cursor cursor=MainActivity.db.rawQuery(sqlQuery,null);
+        int xCoordinateIndex = cursor.getColumnIndex("xCoordinate");
+        int yCoordinateIndex = cursor.getColumnIndex("yCoordinate");
+
+       while (cursor.moveToNext()) {
+
+System.out.println(cursor.getFloat(xCoordinateIndex));
+           System.out.println(cursor.getString(xCoordinateIndex));
+           xCoordinateAdv= cursor.getFloat(xCoordinateIndex);
+           yCoordinateAdv= cursor.getFloat(yCoordinateIndex);
+        }
+        mapAPI=googleMap;
+        System.out.println(xCoordinateAdv+":"+yCoordinateAdv+"==>"+advId);
+        LatLng advCoordinate=new LatLng(xCoordinateAdv,yCoordinateAdv);
+        mapAPI.addMarker(new MarkerOptions().position(advCoordinate).title(advTitle));
+        mapAPI.moveCamera(CameraUpdateFactory.newLatLng(advCoordinate));
+
+
+    }
 }

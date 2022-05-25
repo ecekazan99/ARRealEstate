@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="375dp"
-            android:layout_height="1295dp"
+            android:layout_height="1575dp"
             android:layout_centerInParent="true"
             android:orientation="vertical">
 
@@ -707,6 +707,20 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="380dp"
+                android:layout_height="320dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <fragment
+                    android:id="@+id/google_map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    class="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -717,6 +731,7 @@
                 android:paddingRight="25dp">
 
             </LinearLayout>
+
 
 
         </LinearLayout>

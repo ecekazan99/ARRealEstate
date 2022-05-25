@@ -4,12 +4,12 @@
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\drawable-anydpi\\ic_action_fav.xml"
     },
     {
-        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_my_favorites.xml.flat",
         "source": "D:\\ARRealEstate\\app\\src\\main\\res\\layout\\fragment_my_favorites.xml"
+    },
+    {
+        "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "D:\\ARRealEstate\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
         "merged": "D:\\ARRealEstate\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_action_previous.png.flat",
