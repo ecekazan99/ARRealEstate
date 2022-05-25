@@ -6,15 +6,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
+import android.os.Environment;
 import android.widget.Toast;
 
 public class Database extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME="RealEstate.db";
+    private static final String DATABASE_NAME="RealEstate";
     private static final int VERSION=1;
     public Database(Context c){
 
-        super(c, "RealEstate.db", null, VERSION);
+        super(c, DATABASE_NAME, null, VERSION);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -23,7 +24,7 @@ public class Database extends SQLiteOpenHelper {
                 "AdvImage BLOB,Price INTEGER,AdvStatus TEXT,RoomNum TEXT,SquareMeter INTEGER,BuildingFloors INTEGER," +
                 "FloorLoc INTEGER,BuildAge INTEGER,BuildType TEXT,ItemStatus TEXT,WarmType TEXT,NumOfBathrooms INTEGER," +
                 "ElgCredit TEXT,UsingStatus TEXT,StateBuilding TEXT,RentalIncome INTEGER,Dues INTEGER,Swap TEXT,Front TEXT," +
-                "FuelType TEXT,Date TEXT,Address TEXT,Cities TEXT,Town REAL,xCoordinate TEXT,yCoordinate REAL );");
+                "FuelType TEXT,Date TEXT,Address TEXT,Cities TEXT,Town TEXT,xCoordinate REAL,yCoordinate REAL );");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS  AdvertisementImage( ImageId  INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "advImage  BLOB, AdvId INTEGER,  FOREIGN KEY (AdvId) REFERENCES Advertisements(AdvId));");
@@ -113,7 +114,6 @@ public class Database extends SQLiteOpenHelper {
         }
         return 1;
     }
-
     public int updateMyAdv(int advId, String advTitle, byte[]  advImage, int price, String advStatus, String roomNum,
                            int squareMeter, int buildingFloors, int floorLoc,int buildAge,String buildType,String itemStatus,
                            String warmTpe,int numOfBathrooms,String elgCredit, String usingStatus,String stateBuilding,
@@ -157,6 +157,7 @@ public class Database extends SQLiteOpenHelper {
         }
         return 1;
     }
+
     public boolean checkAdvTitleExist(String advTitle){
         try{
             SQLiteDatabase sqLiteDatabase=getReadableDatabase();

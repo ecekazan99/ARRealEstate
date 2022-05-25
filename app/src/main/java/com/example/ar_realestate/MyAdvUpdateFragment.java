@@ -32,6 +32,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.ar_realestate.databinding.FragmentMyAdvUpdateBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -56,6 +57,7 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
             editTxtRentalIncome,editTxtDues,editTxtAddress;
     private ImageView imageAdv;
     private Bitmap selectedİmg,smallestedImg,firstImage,firstSelectedImage;
+    public static byte[] tempImage;
     ArrayList<Uri> mArrayUri;
     ArrayList<Integer>advIdImages=new ArrayList<>();// for images
     ArrayList<Integer>imagesId=new ArrayList<>();
@@ -80,7 +82,7 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
     public static int cityId;
     public static String[] cities=new String[81];
     public static ArrayList<String> districties=new ArrayList<>();
-
+    int flagImage=0;
     public MyAdvUpdateFragment() {
         // Required empty public constructor
     }
@@ -132,7 +134,7 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                     position++;
                     imageAdv.setImageURI(mArrayUri.get(position));
                 }
-               else  if(position<(count-1) && flag==false){
+                else  if(position<(count-1) && flag==false){
                     position++;
                     binding.addAdvImage.setImageBitmap(images.get(position));
                 }
@@ -161,11 +163,7 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                 Database database=new Database(getContext());
                 try {
                     advTitle=editTxtTitle.getText().toString();
-                    txtViewDate=(TextView) binding.addAdvEditTextDate;
-                    txtViewDate=(TextView) binding.addAdvEditTextDate;
-                    txtViewDate.setText(getTodayDate());
-                    txtViewDate.setText(getTodayDate());
-                    date=txtViewDate.toString();
+                    date=getTodayDate();
                     address=editTxtAddress.getText().toString();
                     price= Integer.parseInt( editTxtPrice.getText().toString());
                     squareMeters=Integer.parseInt(editTxtSquareMt.getText().toString());
@@ -195,20 +193,53 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                 if(selectedİmg==null)
                 {
                     System.out.println("There is not image");
-                    selectedİmg=MyAdvertisementAdapter.selectedİmg;
+                    flagImage=1;
+                    /*selectedİmg=MyAdvertisementAdapter.selectedİmg;
+                    System.out.println("11111111111111111");
+                    smallestedImg=imageSmall(selectedİmg);
+                    System.out.println("2222222222222222");
+                    smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStream);
+                    System.out.println("333333333");*/
+
+                    for (int b=0;b<imagesId.size();b++){
+                        ByteArrayOutputStream outputStreamOld = new ByteArrayOutputStream();
+                        smallestedImg = imageSmall(images.get(b));
+                        smallestedImg.compress(Bitmap.CompressFormat.PNG, 75, outputStreamOld);
+                        byte[] Images = outputStreamOld.toByteArray();
+                        tempImage = Images;
+                        updateAdvImages = database.updateMyAdvImages(imagesId.get(b), tempImage, advIdImages.get(0));
+
+                    }
+                    /*
+                    String sqlQuery="SELECT * FROM AdvertisementImage WHERE AdvId = '"+MyAdvertisementAdapter.advId+"'";
+                    Cursor imageCursor=MainActivity.db.rawQuery(sqlQuery,null);
+                    int indexImage=imageCursor.getColumnIndex("advImage");
+                    int indexImageId=imageCursor.getColumnIndex("ImageId");
+                    int indexAdvId=imageCursor.getColumnIndex("AdvId");
+                    while (imageCursor.moveToNext()){
+                        count++;
+                        advIdImages.add(Integer.parseInt(imageCursor.getString(indexAdvId)));
+                        imagesId.add(Integer.parseInt(imageCursor.getString(indexImageId)));
+                        byte[] imageByte = imageCursor.getBlob(indexImage);
+                        Bitmap imageAdv = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
+                        images.add(imageAdv);
+                    }
+                    binding.addAdvImage.setImageBitmap(images.get(position));*/
+
                 }
-                for(int a=0;a<imagesSelect.size();a++)
-                {
-                    ByteArrayOutputStream outputStreamMulti =new ByteArrayOutputStream();
-                    smallestedImg=imageSmall(imagesSelect.get(a));
-                    smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStreamMulti);
-                    byte[] ImageMulti=outputStreamMulti.toByteArray();
-                    updateAdvImages=database.updateMyAdvImages(imagesId.get(a),ImageMulti,advIdImages.get(0));
+                if (flagImage==0) {
+                    for (int a = 0; a < imagesSelect.size(); a++) {
+                        System.out.println("111111   " + imagesSelect.size());
+                        ByteArrayOutputStream outputStreamMulti = new ByteArrayOutputStream();
+                        smallestedImg = imageSmall(imagesSelect.get(a));
+                        smallestedImg.compress(Bitmap.CompressFormat.PNG, 75, outputStreamMulti);
+                        byte[] ImageMulti = outputStreamMulti.toByteArray();
+                        tempImage = ImageMulti;
+                        updateAdvImages = database.updateMyAdvImages(imagesId.get(a), tempImage, advIdImages.get(0));
+
+                    }
                 }
-                smallestedImg=imageSmall(firstSelectedImage);
-                smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStream);
-                byte[] Image=outputStream.toByteArray();
-                updateAdv=database.updateMyAdv(advId,advTitle,Image,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
+                updateAdv=database.updateMyAdv(advId,advTitle,tempImage,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
                         buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,stateBuilding,rentalIncome,dues,
                         swap,front,fuelType,date,address,city,town,latitude,longitude);
 
@@ -218,7 +249,7 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                         builder.setMessage("Are you sure?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                               MyAccountFragment accountFragment = new MyAccountFragment();
+                                MyAccountFragment accountFragment = new MyAccountFragment();
                                 FragmentManager fragmentManager = getFragmentManager();
                                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                                 fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, accountFragment);
@@ -226,8 +257,8 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                             }
                         }).setNegativeButton("No", null);
 
-                    AlertDialog alert=builder.create();
-                    alert.show();
+                        AlertDialog alert=builder.create();
+                        alert.show();
                     }
                 }
             }
@@ -422,7 +453,7 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
         spinnerFront=(Spinner)binding.addAdvSpinnerFront;
         spinnerFuelType=(Spinner)binding.addAdvSpinnerFuelType;
         txtViewDate=(TextView) binding.addAdvEditTextDate;
-        txtViewDate.setText(getTodayDate());
+        txtViewDate.setText(AddAdvFragment.date);
         editTxtAddress=(EditText)binding.addAdvEditTextAddress;
         spinnerCity=(Spinner)binding.addAdvSpinnerCity;
         spinnerTown=(Spinner)binding.addAdvSpinnerTown;
@@ -431,8 +462,7 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
         Calendar c = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String strDate = sdf.format(c.getTime());
-        return strDate;
-    }
+        return strDate; }
     public boolean advControl(){
 
         Boolean checkEmpty =true;
@@ -481,38 +511,34 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         int count=0;
-        if(requestCode==imgPermissionCod){
-            if(resultCode==-1 && data !=null){
+        if(requestCode==imgPermissionCod) {
+            if (resultCode == -1 && data != null) {
                 try {
-                    Uri imgUrl=data.getData();
+                    Uri imgUrl = data.getData();
 
-                    if(data.getClipData()!=null){
+                    if (data.getClipData() != null) {
                         count = data.getClipData().getItemCount();
                         for (int i = 0; i < count; i++) {
                             Uri imageUri = data.getClipData().getItemAt(i).getUri();
                             mArrayUri.add(imageUri);
                         }
                         for (int j = 0; j < mArrayUri.size(); j++) {
-                            if(Build.VERSION.SDK_INT>=28)
-                            {
-                                ImageDecoder.Source imgSource=ImageDecoder.createSource(getActivity().getContentResolver(),mArrayUri.get(j));
+                            if (Build.VERSION.SDK_INT >= 28) {
+                                ImageDecoder.Source imgSource = ImageDecoder.createSource(getActivity().getContentResolver(), mArrayUri.get(j));
                                 imagesSelect.add(ImageDecoder.decodeBitmap(imgSource));
-                            }
-                            else
-                            {
+                            } else {
                                 imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), mArrayUri.get(j)));
                             }
                             firstSelectedImage = imagesSelect.get(0);
-                            selectedİmg=imagesSelect.get(j);
+                            selectedİmg = imagesSelect.get(j);
                             imageAdv.setImageBitmap(selectedİmg);
                             imageCount++;
 
                         }
-                    }
-                    else if(data.getClipData()==null) {
-                        imageCount=1;
-                        imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imgUrl));
-                        selectedİmg= imagesSelect.get(0);
+                    } else if (data.getClipData() == null) {
+                        imageCount = 1;
+                        imagesSelect.add(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imgUrl));
+                        selectedİmg = imagesSelect.get(0);
                         firstSelectedImage = imagesSelect.get(0);
                         imageAdv.setImageBitmap(selectedİmg);
                     }

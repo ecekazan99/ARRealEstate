@@ -1,25 +1,19 @@
 package com.example.ar_realestate;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class MyAdvertisementFragment extends Fragment {
     public static MyAdvertisementAdapter advAdapter;
@@ -29,7 +23,6 @@ public class MyAdvertisementFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
     static ArrayList<Advertisement> adv;
-    private static List<Advertisement> advertisementList;
     public static Boolean clickMyAdvDetail=false;
 
     public MyAdvertisementFragment() {
@@ -78,25 +71,13 @@ public class MyAdvertisementFragment extends Fragment {
         fragmentTransaction.commit();
     }
     static public ArrayList<Advertisement> getData(Context context){
-
         String sqlQuery="";
         Cursor cursor = null;
         int count=0;
         Boolean flagMyAdv=false;
         adv=new ArrayList<>();
-        /*final ServiceManage serviceManage=new ServiceManage();
-        Thread thread=new Thread(new Runnable() {
-            @Override
-            public void run() {
-                advertisementList=serviceManage.getMyAdvertisement(34);
-                adv.addAll(advertisementList);
-
-            }
-        });
-        thread.start();*/
-
-         try {
-             if (MyAccountFragment.clickMyAdv == true) {
+        try {
+            if (MyAccountFragment.clickMyAdv == true) {
                 flagMyAdv = true;
                 sqlQuery = "SELECT AdvId FROM UserAdvertisement WHERE UserId= ?";
                 cursor = MainActivity.db.rawQuery(sqlQuery, new String[]{String.valueOf(MyAccountFragment.userMyId)});

@@ -72,7 +72,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     private Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType,spinnerItemStatus,spinnerWarmType,spinnerElgbCredit,spinnerUsingStatus, spinnerStateOfBuilding,spinnerSwap,spinnerFront,spinnerFuelType,spinnerCity,spinnerTown;
     private int imgNoPermissionCod=0,imgPermissionCod=1;
 
-    String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
+    public static String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
     int price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
     Double latitude;
     Double longitude;
@@ -578,7 +578,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 try {
                     Uri imgUrl=data.getData();
 
-                    if(data.getClipData()!=null){
+                    if(data.getClipData()!=null)
+                    {
                         count = data.getClipData().getItemCount();
                         for (int i = 0; i < count; i++) {
                             Uri imageUri = data.getClipData().getItemAt(i).getUri();

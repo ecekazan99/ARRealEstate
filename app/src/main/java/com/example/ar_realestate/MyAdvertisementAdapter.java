@@ -1,22 +1,32 @@
 package com.example.ar_realestate;
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by Belal on 29/09/16.
+ */
 
 public class MyAdvertisementAdapter extends RecyclerView.Adapter<MyAdvertisementAdapter.ViewHolder> {
-public static Boolean clickAdvUpdate=false;
+    public static Boolean clickAdvUpdate=false;
     ArrayList<Advertisement> adv;
     private Context context;
     private OnItemClickListener listener;
@@ -44,7 +54,7 @@ public static Boolean clickAdvUpdate=false;
         holder.titlee.setText(adv.get(position).getAdvTitle());
         holder.addresss.setText(adv.get(position).getAddress());
         holder.pricee.setText(String.valueOf(adv.get(position).getPrice()));
-       int pos=position;
+        int pos=position;
         holder.buttonViewOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,9 +97,9 @@ public static Boolean clickAdvUpdate=false;
                         }
                         else if(menuItem.getItemId()==R.id.delete_adv){
                             int deleteAdvId=adv.get(pos).getAdvId();
-                           String sqlQuery ="DELETE FROM Advertisements WHERE AdvId = '"+deleteAdvId+"'";
+                            String sqlQuery ="DELETE FROM Advertisements WHERE AdvId = '"+deleteAdvId+"'";
                             MainActivity.db.execSQL(sqlQuery);
-                             sqlQuery="DELETE FROM UserAdvertisement WHERE AdvId = '"+deleteAdvId+"'";
+                            sqlQuery="DELETE FROM UserAdvertisement WHERE AdvId = '"+deleteAdvId+"'";
                             MainActivity.db.execSQL(sqlQuery);
                             replaceFragment(new MyAdvertisementFragment());
                         }
