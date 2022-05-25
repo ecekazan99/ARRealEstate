@@ -32,56 +32,47 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.027"
-            android:layout_marginBottom="30dp"/>
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="40dp"/>
 
         <Button
             android:id="@+id/myInfo"
             android:layout_width="350dp"
-            android:layout_height="52dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
             android:backgroundTint="@color/cardview_dark_background"
             android:text="MY INFORMATIONS"
-            android:textSize="18dp"
-            android:layout_marginBottom="25dp"/>
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/myAdv"
             android:layout_width="350dp"
-            android:layout_height="52dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/cardview_dark_background"
             android:text="MY ADVERTISEMENTS"
-            android:textSize="18dp"
-            android:layout_marginBottom="25dp"/>
+            android:textSize="20dp"
+            android:layout_marginBottom="35dp"/>
 
         <Button
             android:id="@+id/myFav"
             android:layout_width="350dp"
-            android:layout_height="52dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/cardview_dark_background"
             android:text="MY FAVORITES"
-            android:textSize="18dp"
-            android:layout_marginBottom="25dp"/>
-
-        <Button
-            android:id="@+id/mySpecialAdv"
-            android:layout_width="350dp"
-            android:layout_height="52dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/cardview_dark_background"
-            android:text="MY SPECIAL ADVERTISEMENTS"
-            android:textSize="18dp"
-            android:layout_marginBottom="25dp"/>
+            android:textSize="20dp"
+            android:layout_marginBottom="35dp"/>
 
         <Button
             android:id="@+id/exitAccount"
             android:layout_width="350dp"
-            android:layout_height="52dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/cardview_dark_background"
             android:text="EXIT ACCOUNT"
-            android:textSize="18dp"/>
+            android:textSize="20dp" />
 
     </LinearLayout>
 
