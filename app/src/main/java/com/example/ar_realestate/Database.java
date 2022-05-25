@@ -59,6 +59,21 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS UserPastAdvertisement;");
         onCreate(db);
     }
+/*
+    public boolean checkUserEmail(String email, int userId){
+        try{
+            SQLiteDatabase sqLiteDatabase=getReadableDatabase();
+            Cursor cursor=sqLiteDatabase.rawQuery("SELECT * FROM UserInformation " +
+                    "WHERE MailAddress = ? AND UserId = ?",new String[]{email,String.valueOf(userId)});
+
+            if(cursor.moveToFirst()){
+                return false;
+            }
+        }catch (Exception e){
+            return true;
+        }
+        return true;
+    }
 
     public boolean checkEmailExist(String email){
         try{
@@ -74,6 +89,8 @@ public class Database extends SQLiteOpenHelper {
         }
         return true;
     }
+
+ */
 
     public User loginUser(String email, String password){
         User user=null;
@@ -95,7 +112,7 @@ public class Database extends SQLiteOpenHelper {
         return user;
     }
 
-    public int updateUser(int id,String name, String surname, String email, String password, String newPassword){
+    public int updateUser(int id,String name, String surname, String email, String newPassword){
 
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -104,7 +121,7 @@ public class Database extends SQLiteOpenHelper {
             values.put("UserName",name);
             values.put("UserSurname",surname);
             values.put("MailAddress",email);
-            values.put("Password",password);
+            values.put("Password",newPassword);
 
             db.update("UserInformation", values, "UserId=?", new String[]{String.valueOf(id)});
             db.close();

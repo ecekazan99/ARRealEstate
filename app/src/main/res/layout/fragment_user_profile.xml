@@ -141,6 +141,9 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:ems="10"
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:focusable="false"
                 android:inputType="textEmailAddress" />
         </LinearLayout>
 

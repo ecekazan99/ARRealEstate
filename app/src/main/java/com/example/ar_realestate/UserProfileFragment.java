@@ -73,10 +73,7 @@ public class UserProfileFragment extends Fragment {
 
                     Database database=new Database(getContext());
 
-                    if(!database.checkEmailExist(inputUserMail.getText().toString())){
-                        Toast.makeText(getActivity(), "You cannot use this e-mail address !!", Toast.LENGTH_SHORT).show();
-                    }
-                    else if(inputPassword.getText().toString().equals(userPassword)){
+                    if(inputPassword.getText().toString().equals(userPassword)){
                         int updateUserInfo=0;
                         String tempPassword="";
                         int temp=0;
@@ -91,7 +88,7 @@ public class UserProfileFragment extends Fragment {
                         }
 
                         updateUserInfo= database.updateUser(userId,inputUserName.getText().toString(),inputUserSurname.getText().toString(),
-                                inputUserMail.getText().toString(),inputPassword.getText().toString(),tempPassword);
+                                inputUserMail.getText().toString(),tempPassword);
 
                         if(updateUserInfo==1&&temp==0){
                             AlertDialog.Builder builder=new AlertDialog.Builder(getContext());

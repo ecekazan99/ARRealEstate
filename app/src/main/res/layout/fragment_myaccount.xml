@@ -32,15 +32,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.027"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="40dp"/>
 
         <Button
             android:id="@+id/myInfo"
             android:layout_width="350dp"
-            android:layout_height="70dp"
+            android:layout_height="65dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="30dp"
             android:backgroundTint="@color/cardview_dark_background"
             android:text="MY INFORMATIONS"
             android:textSize="20dp" />
@@ -48,27 +48,27 @@
         <Button
             android:id="@+id/myAdv"
             android:layout_width="350dp"
-            android:layout_height="70dp"
+            android:layout_height="65dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/cardview_dark_background"
             android:text="MY ADVERTISEMENTS"
             android:textSize="20dp"
-            android:layout_marginBottom="35dp"/>
+            android:layout_marginBottom="30dp"/>
 
         <Button
             android:id="@+id/myFav"
             android:layout_width="350dp"
-            android:layout_height="70dp"
+            android:layout_height="65dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/cardview_dark_background"
             android:text="MY FAVORITES"
             android:textSize="20dp"
-            android:layout_marginBottom="35dp"/>
+            android:layout_marginBottom="30dp"/>
 
         <Button
             android:id="@+id/exitAccount"
             android:layout_width="350dp"
-            android:layout_height="70dp"
+            android:layout_height="65dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/cardview_dark_background"
             android:text="EXIT ACCOUNT"
