@@ -72,7 +72,7 @@ public class SignUpFragment extends Fragment {
                 if(controlUserInfo(userName.getText().toString(),userSurname.getText().toString(),userMail.getText().toString(),
                         userPassword.getText().toString())){
                     MainActivity.database.onCreate(MainActivity.db);
-                    /*
+
                     String sqlQuery="INSERT INTO UserInformation (UserName, UserSurname, MailAddress, Password) VALUES(?,?,?,?);";
                     SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
                     statement.bindString(1,userName.getText().toString());
@@ -81,15 +81,6 @@ public class SignUpFragment extends Fragment {
                     statement.bindString(4,userPassword.getText().toString());
                     statement.execute();
 
-                     */
-                    final ServiceManage serviceManage=new ServiceManage();
-                    Thread thread=new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            serviceManage.addNewUser(userName.getText().toString(),userSurname.getText().toString(), userMail.getText().toString(), userPassword.getText().toString());
-                        }
-                    });
-                    thread.start();
 
                     Toast.makeText(getActivity(), "Registration Successful !!",
                             Toast.LENGTH_LONG).show();
@@ -122,15 +113,6 @@ public class SignUpFragment extends Fragment {
         }
 
         final String[] flag = {"true"};
-
-        final ServiceManage serviceManage=new ServiceManage();
-        Thread thread=new Thread(new Runnable() {
-            @Override
-            public void run() {
-                flag[0] =serviceManage.checkEmailExist(userMail);
-            }
-        });
-        thread.start();
 
         if(flag[0]=="false"){
             Toast.makeText(getActivity(), "You cannot use this e-mail address !!", Toast.LENGTH_SHORT).show();

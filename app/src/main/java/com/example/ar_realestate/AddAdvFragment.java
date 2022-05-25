@@ -10,7 +10,6 @@ import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -18,10 +17,9 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.text.format.DateFormat;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,24 +33,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ar_realestate.databinding.FragmentAddAdvBinding;
-import com.example.ar_realestate.databinding.FragmentFilterAdvBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
+
 
 
 public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
@@ -460,7 +454,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         if(advInputControl()==true){
             try {
                 MainActivity.database.onCreate(MainActivity.db);
-               /* String sqlQuery="INSERT INTO Advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc" +
+                String sqlQuery="INSERT INTO Advertisements (AdvTitle,AdvImage,Price,AdvStatus,RoomNum,SquareMeter,BuildingFloors,FloorLoc" +
                         ",BuildAge,BuildType,ItemStatus,WarmType,NumOfBathrooms,ElgCredit,UsingStatus,StateBuilding,RentalIncome,Dues,Swap,Front," +
                         "FuelType,Date,Address,Cities,Town,xCoordinate,yCoordinate)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 SQLiteStatement statement = MainActivity.db.compileStatement(sqlQuery);
@@ -491,7 +485,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 statement.bindString(25,town);
                 statement.bindDouble(26, latitude);
                 statement.bindDouble(27, longitude);
-                statement.execute();*/
+                statement.execute();
+
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = new Date(System.currentTimeMillis());
                 String infi = df.format(date);
@@ -524,6 +519,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 }
                 c.close();
                 advId=lastInsertedAdvId;
+                System.out.println(lastInsertedAdvId);
                 for (int i=0;i<imageCount;i++) {
                     ByteArrayOutputStream outputStreamMulti =new ByteArrayOutputStream();
                     smallestedImg=imageSmall(imagesSelect.get(i));
@@ -536,19 +532,11 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                     statementImg.execute();
                 }
 
-                final ServiceManage serviceManageUserAdv=new ServiceManage();
-                Thread threadUserAdv=new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        serviceManageUserAdv.addUserAdvertisement(Integer.toString(userId),Integer.toString(advId));
-                    }
-                });
-                threadUserAdv.start();
-               /* String sqlQueryUserAdv="INSERT INTO UserAdvertisement (UserId,AdvId)VALUES(?,?);";
+               String sqlQueryUserAdv="INSERT INTO UserAdvertisement (UserId,AdvId)VALUES(?,?);";
                 SQLiteStatement statementUserAdv = MainActivity.db.compileStatement(sqlQueryUserAdv);
                 statementUserAdv.bindString(1,String.valueOf(userId));
                 statementUserAdv.bindString(2,String.valueOf(advId));
-                statementUserAdv.execute();*/
+                statementUserAdv.execute();
 
                 if(add_Adv==true)
                 {
@@ -707,11 +695,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment);
         fragmentTransaction.commit();
     }
-    public static String formatDateTimeFromDate(String mDateFormat, Date date) {
-        if (date == null) {
-            return null;
-        }
-        return DateFormat.format(mDateFormat, date).toString();
-    }
+
 
 }

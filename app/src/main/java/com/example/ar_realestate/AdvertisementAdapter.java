@@ -1,15 +1,13 @@
 package com.example.ar_realestate;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,7 +31,7 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
     }
     @Override
     public void onBindViewHolder(@NonNull myviewholder holder, int position) {
-       /* holder.img.setImageBitmap(adv.get(position).getAdvImage());*/
+       holder.img.setImageBitmap(adv.get(position).getAdvImage());
         holder.titlee.setText(adv.get(position).getAdvTitle());
         holder.addresss.setText(adv.get(position).getAddress());
         holder.pricee.setText(String.valueOf(adv.get(position).getPrice()));
@@ -48,7 +46,7 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
         LinearLayout clickDetail;
         public myviewholder (@NonNull View itemView){
             super(itemView);
-           /* img=itemView.findViewById(R.id.image);*/
+            img=itemView.findViewById(R.id.image);
             titlee=itemView.findViewById(R.id.title);
             addresss=itemView.findViewById(R.id.address);
             pricee=itemView.findViewById(R.id.price);

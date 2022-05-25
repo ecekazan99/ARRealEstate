@@ -83,7 +83,7 @@ public class HomeFragment extends Fragment {
         int count=0;
         Boolean flagMyAdv=false;
         adv=new ArrayList<>();
-        final ServiceManage serviceManage=new ServiceManage();
+        /*final ServiceManage serviceManage=new ServiceManage();
         Thread thread=new Thread(new Runnable() {
             @Override
             public void run() {
@@ -92,11 +92,11 @@ public class HomeFragment extends Fragment {
 
             }
         });
-        thread.start();
-        System.out.println("AAAA"+adv);
-        // burası yüzünden  home-fav sorunu
+        thread.start();*/
+
+
        System.out.println(MyAccountFragment.clickMyAdv);
-       /* try {
+       try {
 
             if(FilterAdvFragment.applButton==true && MyFavoritesFragment.clickMyFav!=true){
 
@@ -202,7 +202,7 @@ public class HomeFragment extends Fragment {
             cursor.close();
         }catch (Exception e){
             e.printStackTrace();
-        }*/
+        }
         MyAccountFragment.clickMyAdv=false;
         MainActivity.decrsPriceClick=false;
         MainActivity.incrPriceClick=false;

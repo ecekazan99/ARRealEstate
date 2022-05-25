@@ -10,11 +10,11 @@ import android.widget.Toast;
 
 public class Database extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME="D:\\bitirme\\RealEstate.db";
+    private static final String DATABASE_NAME="RealEstate.db";
     private static final int VERSION=1;
     public Database(Context c){
 
-        super(c, "D:\\bitirme\\RealEstate.db", null, VERSION);
+        super(c, "RealEstate.db", null, VERSION);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -73,7 +73,7 @@ public class Database extends SQLiteOpenHelper {
         }
         return true;
     }
-/*
+
     public User loginUser(String email, String password){
         User user=null;
         try{
@@ -94,7 +94,6 @@ public class Database extends SQLiteOpenHelper {
         return user;
     }
 
- */
     public int updateUser(int id,String name, String surname, String email, String password, String newPassword){
 
         try{

@@ -66,16 +66,8 @@ public class LoginFragment extends Fragment{
                     Database database=new Database(getContext());
                     String userMail=inputUserMail.getText().toString();
                     String userPassword=inputPassword.getText().toString();
-                  /*  user= database.loginUser(userMail,userPassword);
-                   */
-                    final ServiceManage serviceManage=new ServiceManage();
-                    Thread thread=new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            user=serviceManage.loginUser(userMail, userPassword);
-                        }
-                    });
-                    thread.start();
+                    user= database.loginUser(userMail,userPassword);
+
                     if(user!=null){
                         Intent intent=new Intent(getActivity().getBaseContext(),MainActivity.class);
                         intent.putExtra("UserInformation",user);

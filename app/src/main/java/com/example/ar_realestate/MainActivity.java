@@ -2,55 +2,23 @@ package com.example.ar_realestate;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.database.Cursor;
-import android.os.Debug;
 import android.os.StrictMode;
-import android.text.format.DateFormat;
-import android.text.format.DateUtils;
-import android.util.Log;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Struct;
-import android.annotation.SuppressLint;
-import android.os.StrictMode;
-import android.util.Log;
-
-import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.TimeZone;
-
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.example.ar_realestate.databinding.ActivityMainBinding;
-
-import kotlin.Suppress;
-import kotlin.jvm.Strictfp;
 
 public class MainActivity extends AppCompatActivity {
     public Connection con;
@@ -62,13 +30,6 @@ public class MainActivity extends AppCompatActivity {
     static  public  BottomNavigationView navViewToolbar;
     static public Boolean incrPriceClick=false;
     static public Boolean decrsPriceClick=false;
-     static String server_address="193.140.150.95";
-     static String databaseName="realestate_ar";
-    static String userName="bitirme1";
-    static String password="realE2022";
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,11 +38,9 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         try{
             database=new Database(this);
             db=database.getWritableDatabase();
-
 
         }
         catch (Exception e){

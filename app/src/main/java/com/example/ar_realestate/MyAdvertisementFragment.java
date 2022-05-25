@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdvertisementFragment extends Fragment {
     public static MyAdvertisementAdapter advAdapter;
@@ -28,6 +29,7 @@ public class MyAdvertisementFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
     static ArrayList<Advertisement> adv;
+    private static List<Advertisement> advertisementList;
     public static Boolean clickMyAdvDetail=false;
 
     public MyAdvertisementFragment() {
@@ -82,7 +84,18 @@ public class MyAdvertisementFragment extends Fragment {
         int count=0;
         Boolean flagMyAdv=false;
         adv=new ArrayList<>();
-        try {
+        /*final ServiceManage serviceManage=new ServiceManage();
+        Thread thread=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                advertisementList=serviceManage.getMyAdvertisement(34);
+                adv.addAll(advertisementList);
+
+            }
+        });
+        thread.start();*/
+
+         try {
              if (MyAccountFragment.clickMyAdv == true) {
                 flagMyAdv = true;
                 sqlQuery = "SELECT AdvId FROM UserAdvertisement WHERE UserId= ?";

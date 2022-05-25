@@ -1,14 +1,7 @@
 package com.example.ar_realestate;
 
-
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Advertisement implements Serializable {
     private String  advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;

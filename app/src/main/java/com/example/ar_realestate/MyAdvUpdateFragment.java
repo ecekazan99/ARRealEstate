@@ -12,7 +12,6 @@ import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -20,7 +19,6 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -34,20 +32,18 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.ar_realestate.databinding.FragmentMyAdvUpdateBinding;
-import com.example.ar_realestate.databinding.FragmentUserProfileBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -169,7 +165,7 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                     txtViewDate=(TextView) binding.addAdvEditTextDate;
                     txtViewDate.setText(getTodayDate());
                     txtViewDate.setText(getTodayDate());
-                   // date=txtViewDate.toString();
+                    date=txtViewDate.toString();
                     address=editTxtAddress.getText().toString();
                     price= Integer.parseInt( editTxtPrice.getText().toString());
                     squareMeters=Integer.parseInt(editTxtSquareMt.getText().toString());
@@ -432,7 +428,10 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
         spinnerTown=(Spinner)binding.addAdvSpinnerTown;
     }
     private String getTodayDate(){
-        return new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String strDate = sdf.format(c.getTime());
+        return strDate;
     }
     public boolean advControl(){
 
