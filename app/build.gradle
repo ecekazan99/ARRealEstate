@@ -50,6 +50,8 @@ dependencies {
 
     implementation files('build\\libs\\ksoap2-android-assembly-2.4-jar-with-dependencies.jar')
     implementation files('build\\libs\\ksoap2-android-assembly-2.4-jar-with-dependencies.jar')
+    implementation files('build\\libs\\ksoap2-android-assembly-2.4-jar-with-dependencies.jar')
+    implementation files('build\\libs\\ksoap2-android-assembly-2.4-jar-with-dependencies.jar')
     testImplementation 'junit:junit:4.13.2'
     implementation 'com.google.android.gms:play-services-base:11.0.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
