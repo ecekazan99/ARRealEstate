@@ -360,6 +360,7 @@ System.out.println(cursor.getFloat(xCoordinateIndex));
         LatLng advCoordinate=new LatLng(xCoordinateAdv,yCoordinateAdv);
         mapAPI.addMarker(new MarkerOptions().position(advCoordinate).title(advTitle));
         mapAPI.moveCamera(CameraUpdateFactory.newLatLng(advCoordinate));
+        mapAPI.moveCamera(CameraUpdateFactory.newLatLngZoom(advCoordinate,10f));
 
 
     }

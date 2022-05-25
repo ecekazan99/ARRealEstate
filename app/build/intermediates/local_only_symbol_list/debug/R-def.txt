@@ -204,7 +204,6 @@ id mobile_navigation
 id myAdv
 id myFav
 id myInfo
-id mySpecialAdv
 id nav_host_fragment_activity_main
 id nav_view
 id nav_view2
