@@ -1,13 +1,10 @@
 package com.example.ar_realestate;
 
 import android.database.Cursor;
-
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +15,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.example.ar_realestate.databinding.FragmentFilterAdvBinding;
-
 import java.util.ArrayList;
 
 public class FilterAdvFragment extends Fragment {
@@ -250,7 +246,7 @@ public class FilterAdvFragment extends Fragment {
             }
         });
 
-       getCities();
+        getCities();
         adapterTowns=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,districties);
         adapterTowns.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTown.setAdapter(adapterTowns);
@@ -373,42 +369,42 @@ public class FilterAdvFragment extends Fragment {
 
         }
     }
-        public boolean filterInputControl(){
+    public boolean filterInputControl(){
 
-            Boolean checkEmpty =true;
-            if(advStatus.equals("Select Adv Status") || buildType.equals("Select Build Type") || itemStatus.equals("Select Item Status") ||
-                    elgForCredit.equals("Select Elg Credit") || usingStatus.equals("Select Using Status") || stateBuilding.equals("Select State Building")||
-                    swap.equals("Select Swap")|| front.equals("Select Front") || fuelType.equals("Select Fuel Type") ||
-                    roomNum.equals("Select Room Number") || warmType.equals("Select Warm Type") || city.equals("Select City") ){
-                checkEmpty =false;
+        Boolean checkEmpty =true;
+        if(advStatus.equals("Select Adv Status") || buildType.equals("Select Build Type") || itemStatus.equals("Select Item Status") ||
+                elgForCredit.equals("Select Elg Credit") || usingStatus.equals("Select Using Status") || stateBuilding.equals("Select State Building")||
+                swap.equals("Select Swap")|| front.equals("Select Front") || fuelType.equals("Select Fuel Type") ||
+                roomNum.equals("Select Room Number") || warmType.equals("Select Warm Type") || city.equals("Select City") ){
+            checkEmpty =false;
 
-                Toast.makeText(getActivity(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
 
-            }else if(TextUtils.isEmpty(editTxtPriceMin.getText().toString())|| TextUtils.isEmpty(editTxtPriceMax.getText().toString())||
-                    TextUtils.isEmpty(editTxtSquareMin.getText().toString())||TextUtils.isEmpty(editTxtSquareMax.getText().toString())||
-                    TextUtils.isEmpty(editTextBuildFloorMin.getText().toString())|| TextUtils.isEmpty(editTextBuildFloorMax.getText().toString())||
-                    TextUtils.isEmpty(editTxtFloorLocMin.getText().toString()) ||TextUtils.isEmpty(editTxtFloorLocMax.getText().toString()) ||
-                    TextUtils.isEmpty(editTextBuildAgeMin.getText().toString())||TextUtils.isEmpty(editTextBuildAgeMax.getText().toString()) ||
-                    TextUtils.isEmpty(editTxtNumofBathMin.getText().toString())||TextUtils.isEmpty(editTxtNumofBathMax.getText().toString()) ||
-                    TextUtils.isEmpty(editTxtRentalIncomeMin.getText().toString())||TextUtils.isEmpty(editTxtRentalIncomeMax.getText().toString())||
-                    TextUtils.isEmpty(editTxtDuesMin.getText().toString()) || TextUtils.isEmpty(editTxtDuesMax.getText().toString())){
+        }else if(TextUtils.isEmpty(editTxtPriceMin.getText().toString())|| TextUtils.isEmpty(editTxtPriceMax.getText().toString())||
+                TextUtils.isEmpty(editTxtSquareMin.getText().toString())||TextUtils.isEmpty(editTxtSquareMax.getText().toString())||
+                TextUtils.isEmpty(editTextBuildFloorMin.getText().toString())|| TextUtils.isEmpty(editTextBuildFloorMax.getText().toString())||
+                TextUtils.isEmpty(editTxtFloorLocMin.getText().toString()) ||TextUtils.isEmpty(editTxtFloorLocMax.getText().toString()) ||
+                TextUtils.isEmpty(editTextBuildAgeMin.getText().toString())||TextUtils.isEmpty(editTextBuildAgeMax.getText().toString()) ||
+                TextUtils.isEmpty(editTxtNumofBathMin.getText().toString())||TextUtils.isEmpty(editTxtNumofBathMax.getText().toString()) ||
+                TextUtils.isEmpty(editTxtRentalIncomeMin.getText().toString())||TextUtils.isEmpty(editTxtRentalIncomeMax.getText().toString())||
+                TextUtils.isEmpty(editTxtDuesMin.getText().toString()) || TextUtils.isEmpty(editTxtDuesMax.getText().toString())){
 
-                checkEmpty=false;
-                Toast.makeText(getActivity(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
+            checkEmpty=false;
+            Toast.makeText(getActivity(),"Please fill in the blanks",Toast.LENGTH_SHORT).show();
 
-            }else if(!TextUtils.isDigitsOnly(editTxtPriceMin.getText()) || !TextUtils.isDigitsOnly(editTxtPriceMax.getText()) ||
-                    !TextUtils.isDigitsOnly(editTxtSquareMin.getText()) || !TextUtils.isDigitsOnly(editTxtSquareMax.getText())||
-                    !TextUtils.isDigitsOnly(editTextBuildFloorMin.getText()) || !TextUtils.isDigitsOnly(editTextBuildFloorMax.getText()) ||
-                    !TextUtils.isDigitsOnly(editTxtFloorLocMin.getText()) || !TextUtils.isDigitsOnly(editTxtFloorLocMax.getText()) ||
-                    !TextUtils.isDigitsOnly(editTextBuildAgeMin.getText()) || !TextUtils.isDigitsOnly(editTextBuildAgeMax.getText()) ||
-                    !TextUtils.isDigitsOnly(editTxtRentalIncomeMin.getText())|| !TextUtils.isDigitsOnly(editTxtRentalIncomeMin.getText())||
-                    !TextUtils.isDigitsOnly(editTxtDuesMin.getText()) || !TextUtils.isDigitsOnly(editTxtDuesMax.getText()) ||
-                    !TextUtils.isDigitsOnly(editTxtNumofBathMin.getText()) || !TextUtils.isDigitsOnly(editTxtNumofBathMin.getText())) {
-                checkEmpty =false;
-                Toast.makeText(getActivity(),"Please Incorrect Inputs",Toast.LENGTH_SHORT).show();
-            }
-            System.out.println("Girildi 1: "+ city);
-            return checkEmpty;
+        }else if(!TextUtils.isDigitsOnly(editTxtPriceMin.getText()) || !TextUtils.isDigitsOnly(editTxtPriceMax.getText()) ||
+                !TextUtils.isDigitsOnly(editTxtSquareMin.getText()) || !TextUtils.isDigitsOnly(editTxtSquareMax.getText())||
+                !TextUtils.isDigitsOnly(editTextBuildFloorMin.getText()) || !TextUtils.isDigitsOnly(editTextBuildFloorMax.getText()) ||
+                !TextUtils.isDigitsOnly(editTxtFloorLocMin.getText()) || !TextUtils.isDigitsOnly(editTxtFloorLocMax.getText()) ||
+                !TextUtils.isDigitsOnly(editTextBuildAgeMin.getText()) || !TextUtils.isDigitsOnly(editTextBuildAgeMax.getText()) ||
+                !TextUtils.isDigitsOnly(editTxtRentalIncomeMin.getText())|| !TextUtils.isDigitsOnly(editTxtRentalIncomeMin.getText())||
+                !TextUtils.isDigitsOnly(editTxtDuesMin.getText()) || !TextUtils.isDigitsOnly(editTxtDuesMax.getText()) ||
+                !TextUtils.isDigitsOnly(editTxtNumofBathMin.getText()) || !TextUtils.isDigitsOnly(editTxtNumofBathMin.getText())) {
+            checkEmpty =false;
+            Toast.makeText(getActivity(),"Please Incorrect Inputs",Toast.LENGTH_SHORT).show();
         }
+        System.out.println("Girildi 1: "+ city);
+        return checkEmpty;
+    }
 }
 

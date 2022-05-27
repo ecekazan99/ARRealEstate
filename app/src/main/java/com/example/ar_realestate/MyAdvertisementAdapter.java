@@ -97,11 +97,21 @@ public class MyAdvertisementAdapter extends RecyclerView.Adapter<MyAdvertisement
                         }
                         else if(menuItem.getItemId()==R.id.delete_adv){
                             int deleteAdvId=adv.get(pos).getAdvId();
+                          /*  int serverDeleteId=deleteAdvId+70;
+                            System.out.println(serverDeleteId);*/
                             String sqlQuery ="DELETE FROM Advertisements WHERE AdvId = '"+deleteAdvId+"'";
                             MainActivity.db.execSQL(sqlQuery);
                             sqlQuery="DELETE FROM UserAdvertisement WHERE AdvId = '"+deleteAdvId+"'";
                             MainActivity.db.execSQL(sqlQuery);
-                            replaceFragment(new MyAdvertisementFragment());
+                           /* final ServiceManage serviceManage=new ServiceManage();
+                            Thread thread=new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    serviceManage.deleteAdv(serverDeleteId);
+                                }
+                            });
+                            thread.start();*/
+                            replaceFragment(new MyAccountFragment());
                         }
                         return true;
                     }

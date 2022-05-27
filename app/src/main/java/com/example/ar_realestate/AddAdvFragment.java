@@ -19,7 +19,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +30,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.ar_realestate.databinding.FragmentAddAdvBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -47,9 +45,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-
-
 public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
+
     private FragmentAddAdvBinding binding;
     GoogleMap gMap;
     private TextView txtViewDate;
@@ -71,14 +68,11 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
 
     private Spinner spinnerAdvStatus,spinnerRoomNum, spinnerBuildType,spinnerItemStatus,spinnerWarmType,spinnerElgbCredit,spinnerUsingStatus, spinnerStateOfBuilding,spinnerSwap,spinnerFront,spinnerFuelType,spinnerCity,spinnerTown;
     private int imgNoPermissionCod=0,imgPermissionCod=1;
-
     public static String advTitle,advStatus,roomNum,warmType,elgForCredit,usingStatus,buildType,itemStatus,stateBuilding,swap,front,fuelType,date,address,city,town;
     int price,squareMeters,buildingFloors,floorLoc,buildAge,numOfBathr,rentalIncome,dues;
     Double latitude;
     Double longitude;
-
     private CitiesAndTownInsert citiesAndTownInsert;
-
     public static int cityId;
     public static int userId;
     public static int advId;
@@ -86,7 +80,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
     public static ArrayList<String> districties=new ArrayList<>();
     ArrayAdapter<String> adapterCities;
     ArrayAdapter<String> adapterTowns;
-
     public AddAdvFragment() {
         // Required empty public constructor
     }
@@ -138,14 +131,12 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 
         ArrayAdapter<CharSequence>adapterBuildType=ArrayAdapter.createFromResource(getActivity().getBaseContext(),
                 R.array.BuildingType, android.R.layout.simple_spinner_item);
         adapterBuildType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         spinnerBuildType.setAdapter(adapterBuildType);
         spinnerBuildType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -154,20 +145,17 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 
         ArrayAdapter<CharSequence>adapterItemStatus=ArrayAdapter.createFromResource(getActivity().getBaseContext(),R.array.ItemStatus, android.R.layout.simple_spinner_item);
         adapterItemStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         spinnerItemStatus.setAdapter(adapterItemStatus);
         spinnerItemStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 itemStatus=adapterView.getItemAtPosition(i).toString();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
@@ -196,7 +184,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 usingStatus=adapterView.getItemAtPosition(i).toString();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -271,10 +258,8 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 roomNum=adapterView.getItemAtPosition(i).toString();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 
@@ -285,13 +270,12 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 warmType=adapterView.getItemAtPosition(i).toString();
-
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
+
         adapterTowns=new ArrayAdapter<String>(getActivity().getBaseContext(),android.R.layout.simple_spinner_item,districties);
         adapterTowns.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTown.setAdapter(adapterTowns);
@@ -321,7 +305,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
     }
@@ -390,7 +373,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 }
             });
         }
-
         return binding.getRoot();
     }
     private String getTodayDate(){
@@ -487,28 +469,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 statement.bindDouble(27, longitude);
                 statement.execute();
 
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date date = new Date(System.currentTimeMillis());
-                String infi = df.format(date);
-                System.out.println(date);
-
-                try {
-                    endDate = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(infi).getTime());
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                final ServiceManage serviceManage=new ServiceManage();
-                Thread thread=new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                      serviceManage.addAdvertisement(advTitle,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,stateBuilding,rentalIncome,dues,
-                                swap,front,fuelType,endDate,address,city,town,latitude,longitude);
-                    }
-                });
-                thread.start();
-
-
                 Object_Clear();
                 Toast.makeText(getActivity(),"Adding Advertisement Successful ",Toast.LENGTH_SHORT).show();
                 add_Adv=true;
@@ -519,7 +479,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 }
                 c.close();
                 advId=lastInsertedAdvId;
-                System.out.println(lastInsertedAdvId);
                 for (int i=0;i<imageCount;i++) {
                     ByteArrayOutputStream outputStreamMulti =new ByteArrayOutputStream();
                     smallestedImg=imageSmall(imagesSelect.get(i));
@@ -532,11 +491,30 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                     statementImg.execute();
                 }
 
-               String sqlQueryUserAdv="INSERT INTO UserAdvertisement (UserId,AdvId)VALUES(?,?);";
+                String sqlQueryUserAdv="INSERT INTO UserAdvertisement (UserId,AdvId)VALUES(?,?);";
                 SQLiteStatement statementUserAdv = MainActivity.db.compileStatement(sqlQueryUserAdv);
                 statementUserAdv.bindString(1,String.valueOf(userId));
                 statementUserAdv.bindString(2,String.valueOf(advId));
                 statementUserAdv.execute();
+
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date date = new Date(System.currentTimeMillis());
+                String dateInformation = df.format(date);
+                try {
+                    endDate = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateInformation).getTime());
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                final ServiceManage serviceManage=new ServiceManage();
+                Thread thread=new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        serviceManage.addAdvertisement(advTitle,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,stateBuilding,rentalIncome,dues,
+                                swap,front,fuelType,endDate,address,city,town,latitude,longitude);
+                    }
+                });
+                thread.start();
 
                 if(add_Adv==true)
                 {
@@ -546,6 +524,7 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
 
                     replaceFragment(new AdvDetailFragment());
                 }
+
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -599,7 +578,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                             selectedİmg=imagesSelect.get(j);
                             imageAdv.setImageBitmap(selectedİmg);
                             imageCount++;
-
                         }
                     }
                     else if(data.getClipData()==null) {
@@ -681,7 +659,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 MarkerOptions markerOptions=new MarkerOptions();
                 markerOptions.position(latLng);
                 markerOptions.title(latLng.latitude+" : "+latLng.longitude);
-                System.out.println(latLng.latitude+" : "+latLng.longitude);
                 latitude=  latLng.latitude;
                 longitude= latLng.longitude;
                 gMap.clear();
@@ -696,6 +673,4 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
         fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment);
         fragmentTransaction.commit();
     }
-
-
 }

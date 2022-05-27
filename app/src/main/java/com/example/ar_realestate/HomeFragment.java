@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
         recyclerView=(RecyclerView) view.findViewById(R.id.recview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         advAdapter=new AdvertisementAdapter(getData(getContext()),getContext());
-       recyclerView.setAdapter(advAdapter);
+        recyclerView.setAdapter(advAdapter);
         advAdapter.setOnItemClickListener(adv ->  {
             advDetail=new AdvDetail(adv.getAdvId(),adv.getAdvTitle(),adv.getAdvImage(),adv.getPrice(),adv.getAdvStatus(),
                     adv.getRoomNum(),adv.getSquareMeters(),adv.getBuildingFloors(),adv.getFloorLoc(),
@@ -83,20 +83,8 @@ public class HomeFragment extends Fragment {
         int count=0;
         Boolean flagMyAdv=false;
         adv=new ArrayList<>();
-        /*final ServiceManage serviceManage=new ServiceManage();
-        Thread thread=new Thread(new Runnable() {
-            @Override
-            public void run() {
-                advertisementList=serviceManage.getAdvertisement();
-                adv.addAll(advertisementList);
 
-            }
-        });
-        thread.start();*/
-
-
-       System.out.println(MyAccountFragment.clickMyAdv);
-       try {
+        try {
 
             if(FilterAdvFragment.applButton==true && MyFavoritesFragment.clickMyFav!=true){
 
@@ -113,24 +101,19 @@ public class HomeFragment extends Fragment {
                 cursor=MainActivity.db.rawQuery(sqlQuery, new String[] { FilterAdvFragment.advStatus,FilterAdvFragment.roomNum, FilterAdvFragment.buildType,
                         FilterAdvFragment.itemStatus,FilterAdvFragment.warmType,FilterAdvFragment.elgForCredit, FilterAdvFragment.usingStatus,
                         FilterAdvFragment.stateBuilding, FilterAdvFragment.swap,FilterAdvFragment.front,FilterAdvFragment.fuelType,FilterAdvFragment.city,FilterAdvFragment.town});
-
-
             }
             else if(FilterAdvFragment.applButton!=true && MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==false && MyAccountFragment.clickMyAdv!=true &&  MyFavoritesFragment.clickMyFavDetail!=true)
             {
-
                 sqlQuery="SELECT * FROM Advertisements";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }
             else if(MainActivity.incrPriceClick==true && MainActivity.decrsPriceClick==false)
             {
-
                 sqlQuery="SELECT * FROM Advertisements ORDER BY Price ASC";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }
             else if(MainActivity.incrPriceClick==false && MainActivity.decrsPriceClick==true)
             {
-
                 sqlQuery="SELECT * FROM Advertisements ORDER BY Price DESC";
                 cursor=MainActivity.db.rawQuery(sqlQuery,null);
             }
@@ -195,9 +178,7 @@ public class HomeFragment extends Fragment {
                 newAdv.setAdvImage(imageAdv);
                 newAdv.setLatitude(cursor.getLong(xCoordinateIndex));
                 newAdv.setLongitude(cursor.getLong(yCoordinateIndex));
-               // System.out.println("asd "+newAdv.getAdvId());
                 adv.add(newAdv);
-
             }
             cursor.close();
         }catch (Exception e){

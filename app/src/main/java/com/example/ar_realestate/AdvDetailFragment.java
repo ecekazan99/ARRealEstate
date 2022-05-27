@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -25,7 +24,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.util.ArrayList;
 
 public class AdvDetailFragment extends Fragment  implements OnMapReadyCallback {
@@ -336,32 +334,23 @@ public class AdvDetailFragment extends Fragment  implements OnMapReadyCallback {
             }
         });
         return binding.getRoot();
-
     }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-
-
         String sqlQuery="SELECT * FROM Advertisements WHERE AdvId = '"+advId+"'";
         Cursor cursor=MainActivity.db.rawQuery(sqlQuery,null);
         int xCoordinateIndex = cursor.getColumnIndex("xCoordinate");
         int yCoordinateIndex = cursor.getColumnIndex("yCoordinate");
-
-       while (cursor.moveToNext()) {
-
-System.out.println(cursor.getFloat(xCoordinateIndex));
-           System.out.println(cursor.getString(xCoordinateIndex));
-           xCoordinateAdv= cursor.getFloat(xCoordinateIndex);
-           yCoordinateAdv= cursor.getFloat(yCoordinateIndex);
+        while (cursor.moveToNext()) {
+            xCoordinateAdv= cursor.getFloat(xCoordinateIndex);
+            yCoordinateAdv= cursor.getFloat(yCoordinateIndex);
         }
         mapAPI=googleMap;
-        System.out.println(xCoordinateAdv+":"+yCoordinateAdv+"==>"+advId);
         LatLng advCoordinate=new LatLng(xCoordinateAdv,yCoordinateAdv);
         mapAPI.addMarker(new MarkerOptions().position(advCoordinate).title(advTitle));
         mapAPI.moveCamera(CameraUpdateFactory.newLatLng(advCoordinate));
         mapAPI.moveCamera(CameraUpdateFactory.newLatLngZoom(advCoordinate,10f));
-
 
     }
 }

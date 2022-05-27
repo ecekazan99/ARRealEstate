@@ -1,11 +1,7 @@
 package com.example.ar_realestate;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.StrictMode;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;

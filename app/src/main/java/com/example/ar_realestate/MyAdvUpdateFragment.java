@@ -45,8 +45,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback {
     private FragmentMyAdvUpdateBinding binding;
@@ -192,15 +190,7 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                 ByteArrayOutputStream outputStream =new ByteArrayOutputStream();
                 if(selectedİmg==null)
                 {
-                    System.out.println("There is not image");
                     flagImage=1;
-                    /*selectedİmg=MyAdvertisementAdapter.selectedİmg;
-                    System.out.println("11111111111111111");
-                    smallestedImg=imageSmall(selectedİmg);
-                    System.out.println("2222222222222222");
-                    smallestedImg.compress(Bitmap.CompressFormat.PNG,75,outputStream);
-                    System.out.println("333333333");*/
-
                     for (int b=0;b<imagesId.size();b++){
                         ByteArrayOutputStream outputStreamOld = new ByteArrayOutputStream();
                         smallestedImg = imageSmall(images.get(b));
@@ -210,33 +200,15 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                         updateAdvImages = database.updateMyAdvImages(imagesId.get(b), tempImage, advIdImages.get(0));
 
                     }
-                    /*
-                    String sqlQuery="SELECT * FROM AdvertisementImage WHERE AdvId = '"+MyAdvertisementAdapter.advId+"'";
-                    Cursor imageCursor=MainActivity.db.rawQuery(sqlQuery,null);
-                    int indexImage=imageCursor.getColumnIndex("advImage");
-                    int indexImageId=imageCursor.getColumnIndex("ImageId");
-                    int indexAdvId=imageCursor.getColumnIndex("AdvId");
-                    while (imageCursor.moveToNext()){
-                        count++;
-                        advIdImages.add(Integer.parseInt(imageCursor.getString(indexAdvId)));
-                        imagesId.add(Integer.parseInt(imageCursor.getString(indexImageId)));
-                        byte[] imageByte = imageCursor.getBlob(indexImage);
-                        Bitmap imageAdv = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
-                        images.add(imageAdv);
-                    }
-                    binding.addAdvImage.setImageBitmap(images.get(position));*/
-
                 }
                 if (flagImage==0) {
                     for (int a = 0; a < imagesSelect.size(); a++) {
-                        System.out.println("111111   " + imagesSelect.size());
                         ByteArrayOutputStream outputStreamMulti = new ByteArrayOutputStream();
                         smallestedImg = imageSmall(imagesSelect.get(a));
                         smallestedImg.compress(Bitmap.CompressFormat.PNG, 75, outputStreamMulti);
                         byte[] ImageMulti = outputStreamMulti.toByteArray();
                         tempImage = ImageMulti;
                         updateAdvImages = database.updateMyAdvImages(imagesId.get(a), tempImage, advIdImages.get(0));
-
                     }
                 }
                 updateAdv=database.updateMyAdv(advId,advTitle,tempImage,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
@@ -558,7 +530,6 @@ public class MyAdvUpdateFragment extends Fragment implements OnMapReadyCallback 
                 MarkerOptions markerOptions=new MarkerOptions();
                 markerOptions.position(latLng);
                 markerOptions.title(latLng.latitude+" : "+latLng.longitude);
-                System.out.println(latLng.latitude+" : "+latLng.longitude);
                 latitude=latLng.latitude;
                 longitude=latLng.longitude;
                 gMap.clear();

@@ -6,17 +6,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
 
 public class MyFavoritesFragment extends Fragment {
@@ -150,7 +147,5 @@ public class MyFavoritesFragment extends Fragment {
         fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment);
         fragmentTransaction.commit();
     }
-
-
 
 }

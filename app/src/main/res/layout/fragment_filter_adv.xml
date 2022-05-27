@@ -742,7 +742,6 @@
                     android:layout_marginBottom="30dp"
                     android:backgroundTint="@color/cardview_dark_background"
                     android:text="APPLY FILTER"
-                    android:enabled="false"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="@color/white"

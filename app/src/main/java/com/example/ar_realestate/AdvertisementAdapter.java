@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
@@ -54,7 +52,6 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
                 @Override
                 public void onClick(View view) {
                     int position=getAdapterPosition();
-
                     if(listener!=null && position!=RecyclerView.NO_POSITION ){
                         listener.onItemClick(adv.get(position));
                     }
@@ -68,6 +65,4 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
     public void setOnItemClickListener(OnItemClickListener listener){
         this.listener=listener;
     }
-
-
 }
