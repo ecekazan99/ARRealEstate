@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:padding="1dp"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="375dp"
             android:layout_height="1575dp"
@@ -707,6 +708,7 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="380dp"
                 android:layout_height="320dp"
@@ -731,7 +733,6 @@
                 android:paddingRight="25dp">
 
             </LinearLayout>
-
 
 
         </LinearLayout>
