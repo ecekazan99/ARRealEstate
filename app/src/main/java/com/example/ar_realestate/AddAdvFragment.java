@@ -497,6 +497,16 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                 statementUserAdv.bindString(2,String.valueOf(advId));
                 statementUserAdv.execute();
 
+
+
+                if(add_Adv==true)
+                {
+                    advDetailLast=new AdvDetail(advId,advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
+                            buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,
+                            stateBuilding,rentalIncome,dues,swap,front,fuelType,date.toString(),address,city,town);
+
+                    replaceFragment(new AdvDetailFragment());
+                }
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = new Date(System.currentTimeMillis());
                 String dateInformation = df.format(date);
@@ -515,15 +525,6 @@ public class AddAdvFragment extends Fragment implements OnMapReadyCallback {
                     }
                 });
                 thread.start();
-
-                if(add_Adv==true)
-                {
-                    advDetailLast=new AdvDetail(advId,advTitle,smallestedImg,price,advStatus,roomNum,squareMeters,buildingFloors,floorLoc,
-                            buildAge,buildType,itemStatus,warmType,numOfBathr,elgForCredit,usingStatus,
-                            stateBuilding,rentalIncome,dues,swap,front,fuelType,date.toString(),address,city,town);
-
-                    replaceFragment(new AdvDetailFragment());
-                }
 
             }catch (Exception e){
                 e.printStackTrace();
